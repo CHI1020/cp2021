@@ -1,5 +1,5 @@
-# cmstemplate
-Github pages template for cmsimde submodule
+# cp2021
+Introduction to Computer Programming - 計算機程式
 
 http://mde.tw/cp2021
 
