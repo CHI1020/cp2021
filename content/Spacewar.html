@@ -172,9 +172,14 @@ canvas.id = "ggame-canvas"
 # 將 canvas 插入 gc 標註中
 graphics_column <= canvas
 
+# 若在近端測試
+#site = ""
+# 送到遠端時改用
+site="./../"
+
 class Stars(Sprite):
 
-    asset = ImageAsset("/images/starfield.jpg")
+    asset = ImageAsset(site+"/images/starfield.jpg")
     width = 512
     height = 512
 
@@ -185,7 +190,7 @@ class Sun(Sprite):
     
     width = 80
     height = 76
-    asset = ImageAsset("/images/sun.png", Frame(0, 0, width, height))
+    asset = ImageAsset(site+"/images/sun.png", Frame(0, 0, width, height))
     
     def __init__(self, position):
         super().__init__(Sun.asset, position, CircleAsset(32))
@@ -243,9 +248,9 @@ class GravitySprite(Sprite):
 
 class Bullet(GravitySprite):
     
-    asset = ImageAsset("/images/blast.png", Frame(0,0,8,8), 8)
+    asset = ImageAsset(site+"/images/blast.png", Frame(0,0,8,8), 8)
     collisionasset = CircleAsset(4)
-    pewasset = SoundAsset("/downloads/pew1.mp3")
+    pewasset = SoundAsset(site+"/downloads/pew1.mp3")
     
     def __init__(self, app, sun):
         super().__init__(Bullet.asset, Bullet.collisionasset, (0,0), (0,0), sun)
@@ -323,7 +328,7 @@ class Ship(GravitySprite):
     R = 2.0
     bullets = 6
     healthcount = 6
-    reappearasset = SoundAsset("/downloads/reappear.mp3")
+    reappearasset = SoundAsset(site+"/downloads/reappear.mp3")
     
     def __init__(self, asset, app, position, velocity, sun):
         self.bullets = []
@@ -435,7 +440,7 @@ class Ship(GravitySprite):
             
 class Ship1(Ship):
     
-    asset = ImageAsset("/images/four_spaceship_by_albertov_with_thrust.png", 
+    asset = ImageAsset(site+"/images/four_spaceship_by_albertov_with_thrust.png", 
         Frame(227,0,292-227,125), 4, 'vertical')
         
     def __init__(self, app, position, velocity, sun):
@@ -453,7 +458,7 @@ class Ship1(Ship):
         
 class Ship2(Ship):
     
-    asset = ImageAsset("/images/four_spaceship_by_albertov_with_thrust.png", 
+    asset = ImageAsset(site+"/images/four_spaceship_by_albertov_with_thrust.png", 
         Frame(0,0,86,125), 4, 'vertical')
         
     def __init__(self, app, position, velocity, sun):
@@ -471,8 +476,8 @@ class Ship2(Ship):
 
 class ExplosionSmall(Sprite):
     
-    asset = ImageAsset("images/explosion1.png", Frame(0,0,128,128), 10)
-    boomasset = SoundAsset("sounds/explosion1.mp3")
+    asset = ImageAsset(site+"/images/explosion1.png", Frame(0,0,128,128), 10)
+    boomasset = SoundAsset(site+"/downloads/explosion1.mp3")
     
     def __init__(self, position):
         super().__init__(ExplosionSmall.asset, position)
@@ -489,8 +494,8 @@ class ExplosionSmall(Sprite):
 
 class ExplosionBig(Sprite):
     
-    asset = ImageAsset("/images/explosion2.png", Frame(0,0,4800/25,195), 25)
-    boomasset = SoundAsset("/downloads/explosion2.mp3")
+    asset = ImageAsset(site+"/images/explosion2.png", Frame(0,0,4800/25,195), 25)
+    boomasset = SoundAsset(site+"/downloads/explosion2.mp3")
     
     def __init__(self, position):
         super().__init__(ExplosionBig.asset, position)
