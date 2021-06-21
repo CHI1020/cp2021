@@ -12,6 +12,17 @@
 <h4>電腦輔助設計室與協同設計室行事曆</h4>
 <p><a href="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei">全頁檢視</a></p>
 <p><iframe height="600" src="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei" width="800"></iframe></p><h3>Python</h3>
+<p>學習計算機程式語言的態度建議: <a href="https://learnpythonthehardway.org/book/intro.html">https://learnpythonthehardway.org/book/intro.html</a></p>
+<ol>
+<li>必得<span style="text-decoration: underline;"><span style="background-color: #ffff99;">花工夫</span></span>才學得來 (The hard way is easier)</li>
+<li>自己<span style="text-decoration: underline;"><span style="background-color: #ffff99;">讀資料</span></span>自己<span style="text-decoration: underline;"><span style="background-color: #ffff99;">刻每一行程式碼</span></span> (Reading and Writing (Typing))</li>
+<li>要<span style="text-decoration: underline;"><span style="background-color: #ffff99;">注重</span></span>每一個<span style="text-decoration: underline;"><span style="background-color: #ffff99;">細節</span></span> (Attention to Detail)</li>
+<li>要能<span style="text-decoration: underline;"><span style="background-color: #ffff99;">發現差異</span></span> (Spotting Differences)</li>
+<li>千萬<span style="text-decoration: underline;"><span style="background-color: #ffff99;">不要複製貼上</span></span> (Do not Copy-Paste)</li>
+<li>多<span style="text-decoration: underline;"><span style="background-color: #ffff99;">觀看</span></span>相關<span style="text-decoration: underline;"><span style="background-color: #ffff99;">操作示範</span></span>影片 (Using the Included Videos)</li>
+<li>多<span style="text-decoration: underline;"><span style="background-color: #ffff99;">練習</span></span>而且要<span style="text-decoration: underline;"><span style="background-color: #ffff99;">堅持學習</span></span> (Practice and Persistence)</li>
+</ol>
+<p>計算機程式學習 Python 目標: 編寫可以用於<span style="text-decoration: underline;"><span style="background-color: #ffff99;">機電資自動化整合系統設計與模擬</span></span>用的<span style="text-decoration: underline;"><span style="background-color: #ffff99;">網際程式</span></span>.</p>
 <p><span style="background-color: #ccffcc;">Web Browser &lt;-&gt; Client </span>&lt;-&gt; Brython &lt;-&gt; Flask &lt;-&gt; <span style="background-color: #ccffcc;">Server &lt;-&gt; RoboDK, CoppeliaSim and Webots</span></p>
 <h4>Examples:</h4>
 <p style="padding-left: 30px;"><a href="https://medium.com/@patrickbfuller/a-simple-flask-app-edeed75dbee2">https://medium.com/@patrickbfuller/a-simple-flask-app-edeed75dbee2</a></p>
@@ -27,9 +38,18 @@
 <p style="padding-left: 30px;"><a href="https://github.com/rayluo/draggable-svg">https://github.com/rayluo/draggable-svg</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/Shohrab-Hossain/Tic-Tac-Toe-web">https://github.com/Shohrab-Hossain/Tic-Tac-Toe-web</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/denisecase/chapstack">https://github.com/denisecase/chapstack</a></p>
-<p style="padding-left: 30px;"><a href="https://gitlab.com/sammdu/bot-tac-toe/">https://gitlab.com/sammdu/bot-tac-toe/</a> </p>
+<p style="padding-left: 30px;"><a href="https://gitlab.com/sammdu/bot-tac-toe/">https://gitlab.com/sammdu/bot-tac-toe/</a></p>
 <h4>Python 語法</h4>
-<p>由於 Github Pages 不允許伺服 __init__.py 檔案, 因此下列範例中需要導入 ggame 的部分, 將無法在 Github Pages 網站中執行.</p>
+<p>由於 Github Pages 不允許伺服 __init__.py 檔案, 因此必須將 <a href="https://github.com/BrythonServer/ggame">ggame</a> 採用 <a href="https://brython.info/static_doc/en/import.html">https://brython.info/static_doc/en/import.html</a> 中 Optimization 的方式轉為 brython_modules.js 後直接以 script 標註導入頁面.</p>
+<h4 style="padding-left: 30px;">將 ggame 中的 Brython 程式碼轉為 brython_modules.js 的方法:</h4>
+<p style="padding-left: 60px;">在可攜系統中的 Python 安裝 brython 模組: pip install brython</p>
+<p style="padding-left: 60px;">將所安裝 brython 模組中的 brython_stdlib.js 複製一份到 ggame 倉儲中, 確定目前 ggame 目錄架構為:</p>
+<p style="padding-left: 60px;">brython_stdlib.js</p>
+<p style="padding-left: 60px;">ggame</p>
+<p style="padding-left: 60px;">意即 ggame 目錄中有 brython_stdlib.js 與 ggame brython 模組原始碼.</p>
+<p style="padding-left: 60px;">接下來執行 y:\tmp\github\ggame&gt;python -m brython --modules</p>
+<p style="padding-left: 60px;">完成後, 就可以在 y:\tmp\github\ggame&gt; 目錄中建立 brython_modules.js</p>
+<p style="padding-left: 60px;">以本頁面的作法是將 ggame 所需的 graphics 檔案放至 images 目錄中, 而 brython_modules.js 則放至 downloads 目錄後, 以 /downloads/brython_modules.js 放入 script 標註中引用.</p>
 <p>Python 3 官方教材: <a href="https://docs.python.org/3/index.html">https://docs.python.org/3/index.html</a></p>
 <p>Python tutorial: <a href="https://docs.python.org/3/tutorial/index.html">https://docs.python.org/3/tutorial/index.html</a> (英文)</p>
 <p>Python tutorial: <a href="https://docs.python.org/zh-tw/3/tutorial/">https://docs.python.org/zh-tw/3/tutorial/</a> (中文)</p>
@@ -44,6 +64,7 @@
 <script src="/static/pixi-3.0.5.min.js"></script>
 <script src="/static/buzz-1.2.1.js"></script>
 <script src="/static/bs.js"></script>
+<script src="/downloads/brython_modules.js"></script>
 <!-- Cango 程式庫 -->
 <script src="/static/Cango-13v08-min.js"></script>
 <script src="/static/CangoAxes-4v01-min.js"></script>
@@ -1909,7 +1930,12 @@ var width = window.innerWidth;
 </p><h3>Brython</h3>
 <p>上一頁的網際 Python 是透過 <a href="https://brython.info/">https://brython.info/</a> 完成, 當使用者在網頁中執行 Python 程式時, 透過 Brython 即時轉為 Javascript 後執行.</p>
 <p>Brython Google Group: <a href="https://groups.google.com/g/brython">https://groups.google.com/g/brython</a></p>
-<p>Introduction guide to Brython: <a href="https://stackabuse.com/an-introductory-guide-to-brython">https://stackabuse.com/an-introductory-guide-to-brython</a></p>
+<h4>Introduction guide to Brython:</h4>
+<p style="padding-left: 30px;"><a href="https://stackabuse.com/an-introductory-guide-to-brython">https://stackabuse.com/an-introductory-guide-to-brython</a></p>
+<p style="padding-left: 30px;"><a href="https://www.geeksforgeeks.org/introduction-to-brython/">https://www.geeksforgeeks.org/introduction-to-brython/</a></p>
+<p style="padding-left: 30px;"><a href="https://realpython.com/brython-python-in-browser/">https://realpython.com/brython-python-in-browser/</a></p>
+<h4>Game in Brython:</h4>
+<p style="padding-left: 30px;"><a href="https://medium.com/swlh/sick-of-javascript-just-use-browser-python-4b9679efe08b">https://medium.com/swlh/sick-of-javascript-just-use-browser-python-4b9679efe08b</a> </p>
 <h4>Calculator in Brython:</h4>
 <p><a href="https://codehs.com/tutorial/zach/Intro_to_Brython_-_Calculator">https://codehs.com/tutorial/zach/Intro_to_Brython_-_Calculator</a></p>
 <p><a href="/downloads/calculator.html">calculator.html</a></p>
@@ -1990,8 +2016,447 @@ td{
     &lt;/body&gt;
 &lt;/html&gt;</pre>
 <h4>延伸練習:</h4>
-<p style="padding-left: 30px;">請將上述網際加減乘除計算機, 以 Brython(Browser Python) 改為<a href="https://www.eeweb.com/tools/online-scientific-calculator/">網際工程用計算機</a>.</p>
-<h3>Flask</h3>
+<p style="padding-left: 30px;">請將上述網際加減乘除計算機, 以 Brython(Browser Python) 改為<a href="https://www.eeweb.com/tools/online-scientific-calculator/">網際工程用計算機</a>.</p><h3>Spacewar</h3>
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+<!-- for ggame -->
+<script src="/static/jquery-3.3.1.min.js"></script>
+<script src="/static/jquery-ui.1.12.1.min.js"></script>
+<script src="/static/pixi-3.0.5.min.js"></script>
+<script src="/static/buzz-1.2.1.js"></script>
+<script src="/static/bs.js"></script>
+<script src="/downloads/brython_modules.js"></script>
+<!-- Cango 程式庫 -->
+<script src="/static/Cango-13v08-min.js"></script>
+<script src="/static/CangoAxes-4v01-min.js"></script>
+<script src="/static/gearUtils-05.js"></script>
+<!-- for Konva 程式庫 -->
+<script src="/static/konva.min.js"></script>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/']});
+}
+</script>
+<div id="graphics-column"></div>
+<script type="text/python3">
+from ggame import App, Sprite, ImageAsset, Frame, CircleAsset
+from ggame import SoundAsset, Sound, TextAsset, Color
+import math
+from time import time
+
+from browser import document as doc
+from browser import html
+# 引入既有的id="graphics-column" 標註
+graphics_column = doc["graphics-column"]
+# 建立內定名稱為 "ggame-canvas" 的 canvas 標註
+canvas = html.CANVAS(width = 600, height = 600)
+canvas.id = "ggame-canvas"
+# 將 canvas 插入 gc 標註中
+graphics_column <= canvas
+
+class Stars(Sprite):
+
+    asset = ImageAsset("/images/starfield.jpg")
+    width = 512
+    height = 512
+
+    def __init__(self, position):
+        super().__init__(Stars.asset, position)
+
+class Sun(Sprite):
+    
+    width = 80
+    height = 76
+    asset = ImageAsset("/images/sun.png", Frame(0, 0, width, height))
+    
+    def __init__(self, position):
+        super().__init__(Sun.asset, position, CircleAsset(32))
+        self.mass = 30*1000
+        self.fxcenter = 0.5
+        self.fycenter = 0.5
+
+class Vector:
+    
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        
+    def mag(self):
+        return math.sqrt(self.x*self.x + self.y*self.y)
+    
+    def unit(self):
+        r = self.mag()
+        if r == 0:
+            return Vector(0,0)
+        else:
+            return Vector(self.x/r, self.y/r)
+
+class GravitySprite(Sprite):
+    
+    G = 50.0
+
+    def __init__(self, asset, collisionasset, position, velocity, sun):
+        super().__init__(asset, position, collisionasset)
+        self.vx = velocity[0]
+        self.vy = velocity[1]
+        self.sun = sun
+        self.fxcenter = 0.5
+        self.fycenter = 0.5
+        self.rrate = 0.0
+        self.thrust = 0.0
+        self.mass = 1.0
+        
+    def step(self, T, dT):
+        #dt = 0.033
+        R = Vector(self.sun.x-self.x, self.sun.y-self.y)
+        #Ur = R.unit()
+        r = R.mag()
+        Ux, Uy = R.x/r, R.y/r
+        ag = GravitySprite.G*self.sun.mass/R.mag()**2
+        Agx, Agy = Ux*ag, Uy*ag
+        vx, vy = self.vx, self.vy
+        At = self.thrust/self.mass
+        dt2o2 = dT*dT*0.5
+        self.vx = self.vx + (Agx - At*math.sin(self.rotation))* dT
+        self.vy = self.vy + (Agy - At*math.cos(self.rotation))* dT
+        self.x = self.x + self.vx * dT + Agx*dt2o2
+        self.y = self.y + self.vy * dT + Agy*dt2o2
+
+
+class Bullet(GravitySprite):
+    
+    asset = ImageAsset("/images/blast.png", Frame(0,0,8,8), 8)
+    collisionasset = CircleAsset(4)
+    pewasset = SoundAsset("/downloads/pew1.mp3")
+    
+    def __init__(self, app, sun):
+        super().__init__(Bullet.asset, Bullet.collisionasset, (0,0), (0,0), sun)
+        self.visible = False
+        self.firing = False
+        self.time = 0
+        self.pew = Sound(Bullet.pewasset)
+        self.pew.volume = 10
+        
+    def shoot(self, position, velocity, time):
+        self.position = position
+        self.vx = velocity[0]
+        self.vy = velocity[1]
+        self.time = time
+        self.visible = True
+        self.firing = True
+        self.pew.play()
+
+    def step(self, T, dT):
+        self.time = self.time - dT
+        if self.visible:
+            if self.time <= 0:
+                self.visible = False
+            else:
+                self.nextImage(True)
+                super().step(T, dT)
+                if self.collidingWith(self.sun):
+                    self.visible = False
+                    ExplosionSmall(self.position)
+                else:
+                    ships = self.collidingWithSprites(Ship1)
+                    ships.extend(self.collidingWithSprites(Ship2))
+                    for ship in ships:
+                        if not self.firing and ship.visible:
+                            ship.explode()
+                            self.visible = False
+                    if not ships:
+                        self.firing = False
+
+
+class HealthBar:
+    
+    def __init__(self, indicatorasset, initvalue, position, app):
+        self.sprites = [Sprite(indicatorasset, (0,app.height-75)) for i in range(initvalue)]
+        for s in self.sprites:
+            s.scale = 0.4
+        width = self.sprites[0].width
+        if position == 'left':
+            x = 50
+            step = width+5
+        else:
+            x = app.width - 50 - width
+            step = -width-5
+        for s in self.sprites:
+            s.x = x
+            x = x + step
+        self.restart()
+        
+    def restart(self):
+        for s in self.sprites:
+            s.visible = True
+        self.count = len(self.sprites)
+        
+    def dead(self):
+        return self.count == 0
+        
+    def killone(self):
+        if self.count > 0:
+            self.count =  self.count - 1
+            self.sprites[self.count].visible = False
+
+
+class Ship(GravitySprite):
+
+    R = 2.0
+    bullets = 6
+    healthcount = 6
+    reappearasset = SoundAsset("/downloads/reappear.mp3")
+    
+    def __init__(self, asset, app, position, velocity, sun):
+        self.bullets = []
+        for i in range(Ship.bullets):
+            self.bullets.append(Bullet(app, sun))
+        collisionasset = CircleAsset(40) 
+        super().__init__(asset, collisionasset, position, velocity, sun)
+        self.initposition = position
+        self.initvelocity = self.vx, self.vy
+        self.initrotation = self.rotation
+        self.app = app
+        self.mass = 1.0
+        self.imagex = 0
+        self.reappear = Sound(Ship.reappearasset)
+        self.reappear.volume = 40
+        self.waitspawn = 0
+        self.respawnplayed = False
+        healthpos = 'left' if position[0] < app.width/2 else 'right'
+        self.health = HealthBar(asset, Ship.healthcount, healthpos, app)
+        self.dead = False
+
+    def registerKeys(self, keys):
+        commands = ["left", "right", "forward", "fire"]
+        self.keymap = dict(zip(keys, commands))
+        [self.app.listenKeyEvent("keydown", k, self.controldown) for k in keys]
+        [self.app.listenKeyEvent("keyup", k, self.controlup) for k in keys]
+
+    def shootvector(self):
+        vel = 150
+        xv = vel*(-math.sin(self.rotation))
+        yv = vel*(-math.cos(self.rotation))
+        return xv + self.vx, yv + self.vy
+        
+
+    def controldown(self, event):
+        if self.visible:
+            command = self.keymap[event.key]
+            if command == "left":
+                self.rrate = Ship.R
+            elif command == "right":
+                self.rrate = -Ship.R
+            elif command == "forward":
+                self.thrust = 40.0
+                self.imagex = 1 # start the animated rockets
+                self.setImage(self.imagex)
+            elif command == "fire":
+                for bullet in self.bullets:
+                    if bullet.time <= 0:
+                        bullet.shoot(self.position, self.shootvector(), 10)
+                        break
+                        
+            
+    def controlup(self, event):
+        command = self.keymap[event.key]
+        if command in ["left", "right"]:
+            self.rrate = 0.0
+        elif command == "forward":
+            self.thrust = 0.0
+            self.imagex = 0 # stop the animated rockets
+            self.setImage(self.imagex)
+            
+    def step(self, T, dT):
+        if self.waitspawn > 0:
+            self.waitspawn = self.waitspawn - dT
+            if self.waitspawn < 1 and not self.respawnplayed:
+                self.reappear.play()
+                self.respawnplayed = True
+            if self.waitspawn <= 0:
+                self.reset()
+        for bullet in self.bullets:
+            bullet.step(T, dT)
+        if self.visible:
+            super().step(T, dT)
+            self.rotation = self.rotation + self.rrate * dT
+            if self.collidingWith(self.sun):
+                self.explode()
+            if self.thrust != 0.0:
+                self.imagex = self.imagex + 1    # animate the rockets
+                if self.imagex == 4:
+                    self.imagex = 1
+                self.setImage(self.imagex)
+            if (self.x < -100 or self.x > self.app.width + 100 or
+                self.y < -100 or self.y > self.app.height + 100):
+                self.explode()
+        
+
+    def explode(self):
+        self.visible = False
+        ExplosionBig(self.position)
+        self.waitspawn = 5
+
+    def reset(self):
+        if not self.health.dead():
+            self.position = self.initposition
+            self.vx, self.vy = self.initvelocity
+            self.rotation = self.initrotation
+            self.visible = True
+            self.respawnplayed = False
+            self.health.killone()
+            for bullet in self.bullets:
+                bullet.time = 0
+        else:
+            self.dead = True
+
+    def newgame(self):
+        self.health.restart()
+        self.dead = False
+        self.reset()
+            
+class Ship1(Ship):
+    
+    asset = ImageAsset("/images/four_spaceship_by_albertov_with_thrust.png", 
+        Frame(227,0,292-227,125), 4, 'vertical')
+        
+    def __init__(self, app, position, velocity, sun):
+        super().__init__(Ship1.asset, app, position, velocity, sun)
+        self.registerKeys(["a", "d", "w", "space"])
+        
+    def step(self, T, dT):
+        super().step(T, dT)
+        if self.visible:
+            collides = self.collidingWithSprites(Ship2)
+            if len(collides):
+                if collides[0].visible:
+                    collides[0].explode()
+                    self.explode()
+        
+class Ship2(Ship):
+    
+    asset = ImageAsset("/images/four_spaceship_by_albertov_with_thrust.png", 
+        Frame(0,0,86,125), 4, 'vertical')
+        
+    def __init__(self, app, position, velocity, sun):
+        super().__init__(Ship2.asset, app, position, velocity, sun)
+        self.registerKeys(["left arrow", "right arrow", "up arrow", "enter"])
+
+    def step(self, T, dT):
+        super().step(T, dT)
+        if self.visible:
+            collides = self.collidingWithSprites(Ship1)
+            if len(collides):
+                if collides[0].visible:
+                    collides[0].explode()
+                    self.explode()
+
+class ExplosionSmall(Sprite):
+    
+    asset = ImageAsset("images/explosion1.png", Frame(0,0,128,128), 10)
+    boomasset = SoundAsset("sounds/explosion1.mp3")
+    
+    def __init__(self, position):
+        super().__init__(ExplosionSmall.asset, position)
+        self.image = 0
+        self.center = (0.5, 0.5)
+        self.boom = Sound(ExplosionSmall.boomasset)
+        self.boom.play()
+        
+    def step(self):
+        self.setImage(self.image//2)  # slow it down
+        self.image = self.image + 1
+        if self.image == 20:
+            self.destroy()
+
+class ExplosionBig(Sprite):
+    
+    asset = ImageAsset("/images/explosion2.png", Frame(0,0,4800/25,195), 25)
+    boomasset = SoundAsset("/downloads/explosion2.mp3")
+    
+    def __init__(self, position):
+        super().__init__(ExplosionBig.asset, position)
+        self.image = 0
+        self.center = (0.5, 0.5)
+        self.boom = Sound(ExplosionBig.boomasset)
+        self.boom.play()
+        
+    def step(self):
+        self.setImage(self.image//2)  # slow it down
+        self.image = self.image + 1
+        if self.image == 50:
+            self.destroy()
+
+class Spacewar(App):
+    
+    strings = {'winner': 'WINNER!',
+        'tie': 'TIE!',
+        'space': 'Press SPACE to play.',
+        'left': 'AWD\nSpace to FIRE',
+        'right': 'Arrow Keys\nEnter to FIRE',
+        }
+
+    def __init__(self):
+        super().__init__()
+        for x in range(self.width//Stars.width + 1):
+            for y in range(self.height//Stars.height + 1):
+                Stars((x*Stars.width, y*Stars.height))
+        self.sun = Sun((self.width/2, self.height/2))
+        self.ship1 = Ship1(self, (self.width/2-140,self.height/2), (0,-120), self.sun)
+        self.ship2 = Ship2(self, (self.width/2+140,self.height/2), (0,120), self.sun)
+        self.tsprites = {k:Sprite(TextAsset(text=v, width=200, align='center',style='20px Arial', fill=Color(0xff2222,1))) 
+            for k, v in Spacewar.strings.items()}
+        self.tsprites['winner'].visible = False
+        self.tsprites['winner'].y = self.height/2
+        self.tsprites['tie'].visible = False
+        self.tsprites['tie'].position = (self.width/2 - 100, self.height/2 + 50)
+        self.tsprites['space'].position = (self.width/2 - 100, self.height*3/4)
+        self.tsprites['left'].position = (self.width/4 - 50, self.height/2)
+        self.tsprites['right'].position = (self.width*3/4 - 50, self.height/2)
+        self.state = 'instructions'
+        self.listenKeyEvent('keydown', 'space', self.space)
+
+    def space(self, evt):
+        if self.state in ['instructions', 'gameover']:
+            for t in self.tsprites.values():
+                t.visible = False
+            self.state = 'playing'
+            self.Tlast = time()
+            evt.consumed = True
+            self.ship1.newgame()
+            self.ship2.newgame()
+
+        
+    def step(self):
+        explosions = self.getSpritesbyClass(ExplosionSmall)
+        for explosion in explosions:
+            explosion.step()
+        explosions = self.getSpritesbyClass(ExplosionBig)
+        for explosion in explosions:
+            explosion.step()
+        if self.state == 'instructions':
+            self.tsprites['space'].visible = True
+            self.tsprites['left'].visible = True
+            self.tsprites['right'].visible = True
+        elif self.state == 'playing':
+            T = time()
+            dT = T-self.Tlast
+            self.Tlast = T
+            self.ship1.step(T, dT)
+            self.ship2.step(T, dT)
+            if self.ship1.dead or self.ship2.dead:
+                self.state = 'gameover'
+        elif self.state == 'gameover':
+            self.tsprites['space'].visible = True
+            if self.ship1.dead and self.ship2.dead:
+                self.tsprites['tie'].visible = True
+            else:
+                self.tsprites['winner'].visible = True
+                self.tsprites['winner'].x = self.width*3/4-50 if self.ship1.dead else self.width/4-50
+
+app = Spacewar()
+app.run()
+</script><h3>Flask</h3>
 <p>Server 端 (Flask):</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask, render_template, request, jsonify
  
@@ -2064,12 +2529,18 @@ if __name__ == '__main__':
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/body&gt;
-&lt;/html&gt;</pre>
-<h3>Rust</h3>
-<p><a href="https://developers.redhat.com/blog/2017/11/16/speed-python-using-rust#why_does_it_matter_for_a_python_developer_">Speed up your python using Rust</a></p>
+&lt;/html&gt;</pre><h3>Rust</h3>
+<p>在 Windows 操作系統中學習 Rust, 首先需要一個能夠編譯 Rust 程式的<a href="http://mde.tw/cmstemplate/content/%E5%8F%AF%E6%94%9C%E7%B3%BB%E7%B5%B1.html">可攜系統</a>.</p>
+<p>有了可攜系統之後再逐步從 <a href="http://stevedonovan.github.io/rust-gentle-intro/">http://stevedonovan.github.io/rust-gentle-intro/</a> 了解 Rust 並非簡單易學, 而是當機械設計工程師在熟悉利用 Python 建立網際服務與最佳化設計運算後, 必須利用數值分析方法提升運算效益時, Rust 會是不錯的選擇之一. 具備學習動機之後, 就可以導入諸如 <a href="https://github.com/KmolYuan/metaheuristics-nature-rs">https://github.com/KmolYuan/metaheuristics-nature-rs</a> 的程式庫, 配合伺服器中的網際 Python 程式進行設計運算.</p>
+<p>User Forum: <a href="https://users.rust-lang.org/">https://users.rust-lang.org/</a></p>
+<p>Reddit: <a href="https://www.reddit.com/r/rust/">https://www.reddit.com/r/rust/</a></p>
+<h4>Why Python users may need Rust:</h4>
+<p style="padding-left: 30px;"><a href="https://developers.redhat.com/blog/2017/11/16/speed-python-using-rust#why_does_it_matter_for_a_python_developer_">Speed up your python using Rust</a></p>
 <p><a href="https://github.com/rust-lang/book">https://github.com/rust-lang/book</a></p>
+<p><a href="http://stevedonovan.github.io/rust-gentle-intro/">http://stevedonovan.github.io/rust-gentle-intro/</a></p>
 <h4>The Rust Programming Language:</h4>
-<p style="padding-left: 30px;"><a href="https://lise-henry.github.io/books/trpl2.pdf">https://lise-henry.github.io/books/trpl2.pdf</a> </p>
+<p style="padding-left: 30px;"><a href="https://doc.rust-lang.org/stable/book/">https://doc.rust-lang.org/stable/book/</a></p>
+<p style="padding-left: 30px;"><a href="https://lise-henry.github.io/books/trpl2.pdf">https://lise-henry.github.io/books/trpl2.pdf</a></p>
 <p><a href="https://github.com/PyO3/pyo3">https://github.com/PyO3/pyo3</a> for Rust Version 1.41.1 (2020-02-27) and up.</p>
 <p></p><h2>RoboDK</h2>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/nv7mOBDA_Z8" title="YouTube video player" width="560"></iframe></p>
