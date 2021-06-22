@@ -39,6 +39,9 @@
 <p style="padding-left: 30px;"><a href="https://github.com/Shohrab-Hossain/Tic-Tac-Toe-web">https://github.com/Shohrab-Hossain/Tic-Tac-Toe-web</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/denisecase/chapstack">https://github.com/denisecase/chapstack</a></p>
 <p style="padding-left: 30px;"><a href="https://gitlab.com/sammdu/bot-tac-toe/">https://gitlab.com/sammdu/bot-tac-toe/</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/lookupdict">https://github.com/mdecourse/lookupdict</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/scissor-rock-paper2">https://github.com/mdecourse/scissor-rock-paper2</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/wcms-scrum1">https://github.com/mdecourse/wcms-scrum1</a> </p>
 <h4>Python 語法</h4>
 <p>由於 Github Pages 不允許伺服 __init__.py 檔案, 因此必須將 <a href="https://github.com/BrythonServer/ggame">ggame</a> 採用 <a href="https://brython.info/static_doc/en/import.html">https://brython.info/static_doc/en/import.html</a> 中 Optimization 的方式轉為 brython_modules.js 後直接以 script 標註導入頁面.</p>
 <h4 style="padding-left: 30px;">將 ggame 中的 Brython 程式碼轉為 brython_modules.js 的方法:</h4>
@@ -2021,25 +2024,25 @@ td{
 <p><a href="/downloads/ggame-readthedocs-io-en-latest.pdf">ggame documentation.pdf</a></p>
 <p>another game engine in brython: <a href="https://github.com/mdecourse/brython-game-engine-demo">https://github.com/mdecourse/brython-game-engine-demo</a></p>
 <script src="/static/brython.js"></script>
-<script src="/static/brython_stdlib.js"></script>
+<!-- check if we need brython_stdlib.js or not -->
+<p></p>
+<!-- <script src="/static/brython_stdlib.js"></script> -->
+<p></p>
 <!-- for ggame -->
 <script src="/static/jquery-3.3.1.min.js"></script>
 <script src="/static/jquery-ui.1.12.1.min.js"></script>
 <script src="/static/pixi-3.0.5.min.js"></script>
 <script src="/static/buzz-1.2.1.js"></script>
 <script src="/static/bs.js"></script>
+<!-- brython_modules.js is ggame brython library converted into javascript -->
 <script src="/downloads/brython_modules.js"></script>
-<!-- Cango 程式庫 -->
-<script src="/static/Cango-13v08-min.js"></script>
-<script src="/static/CangoAxes-4v01-min.js"></script>
-<script src="/static/gearUtils-05.js"></script>
-<!-- for Konva 程式庫 -->
-<script src="/static/konva.min.js"></script>
+<!-- start brython -->
 <script>
 window.onload=function(){
 brython({debug:1, pythonpath:['/static/']});
 }
 </script>
+<!-- ggame will show on graphics-column markup -->
 <div id="graphics-column"></div>
 <script type="text/python3">
 from ggame import App, Sprite, ImageAsset, Frame, CircleAsset
@@ -2058,9 +2061,9 @@ canvas.id = "ggame-canvas"
 graphics_column <= canvas
 
 # 若在近端測試
-#site = ""
+site = ""
 # 送到遠端時改用
-site="./../"
+#site="./../"
 
 class Stars(Sprite):
 
@@ -2071,6 +2074,7 @@ class Stars(Sprite):
     def __init__(self, position):
         super().__init__(Stars.asset, position)
 
+# Sun 類別繼承自 Sprite
 class Sun(Sprite):
     
     width = 80
@@ -2330,6 +2334,7 @@ class Ship1(Ship):
         
     def __init__(self, app, position, velocity, sun):
         super().__init__(Ship1.asset, app, position, velocity, sun)
+        # 可以改變 Ship1 控制按鍵
         self.registerKeys(["a", "d", "w", "space"])
         
     def step(self, T, dT):
@@ -2348,6 +2353,7 @@ class Ship2(Ship):
         
     def __init__(self, app, position, velocity, sun):
         super().__init__(Ship2.asset, app, position, velocity, sun)
+        ＃可以改變 Ship2 的控制按鍵
         self.registerKeys(["left arrow", "right arrow", "up arrow", "enter"])
 
     def step(self, T, dT):
@@ -2561,6 +2567,44 @@ if __name__ == '__main__':
 <h4>Python GUI with Serial port communication:</h4>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecourse/Pyquino">https://github.com/mdecourse/Pyquino</a></p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/R26R_07rkIc" title="YouTube video player" width="560"></iframe></p>
+<p></p><h1>課程主題</h1>
+<h4>建立可攜程式系統:</h4>
+<p style="padding-left: 30px;">從<a href="http://mde.tw/cmstemplate/content/%E5%8F%AF%E6%94%9C%E7%B3%BB%E7%B5%B1.html">可攜系統</a>中選擇所需組合, 搭建可用於維護個人倉儲與網站內容用之隨身程式系統.</p>
+<p style="padding-left: 30px;">維護學習倉儲與網站:</p>
+<p style="padding-left: 30px;">Portablekmol_base - 每一個 portablekmol 可攜程式系統都必須包括, 其中內含啟動隨身與關閉隨身系統的批次檔案與對應的 home 目錄.</p>
+<p style="padding-left: 30px;"><a href="https://www.scintilla.org/SciTE.html">SciTE</a> - 程式與文件編輯器, 經過設定, 可用來解譯 Python, Lua 與 ANSI C 程式.</p>
+<p style="padding-left: 30px;"><a href="https://github.com/ShareX/ShareX/releases">ShareX</a> - Windows 電腦畫面取影像或拍攝操作影片用之開放源工具, 應該要設法用 <a href="https://www.qt.io/qt-for-python">Qt for Python</a> 改寫, 其主要核心程式為開放源的 <a href="https://github.com/FFmpeg/FFmpeg">ffmpeg</a>, <a href="https://github.com/ShareX/ShareX/releases">ShareX</a> 利用 C# 建立其操作流程之 GUI 功能視窗介面.</p>
+<p style="padding-left: 30px;"><a href="https://docs.microsoft.com/en-us/sysinternals/downloads/zoomit">Zoomit</a> - 用於拍攝操作影片縮放畫面螢幕之工具.</p>
+<p style="padding-left: 30px;"><a href="https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer">Process Explorer</a> - 用於 Windows Process 檢視與控管之工具.</p>
+<p style="padding-left: 30px;"><a href="https://www.python.org/">Python</a> - 用於維護個人靜態網頁與動態網頁之程式解譯系統, 也用於進行 GUI 套件與網際程式開發, 或最佳化及數值分析運算.</p>
+<p style="padding-left: 30px;"><a href="https://git-scm.com/downloads">Portablegit</a> - Git 分散式版次管理系統工具.</p>
+<p style="padding-left: 30px;"><a href="https://www.putty.org/">Putty</a> - 提供 sftp, ssh 與 key 控管及網路傳檔或遠端登入工具.</p>
+<p style="padding-left: 30px;"><a href="https://portableapps.com/apps/internet/filezilla_portable">Filezilla</a> - 提供 GUI 模式之 sftp 網路傳檔工具.</p>
+<p style="padding-left: 30px;"><a href="https://sourceforge.net/projects/xming/">Xming</a> - Windows X server.</p>
+<p style="padding-left: 30px;"><a href="https://portableapps.com/apps/music_video/obs-studio-portable">Portable OBS</a> - 可攜網路串流平台, 可與 Youtube 直播結合, 將直播內容存於 Youtube 直播影片系統中.</p>
+<p style="padding-left: 30px;"><a href="https://robodk.com/index">RoboDK</a> - 工業級機械手臂在線與離線模擬與控制系統, 提供 Python API 程式介面, 可讓使用者直觀學習 Python 程式語法, 進而學習如何操控工業級機械手臂執行自動化操作流程.</p>
+<p style="padding-left: 30px;"><a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> - 開放源機電系統模擬與控制整合平台, 提供 Lua 與 Python API 程式控制介面, 可近端或遠端控制模擬中的機電系統.</p>
+<p style="padding-left: 30px;"><a href="https://www.msys2.org/">Msys2</a> - 可在 Windows 採用與 Mac 及 Linux 操作系統相同的 C/C++ 程式編譯流程, 主要目的在開發可跨各種操作系統的機械設計相關套件與應用程式.</p>
+<p style="padding-left: 30px;"><a href="https://bellard.org/tcc/">TCC</a> - 可與 <a href="https://www.scintilla.org/SciTE.html">SciTE</a> 結合, 用於簡單 ANSI C 程式的類解譯執行.</p>
+<p style="padding-left: 30px;"><a href="https://www.lua.org/">Lua</a> - 主要用於 <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 機電系統與模擬, 也可用於<a href="http://mde.tw/lab/downloads/lua/index.html">網際程式開發</a>.</p>
+<p style="padding-left: 30px;"><a href="https://github.com/Range-Software/range3">Range3</a> - 小型開放源有限元素分析套件.</p>
+<p style="padding-left: 30px;"><a href="https://cyberbotics.com/">Webots</a> - 開放源機電系統模擬與控制平台, 其特色是採用 VRML 2.0 延伸格式建立零組件模型, 除具備網際介面外, 也可讓使用者透過程式方法與各種參數式電腦輔助設計系統結合, 直接進行機電系統的零組件轉檔, 無需中間經由人工再次進行機電模擬系統組立.</p>
+<p style="padding-left: 30px;"><a href="https://miktex.org/">MikTeX</a> - <a href="https://www.latex-project.org/">LaTeX</a> 文件編譯套件, 可與 <a href="https://github.com/features/actions">Github Actions</a> 結合在近端或雲端編譯使用者所建立的協同 LaTeX 文件.</p>
+<p style="padding-left: 30px;"><a href="https://www.rust-lang.org/">Rust</a> - 二十一世紀工程師的 C++ 程式語言.</p>
+<h4>建立課程學習倉儲與網頁:</h4>
+<p style="padding-left: 30px;">本課程所有學員都必須建立 <a href="https://github.com/">github</a> (若 <a href="https://gitlab.com">gitlab</a> 已開放一般用戶使用 <a href="https://docs.gitlab.com/ee/user/project/pages/">gitlab pages</a>, 則需同時建立 <a href="https://gitlab.com">gitlab</a> 帳號) 與 <a href="https://www.heroku.com/">Heroku</a> 帳號, 目的在將課程學習歷程, 記錄在分散式版次管理系統中.</p>
+<p style="padding-left: 30px;">除了雲端主機外, 各學員必須學會如何利用 <a href="https://www.virtualbox.org/">Virtualbox</a> 上的 <a href="https://ubuntu.com/">Ubuntu</a> 虛擬主機, 將雲端分散式版次管理系統上的內容, 同步至自行架設的 <a href="https://gogs.io/">GOGS</a> (或 <a href="https://github.com/go-gitea/gitea">Gitea</a>) 與 <a href="https://www.fossil-scm.org">Fossil SCM</a> 分散式版次管理系統.</p>
+<h4>利用網際介面與可攜系統學習 Python 程式語法:</h4>
+<ol>
+<li>了解如合透過 <a href="https://brython.info/">Brython</a>, 在網頁中編寫並執行 Python 程式.</li>
+<li>了解如何建立簡單的<a href="http://mde.tw/cp2021/content/Brython.html">網際計算機</a>.</li>
+<li>延伸簡單的<a href="http://mde.tw/cp2021/content/Brython.html">網際計算機</a>, 建立工程用計算機.</li>
+<li>了解如何在網際環境, 利用 Python 進行 2D 繪圖.</li>
+<li>延伸<a href="https://cadlab.mde.tw/post/wang-ji-ji-jie-she-ji-2d-hui-tu.html">網際 2D 繪圖</a>, 完成正齒輪齒形繪製.</li>
+<li>延伸網際正齒輪齒形繪製, 完成齒輪減速機<a href="https://github.com/mdecourse/wcms-scrum1">齒面寬設計</a>運算與囓合圖.</li>
+<li>Python 與 <a href="https://robodk.com/index">RoboDK</a></li>
+</ol>
+<p></p>
 <p></p><h1>可攜系統</h1>
 <p><a href="https://drive.google.com/file/d/1hTvN4mCk2b_enIK204HA0AVPsd3GPlh5/view?usp=sharing">portablekmol_base.7z</a> (下載 118MB, 解開壓縮後 148MB)</p>
 <p style="padding-left: 30px;">包括 data 目錄與 start_ipv6.bat, start_ipv4.bat, stop.bat</p>
@@ -2601,11 +2645,36 @@ command.go.*.lua=y:\lua-5.4.3\lua "$(FileNameExt)"</pre>
 <p></p><h1>CMSiMDE</h1>
 <p>CMSiMDE (<a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a>) 是一套以 Python 與 Flask 框架編寫的網際內容管理系統,</p>
 <p>使用 CMSiMDE 建議使用者安裝 flask flask_cors bs4 lxml pelican markdown leo 等模組. 其中的 flask flask_cors bs4 lxml pelican markdown為啟動 CMSiMDE 的必要模組, 而 leo 則是 CMSMDE 開發者所使用的大綱管理工具, 可以用於與 CMSiMDE 整合的 Pelican blog 及 Reveal.js 網際簡報編輯之用.</p>
+<h2>建立網頁</h2>
+<p>由於 CMSiMDE 帶有動態網頁與靜態網頁等兩個部分, 動態網頁執行時需要該伺服器能夠執行 Python 3, 以及 flask flask_cors bs4 lxml pelican markdown 等模組. 而靜態網頁的伺服則只需要 WWW Server 即可.</p>
+<p>若使用者在 Github 使用 CMSiMDE 建立網頁, 可以透過 <a href="https://github.com/mdecourse/cmstemplate">https://github.com/mdecourse/cmstemplate</a> template 建立, 步驟與兩種設定方式如下:</p>
+<ol>
+<li>使用者登入 Github</li>
+<li>將瀏覽器連線至 <a href="https://github.com/mdecourse/cmstemplate">https://github.com/mdecourse/cmstemplate</a> 頁面後, 點擊 Use this template 按鈕後, 選擇所要採用的 repository 名稱後, 就可以建立以 CMSiMDE 作為子模組的 Github 倉儲.</li>
+<li>假如使用者所選擇的倉儲名稱為: 帳號.github.io, 則 Github 會自動設定該倉儲的 main 分支為 Github Pages 根目錄, 意即一旦 Github Pages 完成轉檔 (提交訊息之後會出現綠勾), 則該倉儲的對應網頁將為: https://帳號.github.io</li>
+<li>若使用利用 <a href="https://github.com/mdecourse/cmstemplate">https://github.com/mdecourse/cmstemplate</a> 作為 template 所建立的倉儲名稱並非 帳號.github.io, 則使用者必須自行至該倉儲的 settings/Github Pages 選項中將 main branch 設為 Github Pages 對應的 root 目錄. 之後, Github 將會採用: 帳號.github.io/倉儲名稱 作為與該倉儲對應的 Github Pages 網址.</li>
+</ol>
 <h2>基本操作</h2>
 <p>當使用者利用 cms.bat 啟用動態網站後, 即可利用瀏覽器 <a>https://localhost:9443</a> 在近端維護網站內容, 由於此時動態網站僅在 localhost 啟動, 因此可以使用內建的管理者密碼 "admin" 登入管理網站內容.</p>
+<p>在 Windows 操作系統, cms.bat 內容為:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">python cmsimde/wsgi.py</pre>
+<p>若是在 Mac 或 Linux 操作系統, 則 cms 為可執行檔, 且內容為:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">#! /bin/bash
+python3 cmsimde/wsgi.py</pre>
+<p>至於 acp.bat 在 Windows 操作系統的內容為:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">echo off
+set message=%1
+git add .
+git commit -m %message%
+git push</pre>
+<p>但是在 Mac 與 Linux 操作系統, 則 acp 為可執行檔, 而內容則為:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">#! /bin/bash
+git add .
+git commit -m "$1"
+git push</pre>
+<p>在 Windows 執行 batch 檔案, 可以直接在命令列視窗執行 cms 或 acp "提交訊息", 但是在 Mac 與 Linux 執行 Bash 檔案, 必須使用 ./cms 或 ./acp "提交訊息".</p>
 <p>假如使用者修改 init.py 中的 ip 或 uwsgi 設定, 讓動態網站在外部 IP 啟動, 則必須自行透過動態網站中的 <span style="background-color: #ffff99;">config</span> 指令修改管理者密碼.</p>
-<p>動態網站編輯表單中的 <span style="background-color: #ffff99;">config</span> 除了可更改網站管理者密碼外, 也可以更改網站的頁面內容標題 (外部標題可以透過 init.py 中的 site_title 更改).</p>
-<h3>客製化</h3>
+<p>動態網站編輯表單中的 <span style="background-color: #ffff99;">config</span> 除了可更改網站管理者密碼外, 也可以更改網站的頁面內容標題 (外部標題可以透過 init.py 中的 site_title 更改).</p><h3>客製化</h3>
 <p>假如利用 <a href="https://github.com/mdecourse/cmstemplate">https://github.com/mdecourse/cmstemplate</a> 作為 template 所建立的 Github Pages 網站, 倉儲根目錄中的 cms.bat 可以在執行動態網站系統之後, 利用 pipe 讓 cms.bat 同時開啟 Firefox <a>https://localhost:9443</a></p>
 <p>修改後的 cms.bat 如下:</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">python cmsimde/wsgi.py 1&gt; nul | "C:\Program Files (x86)\Mozilla Firefox\firefox" https://localhost:9443</pre>
@@ -2721,15 +2790,6 @@ variables:
 <h4>參考資料:</h4>
 <p>編譯 Fossil SCM:</p>
 <p style="padding-left: 30px;"> <a href="http://project.mde.tw/blog/zai-msys2-huan-jing-bian-yi-fossil-scm.html">http://project.mde.tw/blog/zai-msys2-huan-jing-bian-yi-fossil-scm.html</a></p>
-<h1>建立網頁</h1>
-<p>由於 CMSiMDE 帶有動態網頁與靜態網頁等兩個部分, 動態網頁執行時需要該伺服器能夠執行 Python 3, 以及 flask flask_cors bs4 lxml pelican markdown 等模組. 而靜態網頁的伺服則只需要 WWW Server 即可.</p>
-<p>若使用者在 Github 使用 CMSiMDE 建立網頁, 可以透過 <a href="https://github.com/mdecourse/cmstemplate">https://github.com/mdecourse/cmstemplate</a> template 建立, 步驟與兩種設定方式如下:</p>
-<ol>
-<li>使用者登入 Github</li>
-<li>將瀏覽器連線至 <a href="https://github.com/mdecourse/cmstemplate">https://github.com/mdecourse/cmstemplate</a> 頁面後, 點擊 Use this template 按鈕後, 選擇所要採用的 repository 名稱後, 就可以建立以 CMSiMDE 作為子模組的 Github 倉儲.</li>
-<li>假如使用者所選擇的倉儲名稱為: 帳號.github.io, 則 Github 會自動設定該倉儲的 main 分支為 Github Pages 根目錄, 意即一旦 Github Pages 完成轉檔 (提交訊息之後會出現綠勾), 則該倉儲的對應網頁將為: https://帳號.github.io</li>
-<li>若使用利用 <a href="https://github.com/mdecourse/cmstemplate">https://github.com/mdecourse/cmstemplate</a> 作為 template 所建立的倉儲名稱並非 帳號.github.io, 則使用者必須自行至該倉儲的 settings/Github Pages 選項中將 main branch 設為 Github Pages 對應的 root 目錄. 之後, Github 將會採用: 帳號.github.io/倉儲名稱 作為與該倉儲對應的 Github Pages 網址.</li>
-</ol>
 <h1>注意事項</h1>
 <p>因為 <a href="https://github.com/mdecourse/cmstemplate">https://github.com/mdecourse/cmstemplate</a> 將 CMSiMDE 倉儲作為 submodule, 因此使用者利用 cmstemplate 作為 template 後, 必須使用 git clone --recurse-submodules 取下遠端倉儲.</p>
 <p>例如:</p>
