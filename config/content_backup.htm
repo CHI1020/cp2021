@@ -2625,6 +2625,37 @@ else:
     # we will use the account/password to login through flask connection
 
 con.close()</pre>
+<p>當 Flask Oauth2 server 與 Fossil SCM 同在一台主機上共用 domain name 時, 可以利用下列程式, 讓使用者透過 Oauth2 登入 Fossil SCM 倉儲:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask
+from flask import make_response, redirect
+# for creating session
+import requests
+# for generating random secret_key
+import os
+
+app = Flask(__name__)
+secret_key = os.urandom(24).hex()
+app.secret_key = secret_key
+
+@app.route('/')
+def hello_world():
+    with requests.Session() as s:
+        url = 'https://fossil.kmol.info/u/yen/login'
+        post_var = {'u': 'yen', 'p': 'fossil'}
+        headers = {'X-Requested-With': 'XMLHttpRequest'}
+        result = s.post(url, data = post_var, headers = headers)
+        cookie = s.cookies.get_dict()
+        key = list(cookie.keys())[0]
+        value = cookie[key]
+
+        response = make_response(redirect(url))
+        response.set_cookie(key, value)
+        return response
+        
+
+if __name__ == '__main__':
+    app.run()
+    </pre>
 <p></p><h3>Delta</h3>
 <p>Delta format 的應用說明:</p>
 <p style="padding-left: 30px;">Suppose we have some text value a, and user has changed it to value b. Using delta function we can get a compressed delta value d that we can store and keep it along with the new text value b. If later user wants to see the previous version of text, we can use deltainv(b, d) to get the previous value a. If we keep all consequtive deltas we can use deltainv multiple times to get any of the earlier text versions.</p>
