@@ -2,7 +2,7 @@
         <head>
         <title>CP2021</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -134,15 +134,41 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">RoboDK << <a href='RoboDK.html'>Previous</a> <a href='網際程式.html'>Next</a> >> 網際程式<br /><h1>開發範例</h1>
-<h4>平面機構分析與合成:</h4>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/ps2020">https://github.com/mdecourse/ps2020</a></p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/YOnLdzrLivM" title="YouTube video player" width="560"></iframe></p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/ZAGrFV1jCdk" title="YouTube video player" width="560"></iframe></p>
-<h4>Python GUI with Serial port communication:</h4>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/Pyquino">https://github.com/mdecourse/Pyquino</a></p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/R26R_07rkIc" title="YouTube video player" width="560"></iframe></p>
-<p></p><br />RoboDK << <a href='RoboDK.html'>Previous</a> <a href='網際程式.html'>Next</a> >> 網際程式</div>
+    <div id="tipue_search_content">開發範例 << <a href='開發範例.html'>Previous</a> <a href='FossilPy.html'>Next</a> >> FossilPy<br /><h1>網際程式</h1>
+<h4>An re-introduction to HTTP cookies:</h4>
+<p style="padding-left: 30px;"><a href="https://www.valentinog.com/blog/cookies/">https://www.valentinog.com/blog/cookies/</a></p>
+<p>以下程式主要在結合 Flask 與 Fossil SCM 的登入 cookie 設定, 兩台 server 必須屬於同一個 domain name.</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask
+from flask import make_response, request, redirect
+import requests
+# for app.secret_key
+import os
+
+app = Flask(__name__)
+# 使用 session 必須要設定 secret_key
+secret_key = os.urandom(24).hex()
+app.secret_key = secret_key
+
+@app.route('/')
+def hello_world():
+    with requests.Session() as s:
+        url = 'https://fossil.kmol.info/u/yen/login'
+        post_var = {'u': 'username', 'p': 'password'}
+        headers = {'X-Requested-With': 'XMLHttpRequest'}
+        result = s.post(url, data = post_var, headers = headers)
+        cookie = s.cookies.get_dict()
+        key = list(cookie.keys())[0]
+        value = cookie[key]
+        response = make_response(redirect(url))
+        response.set_cookie(key, value)
+        return response
+        
+if __name__ == '__main__':
+    app.run()</pre>
+<h4>Python and SQLite:</h4>
+<p style="padding-left: 30px;"><a href="https://github.com/thombashi/SimpleSQLite">https://github.com/thombashi/SimpleSQLite</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/codewithlennylen/Python-SQLite-Tutorials">https://github.com/codewithlennylen/Python-SQLite-Tutorials</a></p>
+<br />開發範例 << <a href='開發範例.html'>Previous</a> <a href='FossilPy.html'>Next</a> >> FossilPy</div>
         
     <!-- footer -->
       <div class="container">

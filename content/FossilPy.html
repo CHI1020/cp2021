@@ -2,7 +2,7 @@
         <head>
         <title>CP2021</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -134,15 +134,62 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">RoboDK << <a href='RoboDK.html'>Previous</a> <a href='網際程式.html'>Next</a> >> 網際程式<br /><h1>開發範例</h1>
-<h4>平面機構分析與合成:</h4>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/ps2020">https://github.com/mdecourse/ps2020</a></p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/YOnLdzrLivM" title="YouTube video player" width="560"></iframe></p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/ZAGrFV1jCdk" title="YouTube video player" width="560"></iframe></p>
-<h4>Python GUI with Serial port communication:</h4>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/Pyquino">https://github.com/mdecourse/Pyquino</a></p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/R26R_07rkIc" title="YouTube video player" width="560"></iframe></p>
-<p></p><br />RoboDK << <a href='RoboDK.html'>Previous</a> <a href='網際程式.html'>Next</a> >> 網際程式</div>
+    <div id="tipue_search_content">網際程式 << <a href='網際程式.html'>Previous</a> <a href='Delta.html'>Next</a> >> Delta<br /><h1>FossilPy</h1>
+<p><a href="https://github.com/gumblex/fossilpy">https://github.com/gumblex/fossilpy</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import sqlite3
+con = sqlite3.connect('kmol.fossil')
+cur = con.cursor()
+
+# this is the login user through flask Oauth2 login
+username = "yen"
+
+# check if login name existed
+# pw field is the password
+cur.execute("select pw from user where login='" + username + "';")
+password = cur.fetchall()
+
+if len(password) == 0:
+    print("account is not created!")
+    # we may need to create account for this login user
+else:
+    # the fetched data is a list with tuple inside
+    print(password[0][0])
+    # we will need the user account and password to get login cookie
+    # we will use the account/password to login through flask connection
+
+con.close()</pre>
+<p>當 Flask Oauth2 server 與 Fossil SCM 同在一台主機上共用 domain name 時, 可以利用下列程式, 讓使用者透過 Oauth2 登入 Fossil SCM 倉儲:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask
+from flask import make_response, redirect
+# for creating session
+import requests
+# for generating random secret_key
+import os
+
+app = Flask(__name__)
+secret_key = os.urandom(24).hex()
+app.secret_key = secret_key
+
+@app.route('/')
+def hello_world():
+    with requests.Session() as s:
+        url = 'https://fossil.kmol.info/u/yen/login'
+        post_var = {'u': 'yen', 'p': 'fossil'}
+        headers = {'X-Requested-With': 'XMLHttpRequest'}
+        result = s.post(url, data = post_var, headers = headers)
+        cookie = s.cookies.get_dict()
+        key = list(cookie.keys())[0]
+        value = cookie[key]
+
+        response = make_response(redirect(url))
+        response.set_cookie(key, value)
+        return response
+        
+
+if __name__ == '__main__':
+    app.run()
+    </pre>
+<p></p><br />網際程式 << <a href='網際程式.html'>Previous</a> <a href='Delta.html'>Next</a> >> Delta</div>
         
     <!-- footer -->
       <div class="container">

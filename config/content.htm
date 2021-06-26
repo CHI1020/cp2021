@@ -2567,6 +2567,146 @@ if __name__ == '__main__':
 <h4>Python GUI with Serial port communication:</h4>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecourse/Pyquino">https://github.com/mdecourse/Pyquino</a></p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/R26R_07rkIc" title="YouTube video player" width="560"></iframe></p>
+<p></p><h3>網際程式</h3>
+<h4>An re-introduction to HTTP cookies:</h4>
+<p style="padding-left: 30px;"><a href="https://www.valentinog.com/blog/cookies/">https://www.valentinog.com/blog/cookies/</a></p>
+<p>以下程式主要在結合 Flask 與 Fossil SCM 的登入 cookie 設定, 兩台 server 必須屬於同一個 domain name.</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask
+from flask import make_response, request, redirect
+import requests
+# for app.secret_key
+import os
+
+app = Flask(__name__)
+# 使用 session 必須要設定 secret_key
+secret_key = os.urandom(24).hex()
+app.secret_key = secret_key
+
+@app.route('/')
+def hello_world():
+    with requests.Session() as s:
+        url = 'https://fossil.kmol.info/u/yen/login'
+        post_var = {'u': 'username', 'p': 'password'}
+        headers = {'X-Requested-With': 'XMLHttpRequest'}
+        result = s.post(url, data = post_var, headers = headers)
+        cookie = s.cookies.get_dict()
+        key = list(cookie.keys())[0]
+        value = cookie[key]
+        response = make_response(redirect(url))
+        response.set_cookie(key, value)
+        return response
+        
+if __name__ == '__main__':
+    app.run()</pre>
+<h4>Python and SQLite:</h4>
+<p style="padding-left: 30px;"><a href="https://github.com/thombashi/SimpleSQLite">https://github.com/thombashi/SimpleSQLite</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/codewithlennylen/Python-SQLite-Tutorials">https://github.com/codewithlennylen/Python-SQLite-Tutorials</a></p>
+<h3>FossilPy</h3>
+<p><a href="https://github.com/gumblex/fossilpy">https://github.com/gumblex/fossilpy</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import sqlite3
+con = sqlite3.connect('kmol.fossil')
+cur = con.cursor()
+
+# this is the login user through flask Oauth2 login
+username = "yen"
+
+# check if login name existed
+# pw field is the password
+cur.execute("select pw from user where login='" + username + "';")
+password = cur.fetchall()
+
+if len(password) == 0:
+    print("account is not created!")
+    # we may need to create account for this login user
+else:
+    # the fetched data is a list with tuple inside
+    print(password[0][0])
+    # we will need the user account and password to get login cookie
+    # we will use the account/password to login through flask connection
+
+con.close()</pre>
+<p>當 Flask Oauth2 server 與 Fossil SCM 同在一台主機上共用 domain name 時, 可以利用下列程式, 讓使用者透過 Oauth2 登入 Fossil SCM 倉儲:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask
+from flask import make_response, redirect
+# for creating session
+import requests
+# for generating random secret_key
+import os
+
+app = Flask(__name__)
+secret_key = os.urandom(24).hex()
+app.secret_key = secret_key
+
+@app.route('/')
+def hello_world():
+    with requests.Session() as s:
+        url = 'https://fossil.kmol.info/u/yen/login'
+        post_var = {'u': 'yen', 'p': 'fossil'}
+        headers = {'X-Requested-With': 'XMLHttpRequest'}
+        result = s.post(url, data = post_var, headers = headers)
+        cookie = s.cookies.get_dict()
+        key = list(cookie.keys())[0]
+        value = cookie[key]
+
+        response = make_response(redirect(url))
+        response.set_cookie(key, value)
+        return response
+        
+
+if __name__ == '__main__':
+    app.run()
+    </pre>
+<p></p><h3>Delta</h3>
+<p>Delta format 的應用說明:</p>
+<p style="padding-left: 30px;">Suppose we have some text value a, and user has changed it to value b. Using delta function we can get a compressed delta value d that we can store and keep it along with the new text value b. If later user wants to see the previous version of text, we can use deltainv(b, d) to get the previous value a. If we keep all consequtive deltas we can use deltainv multiple times to get any of the earlier text versions.</p>
+<p>原始的 <a href="https://fossil-scm.org/home/doc/tip/www/delta_format.wiki">Fossil SCM Delta</a> 以 C 編寫.</p>
+<p>以下則以 setuptools 編譯為 Python 動態連結程式庫.</p>
+<h4>Python Fossil Delta:</h4>
+<p style="padding-left: 30px;"><a href="https://github.com/ggicci/python-fossil-delta">https://github.com/ggicci/python-fossil-delta</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import fossil_delta
+
+def main():
+    # 使用者在改版過程將 abcdef 改為 abc
+    # 當下透過 delta algorithm 對兩者取 delta
+    delta = fossil_delta.create_delta(b'abc', b'abcdef')
+    # 之後透過 delta 運算給定 delta 與目前的版本, 可以取得先前的版本內容
+    out = fossil_delta.apply_delta(b'abc', delta)
+    print(out)  # --&gt; abcdef</pre>
+<p>以及用 Rust 改寫.</p>
+<h4>Rust Fossil Delta:</h4>
+<p style="padding-left: 30px;"><a href="https://crates.io/crates/fossil-delta">https://crates.io/crates/fossil-delta</a></p>
+<p style="padding-left: 30px;">其中包含 <a href="https://leoeditor.com/">Leo Editor</a> 的應用.</p>
+<p>將 <a href="https://github.com/ggicci/python-fossil-delta/blob/master/src/fossil_delta/delta.c">delta.c</a> 透過</p>
+<p>setup.py</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from setuptools import setup
+
+setup(
+    name='python-fossil-delta',
+    version='18.11.27',
+    description='Delta compression algorithm from fossil SCM',
+    long_description=open('README.md', 'rt').read(),
+    url='https://github.com/ggicci/python-fossil-delta',
+    author='Ggicci',
+    author_email='ggicci@163.com',
+    license='MIT',
+    keywords='fossil-delta compression algorithm',
+    setup_requires=['cffi&gt;=1.11.5'],
+    package_dir={'': 'src'},
+    packages=['fossil_delta'],
+    package_data={
+        'fossil_delta': ['*.h', '*.c', 'build/*.py'],
+    },
+    cffi_modules=[
+        'src/fossil_delta/build/fossil_delta_build.py:ffibuilder',
+    ],
+    install_requires=['cffi&gt;=1.11.5'],
+    platforms='any',
+)
+</pre>
+<p>編譯為 dll, 可以為 Python 程式呼叫運用.</p><h3>DSL</h3>
+<h4>Domain Specific Language:</h4>
+<p style="padding-left: 30px;"><a href="https://github.com/lark-parser/lark">https://github.com/lark-parser/lark</a></p>
+<p style="padding-left: 30px;"><a href="http://blog.erezsh.com/how-to-write-a-dsl-in-python-with-lark/">http://blog.erezsh.com/how-to-write-a-dsl-in-python-with-lark/</a></p>
 <p></p><h1>課程主題</h1>
 <h4>建立可攜程式系統:</h4>
 <p style="padding-left: 30px;">從<a href="http://mde.tw/cmstemplate/content/%E5%8F%AF%E6%94%9C%E7%B3%BB%E7%B5%B1.html">可攜系統</a>中選擇所需組合, 搭建可用於維護個人倉儲與網站內容用之隨身程式系統.</p>
