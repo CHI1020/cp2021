@@ -2717,6 +2717,7 @@ setup(
 <p style="padding-left: 30px;"><a href="https://docs.microsoft.com/en-us/sysinternals/downloads/zoomit">Zoomit</a> - 用於拍攝操作影片縮放畫面螢幕之工具.</p>
 <p style="padding-left: 30px;"><a href="https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer">Process Explorer</a> - 用於 Windows Process 檢視與控管之工具.</p>
 <p style="padding-left: 30px;"><a href="https://www.python.org/">Python</a> - 用於維護個人靜態網頁與動態網頁之程式解譯系統, 也用於進行 GUI 套件與網際程式開發, 或最佳化及數值分析運算.</p>
+<p style="padding-left: 60px;">為了啟動最新版的 CMSiMDE 動態網站, Python 需要安裝 pyopenssl 模組: pip install pyopenssl.</p>
 <p style="padding-left: 30px;"><a href="https://git-scm.com/downloads">Portablegit</a> - Git 分散式版次管理系統工具.</p>
 <p style="padding-left: 30px;"><a href="https://www.putty.org/">Putty</a> - 提供 sftp, ssh 與 key 控管及網路傳檔或遠端登入工具.</p>
 <p style="padding-left: 30px;"><a href="https://portableapps.com/apps/internet/filezilla_portable">Filezilla</a> - 提供 GUI 模式之 sftp 網路傳檔工具.</p>
@@ -2734,6 +2735,9 @@ setup(
 <h4>建立課程學習倉儲與網頁:</h4>
 <p style="padding-left: 30px;">本課程所有學員都必須建立 <a href="https://github.com/">github</a> (若 <a href="https://gitlab.com">gitlab</a> 已開放一般用戶使用 <a href="https://docs.gitlab.com/ee/user/project/pages/">gitlab pages</a>, 則需同時建立 <a href="https://gitlab.com">gitlab</a> 帳號) 與 <a href="https://www.heroku.com/">Heroku</a> 帳號, 目的在將課程學習歷程, 記錄在分散式版次管理系統中.</p>
 <p style="padding-left: 30px;">除了雲端主機外, 各學員必須學會如何利用 <a href="https://www.virtualbox.org/">Virtualbox</a> 上的 <a href="https://ubuntu.com/">Ubuntu</a> 虛擬主機, 將雲端分散式版次管理系統上的內容, 同步至自行架設的 <a href="https://gogs.io/">GOGS</a> (或 <a href="https://github.com/go-gitea/gitea">Gitea</a>) 與 <a href="https://www.fossil-scm.org">Fossil SCM</a> 分散式版次管理系統.</p>
+<h4>Fossil SCM 手冊巡禮:</h4>
+<p style="padding-left: 30px;"><a href="https://www.fossil-scm.org/home/doc/trunk/www/index.wiki">https://www.fossil-scm.org/home/doc/trunk/www/index.wiki</a></p>
+<p style="padding-left: 30px;">Git 與 Fossil SCM 倉儲之間的內容同步, Fossil SCM 系統應用.</p>
 <h4>利用網際介面與可攜系統學習 Python 程式語法:</h4>
 <ol>
 <li>了解如合透過 <a href="https://brython.info/">Brython</a>, 在網頁中編寫並執行 Python 程式.</li>
@@ -2744,8 +2748,33 @@ setup(
 <li>延伸網際正齒輪齒形繪製, 完成齒輪減速機<a href="https://github.com/mdecourse/wcms-scrum1">齒面寬設計</a>運算與囓合圖.</li>
 <li>Python 與 <a href="https://robodk.com/index">RoboDK</a></li>
 </ol>
-<p></p>
-<p></p><h1>可攜系統</h1>
+<p></p><h2>倉儲與網頁</h2>
+<p>本課程網頁的倉儲位於:</p>
+<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/cp2021.git">https://github.com/mdecourse/cp2021.git</a> - Github</p>
+<p style="padding-left: 30px;"><a href="https://gitlab.com/mdecourse/cp2021.git">https://gitlab.com/mdecourse/cp2021.git</a> - Gitlab</p>
+<p style="padding-left: 30px;"><a href="https://bitbucket.org/mdecourse/cp2021.git">https://bitbucket.org/mdecourse/cp2021.git</a> -Bitbucket</p>
+<p style="padding-left: 30px;"><a href="https://git.heroku.com/cp2021.git">https://git.heroku.com/cp2021.git</a> (cp2021 ~ cp2025 -- heroku2 At Mde dot TW)</p>
+<p>將同一份資料的改版提交同步至 Github, Gitlab, Bitbucket 與 Heroku:</p>
+<p>Github 上的代號為 origin, 對應至 https://github.com/mdecourse/cp2021.git</p>
+<p>git remote add gitlab https://gitlab.com/mdecourse/cp2021.git</p>
+<p>git remote add bitbucket <a href="https://bitbucket.org/mdecourse/cp2021.git">https://bitbucket.org/mdecourse/cp2021.git</a></p>
+<p>heroku login 之後 heroku git:remote -a cp2021 (即 git remote add heroku <a href="https://git.heroku.com/cp2021.git">https://git.heroku.com/cp2021.git</a>)</p>
+<p>以上設定與改版資料同步至四種雲端系統後, 若僅一人執行開發, 則相關內容連同近端倉儲, 共計有 5 個備份版本.</p>
+<p>若專案牽涉 n 人協同, 則每一個時段都將會有至少 n + 4 個備份版本.</p>
+<h4>課程練習:</h4>
+<p style="padding-left: 30px;">CMSiMDE 倉儲的靜態網站該如何設定, 才能分別在 Github, Gitlab, Bitbucket 與 Heroku 平台上進行伺服?</p>
+<p style="padding-left: 30px;">CMSiMDE 倉儲的靜態網站該如何在 Fossil SCM 主機中進行伺服?</p>
+<p style="padding-left: 30px;">基礎知識:</p>
+<p style="padding-left: 60px;">何謂倉儲 (repository)?</p>
+<p style="padding-left: 60px;">何謂靜態網頁 (static web site)? 那麼有動態網頁 (dynamic web site)嗎?</p>
+<p style="padding-left: 60px;">何謂(電腦)伺服 (serving)?</p>
+<p style="padding-left: 60px;">何謂 Fossil SCM？</p><h2>虛擬主機</h2>
+<p>這裡的虛擬主機系統指利用 <a href="https://www.virtualbox.org/">https://www.virtualbox.org/</a> 所建立的 Windows 或 Ubuntu 操作系統檔案, 可以在不同實體操作系統中, 進行轉移運作.</p>
+<p>透過虛擬主機與實體主機間的網路設定, 可以讓使用者進行網際程式開發.</p>
+<p>Virtualbox 網路設定:</p>
+<p>Nat - 虛擬主機可以藉由實體主機的網路架構上網, 但必須透過 Port Mapping 才能以實體主機的網路位址設為聯外 server.</p>
+<p>Host-only Adaptor - 虛擬主機的網路設定自外於任何聯外網路, 因此無法直接上網, 但各 Host 間同群電腦可以互通.</p>
+<p>Bridged Adaptor - 虛擬主機的網路設定與實體主機的網路位階相同, 若實體主機位於外部網段, 則虛擬主機可設為聯外 server.</p><h1>可攜系統</h1>
 <p><a href="https://drive.google.com/file/d/1hTvN4mCk2b_enIK204HA0AVPsd3GPlh5/view?usp=sharing">portablekmol_base.7z</a> (下載 118MB, 解開壓縮後 148MB)</p>
 <p style="padding-left: 30px;">包括 data 目錄與 start_ipv6.bat, start_ipv4.bat, stop.bat</p>
 <p style="padding-left: 30px;">功能: 啟動後可以啟動 SciTE 編輯器, 可用於類解譯 ANSI C 程式, 以及 <a href="https://solvespace.com">Solvespace</a>.</p>
