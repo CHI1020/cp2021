@@ -2,7 +2,7 @@
         <head>
         <title>CP2021</title>
         <meta charset="utf-8">
-<meta property="head" content="H3">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -134,20 +134,23 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Flask << <a href='Flask.html'>Previous</a> <a href='RoboDK.html'>Next</a> >> RoboDK<br /><h1>Rust</h1>
-<p>在 Windows 操作系統中學習 Rust, 首先需要一個能夠編譯 Rust 程式的<a href="http://mde.tw/cmstemplate/content/%E5%8F%AF%E6%94%9C%E7%B3%BB%E7%B5%B1.html">可攜系統</a>.</p>
-<p>有了可攜系統之後再逐步從 <a href="http://stevedonovan.github.io/rust-gentle-intro/">http://stevedonovan.github.io/rust-gentle-intro/</a> 了解 Rust 並非簡單易學, 而是當機械設計工程師在熟悉利用 Python 建立網際服務與最佳化設計運算後, 必須利用數值分析方法提升運算效益時, Rust 會是不錯的選擇之一. 具備學習動機之後, 就可以導入諸如 <a href="https://github.com/KmolYuan/metaheuristics-nature-rs">https://github.com/KmolYuan/metaheuristics-nature-rs</a> 的程式庫, 配合伺服器中的網際 Python 程式進行設計運算.</p>
-<p>User Forum: <a href="https://users.rust-lang.org/">https://users.rust-lang.org/</a></p>
-<p>Reddit: <a href="https://www.reddit.com/r/rust/">https://www.reddit.com/r/rust/</a></p>
-<h4>Why Python users may need Rust:</h4>
-<p style="padding-left: 30px;"><a href="https://developers.redhat.com/blog/2017/11/16/speed-python-using-rust#why_does_it_matter_for_a_python_developer_">Speed up your python using Rust</a></p>
-<p><a href="https://github.com/rust-lang/book">https://github.com/rust-lang/book</a></p>
-<p><a href="http://stevedonovan.github.io/rust-gentle-intro/">http://stevedonovan.github.io/rust-gentle-intro/</a></p>
-<h4>The Rust Programming Language:</h4>
-<p style="padding-left: 30px;"><a href="https://doc.rust-lang.org/stable/book/">https://doc.rust-lang.org/stable/book/</a></p>
-<p style="padding-left: 30px;"><a href="https://lise-henry.github.io/books/trpl2.pdf">https://lise-henry.github.io/books/trpl2.pdf</a></p>
-<p><a href="https://github.com/PyO3/pyo3">https://github.com/PyO3/pyo3</a> for Rust Version 1.41.1 (2020-02-27) and up.</p>
-<p></p><br />Flask << <a href='Flask.html'>Previous</a> <a href='RoboDK.html'>Next</a> >> RoboDK</div>
+    <div id="tipue_search_content">虛擬主機 << <a href='虛擬主機.html'>Previous</a> <a href='可攜系統.html'>Next</a> >> 可攜系統<br /><h1>編譯 Fossil</h1>
+<p>取得最新的 Fossil SCM 原始碼:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">fossil clone https://www.fossil-scm.org fossil.fossil
+cd wd
+mkdir fossil
+cd fossil
+fossil open ./../../fossil.fossil</pre>
+<p>在 <a href="http://www.msys2.org/">MSYS2</a> 環境中編譯 <a href="https://www.fossil-scm.org">Fossil SCM</a> 時, 必須先編譯 compat/zlib.</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">cd compat/zlib
+mingw32-make -f win32/Makefile.gcc</pre>
+<p>將 Msys2 mingw64/bin/windres.exe 複製一份並改名為 x86_64-w64-mingw32-windres.exe</p>
+<p>之後, 再退出 compat/zlib 目錄, 回到 wd/fossil 目錄中, 編輯 win/Makefile.mingw, 設定</p>
+<p>PREFIX = x86_64-w64-mingw32-</p>
+<p>接著以 mingw32-make -f win/Makefile.mingw 編譯 fossil.exe</p>
+<p>若要使用 https, 則需要 openssl 程式庫.</p>
+<h4>參考資料:</h4>
+<p style="padding-left: 30px;"><a href="https://fossil-scm.org/home/wiki?name=compillingOnWindows">https://fossil-scm.org/home/wiki?name=compillingOnWindows</a> </p><br />虛擬主機 << <a href='虛擬主機.html'>Previous</a> <a href='可攜系統.html'>Next</a> >> 可攜系統</div>
         
     <!-- footer -->
       <div class="container">

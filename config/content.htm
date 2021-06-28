@@ -2757,12 +2757,13 @@ setup(
 <p>將同一份資料的改版提交同步至 Github, Gitlab, Bitbucket 與 Heroku:</p>
 <p>Github 上的代號為 origin, 對應至 https://github.com/mdecourse/cp2021.git</p>
 <p>git remote add gitlab https://gitlab.com/mdecourse/cp2021.git</p>
-<p>git remote add bitbucket <a href="https://bitbucket.org/mdecourse/cp2021.git">https://bitbucket.org/mdecourse/cp2021.git</a></p>
+<p>git remote add bitbucket https://mdecourse@bitbucket.org/mdecourse/cp2021.git</p>
 <p>heroku login 之後 heroku git:remote -a cp2021 (即 git remote add heroku <a href="https://git.heroku.com/cp2021.git">https://git.heroku.com/cp2021.git</a>)</p>
 <p>以上設定與改版資料同步至四種雲端系統後, 若僅一人執行開發, 則相關內容連同近端倉儲, 共計有 5 個備份版本.</p>
 <p>若專案牽涉 n 人協同, 則每一個時段都將會有至少 n + 4 個備份版本.</p>
 <h4>課程練習:</h4>
 <p style="padding-left: 30px;">CMSiMDE 倉儲的靜態網站該如何設定, 才能分別在 Github, Gitlab, Bitbucket 與 Heroku 平台上進行伺服?</p>
+<p style="padding-left: 30px;">註: Gitlab 與 Bitbucket pages 並非可免費使用. Github pages 也可能只有針對教育帳號能免費使用.</p>
 <p style="padding-left: 30px;">CMSiMDE 倉儲的靜態網站該如何在 Fossil SCM 主機中進行伺服?</p>
 <p style="padding-left: 30px;">基礎知識:</p>
 <p style="padding-left: 60px;">何謂倉儲 (repository)?</p>
@@ -2774,13 +2775,34 @@ setup(
 <p>Virtualbox 網路設定:</p>
 <p>Nat - 虛擬主機可以藉由實體主機的網路架構上網, 但必須透過 Port Mapping 才能以實體主機的網路位址設為聯外 server.</p>
 <p>Host-only Adaptor - 虛擬主機的網路設定自外於任何聯外網路, 因此無法直接上網, 但各 Host 間同群電腦可以互通.</p>
-<p>Bridged Adaptor - 虛擬主機的網路設定與實體主機的網路位階相同, 若實體主機位於外部網段, 則虛擬主機可設為聯外 server.</p><h1>可攜系統</h1>
+<p>Bridged Adaptor - 虛擬主機的網路設定與實體主機的網路位階相同, 若實體主機位於外部網段, 則虛擬主機可設為聯外 server.</p>
+<h4>Github Actions:</h4>
+<p style="padding-left: 30px;"><a href="https://github.com/features/actions">https://github.com/features/actions</a></p>
+<h4 style="padding-left: 30px;">應用範例:</h4>
+<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/report/blob/main/.github/workflows/demo.yaml">https://github.com/mdecourse/report/blob/main/.github/workflows/demo.yaml</a></p>
+<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/4072pj1">https://github.com/mdecourse/4072pj1</a> </p><h2>編譯 Fossil</h2>
+<p>取得最新的 Fossil SCM 原始碼:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">fossil clone https://www.fossil-scm.org fossil.fossil
+cd wd
+mkdir fossil
+cd fossil
+fossil open ./../../fossil.fossil</pre>
+<p>在 <a href="http://www.msys2.org/">MSYS2</a> 環境中編譯 <a href="https://www.fossil-scm.org">Fossil SCM</a> 時, 必須先編譯 compat/zlib.</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">cd compat/zlib
+mingw32-make -f win32/Makefile.gcc</pre>
+<p>將 Msys2 mingw64/bin/windres.exe 複製一份並改名為 x86_64-w64-mingw32-windres.exe</p>
+<p>之後, 再退出 compat/zlib 目錄, 回到 wd/fossil 目錄中, 編輯 win/Makefile.mingw, 設定</p>
+<p>PREFIX = x86_64-w64-mingw32-</p>
+<p>接著以 mingw32-make -f win/Makefile.mingw 編譯 fossil.exe</p>
+<p>若要使用 https, 則需要 openssl 程式庫.</p>
+<h4>參考資料:</h4>
+<p style="padding-left: 30px;"><a href="https://fossil-scm.org/home/wiki?name=compillingOnWindows">https://fossil-scm.org/home/wiki?name=compillingOnWindows</a> </p><h1>可攜系統</h1>
 <p><a href="https://drive.google.com/file/d/1hTvN4mCk2b_enIK204HA0AVPsd3GPlh5/view?usp=sharing">portablekmol_base.7z</a> (下載 118MB, 解開壓縮後 148MB)</p>
 <p style="padding-left: 30px;">包括 data 目錄與 start_ipv6.bat, start_ipv4.bat, stop.bat</p>
 <p style="padding-left: 30px;">功能: 啟動後可以啟動 SciTE 編輯器, 可用於類解譯 ANSI C 程式, 以及 <a href="https://solvespace.com">Solvespace</a>.</p>
 <p><a href="https://drive.google.com/file/d/1BGfN5R6Yw1e9Unm4u8GCRP4xcSuYfCSE/view?usp=sharing">Python395.7z</a> (下載 123MB, 解開壓縮後 495MB)</p>
 <p style="padding-left: 30px;">功能: 與 <a href="https://drive.google.com/file/d/1hTvN4mCk2b_enIK204HA0AVPsd3GPlh5/view?usp=sharing">portablekmol_base.7z</a> 結合後, 可以利用 SciTE 編輯器執行 Python 程式.</p>
-<p style="padding-left: 30px;">請注意: 由於 CMSiMDE 改用 adhoc ssl_context 啟動近端伺服器, 因此 Python 解譯系統必須加裝 pyopenssl 模組: pip install pyopenssl,  且安裝前要先將系統 proxy 暫時關閉.</p>
+<p style="padding-left: 30px;">請注意: 由於 CMSiMDE 改用 <a href="https://blog.miguelgrinberg.com/post/running-your-flask-application-over-https">adhoc ssl_context</a> 啟動近端伺服器, 因此 Python 解譯系統必須加裝 pyopenssl 模組: pip install pyopenssl,  且安裝前要先將系統 proxy 暫時關閉.</p>
 <p><a href="https://drive.google.com/file/d/1RW51wCJ056TdWvjharBKOl6FM9iewpHI/view?usp=sharing">portablegit_2.31.1.7z</a> (下載 60MB, 解開壓縮後 286MB)</p>
 <p style="padding-left: 30px;">功能: 與 <a href="https://drive.google.com/file/d/1hTvN4mCk2b_enIK204HA0AVPsd3GPlh5/view?usp=sharing">portablekmol_base.7z</a> 結合後, 可以利用可攜程式系統的命令列視窗執行 git 指令.</p>
 <p><a href="https://drive.google.com/file/d/1JDmc_b4BLwGh4hQ7Tatq02EXmiPLrNZV/view?usp=sharing">lua-5.4.3.7z</a> (下載 662KB, 解開壓縮後 4MB)</p>
@@ -2797,6 +2819,7 @@ pacman -Sy mingw-w64-x86-64-cmake</pre>
 <p><a href="https://drive.google.com/file/d/17M7Ro9NO2mmycvwOuK-10yYgs2oxFwEB/view?usp=sharing">msys64_20210419_clean.7z</a> (下載 87MB , 解開壓縮後 374MB)</p>
 <p style="padding-left: 30px;">功能: 尚未安裝任何 Package 的 <a href="https://www.msys2.org/">Msys2</a> 系統.</p>
 <p><a href="https://drive.google.com/file/d/1SDLtjyddvFs9OHobMu7Ddx6Doa15RVMY/view?usp=sharing">rust_1.53.0_portable_for_msys2.7z</a> (下載 147MB , 解開壓縮後 1.13GB)</p>
+<p><a href="https://drive.google.com/file/d/1CZfEjvHtQSlAch83jHmw4Ivz6WubPu8h/view?usp=sharing">Erlang 10.7 and Elixir portable.7z</a> for Windows (下載 62MB , 解開壓縮後 340MB)</p>
 <p><a href="https://drive.google.com/file/d/1BIDn3pn-qQRF0L7rZMNbh43HXyFLhiPj/view?usp=sharing">CoppeliaSimEdu_4.1.0_rev1.7z</a> (下載 183MB, 解開壓縮後 438MB)</p>
 <p style="padding-left: 30px;">功能: 可免費提供大學機電資整合課程使用, 且開放原始碼, 可用於機電資控制系統設計與模擬 (InfoMechaTronic control system design and simulation).</p>
 <p><a href="https://drive.google.com/file/d/1ih24k0G-vKnB1OjOIxHV4Gyz-bmlxeCU/view?usp=sharing">robodk_522.7z</a> (下載 364MB, 解開壓縮後 1GB)</p>
