@@ -2,7 +2,7 @@
         <head>
         <title>CP2021</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -134,17 +134,21 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">注意事項 << <a href='注意事項.html'>Previous</a> <a href='靜態網頁 404.html'>Next</a> >> 靜態網頁 404<br /><h1>標題選擇</h1>
-<p>由於 CMSiMDE 中的動態網站透過 config/content.htm 的 H1~H3 超文件標註進行分頁, 因此使用者利用 cms.bat 開啟動態網站後, 必須注意各頁面標題文字的選擇:</p>
+    <div id="tipue_search_content">Why Git << <a href='Why Git.html'>Previous</a> <a href='虛擬主機.html'>Next</a> >> 虛擬主機<br /><h1>Git Push</h1>
+<p>將近端改版資料新增提交等步驟都在近端完成, 但是 git push 則是要將改版資料推向遠端倉儲.</p>
+<p>共有三種方式可以取得 git push 的使用授權:</p>
 <ol>
-<li><span style="background-color: #ffff99;">頁面標題文字儘量簡短</span> - 頁面標題就有如文章的章節標題, 只要該標題具有該頁面內容的代表性即可, 越簡短越好.</li>
-<li><span style="background-color: #ffff99;">頁面標題文字不要使用標點符號</span> - 因為標點符號中的 "/" 會造成頁面擷取時 URL 指令分段上的誤判, 至於標題文字中若有 ":" 則會在動態內容轉靜態內容時, 因 Windows 不允許檔案名稱帶有 ":" 而無法轉檔.</li>
-<li><span style="background-color: #ffff99;">頁面標題中不可以有超文件標註</span> - 由於 CMSiMDE 動態網站編輯器採用 GUI 進行, 採用滑鼠標修頁面標題時, 可能無意中將 HTML 標註放入 H1~H3 標題文字中, 如此可能會造成 CMSiMDE 分頁錯誤而無法開啟動態網站. 當使用者要檢查所使用的頁面標題是否帶有 html 標註, 可以透過編輯功能中的 Source Code 檢查.</li>
-<li><span style="background-color: #ffff99;">H1 標題數量不可過多</span> - 由於 CMSiMDE 的靜態網站支援手機模式, 當頁面 H1 標題數量超過 10 個之後, 頁面標題可能無法在螢幕上最上方以一列顯示, 而是必須出現在第二行, 結果將會導致頁面展開時的 Javascript 程式產生錯亂, 結果為無法直接以滑鼠點擊進入特定頁面.</li>
+<li>以該倉儲對應的帳號密碼進行 push</li>
+<li>以該倉儲對應的 Personal Access Token 進行 push</li>
+<li>以該倉儲對應帳號的 SSH 私鑰進行 push</li>
 </ol>
-<p></p>
-<p></p>
-<br />注意事項 << <a href='注意事項.html'>Previous</a> <a href='靜態網頁 404.html'>Next</a> >> 靜態網頁 404</div>
+<p>以帳號密碼進行 push:</p>
+<p style="padding-left: 30px;">語法為 url = https://github.com/mdecourse/report.git</p>
+<p>利用 <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">Github Personal Access Token</a> 進行 push 請參考<a href="https://stackoverflow.com/questions/68191392/password-authentication-is-temporarily-disabled-as-part-of-a-brownout-please-us">這裡</a>的說明.</p>
+<p style="padding-left: 30px;">語法為 url = <a href="https://&lt;token&gt;@github.com/mdecourse/report.git">https://&lt;token&gt;@github.com/mdecourse/report.git</a></p>
+<p>以 <a href="https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh">Github SSH </a>私鑰進行 push:</p>
+<p style="padding-left: 30px;">語法為 utl = git@&lt;putty_session&gt;:mdecourse/report.git</p>
+<p></p><br />Why Git << <a href='Why Git.html'>Previous</a> <a href='虛擬主機.html'>Next</a> >> 虛擬主機</div>
         
     <!-- footer -->
       <div class="container">
