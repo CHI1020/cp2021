@@ -134,28 +134,81 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">倉儲與網頁 << <a href='倉儲與網頁.html'>Previous</a> <a href='Git Push.html'>Next</a> >> Git Push<br /><h1>Why Git</h1>
-<p><a href="https://git-scm.com/book/zh-tw/v2">Git Book</a> (中文)</p>
-<p><a href="https://link.springer.com/book/10.1007/978-1-4842-5313-7">Beginning Git and Github</a> (英文)</p>
-<p>What can Git do?</p>
-<p>Remember all those problems we tried to solve at the beginning of this chapter? Well, Git can solve them all. It can even solve problems you didn’t know you had!</p>
-<p>First, it works great with tracking changes. You can</p>
-<ol>
-<li>•Go back and forth between versions</li>
-<li>•Review the differences between those versions</li>
-<li>•Check the change history of a file (<a href="https://git-scm.com/docs/git-blame">git blame</a>)</li>
-<li>•Tag a specific version for quick referencing</li>
-</ol>
-<p>Git is also a great tool for teamwork. You can</p>
-<ol>
-<li>•Exchange "changesets" between repositories</li>
-<li>•Review the changes made by others</li>
-</ol>
-<p>One of the main features of Git is its Branching system. A branch is a copy of a project which you can work on without messing with the repository. This concept has been around for some time, but with Git, it is way faster and more efficient. Branching also comes along with Merging, which is the act of copying the changesets done in a branch back to the source.</p>
-<p>Generally, you create a branch to create or test a new feature and merge that branch back when you are satisfied with the work.</p>
-<p>There is also a simple concept that you might use a lot: Stashing.</p>
-<p>Stashing is the act of safely putting away your current edits so that you have clean environment to work on something completely different. You might want to use stashing when you are playing around or testing a feature but need to work on a new feature in priority. So, you stash your changes away and begin to write that feature. After you are done, you can get your changes back and apply them to your current working environment.</p>
-<br />倉儲與網頁 << <a href='倉儲與網頁.html'>Previous</a> <a href='Git Push.html'>Next</a> >> Git Push</div>
+    <div id="tipue_search_content">Javascript << <a href='Javascript.html'>Previous</a> <a href='Brython-server.html'>Next</a> >> Brython-server<br /><h1>pixijs</h1>
+<p>PixiJS — The HTML5 Creation Engine</p>
+<p>Create Great Interactive Graphics or Games and the Web</p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4842-1094-9">Learn Pixi.js</a> (從校園網路中下載電子書)</p>
+<p><a href="https://github.com/pixijs/pixijs">https://github.com/pixijs/pixijs</a></p>
+<p>如何使用 pixi.js</p>
+<p>以下利用 Bython 與 <a href="https://github.com/mdecourse/nfulist">https://github.com/mdecourse/nfulist</a> on Heroku 結合, 列出 1092 各課程修課人員學號:</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.3/pixi.min.js"&gt;&lt;/script&gt;
+&lt;script src="./../cmsimde/static/brython.js"&gt;&lt;/script&gt;
+&lt;script src="./../cmsimde/static/brython_stdlib.js"&gt;&lt;/script&gt;
+&lt;script&gt;// &lt;![CDATA[
+window.onload=function(){
+brython({debug:1, pythonpath:['./../cmsimde/static/']});
+}
+// ]]&gt;&lt;/script&gt;
+&lt;div id="brython_text1"&gt;&lt;/div&gt;
+&lt;script type="text/python"&gt;// &lt;![CDATA[
+from browser import document as doc
+from browser import html
+
+'''
+2021 spring (1092):
+0741 1a
+0764 2a
+0776 2b
+2384 5j
+'''
+# setup up basic data
+semester_code = "1092"
+class_code = ["0741", "0764", "0776", "2384"]
+# add a vacant string
+stud_list = ""
+
+# go through class_code one by one
+for i in class_code:
+    url = "https://nfulist.herokuapp.com/?semester="+semester_code+"&amp;courseno="+i+"&amp;column=False"
+    title = html.H4("Semester:"+semester_code+" - "+i+" course student list:")
+    stud_list += title + open(url).read()
+
+doc["brython_text1"] &lt;= stud_list
+// ]]&gt;&lt;/script&gt;</pre>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.3/pixi.min.js"></script>
+<script src="./../cmsimde/static/brython.js"></script>
+<script src="./../cmsimde/static/brython_stdlib.js"></script>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['./../cmsimde/static/']});
+}
+</script>
+<div id="brython_text1"></div>
+<script type="text/python">
+from browser import document as doc
+from browser import html
+
+'''
+2021 spring (1092):
+0741 1a
+0764 2a
+0776 2b
+2384 5j
+'''
+# setup up basic data
+semester_code = "1092"
+class_code = ["0741", "0764", "0776", "2384"]
+# add a vacant string
+stud_list = ""
+
+# go through class_code one by one
+for i in class_code:
+    url = "https://nfulist.herokuapp.com/?semester="+semester_code+"&courseno="+i+"&column=False"
+    title = html.H4("Semester:"+semester_code+" - "+i+" course student list:")
+    stud_list += title + open(url).read()
+
+doc["brython_text1"] <= stud_list
+</script><br />Javascript << <a href='Javascript.html'>Previous</a> <a href='Brython-server.html'>Next</a> >> Brython-server</div>
         
     <!-- footer -->
       <div class="container">
