@@ -2084,9 +2084,9 @@ canvas.id = "ggame-canvas"
 graphics_column <= canvas
 
 # 若在近端測試
-site = ""
+#site = ""
 # 送到遠端時改用
-#site="./../"
+site="./.."
 
 class Stars(Sprite):
 
@@ -4323,6 +4323,11 @@ brython({debug:1, pythonpath:['/static/']});
 from browser import window, document, html
 import browser.timer
 
+# 若在近端測試
+#site = ""
+# 送到遠端時改用
+site="./.."
+
 # let brython_div to be the div with id=brython_div
 brython_div = document["brython_div"]
 # use window to get PIXI object and let it be GFX
@@ -4330,7 +4335,7 @@ GFX = window.PIXI
 App = GFX.Application.new
 app = App(400, 300, { 'transparent': True })
 brython_div.appendChild(app.view)
-bunny = GFX.Sprite.fromImage('/images/bunny.png')
+bunny = GFX.Sprite.fromImage(site+'/images/bunny.png')
 # center the sprite's anchor point
 bunny.anchor.set(0.5)
 # move the sprite to the center of the screen
