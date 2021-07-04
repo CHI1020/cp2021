@@ -4197,9 +4197,11 @@ class KeyEvent(_Event):
 <p>PixiJS — The HTML5 Creation Engine</p>
 <p>Create Great Interactive Graphics or Games and the Web</p>
 <p><a href="https://link.springer.com/book/10.1007/978-1-4842-1094-9">Learn Pixi.js</a> (從校園網路中下載電子書)</p>
+<p style="padding-left: 30px;">Pixi.js <a href="https://pixijs.io/examples-v4/#/demos-basic/container.js">4.X.X</a> 與 <a href="https://pixijs.io/examples/#/demos-basic/container.js">5.X.X</a> 之間的差異.</p>
 <p><a href="https://github.com/pixijs/pixijs">https://github.com/pixijs/pixijs</a></p>
 <p>如何使用 pixi.js</p>
-<p>以下利用 Bython 與 <a href="https://github.com/mdecourse/nfulist">https://github.com/mdecourse/nfulist</a> on Heroku 結合, 列出 1092 各課程修課人員學號:</p>
+<p>以下利用 Bython 與 <a href="https://github.com/mdecourse/nfulist">https://github.com/mdecourse/nfulist</a> on Heroku 結合, 列出 1092 學期各課程修課人員學號,  程式執行流程先從一個<span style="background-color: #ccffcc;">全球資訊網伺服器</span> (位於 Github, 伺服器 1) 將此網頁送到使用者的<span style="background-color: #ccffcc;">瀏覽器</span> (客戶端電腦) 中, 並且執行 Brython javascript 程式, 將頁面中的 Python 程式轉為 Javascript 後, 因為其中導入 Open() 函式採用 ajax 模式至使用者指定的 URL 中擷取資料, 而此一位於 <span style="background-color: #ccffcc;">Heroku 雲端</span> (位於 Heroku, 伺服器 2) 的 Python Flask 程式也是採用 ajax 方式對<span style="background-color: #ccffcc;">學校教務處</span> (位於虎尾, 伺服器 3) 伺服主機發出 post 表單資料, 並從教務主機中取出特定學期, 特定課號的修課人員名單, 然後所截取出來的資料, 再由 Brython 程式發布到特定網頁中的位置. 因此以下學員資料的擷取包括客戶端電腦, 程式執行總共牽涉到其他位於不同地理位置的 3 台主機.</p>
+<p>這個網際程式的執行, 代表的是利用計算機程式, 電腦軟硬體與網路技術, 各位於不同地理位置的電腦只要各自扮演好自己的角色, 能夠獨立完成一項任務中的協同任務, 使用者只要了解各種協定的特性, 就可以完成原先需要四處實地奔走才能完成的任務. <span style="background-color: #ffff99;">少負擔, 多建樹應該就是應用計算機程式與電腦輔助設計的本質</span> (Less burden, more achievements should be the essence of application of the computer programs and computer-aided design.).</p>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.3/pixi.min.js"&gt;&lt;/script&gt;
 &lt;script src="/static/brython.js"&gt;&lt;/script&gt;
 &lt;script src="/static/brython_stdlib.js"&gt;&lt;/script&gt;
@@ -4267,6 +4269,79 @@ for i in class_code:
     stud_list += title + open(url).read()
 
 doc["brython_text1"] <= stud_list
+</script><h3>pixijs1</h3>
+<p><a href="https://mdecp2018.github.io/finalproject-bgx/content/%E7%B6%B2%E9%9A%9B%E6%A8%A1%E6%93%AC%E7%A8%8B%E5%BC%8F.html">2018 參考資料</a></p>
+<p>ggame is for <a href="https://pixijs.io/examples-v4/#/demos-basic/container.js">pixi 4.8.2</a></p>
+<h4>Brython and pixi.js integrated html5 result:</h4>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.2/pixi.min.js"&gt;&lt;/script&gt;
+&lt;script src="/static/brython.js"&gt;&lt;/script&gt;
+&lt;script src="/static/brython_stdlib.js"&gt;&lt;/script&gt;
+&lt;script&gt;// &lt;![CDATA[
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/']});
+}
+// ]]&gt;&lt;/script&gt;
+&lt;div id="brython_div"&gt;&lt;/div&gt;
+&lt;div id="line_drawing"&gt;&lt;/div&gt;
+&lt;script type="text/python"&gt;// &lt;![CDATA[
+# 從 browser 導入 window, document 與 html
+from browser import window, document, html
+import browser.timer
+
+# let brython_div to be the div with id=brython_div
+brython_div = document["brython_div"]
+# use window to get PIXI object and let it be GFX
+GFX = window.PIXI
+App = GFX.Application.new
+app = App(400, 300, { 'transparent': True })
+brython_div.appendChild(app.view)
+bunny = GFX.Sprite.fromImage('/images/bunny.png')
+# center the sprite's anchor point
+bunny.anchor.set(0.5)
+# move the sprite to the center of the screen
+bunny.x = app.screen.width / 2
+bunny.y = app.screen.height / 2
+app.stage.addChild(bunny)
+
+def fun():
+    bunny.rotation += 0.1
+
+browser.timer.set_interval(fun, 30)
+// ]]&gt;&lt;/script&gt;</pre>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.2/pixi.min.js"></script>
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/']});
+}
+</script>
+<div id="brython_div"></div>
+<div id="line_drawing"></div>
+<script type="text/python">
+# 從 browser 導入 window, document 與 html
+from browser import window, document, html
+import browser.timer
+
+# let brython_div to be the div with id=brython_div
+brython_div = document["brython_div"]
+# use window to get PIXI object and let it be GFX
+GFX = window.PIXI
+App = GFX.Application.new
+app = App(400, 300, { 'transparent': True })
+brython_div.appendChild(app.view)
+bunny = GFX.Sprite.fromImage('/images/bunny.png')
+# center the sprite's anchor point
+bunny.anchor.set(0.5)
+# move the sprite to the center of the screen
+bunny.x = app.screen.width / 2
+bunny.y = app.screen.height / 2
+app.stage.addChild(bunny)
+
+def fun():
+    bunny.rotation += 0.1
+
+browser.timer.set_interval(fun, 30)
 </script><h2>Brython-server</h2>
 <p><a href="https://github.com/mdecourse/brython-server">https://github.com/mdecourse/brython-server</a> </p>
 <h4>Heroku:</h4>
