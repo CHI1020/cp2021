@@ -2075,18 +2075,19 @@ from time import time
 
 from browser import document as doc
 from browser import html
-# 引入既有的id="graphics-column" 標註
+# bring in the id="graphics-column" markup
 graphics_column = doc["graphics-column"]
-# 建立內定名稱為 "ggame-canvas" 的 canvas 標註
+# create "ggame-canvas" canvas markup
 canvas = html.CANVAS(width = 600, height = 600)
 canvas.id = "ggame-canvas"
-# 將 canvas 插入 gc 標註中
+# insert canvas into the graphics_column div markup
 graphics_column <= canvas
 
-# 若在近端測試
-#site = ""
-# 送到遠端時改用
-site="./.."
+# can we get the execution mode through brython
+# when work with dynamic site
+site = ""
+# when work with remote site
+#site="./.."
 
 class Stars(Sprite):
 
@@ -2357,7 +2358,6 @@ class Ship1(Ship):
         
     def __init__(self, app, position, velocity, sun):
         super().__init__(Ship1.asset, app, position, velocity, sun)
-        # 可以改變 Ship1 控制按鍵
         self.registerKeys(["a", "d", "w", "space"])
         
     def step(self, T, dT):
@@ -2376,7 +2376,6 @@ class Ship2(Ship):
         
     def __init__(self, app, position, velocity, sun):
         super().__init__(Ship2.asset, app, position, velocity, sun)
-        ＃可以改變 Ship2 的控制按鍵
         self.registerKeys(["left arrow", "right arrow", "up arrow", "enter"])
 
     def step(self, T, dT):
