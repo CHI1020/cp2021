@@ -3,10 +3,13 @@
 <p>學計算機程式做什麼? 其他人是<a href="https://itw01.com/YHAE5HS.html">如何學習計算機程式</a> (<a href="https://feross.org/how-i-learned-to-program-computers/">原始文章</a>, <a href="https://feross.org/">作者</a>)?</p>
 <p>計算機程式可以解決 ____  問題?</p>
 <p>Don't confuse essense with tools. (不要混淆本質與工具)</p>
-<p><a href="http://sam-koblenski.blogspot.com/2014/04/the-essence-of-programming.html">http://sam-koblenski.blogspot.com/2014/04/the-essence-of-programming.html</a> </p>
+<p><a href="http://sam-koblenski.blogspot.com/2014/04/the-essence-of-programming.html">http://sam-koblenski.blogspot.com/2014/04/the-essence-of-programming.html</a></p>
+<p>學習計算機程式與學習下圍棋類似, 了解下圍棋的規則並不會太難, 但想要成為下圍棋大師, 並不容易.</p>
+<p>學會特定計算機程式語言的規定及語法也不會太難, 但是一談到要如何運用計算機程式, 解決機械設計流程碰到的各種問題, 絕大多數的機械設計背景工程師, 卻只能望電腦興嘆. Why?</p>
 <p>發人深省的教學影片, computer science is not a science. It's also not really very much about computers.</p>
 <p>And that is, when some field is just getting started and you don't really understand it very well, it's very easy to confuse the essence of what you're doing with the tools that you use.</p>
 <p>I think in the future people will look back and say, yes, those primitives in the 20th century were fiddling around with these gadgets called computers, but really what they were doing is starting to <span style="background-color: #ccffcc;">learn how to <a href="https://www.merriam-webster.com/dictionary/formalize">formalize</a> <a href="https://www.merriam-webster.com/dictionary/intuition">intuitions</a> about <a href="https://www.merriam-webster.com/dictionary/process">process</a>,</span> <span style="background-color: #ccffcc;">how to do things, starting to develop a way to talk precisely about how-to knowledge.</span></p>
+<p>計算機程式在學習<span style="background-color: #ffff99;">如何將做事的過程 (process) 及直覺 (intuitions) </span>予以<span style="background-color: #ffff99;">形式化 (formalize)</span>, 並且著手開發一種方式來<span style="background-color: #ffff99;">準確地 (precisely) 討論如何運用知識</span>.</p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/-J_xL4IGhJA" title="YouTube video player" width="560"></iframe></p>
 <p>Overview and Introduction to Lisp (<a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video-lectures/">source</a>, <a href="http://mde.tw/cad2021/downloads/Overview_Into_to_Lisp.txt">Closed Caption</a>)</p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/vYXQTrYPenQ" title="YouTube video player" width="560"></iframe></p>
@@ -2072,9 +2075,10 @@ from ggame import App, Sprite, ImageAsset, Frame, CircleAsset
 from ggame import SoundAsset, Sound, TextAsset, Color
 import math
 from time import time
-
 from browser import document as doc
 from browser import html
+import socket
+
 # bring in the id="graphics-column" markup
 graphics_column = doc["graphics-column"]
 # create "ggame-canvas" canvas markup
@@ -2085,9 +2089,11 @@ graphics_column <= canvas
 
 # can we get the execution mode through brython
 # when work with dynamic site
-site = ""
-# when work with remote site
-#site="./.."
+if socket.gethostname() == "localhost":
+    site = ""
+else:
+    # when work with remote site
+    site="./.."
 
 class Stars(Sprite):
 
@@ -4283,29 +4289,44 @@ brython({debug:1, pythonpath:['/static/']});
 &lt;div id="brython_div"&gt;&lt;/div&gt;
 &lt;div id="line_drawing"&gt;&lt;/div&gt;
 &lt;script type="text/python"&gt;// &lt;![CDATA[
-# 從 browser 導入 window, document 與 html
+# from browser import window, document and html
 from browser import window, document, html
+# this is for animation, which is different from what javascipt implemented
 import browser.timer
+# use socket.gethostname() to differentiate where script is executed
+import socket
+
+# if executed under localhost
+if socket.gethostname() == "localhost":
+    site = ""
+else:
+    # when executed in remote site
+    site="./.."
 
 # let brython_div to be the div with id=brython_div
 brython_div = document["brython_div"]
 # use window to get PIXI object and let it be GFX
 GFX = window.PIXI
+# create new PIXI application
 App = GFX.Application.new
+# set application size and background
 app = App(400, 300, { 'transparent': True })
+# add application view into div markup
 brython_div.appendChild(app.view)
-bunny = GFX.Sprite.fromImage('/images/bunny.png')
-# center the sprite's anchor point
+# create Sprite from image file
+bunny = GFX.Sprite.fromImage(site+'/images/bunny.png')
+# center the sprite's anchor point, this is the center for the rotation of the graphics
 bunny.anchor.set(0.5)
 # move the sprite to the center of the screen
 bunny.x = app.screen.width / 2
 bunny.y = app.screen.height / 2
+# add Sprite into the application stage
 app.stage.addChild(bunny)
 
-def fun():
+def bunnyRotate():
     bunny.rotation += 0.1
 
-browser.timer.set_interval(fun, 30)
+browser.timer.set_interval(bunnyRotate, 30)
 // ]]&gt;&lt;/script&gt;</pre>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.2/pixi.min.js"></script>
 <script src="/static/brython.js"></script>
@@ -4318,34 +4339,44 @@ brython({debug:1, pythonpath:['/static/']});
 <div id="brython_div"></div>
 <div id="line_drawing"></div>
 <script type="text/python">
-# 從 browser 導入 window, document 與 html
+# from browser import window, document and html
 from browser import window, document, html
+# this is for animation, which is different from what javascipt implemented
 import browser.timer
+# use socket.gethostname() to differentiate where script is executed
+import socket
 
-# 若在近端測試
-#site = ""
-# 送到遠端時改用
-site="./.."
+# if executed under localhost
+if socket.gethostname() == "localhost":
+    site = ""
+else:
+    # when executed in remote site
+    site="./.."
 
 # let brython_div to be the div with id=brython_div
 brython_div = document["brython_div"]
 # use window to get PIXI object and let it be GFX
 GFX = window.PIXI
+# create new PIXI application
 App = GFX.Application.new
+# set application size and background
 app = App(400, 300, { 'transparent': True })
+# add application view into div markup
 brython_div.appendChild(app.view)
+# create Sprite from image file
 bunny = GFX.Sprite.fromImage(site+'/images/bunny.png')
-# center the sprite's anchor point
+# center the sprite's anchor point, this is the center for the rotation of the graphics
 bunny.anchor.set(0.5)
 # move the sprite to the center of the screen
 bunny.x = app.screen.width / 2
 bunny.y = app.screen.height / 2
+# add Sprite into the application stage
 app.stage.addChild(bunny)
 
-def fun():
+def bunnyRotate():
     bunny.rotation += 0.1
 
-browser.timer.set_interval(fun, 30)
+browser.timer.set_interval(bunnyRotate, 30)
 </script><h2>Brython-server</h2>
 <p><a href="https://github.com/mdecourse/brython-server">https://github.com/mdecourse/brython-server</a> </p>
 <h4>Heroku:</h4>

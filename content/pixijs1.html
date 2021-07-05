@@ -149,29 +149,44 @@ brython({debug:1, pythonpath:['./../cmsimde/static/']});
 &lt;div id="brython_div"&gt;&lt;/div&gt;
 &lt;div id="line_drawing"&gt;&lt;/div&gt;
 &lt;script type="text/python"&gt;// &lt;![CDATA[
-# 從 browser 導入 window, document 與 html
+# from browser import window, document and html
 from browser import window, document, html
+# this is for animation, which is different from what javascipt implemented
 import browser.timer
+# use socket.gethostname() to differentiate where script is executed
+import socket
+
+# if executed under localhost
+if socket.gethostname() == "localhost":
+    site = ""
+else:
+    # when executed in remote site
+    site="./.."
 
 # let brython_div to be the div with id=brython_div
 brython_div = document["brython_div"]
 # use window to get PIXI object and let it be GFX
 GFX = window.PIXI
+# create new PIXI application
 App = GFX.Application.new
+# set application size and background
 app = App(400, 300, { 'transparent': True })
+# add application view into div markup
 brython_div.appendChild(app.view)
-bunny = GFX.Sprite.fromImage('/images/bunny.png')
-# center the sprite's anchor point
+# create Sprite from image file
+bunny = GFX.Sprite.fromImage(site+'/images/bunny.png')
+# center the sprite's anchor point, this is the center for the rotation of the graphics
 bunny.anchor.set(0.5)
 # move the sprite to the center of the screen
 bunny.x = app.screen.width / 2
 bunny.y = app.screen.height / 2
+# add Sprite into the application stage
 app.stage.addChild(bunny)
 
-def fun():
+def bunnyRotate():
     bunny.rotation += 0.1
 
-browser.timer.set_interval(fun, 30)
+browser.timer.set_interval(bunnyRotate, 30)
 // ]]&gt;&lt;/script&gt;</pre>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.2/pixi.min.js"></script>
 <script src="./../cmsimde/static/brython.js"></script>
@@ -184,34 +199,44 @@ brython({debug:1, pythonpath:['./../cmsimde/static/']});
 <div id="brython_div"></div>
 <div id="line_drawing"></div>
 <script type="text/python">
-# 從 browser 導入 window, document 與 html
+# from browser import window, document and html
 from browser import window, document, html
+# this is for animation, which is different from what javascipt implemented
 import browser.timer
+# use socket.gethostname() to differentiate where script is executed
+import socket
 
-# 若在近端測試
-#site = ""
-# 送到遠端時改用
-site="./.."
+# if executed under localhost
+if socket.gethostname() == "localhost":
+    site = ""
+else:
+    # when executed in remote site
+    site="./.."
 
 # let brython_div to be the div with id=brython_div
 brython_div = document["brython_div"]
 # use window to get PIXI object and let it be GFX
 GFX = window.PIXI
+# create new PIXI application
 App = GFX.Application.new
+# set application size and background
 app = App(400, 300, { 'transparent': True })
+# add application view into div markup
 brython_div.appendChild(app.view)
+# create Sprite from image file
 bunny = GFX.Sprite.fromImage(site+'/images/bunny.png')
-# center the sprite's anchor point
+# center the sprite's anchor point, this is the center for the rotation of the graphics
 bunny.anchor.set(0.5)
 # move the sprite to the center of the screen
 bunny.x = app.screen.width / 2
 bunny.y = app.screen.height / 2
+# add Sprite into the application stage
 app.stage.addChild(bunny)
 
-def fun():
+def bunnyRotate():
     bunny.rotation += 0.1
 
-browser.timer.set_interval(fun, 30)
+browser.timer.set_interval(bunnyRotate, 30)
 </script><br />pixijs << <a href='pixijs.html'>Previous</a> <a href='Brython-server.html'>Next</a> >> Brython-server</div>
         
     <!-- footer -->
