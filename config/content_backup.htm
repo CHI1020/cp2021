@@ -718,7 +718,7 @@ doc["flag"].bind('click', Flag.prog)
 </p>
 <!-- flag ex ends -->
 <p></p>
-<!-- bunny start -->
+<!-- bunny starts -->
 <p>
 <script type="text/python3">
 from browser import document as doc
@@ -729,6 +729,8 @@ from random import random, randint
 from browser import document as doc
 from browser import html
 import math
+# for site variable to use socket.gethostname() to differentiate execution on localhost or not
+import socket
 # 引入既有的id="graphics-column" 標註
 graphics_column = doc["graphics-column"]
 # 建立內定名稱為 "ggame-canvas" 的 canvas 標註
@@ -736,9 +738,17 @@ canvas = html.CANVAS(width = 600, height = 400)
 canvas.id = "ggame-canvas"
 # 將 canvas 插入 gc 標註中
 graphics_column <= canvas
+
+# when work with dynamic site
+if socket.gethostname() == "localhost":
+    site = ""
+else:
+    # when work with remote site
+    site="./.."
+
 class Bunny(Sprite):
     
-    asset = ImageAsset("/images/bunny.png")
+    asset = ImageAsset(site+"/images/bunny.png")
     
     def __init__(self, position):
         super().__init__(Bunny.asset, position)
@@ -4681,13 +4691,19 @@ class KeyEvent(_Event):
 
 </pre>
 <p></p><h3>Javascript</h3>
+<p><a href="https://deno.land/">https://deno.land/</a> (Javascript and Typescript runtime written in Rust)</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-4979-6">Essential Typescript</a> (從校園網路下載電子書)</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-6197-2">Introducing Deno</a> (從校園網路下載電子書)</p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4842-5394-6">Javascript Next</a> (從校園網路下載電子書)</p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4842-2623-0">E6S for Humans</a> (從校園網路下載電子書)</p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4842-3988-9">JavaScript Data Structures and Algorithms</a> (從校園網路下載電子書)</p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4842-2656-8">Beginning Functional Javascript</a> (從校園網路下載電子書)</p>
 <h4>jQuery</h4>
 <p><a href="https://jquery.com/">https://jquery.com/</a></p>
 <h4>jQuery-UI</h4>
 <p><a href="https://jqueryui.com/">https://jqueryui.com/</a></p>
 <h4>buzz</h4>
-<p><a href="https://buzz.jaysalvat.com/">https://buzz.jaysalvat.com/</a></p>
-<h3>pixijs</h3>
+<p><a href="https://buzz.jaysalvat.com/">https://buzz.jaysalvat.com/</a></p><h3>pixijs</h3>
 <p>PixiJS — The HTML5 Creation Engine</p>
 <p>Create Great Interactive Graphics or Games and the Web</p>
 <p><a href="https://link.springer.com/book/10.1007/978-1-4842-1094-9">Learn Pixi.js</a> (從校園網路中下載電子書)</p>
