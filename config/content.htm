@@ -718,7 +718,7 @@ doc["flag"].bind('click', Flag.prog)
 </p>
 <!-- flag ex ends -->
 <p></p>
-<!-- bunny start -->
+<!-- bunny starts -->
 <p>
 <script type="text/python3">
 from browser import document as doc
@@ -729,6 +729,8 @@ from random import random, randint
 from browser import document as doc
 from browser import html
 import math
+# for site variable to use socket.gethostname() to differentiate execution on localhost or not
+import socket
 # 引入既有的id="graphics-column" 標註
 graphics_column = doc["graphics-column"]
 # 建立內定名稱為 "ggame-canvas" 的 canvas 標註
@@ -736,9 +738,17 @@ canvas = html.CANVAS(width = 600, height = 400)
 canvas.id = "ggame-canvas"
 # 將 canvas 插入 gc 標註中
 graphics_column <= canvas
+
+# when work with dynamic site
+if socket.gethostname() == "localhost":
+    site = ""
+else:
+    # when work with remote site
+    site="./.."
+
 class Bunny(Sprite):
     
-    asset = ImageAsset("/images/bunny.png")
+    asset = ImageAsset(site+"/images/bunny.png")
     
     def __init__(self, position):
         super().__init__(Bunny.asset, position)
@@ -1670,6 +1680,8 @@ from ggame import (
 )
 from browser import document as doc
 from browser import html
+# for site variable to check socket.gethostname() for image file location
+import socket
 # 引入既有的id="graphics-column" 標註
 graphics_column = doc["graphics-column"]
 # 建立內定名稱為 "ggame-canvas" 的 canvas 標註
@@ -1700,7 +1712,13 @@ noline = LineStyle(0, black)
 # a rectangle asset and sprite to use as background
 bg_asset = RectangleAsset(canvas.width, canvas.height, noline, green)
 bg = Sprite(bg_asset, (0,0))
-ball_asset = ImageAsset("/images/orb-150545_640.png")
+# when work with dynamic site
+if socket.gethostname() == "localhost":
+    site = ""
+else:
+    # when work with remote site
+    site="./.."
+ball_asset = ImageAsset(site+"/images/orb-150545_640.png")
 ball = Sprite(ball_asset, (0, 0))
 # Original image is too big. Scale it to 1/10 its original size
 ball.scale = 0.1
