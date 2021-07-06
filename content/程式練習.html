@@ -134,7 +134,16 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">機械設計知識 << <a href='機械設計知識.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython<br /><h1>Python</h1>
+    <div id="tipue_search_content">Git Push << <a href='Git Push.html'>Previous</a> <a href='ggame.html'>Next</a> >> ggame<br /><h1>程式練習</h1>
+<p><!-- 用來顯示程式碼的 editor 區域 --></p>
+<div id="kw_editor1" style="width: 600px; height: 300px;"></div>
+<p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
+<form><label>Filename: <input id="kw_filename" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src', 'kw_filename');" type="submit" value="Save"/></form>
+<p><button id="kw_run">Run</button> <button id="kw_show_console">Output</button> <button id="kw_clear_console">清除輸出區</button><button id="clear_bd">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
+<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console"></textarea></div>
+<!--#######################-->
+<p><a href="https://brython.info/static_doc/en/query.html">https://brython.info/static_doc/en/query.html</a></p>
+<!-- 導入 brython 程式庫 -->
 <script src="./../cmsimde/static/brython.js"></script>
 <script src="./../cmsimde/static/brython_stdlib.js"></script>
 <!-- for ggame -->
@@ -189,7 +198,7 @@ def clear_bd(ev):
     bd = doc["brython_div"]
     bd.clear()
 # Brython 3.3.4 內建的 container 名稱為  'container' 且 turtle 輸出為 svg 必須使用 div 訂定 id
-Ace = ace.Editor(editor_id="kw_editor", console_id="kw_console", container_id="kw__container", storage_id="kw_py_src" )
+Ace = ace.Editor(editor_id="kw_editor1", console_id="kw_console", container_id="kw__container", storage_id="kw_py_src" )
 Ace.editor.setValue("""# 導入 sys 模組
 import sys
 # 導入 keyword 模組
@@ -2477,7 +2486,7 @@ var width = window.innerWidth;
     updateDottedLines();
 </script>
 </p>
-<br />機械設計知識 << <a href='機械設計知識.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
+<br />Git Push << <a href='Git Push.html'>Previous</a> <a href='ggame.html'>Next</a> >> ggame</div>
         
     <!-- footer -->
       <div class="container">
