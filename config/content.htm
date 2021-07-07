@@ -93,6 +93,9 @@
 <p style="padding-left: 30px;"><a href="http://brython.info/gallery/?C=M;O=D">Brython Gallery</a></p>
 <p>網頁上的 Python GUI- Flexx: <a href="https://flexx.readthedocs.io/en/stable/">https://flexx.readthedocs.io/en/stable/</a> (轉譯式)</p>
 <h2>機械設計知識</h2>
+<p><a href="https://pythonnumericalmethods.berkeley.edu/notebooks/Index.html">Python Programming And Numerical Methods: A Guide For Engineers And Scientists</a></p>
+<p><a href="https://www.algorist.com/algorist.html">Algorithm Design Manual</a></p>
+<p><a href="http://mde.tw/cad2020/content/%E8%A8%AD%E8%A8%88%E6%9C%80%E4%BD%B3%E5%8C%96.html">設計最佳化</a></p>
 <p><a href="https://link.springer.com/book/10.1007/978-3-030-15195-9">Fundamental University Physics</a> (在校園網路下載電子書)</p>
 <p><a href="https://link.springer.com/book/10.1007/978-1-4615-0487-0">Optimal Synthesis Methods for MEMS</a> (在校園網路下載電子書)</p>
 <p><a href="https://link.springer.com/book/10.1007/978-3-642-22938-1">Wind Power Plants</a> (在校園網路下載電子書)</p>
@@ -110,8 +113,7 @@
 <p><a href="https://link.springer.com/book/10.1007/978-0-85729-394-7">Managing Engineering Design</a> (在校園網路下載電子書)</p>
 <p><a href="https://link.springer.com/book/10.1007/978-3-662-05302-7">General Spatial Involute Gearing</a> (在校園網路下載電子書)</p>
 <p><a href="https://link.springer.com/book/10.1007/978-3-662-08013-9">Inventive Thinking through TRIZ</a> (在校園網路下載電子書)</p>
-<p><a href="https://link.springer.com/book/10.1007/978-1-4757-2872-9">A Mathematical Theory of Design</a> (在校園網路下載電子書)</p>
-<h2>Python</h2>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4757-2872-9">A Mathematical Theory of Design</a> (在校園網路下載電子書)</p><h2>Python</h2>
 <script src="/static/brython.js"></script>
 <script src="/static/brython_stdlib.js"></script>
 <!-- for ggame -->
@@ -3414,7 +3416,7 @@ setup(
 <h2>解題練習</h2>
 <h4>請利用下列網際編輯器, 開始學習如何使用 Python 解決問題, 一般機械設計流程會面臨什麼問題?</h4>
 <p>1) 從 URL 導入程式<a href="https://docs.python.org/3/tutorial/modules.html">模組</a> (modules). (使用 /static/, ./../downloads/py/). 請列出<a href="https://docs.python.org/3/tutorial/modules.html">模組</a>中的 fib(1000). (瀏覽器上的程式, 可以導入其他網際路徑上 (或其他程式設計者伺服器上) 的另一個程式段, 並且使用該程式段的功能, 對於機械設計流程, 有何用處?)</p>
-<p>2) <a href="https://qry.nfu.edu.tw/">學校教務主機</a>可以根據當學期的課號, 查得該課程的修課學員名單, 請問可以直接利用下列網際 Python 程式編輯器, 取得本課程的修課人員學號資料嗎? (請參考 <a href="https://en.wikipedia.org/wiki/Ajax_(programming)">Ajax</a> 與 <a href="https://brython.info/static_doc/en/ajax.html">browser.ajax</a>, 利用瀏覽器中的程式, 可以跨網路即時從其他伺服器擷取資料, 對機械設計者有什麼意義?)</p>
+<p>2) <a href="https://qry.nfu.edu.tw/">學校教務主機</a>可以根據當學期的課號, 查得該課程的修課學員名單, 請問可以直接利用下列網際 Python 程式編輯器, 取得本課程的修課人員學號資料嗎? 當取得修課人員名單後, 可以從中以亂數選出特定個數的學員嗎? 若每一週各選出特定學員, 當週已經被選過的學員, 可以從後續亂數選擇的名單中剔除嗎? (請參考 <a href="https://en.wikipedia.org/wiki/Ajax_(programming)">Ajax</a> 與 <a href="https://brython.info/static_doc/en/ajax.html">browser.ajax</a>, 利用瀏覽器中的程式, 可以跨網路即時從其他伺服器擷取資料, 對機械設計者有什麼意義?)</p>
 <p>3) 定時執行特定任務對某些機械裝置可能有些用處, 能夠讓 <a href="https://github.com/mdecourse/schedule">Schedule 模組</a> (<a href="https://bhupesh-v.github.io/A-Simple-Scheduler-in-Python/">ref</a>), 在 Brython 環境中執行嗎?</p>
 <p>4) 可以移動的機電模型經常需要客製化的齒輪減速裝置, 能夠直接在瀏覽器中根據減速需求, 設計繪製出能夠直接列印的齒輪組嗎? (<a href="/downloads/DesignBasicGearBoxes.pdf">ref1</a>, <a href="https://all3dp.com/2/3d-printed-gearbox-how-to-design-your-own-box/">ref2</a>, <a href="https://en.wikipedia.org/wiki/STL_(file_format)">ref3</a>, <a href="http://hessmer.org/gears/InvoluteSpurGearBuilder.html?circularPitch=8&amp;pressureAngle=20&amp;clearance=0.05&amp;backlash=0.05&amp;profileShift=0&amp;gear1ToothCount=30&amp;gear1CenterHoleDiamater=4&amp;gear2ToothCount=8&amp;gear2CenterHoleDiamater=4&amp;showOption=3">ref4</a>, <a href="http://www.hessmer.org/blog/2020/09/27/online-involute-spur-gear-builder-v2/">ref5</a>, <a href="https://geargenerator.com/#200,200,100,6,1,3,0,4,1,8,2,4,27,-90,0,0,0,0,0,0,16,4,4,27,-60,0,0,0,0,1,1,12,1,12,20,-60,0,0,0,0,2,0,60,5,12,20,0,1,0,0,0,0,0,3,-515">ref6</a>, <a href="https://www.igus.eu/info/3d-print-gears">ref7</a>)</p>
 <p>啟動 Brython 時, 可以同時設定多個模組擷取路徑:</p>
@@ -6983,6 +6985,7 @@ class KeyEvent(_Event):
 <h4>Javascript Ecosystem:</h4>
 <p style="padding-left: 30px;"><a href="https://www.imaginarycloud.com/blog/a-javascript-ecosystem-overview/">https://www.imaginarycloud.com/blog/a-javascript-ecosystem-overview/</a></p>
 <p style="padding-left: 30px;">網際 Javascript 執行: <a href="http://mde.tw/cp2019/content/Javascript.html">http://mde.tw/cp2019/content/Javascript.html</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/hexapod">https://github.com/mdecourse/hexapod</a> (Robotic Inverse Kinematics)</p>
 <p style="padding-left: 30px;">Dart Web: <a href="http://mde.tw/cp2019/content/Task2.html">http://mde.tw/cp2019/content/Task2.html</a> (Dart 轉為 Javascript)</p>
 <p style="padding-left: 30px;">Flutter Web: <a href="http://mde.tw/cp2019/content/Flutter%20Web.html">http://mde.tw/cp2019/content/Flutter%20Web.html</a> (Dart 轉為 Javascript)</p>
 <h4>User Interface:</h4>
@@ -7008,6 +7011,9 @@ class KeyEvent(_Event):
 <p style="padding-left: 60px;"><a href="https://itnext.io/typescript-machine-learning-simplicity-kalimdor-js-bb1ccadf0ad3">https://itnext.io/typescript-machine-learning-simplicity-kalimdor-js-bb1ccadf0ad3</a></p>
 <h4>References:</h4>
 <p style="padding-left: 30px;"><a href="https://stackoverflow.com/questions/61710787/how-to-run-a-python-script-from-deno">在 Deno 執行 Python 程式.</a></p>
+<p style="padding-left: 60px;">Genetic Algorithm:</p>
+<p style="padding-left: 90px;"><a href="https://github.com/mdecourse/genetic">https://github.com/mdecourse/genetic</a> </p>
+<p style="padding-left: 90px;"><a href="https://link.springer.com/content/pdf/10.1007/s11042-020-10139-6.pdf">A review on genetic algorithm: past,present, and future</a></p>
 <p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-5394-6">Javascript Next</a> (從校園網路下載電子書)</p>
 <p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-2623-0">E6S for Humans</a> (從校園網路下載電子書)</p>
 <p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-3988-9">JavaScript Data Structures and Algorithms</a> (從校園網路下載電子書)</p>
@@ -7017,8 +7023,7 @@ class KeyEvent(_Event):
 <h4 style="padding-left: 30px;">jQuery-UI</h4>
 <p style="padding-left: 30px;"><a href="https://jqueryui.com/">https://jqueryui.com/</a></p>
 <h4 style="padding-left: 30px;">buzz</h4>
-<p style="padding-left: 30px;"><a href="https://buzz.jaysalvat.com/">https://buzz.jaysalvat.com/</a></p>
-<h3>pixijs</h3>
+<p style="padding-left: 30px;"><a href="https://buzz.jaysalvat.com/">https://buzz.jaysalvat.com/</a></p><h3>pixijs</h3>
 <p>PixiJS — The HTML5 Creation Engine</p>
 <p>Create Great Interactive Graphics or Games and the Web</p>
 <p><a href="https://link.springer.com/book/10.1007/978-1-4842-1094-9">Learn Pixi.js</a> (從校園網路中下載電子書)</p>
