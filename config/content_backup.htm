@@ -3417,7 +3417,7 @@ setup(
 <p>2) <a href="https://qry.nfu.edu.tw/">學校教務主機</a>可以根據當學期的課號, 查得該課程的修課學員名單, 請問可以直接利用下列網際 Python 程式編輯器, 取得本課程的修課人員學號資料嗎? (請參考 <a href="https://en.wikipedia.org/wiki/Ajax_(programming)">Ajax</a> 與 <a href="https://brython.info/static_doc/en/ajax.html">browser.ajax</a>, 利用瀏覽器中的程式, 可以跨網路即時從其他伺服器擷取資料, 對機械設計者有什麼意義?)</p>
 <p>3) 定時執行特定任務對某些機械裝置可能有些用處, 能夠讓 <a href="https://github.com/mdecourse/schedule">Schedule 模組</a> (<a href="https://bhupesh-v.github.io/A-Simple-Scheduler-in-Python/">ref</a>), 在 Brython 環境中執行嗎?</p>
 <p>4) 可以移動的機電模型經常需要客製化的齒輪減速裝置, 能夠直接在瀏覽器中根據減速需求, 設計繪製出能夠直接列印的齒輪組嗎? (<a href="/downloads/DesignBasicGearBoxes.pdf">ref1</a>, <a href="https://all3dp.com/2/3d-printed-gearbox-how-to-design-your-own-box/">ref2</a>, <a href="https://en.wikipedia.org/wiki/STL_(file_format)">ref3</a>, <a href="http://hessmer.org/gears/InvoluteSpurGearBuilder.html?circularPitch=8&amp;pressureAngle=20&amp;clearance=0.05&amp;backlash=0.05&amp;profileShift=0&amp;gear1ToothCount=30&amp;gear1CenterHoleDiamater=4&amp;gear2ToothCount=8&amp;gear2CenterHoleDiamater=4&amp;showOption=3">ref4</a>, <a href="http://www.hessmer.org/blog/2020/09/27/online-involute-spur-gear-builder-v2/">ref5</a>, <a href="https://geargenerator.com/#200,200,100,6,1,3,0,4,1,8,2,4,27,-90,0,0,0,0,0,0,16,4,4,27,-60,0,0,0,0,1,1,12,1,12,20,-60,0,0,0,0,2,0,60,5,12,20,0,1,0,0,0,0,0,3,-515">ref6</a>, <a href="https://www.igus.eu/info/3d-print-gears">ref7</a>)</p>
-<p>啟動 Brython 時, 設定模組擷取路徑:</p>
+<p>啟動 Brython 時, 可以同時設定多個模組擷取路徑:</p>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;script&gt;/
 window.onload=function(){
 brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
