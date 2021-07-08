@@ -93,6 +93,8 @@
 <p style="padding-left: 30px;"><a href="http://brython.info/gallery/?C=M;O=D">Brython Gallery</a></p>
 <p>網頁上的 Python GUI- Flexx: <a href="https://flexx.readthedocs.io/en/stable/">https://flexx.readthedocs.io/en/stable/</a> (轉譯式)</p>
 <h2>機械設計知識</h2>
+<p>Brython (Browser Python) 在網頁的執行速度並不很快, 因此比較適合初學者用來學習 Python 語法. 或者透過 WebGL 編寫架構較為簡單的機械設計模擬程式. 也可以與 Server 端的 Python + Flask 結合, 將功能較為完整的 Javascript 導入為程式庫.</p>
+<p>對於機械設計相關, 運算較複雜的流程, 可以採用 Python + Cython 寫為動態連結程式庫. 或者利用 Rust 編寫可以讓 Python 呼叫的動態連結程式庫. 至於前端運算較複雜的程式, 則可以採用 Typescript 或 Rust + wasm 的方式編寫.</p>
 <p><a href="https://pythonnumericalmethods.berkeley.edu/notebooks/Index.html">Python Programming And Numerical Methods: A Guide For Engineers And Scientists</a></p>
 <p><a href="https://www.algorist.com/algorist.html">Algorithm Design Manual</a></p>
 <p><a href="http://mde.tw/cad2020/content/%E8%A8%AD%E8%A8%88%E6%9C%80%E4%BD%B3%E5%8C%96.html">設計最佳化</a></p>
@@ -3308,8 +3310,18 @@ setup(
 <h4>Domain Specific Language:</h4>
 <p style="padding-left: 30px;"><a href="https://github.com/lark-parser/lark">https://github.com/lark-parser/lark</a></p>
 <p style="padding-left: 30px;"><a href="http://blog.erezsh.com/how-to-write-a-dsl-in-python-with-lark/">http://blog.erezsh.com/how-to-write-a-dsl-in-python-with-lark/</a></p>
-<p></p>
-<h1>課程主題</h1>
+<h2>CPP</h2>
+<p><a href="/get_page/DSL/Guide to Scientific Computing in C++">Guide to Scientific Computing in C++</a> (校園網路中下載電子書)</p>
+<p><a href="https://drive.google.com/file/d/1m6cmWu9AZhkBj6wFn9IiJlShcpGbz05g/view?usp=sharing">msys64_20210419.7z</a> (下載 3.5GB, 解開壓縮後 12GB)</p>
+<p style="padding-left: 30px;">功能: <a href="https://www.msys2.org/">Msys2</a> 安裝</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">pacman -S mingw-w64-x86_64-toolchain
+pacman -Sy mingw-w64-x86_64-qt5
+pacman -Sy mingw-w64-x86_64-qt5-static
+pacman -Sy mingw-w64-x86_64-ffmpeg
+pacman -Sy mingw-w64-x86-64-cmake</pre>
+<p><a href="https://drive.google.com/file/d/17M7Ro9NO2mmycvwOuK-10yYgs2oxFwEB/view?usp=sharing">msys64_20210419_clean.7z</a> (下載 87MB , 解開壓縮後 374MB)</p>
+<p style="padding-left: 30px;">功能: 尚未安裝任何 Package 的 <a href="https://www.msys2.org/">Msys2</a> 系統.</p>
+<p></p><h1>課程主題</h1>
 <p>建立可攜系統在解決 ____ 問題?</p>
 <h4>建立可攜程式系統:</h4>
 <p style="padding-left: 30px;">從<a href="http://mde.tw/cmstemplate/content/%E5%8F%AF%E6%94%9C%E7%B3%BB%E7%B5%B1.html">可攜系統</a>中選擇所需組合, 搭建可用於維護個人倉儲與網站內容用之隨身程式系統.</p>
@@ -3415,6 +3427,9 @@ setup(
 <p></p>
 <h2>解題練習</h2>
 <h4>請利用下列網際編輯器, 開始學習如何使用 Python 解決問題, 一般機械設計流程會面臨什麼問題?</h4>
+<p><a href="https://link.springer.com/book/10.1007/978-3-030-20290-3">A Beginners Guide to Python 3 Programming</a> (校園網路下載電子書)</p>
+<p><a href="https://link.springer.com/book/10.1007/978-3-030-25943-3">Advanced Guide to Python 3 Programming</a> (校園網路下載電子書)</p>
+<p><a href="https://link.springer.com/book/10.1007/978-3-319-19596-4">Elementary Mechanics Using Python</a> (校園網路下載電子書)</p>
 <p>1) 從 URL 導入程式<a href="https://docs.python.org/3/tutorial/modules.html">模組</a> (modules). (使用 /static/, ./../downloads/py/). 請列出<a href="https://docs.python.org/3/tutorial/modules.html">模組</a>中的 fib(1000). (瀏覽器上的程式, 可以導入其他網際路徑上 (或其他程式設計者伺服器上) 的另一個程式段, 並且使用該程式段的功能, 對於機械設計流程, 有何用處?)</p>
 <p>2) <a href="https://qry.nfu.edu.tw/">學校教務主機</a>可以根據當學期的課號, 查得該課程的修課學員名單, 請問可以直接利用下列網際 Python 程式編輯器, 取得本課程的修課人員學號資料嗎? 當取得修課人員名單後, 可以從中以亂數選出特定個數的學員嗎? 若每一週各選出特定學員, 當週已經被選過的學員, 可以從後續亂數選擇的名單中剔除嗎? (請參考 <a href="https://en.wikipedia.org/wiki/Ajax_(programming)">Ajax</a> 與 <a href="https://brython.info/static_doc/en/ajax.html">browser.ajax</a>, 利用瀏覽器中的程式, 可以跨網路即時從其他伺服器擷取資料, 對機械設計者有什麼意義?)</p>
 <p>3) 定時執行特定任務對某些機械裝置可能有些用處, 能夠讓 <a href="https://github.com/mdecourse/schedule">Schedule 模組</a> (<a href="https://bhupesh-v.github.io/A-Simple-Scheduler-in-Python/">ref</a>), 在 Brython 環境中執行嗎?</p>
@@ -7215,12 +7230,12 @@ browser.timer.set_interval(bunnyRotate, 30)
 <p>Nat - 虛擬主機可以藉由實體主機的網路架構上網, 但必須透過 Port Mapping 才能以實體主機的網路位址設為聯外 server.</p>
 <p>Host-only Adaptor - 虛擬主機的網路設定自外於任何聯外網路, 因此無法直接上網, 但各 Host 間同群電腦可以互通.</p>
 <p>Bridged Adaptor - 虛擬主機的網路設定與實體主機的網路位階相同, 若實體主機位於外部網段, 則虛擬主機可設為聯外 server.</p>
+<p><a href="https://link.springer.com/content/pdf/10.1007%2F978-3-319-92429-8.pdf">Systems Programming in Unix/Linux</a> (校園網路下載電子書)</p>
 <h4>Github Actions:</h4>
 <p style="padding-left: 30px;"><a href="https://github.com/features/actions">https://github.com/features/actions</a></p>
 <h4 style="padding-left: 30px;">應用範例:</h4>
 <p style="padding-left: 60px;"><a href="https://github.com/mdecourse/report/blob/main/.github/workflows/demo.yaml">https://github.com/mdecourse/report/blob/main/.github/workflows/demo.yaml</a></p>
-<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/4072pj1">https://github.com/mdecourse/4072pj1</a></p>
-<h1>可攜系統</h1>
+<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/4072pj1">https://github.com/mdecourse/4072pj1</a></p><h1>可攜系統</h1>
 <p>建立可攜系統在解決 ____ 問題?</p>
 <p><a href="https://drive.google.com/file/d/1hTvN4mCk2b_enIK204HA0AVPsd3GPlh5/view?usp=sharing">portablekmol_base.7z</a> (下載 118MB, 解開壓縮後 148MB)</p>
 <p style="padding-left: 30px;">包括 data 目錄與 start_ipv6.bat, start_ipv4.bat, stop.bat</p>
