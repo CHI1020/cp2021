@@ -43,13 +43,14 @@
 <h2>學習程式</h2>
 <p>學習計算機程式語言的態度建議: <a href="https://learnpythonthehardway.org/book/intro.html">https://learnpythonthehardway.org/book/intro.html</a></p>
 <ol>
-<li>必得<span style="text-decoration: underline;"><span style="background-color: #ffff99;">花工夫</span></span>才學得來 (The hard way is easier)</li>
-<li>自己<span style="text-decoration: underline;"><span style="background-color: #ffff99;">讀資料</span></span>自己<span style="text-decoration: underline;"><span style="background-color: #ffff99;">刻每一行程式碼</span></span> (Reading and Writing (Typing))</li>
-<li>要<span style="text-decoration: underline;"><span style="background-color: #ffff99;">注重</span></span>每一個<span style="text-decoration: underline;"><span style="background-color: #ffff99;">細節</span></span> (Attention to Detail)</li>
-<li>要能<span style="text-decoration: underline;"><span style="background-color: #ffff99;">發現差異</span></span> (Spotting Differences)</li>
+<li>必得<span style="text-decoration: underline;"><span style="background-color: #ffff99;">花工夫</span></span>才學得來 (The hard way is easier, <a href="https://betterprogramming.pub/why-you-should-learn-to-program-the-hard-way-7961df96c5c5">ref1</a>, <a href="https://www.freecodecamp.org/news/learn-to-code-the-hard-way-65dece5b0005/">ref2</a>)</li>
+<li>自己<span style="text-decoration: underline;"><span style="background-color: #ffff99;">讀資料</span></span>自己<span style="text-decoration: underline;"><span style="background-color: #ffff99;">刻每一行程式碼</span></span> (Reading and Writing (Typing), <a href="https://www.pitman-training.com/advice-hub/pitman-blog/why-is-it-important-to-touch-type/">ref1</a>, <a href="https://www.readandspell.com/why-is-keyboarding-important">ref2</a>, <a href="https://davidzych.com/how-important-is-typing-ability/">ref3</a>)</li>
+<li>要<span style="text-decoration: underline;"><span style="background-color: #ffff99;">注重</span></span>每一個<span style="text-decoration: underline;"><span style="background-color: #ffff99;">細節</span></span> (Attention to Detail, <a href="http://programmingstage.blogspot.com/2012/05/paying-attention-to-detail.html">ref1</a>, <a href="https://www.eskimo.com/~scs/cclass/progintro/sx1.html">ref2)</a></li>
+<li>要能<span style="text-decoration: underline;"><span style="background-color: #ffff99;">發現差異</span></span> (Spotting Differences, <a href="https://www.codementor.io/blog/good-vs-great-developers-4ln36zvwhg">ref1</a>, <a href="https://devskiller.com/coder-vs-programmer/">ref2</a>)</li>
 <li>千萬<span style="text-decoration: underline;"><span style="background-color: #ffff99;">不要複製貼上</span></span> (Do not Copy-Paste)</li>
 <li>多<span style="text-decoration: underline;"><span style="background-color: #ffff99;">觀看</span></span>相關<span style="text-decoration: underline;"><span style="background-color: #ffff99;">操作示範</span></span>影片 (Using the Included Videos)</li>
 <li>多<span style="text-decoration: underline;"><span style="background-color: #ffff99;">練習</span></span>而且要<span style="text-decoration: underline;"><span style="background-color: #ffff99;">堅持學習</span></span> (Practice and Persistence)</li>
+<li>學習如何<span style="background-color: #ffff99;"><a href="https://stackoverflow.com/help/how-to-ask" style="background-color: #ffff99;">問一個好問題</a></span> (Learn how to ask a good question)</li>
 </ol>
 <p>計算機程式學習 Python 目標: 編寫可以用於<span style="text-decoration: underline;"><span style="background-color: #ffff99;">機電資自動化整合系統設計與模擬</span></span>用的<span style="text-decoration: underline;"><span style="background-color: #ffff99;">網際程式</span></span>.</p>
 <p><span style="background-color: #ccffcc;">Web Browser &lt;-&gt; Client </span>&lt;-&gt; Brython &lt;-&gt; Flask &lt;-&gt; <span style="background-color: #ccffcc;">Server &lt;-&gt; RoboDK, CoppeliaSim and Webots</span></p>
@@ -91,8 +92,7 @@
 <p>Python tutorial: <a href="https://docs.python.org/zh-tw/3/tutorial/">https://docs.python.org/zh-tw/3/tutorial/</a> (中文)</p>
 <p>網頁上的 Python - Brython: <a href="https://www.brython.info/static_doc/en/intro.html">https://www.brython.info/static_doc/en/intro.html</a> (解譯式)</p>
 <p style="padding-left: 30px;"><a href="http://brython.info/gallery/?C=M;O=D">Brython Gallery</a></p>
-<p>網頁上的 Python GUI- Flexx: <a href="https://flexx.readthedocs.io/en/stable/">https://flexx.readthedocs.io/en/stable/</a> (轉譯式)</p>
-<h2>機械設計知識</h2>
+<p>網頁上的 Python GUI- Flexx: <a href="https://flexx.readthedocs.io/en/stable/">https://flexx.readthedocs.io/en/stable/</a> (轉譯式)</p><h2>機械設計知識</h2>
 <p>Brython (Browser Python) 在網頁的執行速度並不很快, 因此比較適合初學者用來學習 Python 語法. 或者透過 WebGL 編寫架構較為簡單的機械設計模擬程式. 也可以與 Server 端的 Python + Flask 結合, 將功能較為完整的 Javascript 導入為程式庫.</p>
 <p>對於機械設計相關, 運算較複雜的流程, 可以採用 Python + Cython 寫為動態連結程式庫. 或者利用 Rust 編寫可以讓 Python 呼叫的動態連結程式庫. 至於前端運算較複雜的程式, 則可以採用 Typescript 或 Rust + wasm 的方式編寫.</p>
 <p><a href="https://pythonnumericalmethods.berkeley.edu/notebooks/Index.html">Python Programming And Numerical Methods: A Guide For Engineers And Scientists</a></p>
@@ -3369,9 +3369,9 @@ pacman -Sy mingw-w64-x86-64-cmake</pre>
 <p></p>
 <h2>倉儲與網頁</h2>
 <p>本課程網頁的倉儲位於:</p>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/cp2021.git">https://github.com/mdecourse/cp2021.git</a> - Github</p>
-<p style="padding-left: 30px;"><a href="https://gitlab.com/mdecourse/cp2021.git">https://gitlab.com/mdecourse/cp2021.git</a> - Gitlab</p>
-<p style="padding-left: 30px;"><a href="https://bitbucket.org/mdecourse/cp2021.git">https://bitbucket.org/mdecourse/cp2021.git</a> -Bitbucket</p>
+<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/cp2021.git">https://github.com/mdecourse/cp2021.git</a> - <a href="https://mde.tw/cp2021">Github Pages</a></p>
+<p style="padding-left: 30px;"><a href="https://gitlab.com/mdecourse/cp2021.git">https://gitlab.com/mdecourse/cp2021.git</a> - <a href="https://mdecourse.gitlab.io/cp2021/">Gitlab Pages</a></p>
+<p style="padding-left: 30px;"><a href="https://bitbucket.org/mdecourse/cp2021.git">https://bitbucket.org/mdecourse/cp2021.git</a> -Bitbucket (<a href="https://support.atlassian.com/bitbucket-cloud/docs/publishing-a-website-on-bitbucket-cloud/">如何</a>建立一般網頁, Pages 則必須<a href="https://marketplace.atlassian.com/apps/1212525/pages-for-bitbucket-server?tab=overview&amp;hosting=datacenter">付費</a>)</p>
 <p style="padding-left: 30px;"><a href="https://git.heroku.com/cp2021.git">https://git.heroku.com/cp2021.git</a> (cp2021 ~ cp2025 -- heroku2 At Mde dot TW)</p>
 <p>將同一份資料的改版提交同步至 Github, Gitlab, Bitbucket 與 Heroku:</p>
 <p>Github 上的代號為 origin, 對應至 https://github.com/mdecourse/cp2021.git</p>
@@ -3388,8 +3388,13 @@ pacman -Sy mingw-w64-x86-64-cmake</pre>
 <p style="padding-left: 60px;">何謂倉儲 (repository)?</p>
 <p style="padding-left: 60px;">何謂靜態網頁 (static web site)? 那麼有動態網頁 (dynamic web site)嗎?</p>
 <p style="padding-left: 60px;">何謂(電腦)伺服 (serving)?</p>
-<p style="padding-left: 60px;">何謂 Fossil SCM？</p>
-<h3>Why Git</h3>
+<p style="padding-left: 60px;">何謂 Fossil SCM？</p><h3>Why Git</h3>
+<p><a href="https://github.com/topics/mechanical-engineering">https://github.com/topics/mechanical-engineering</a></p>
+<p><a href="https://sassafras13.github.io/Gitwiththeflow/">https://sassafras13.github.io/Gitwiththeflow/</a></p>
+<p><a href="https://github.com/m2n037/awesome-mecheng">https://github.com/m2n037/awesome-mecheng</a></p>
+<p><a href="https://asmehackathon2020.github.io/">https://asmehackathon2020.github.io/</a></p>
+<p><a href="https://www.bosch.com/stories/bringing-open-source-to-mechanical-engineering/">https://www.bosch.com/stories/bringing-open-source-to-mechanical-engineering/</a></p>
+<p><a href="https://towardsdatascience.com/transition-from-mechanical-engineer-to-machine-learning-engineer-or-data-scientist-786b9887537">https://towardsdatascience.com/transition-from-mechanical-engineer-to-machine-learning-engineer-or-data-scientist-786b9887537</a></p>
 <p><a href="https://git-scm.com/book/zh-tw/v2">Git Book</a> (中文)</p>
 <p><a href="https://link.springer.com/book/10.1007/978-1-4842-5313-7">Beginning Git and Github</a> (英文)</p>
 <p>What can Git do?</p>
@@ -3409,8 +3414,7 @@ pacman -Sy mingw-w64-x86-64-cmake</pre>
 <p>One of the main features of Git is its Branching system. A branch is a copy of a project which you can work on without messing with the repository. This concept has been around for some time, but with Git, it is way faster and more efficient. Branching also comes along with Merging, which is the act of copying the changesets done in a branch back to the source.</p>
 <p>Generally, you create a branch to create or test a new feature and merge that branch back when you are satisfied with the work.</p>
 <p>There is also a simple concept that you might use a lot: Stashing.</p>
-<p>Stashing is the act of safely putting away your current edits so that you have clean environment to work on something completely different. You might want to use stashing when you are playing around or testing a feature but need to work on a new feature in priority. So, you stash your changes away and begin to write that feature. After you are done, you can get your changes back and apply them to your current working environment.</p>
-<h3>Git Push</h3>
+<p>Stashing is the act of safely putting away your current edits so that you have clean environment to work on something completely different. You might want to use stashing when you are playing around or testing a feature but need to work on a new feature in priority. So, you stash your changes away and begin to write that feature. After you are done, you can get your changes back and apply them to your current working environment.</p><h3>Git Push</h3>
 <p>將近端改版資料新增提交等步驟都在近端完成, 但是 git push 則是要將改版資料推向遠端倉儲.</p>
 <p>共有三種方式可以取得 git push 的使用授權:</p>
 <ol>
@@ -7230,7 +7234,7 @@ browser.timer.set_interval(bunnyRotate, 30)
 <p>Nat - 虛擬主機可以藉由實體主機的網路架構上網, 但必須透過 Port Mapping 才能以實體主機的網路位址設為聯外 server.</p>
 <p>Host-only Adaptor - 虛擬主機的網路設定自外於任何聯外網路, 因此無法直接上網, 但各 Host 間同群電腦可以互通.</p>
 <p>Bridged Adaptor - 虛擬主機的網路設定與實體主機的網路位階相同, 若實體主機位於外部網段, 則虛擬主機可設為聯外 server.</p>
-<p><a href="https://link.springer.com/content/pdf/10.1007%2F978-3-319-92429-8.pdf">System Programming in Unix/Linux</a> (校園網路下載電子書)</p>
+<p><a href="https://link.springer.com/content/pdf/10.1007%2F978-3-319-92429-8.pdf">Systems Programming in Unix/Linux</a> (校園網路下載電子書)</p>
 <h4>Github Actions:</h4>
 <p style="padding-left: 30px;"><a href="https://github.com/features/actions">https://github.com/features/actions</a></p>
 <h4 style="padding-left: 30px;">應用範例:</h4>
