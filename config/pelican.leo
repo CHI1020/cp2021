@@ -6,9 +6,9 @@
 <preferences/>
 <find_panel_settings/>
 <vnodes>
-<v t="yen.20170108171605.1"><vh>@settings</vh>
-<v t="yen.20170108171605.2"><vh>@data qt-gui-plugin-style-sheet</vh></v>
-<v t="yen.20170108171605.3"><vh>@string initial_split_orientation = horizontal</vh></v>
+<v t="yen.20210711155426.1"><vh>@settings</vh>
+<v t="yen.20210711155426.2"><vh>@data qt-gui-plugin-style-sheet</vh></v>
+<v t="yen.20210711155426.3"><vh>@string initial_split_orientation = horizontal</vh></v>
 </v>
 <v t="yen.20170108171733.1"><vh>@path ../</vh>
 <v t="leo.20180115150519.1"><vh>@edit index.html</vh></v>
@@ -48,11 +48,10 @@
 </v>
 </v>
 <v t="yen.20170108171733.71"><vh>@path markdown</vh>
-<v t="yen.20170108171733.81"><vh>@path pages</vh>
-<v t="yen.20170108171733.82"><vh>@edit pages_1.md</vh></v>
-</v>
+<v t="yen.20170108171733.81"><vh>@path pages</vh></v>
 </v>
 <v t="leo.20170710022054.1"><vh>可以另建節點存放 markdown 目錄下的 md 檔案</vh></v>
+<v t="yen.20170108171733.82"><vh>@edit pages_1.md</vh></v>
 <v t="leo.20170710022041.1"><vh>@path markdown</vh>
 <v t="leo.20180115115910.1"><vh>2021</vh>
 <v t="leo.20180423103639.1"><vh>2021 Fall CP 課程</vh>
@@ -88,8 +87,75 @@ g.es("admin pelican Github 執行完畢")
 <t tx="leo.20180115093726.1"></t>
 <t tx="leo.20180115115910.1"></t>
 <t tx="leo.20180423103639.1"></t>
-<t tx="yen.20170108171605.1"></t>
-<t tx="yen.20170108171605.2">QTreeWidget {
+<t tx="yen.20170108171733.1"></t>
+<t tx="yen.20170108171733.2">@language python
+import os
+
+os.system("pelican markdown -o blog -s local_publishconf.py")
+g.es("admin pelican 近端執行完畢")
+
+
+</t>
+<t tx="yen.20170108171733.5"></t>
+<t tx="yen.20170108171733.71"></t>
+<t tx="yen.20170108171733.81"></t>
+<t tx="yen.20170108171733.83">sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt
+
+</t>
+<t tx="yen.20170108171930.1">@language python
+import os
+import subprocess
+import threading
+import http.server, ssl
+
+def domake():
+    # build directory
+    os.chdir("./../")
+    server_address = ('localhost', 5443)
+    httpd = http.server.HTTPServer(server_address, http.server.SimpleHTTPRequestHandler)
+    httpd.socket = ssl.wrap_socket(httpd.socket,
+                                   server_side=True,
+                                   certfile='localhost.crt',
+                                   keyfile='localhost.key',
+                                   ssl_version=ssl.PROTOCOL_TLSv1)
+    print(os.getcwd())
+    print("5443 https server started")
+    httpd.serve_forever()
+
+# 利用執行緒執行 https 伺服器
+make = threading.Thread(target=domake)
+make.start()</t>
+<t tx="yen.20170108171939.1">@language python
+import os
+import subprocess
+import threading
+import socket
+import http.server, ssl
+
+class HTTPServerV6(http.server.HTTPServer):
+    address_family = socket.AF_INET6
+  
+def domake():
+    # build directory
+    os.chdir("./../")
+    ipv6_address = '::1'
+    server_address = (ipv6_address, 6443)
+    #httpd = http.server.HTTPServer(server_address, http.server.SimpleHTTPRequestHandler)
+    httpd = HTTPServerV6(server_address, http.server.SimpleHTTPRequestHandler)
+    httpd.socket = ssl.wrap_socket(httpd.socket,
+                                   server_side=True,
+                                   certfile='localhost.crt',
+                                   keyfile='localhost.key',
+                                   ssl_version=ssl.PROTOCOL_TLSv1)
+    print("6443 https server started")
+    httpd.serve_forever()
+
+# 利用執行緒執行 https 伺服器
+make = threading.Thread(target=domake)
+make.start()</t>
+<t tx="yen.20170224232341.1"></t>
+<t tx="yen.20210711155426.1"></t>
+<t tx="yen.20210711155426.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/
     background-color: #ffffec; /* Leo's traditional tree color */
     selection-color: black; /* was white */
@@ -162,74 +228,7 @@ QLineEdit#editorLabel {
     border: 2px;
     margin: 2px;
 }</t>
-<t tx="yen.20170108171605.3">horizontal: body pane to the left
+<t tx="yen.20210711155426.3">horizontal: body pane to the left
 vertical: body pane on the botton</t>
-<t tx="yen.20170108171733.1"></t>
-<t tx="yen.20170108171733.2">@language python
-import os
-
-os.system("pelican markdown -o blog -s local_publishconf.py")
-g.es("admin pelican 近端執行完畢")
-
-
-</t>
-<t tx="yen.20170108171733.5"></t>
-<t tx="yen.20170108171733.71"></t>
-<t tx="yen.20170108171733.81"></t>
-<t tx="yen.20170108171733.83">sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt
-
-</t>
-<t tx="yen.20170108171930.1">@language python
-import os
-import subprocess
-import threading
-import http.server, ssl
-
-def domake():
-    # build directory
-    os.chdir("./../")
-    server_address = ('localhost', 5443)
-    httpd = http.server.HTTPServer(server_address, http.server.SimpleHTTPRequestHandler)
-    httpd.socket = ssl.wrap_socket(httpd.socket,
-                                   server_side=True,
-                                   certfile='localhost.crt',
-                                   keyfile='localhost.key',
-                                   ssl_version=ssl.PROTOCOL_TLSv1)
-    print(os.getcwd())
-    print("5443 https server started")
-    httpd.serve_forever()
-
-# 利用執行緒執行 https 伺服器
-make = threading.Thread(target=domake)
-make.start()</t>
-<t tx="yen.20170108171939.1">@language python
-import os
-import subprocess
-import threading
-import socket
-import http.server, ssl
-
-class HTTPServerV6(http.server.HTTPServer):
-    address_family = socket.AF_INET6
-  
-def domake():
-    # build directory
-    os.chdir("./../")
-    ipv6_address = '::1'
-    server_address = (ipv6_address, 6443)
-    #httpd = http.server.HTTPServer(server_address, http.server.SimpleHTTPRequestHandler)
-    httpd = HTTPServerV6(server_address, http.server.SimpleHTTPRequestHandler)
-    httpd.socket = ssl.wrap_socket(httpd.socket,
-                                   server_side=True,
-                                   certfile='localhost.crt',
-                                   keyfile='localhost.key',
-                                   ssl_version=ssl.PROTOCOL_TLSv1)
-    print("6443 https server started")
-    httpd.serve_forever()
-
-# 利用執行緒執行 https 伺服器
-make = threading.Thread(target=domake)
-make.start()</t>
-<t tx="yen.20170224232341.1"></t>
 </tnodes>
 </leo_file>

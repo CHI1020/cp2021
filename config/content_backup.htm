@@ -3115,11 +3115,11 @@ set path_flutter=%Disk%:\android\sdk\tools;%Disk%:\android\sdk\tools\bin;%Disk%:
  
 set path_vscode=%Disk%:\vscode;</pre>
 <h4>參考資料:</h4>
-<p style="padding-left: 30px;"><a href="http://mde.tw/cp2019/content/Task2.html">http://mde.tw/cp2019/content/Task2.html</a> </p>
-<p style="padding-left: 30px;"><a href="http://mde.tw/cp2019/content/Flutter.html">http://mde.tw/cp2019/content/Flutter.html</a> </p>
-<p style="padding-left: 30px;"><a href="http://mde.tw/cp2019/content/Flutter%20Web.html">http://mde.tw/cp2019/content/Flutter%20Web.html</a> </p>
-<p style="padding-left: 30px;"><a href="http://mde.tw/cp2019/content/DartLang.html">http://mde.tw/cp2019/content/DartLang.html</a> </p>
-<p style="padding-left: 30px;"><a href="http://mde.tw/cp2019/content/DartLang.html">http://mde.tw/cp2019/content/DartLang.html</a> </p>
+<p style="padding-left: 30px;"><a href="http://mde.tw/cp2019/content/Task2.html">http://mde.tw/cp2019/content/Task2.html</a></p>
+<p style="padding-left: 30px;"><a href="http://mde.tw/cp2019/content/Flutter.html">http://mde.tw/cp2019/content/Flutter.html</a></p>
+<p style="padding-left: 30px;"><a href="http://mde.tw/cp2019/content/Flutter%20Web.html">http://mde.tw/cp2019/content/Flutter%20Web.html</a></p>
+<p style="padding-left: 30px;"><a href="http://mde.tw/cp2019/content/DartLang.html">http://mde.tw/cp2019/content/DartLang.html</a></p>
+<p style="padding-left: 30px;"><a href="http://mde.tw/cp2019/content/DartLang.html">http://mde.tw/cp2019/content/DartLang.html</a></p>
 </div>
 </div><h3>Rust</h3>
 <p>2021 計算機程式主要透過網際 Brython 讓學員利用 Python 解決相關機械設計過程可能遭遇的問題, 接下來則將透過 Flask 編寫網際程式, 目的除了進行網際內容管理外, 也希望能夠在 Server 部署 CoppeliaSim headless server, 並利用影像串流將機電系統模擬的場景, 傳輸至使用者瀏覽器中, 以便進行後續的虛實整合模擬與控制, 其中 Rust 首先將扮演的角色為: <a href="https://bheisler.github.io/post/calling-rust-in-python/">讓 Python 能夠呼叫 Rust 所編寫的動態程式庫</a>, 或者採用 Rust 與 Python 程式能夠雙向溝通的 <a href="https://pyo3.rs/v0.14.1/">PyO3</a>, 如此 <a href="https://github.com/KmolYuan/metaheuristics-nature-rs">https://github.com/KmolYuan/metaheuristics-nature-rs</a> 中的演化運算程式庫, 便可以讓伺服器端的 Python 程式進行機械設計相關的演化運算.</p>
@@ -3144,7 +3144,53 @@ set path_vscode=%Disk%:\vscode;</pre>
 <h4>Why Python users may need Rust:</h4>
 <p style="padding-left: 30px;"><a href="https://developers.redhat.com/blog/2017/11/16/speed-python-using-rust#why_does_it_matter_for_a_python_developer_">Speed up your python using Rust</a></p>
 <p><a href="https://github.com/rust-lang/book">https://github.com/rust-lang/book</a></p>
-<p><a href="http://stevedonovan.github.io/rust-gentle-intro/">http://stevedonovan.github.io/rust-gentle-intro/</a></p>
+<p><a>http://stevedonovan.github.io/rust-gentle-intro/</a></p>
+<h4>Web framework:</h4>
+<p style="padding-left: 30px;"><a href="https://github.com/actix/actix-web">https://github.com/actix/actix-web</a></p>
+<p>cargo.toml</p>
+<pre class="brush:rust;auto-links:false;toolbar:false" contenteditable="false">[package]
+name = "hello-actix"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+actix-web = "3"</pre>
+<p>main.rs</p>
+<pre class="brush:rust;auto-links:false;toolbar:false" contenteditable="false">use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
+
+#[get("/")]
+async fn hello() -&gt; impl Responder {
+    HttpResponse::Ok()
+        .content_type("text/html; charset=utf-8")
+        .body("速度很快!!")
+}
+
+#[post("/echo")]
+async fn echo(req_body: String) -&gt; impl Responder {
+    HttpResponse::Ok().body(req_body)
+}
+
+async fn manual_hello() -&gt; impl Responder {
+    HttpResponse::Ok().body("Hey there!")
+}
+
+
+#[actix_web::main]
+async fn main() -&gt; std::io::Result&lt;()&gt; {
+    HttpServer::new(|| {
+        App::new()
+            .service(hello)
+            .service(echo)
+            .route("/hey", web::get().to(manual_hello))
+    })
+    .bind("127.0.0.1:8080")?
+    .run()
+    .await
+}
+</pre>
 <h4>The Rust Programming Language:</h4>
 <p style="padding-left: 30px;"><a href="https://doc.rust-lang.org/stable/book/">https://doc.rust-lang.org/stable/book/</a></p>
 <p style="padding-left: 30px;"><a href="https://lise-henry.github.io/books/trpl2.pdf">https://lise-henry.github.io/books/trpl2.pdf</a></p>
@@ -3155,7 +3201,19 @@ set path_vscode=%Disk%:\vscode;</pre>
 <p style="padding-left: 60px;"><a href="https://github.com/kmollee/algorithm">https://github.com/kmollee/algorithm</a> (Python and Cython)</p>
 <p style="padding-left: 60px;"><a href="https://link.springer.com/book/10.1007/978-3-540-73190-0">Introduction to Genetic Algorithms</a> (校園網路中下載電子書)</p>
 <p style="padding-left: 60px;"><a href="https://link.springer.com/book/10.1007/978-1-4615-5237-6">Multiobjective Scheduling by Genetic Algorithms</a> (校園網路中下載電子書)</p>
-<p></p><h2>RoboDK</h2>
+<p style="padding-left: 30px;"><a href="https://fasterthanli.me/articles/a-half-hour-to-learn-rust">https://fasterthanli.me/articles/a-half-hour-to-learn-rust</a></p>
+<p style="padding-left: 30px;"><a href="https://tourofrust.com/00_zh-tw.html">https://tourofrust.com/00_zh-tw.html</a></p>
+<p style="padding-left: 30px;"><a href="https://towardsdatascience.com/you-want-to-learn-rust-but-you-dont-know-where-to-start-fc826402d5ba">https://towardsdatascience.com/you-want-to-learn-rust-but-you-dont-know-where-to-start-fc826402d5ba</a></p>
+<p style="padding-left: 30px;"><a href="https://rust-lang-nursery.github.io/rust-cookbook/intro.html">https://rust-lang-nursery.github.io/rust-cookbook/intro.html</a></p>
+<p style="padding-left: 30px;"><a href="https://dhghomon.github.io/easy_rust/">https://dhghomon.github.io/easy_rust/</a></p>
+<p style="padding-left: 30px;"><a href="https://serokell.io/blog/rust-guide#data-ownership-model">https://serokell.io/blog/rust-guide#data-ownership-model</a></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/zF34dRivLOw" title="YouTube video player" width="560"></iframe></p><h3>Haskell</h3>
+<p><a href="https://pandoc.org/">https://pandoc.org/</a> 就是採用 Haskell 編寫.</p>
+<p><a href="https://serokell.io/blog/10-reasons-to-use-haskell">https://serokell.io/blog/10-reasons-to-use-haskell</a></p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4842-4480-7">Practical Haskell</a> (校園網路中下載電子書)</p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4842-3739-7">Practical Web Development with Haskell</a> (校園中下載電子書)</p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4302-6251-0">Beginning Haskell</a> (校園網路下載電子書)</p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4842-4507-1">Haskell Quick Syntax Reference</a> (校園網路下載電子書)</p><h2>RoboDK</h2>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/nv7mOBDA_Z8" title="YouTube video player" width="560"></iframe></p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/dkRaf5n3OKs" title="YouTube video player" width="560"></iframe></p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/3EqzMzszMV0" title="YouTube video player" width="560"></iframe></p>
@@ -3389,10 +3447,10 @@ pacman -Sy mingw-w64-x86-64-cmake</pre>
 <p style="padding-left: 60px;">何謂靜態網頁 (static web site)? 那麼有動態網頁 (dynamic web site)嗎?</p>
 <p style="padding-left: 60px;">何謂(電腦)伺服 (serving)?</p>
 <p style="padding-left: 60px;">何謂 Fossil SCM？</p><h3>Why Git</h3>
-<p><a href="https://github.com/topics/mechanical-engineering">https://github.com/topics/mechanical-engineering</a></p>
+<p><a href="https://asmehackathon2020.github.io/">https://asmehackathon2020.github.io/</a></p>
 <p><a href="https://sassafras13.github.io/Gitwiththeflow/">https://sassafras13.github.io/Gitwiththeflow/</a></p>
 <p><a href="https://github.com/m2n037/awesome-mecheng">https://github.com/m2n037/awesome-mecheng</a></p>
-<p><a href="https://asmehackathon2020.github.io/">https://asmehackathon2020.github.io/</a></p>
+<p><a href="https://github.com/topics/mechanical-engineering">https://github.com/topics/mechanical-engineering</a></p>
 <p><a href="https://www.bosch.com/stories/bringing-open-source-to-mechanical-engineering/">https://www.bosch.com/stories/bringing-open-source-to-mechanical-engineering/</a></p>
 <p><a href="https://towardsdatascience.com/transition-from-mechanical-engineer-to-machine-learning-engineer-or-data-scientist-786b9887537">https://towardsdatascience.com/transition-from-mechanical-engineer-to-machine-learning-engineer-or-data-scientist-786b9887537</a></p>
 <p><a href="https://git-scm.com/book/zh-tw/v2">Git Book</a> (中文)</p>
@@ -3430,6 +3488,7 @@ pacman -Sy mingw-w64-x86-64-cmake</pre>
 <p style="padding-left: 30px;">語法為 utl = git@&lt;putty_session&gt;:mdecourse/report.git</p>
 <p></p>
 <h2>解題練習</h2>
+<p>這個頁面已經將 ggame 從 brython 模組轉為 javascript 模組(<a href="http://mde.tw/cp2021/content/%E5%AD%B8%E7%BF%92%E7%A8%8B%E5%BC%8F.html">方法</a>), 名稱為 brython_modules.js 放在 downloads 目錄中.</p>
 <h4>請利用下列網際編輯器, 開始學習如何使用 Python 解決問題, 一般機械設計流程會面臨什麼問題?</h4>
 <p><a href="https://link.springer.com/book/10.1007/978-3-030-20290-3">A Beginners Guide to Python 3 Programming</a> (校園網路下載電子書)</p>
 <p><a href="https://link.springer.com/book/10.1007/978-3-030-25943-3">Advanced Guide to Python 3 Programming</a> (校園網路下載電子書)</p>
