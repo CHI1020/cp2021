@@ -5736,7 +5736,171 @@ doc["fourbar"].bind('click', Fourbar.prog)
 <h4>參考資料:</h4>
 <p><a href="/downloads/turtle_intro.pdf">turtle_intro.pdf</a></p>
 <p><a href="/downloads/turtle_intro2.pdf">turtle_intro2.pdf</a></p>
-<p>其他擷取程式的方式: <a href="http://mde.tw/2017springvcp/blog/web-based-python.html">http://mde.tw/2017springvcp/blog/web-based-python.html</a></p><h3>期中專案</h3>
+<p>其他擷取程式的方式: <a href="http://mde.tw/2017springvcp/blog/web-based-python.html">http://mde.tw/2017springvcp/blog/web-based-python.html</a></p><h3>改寫練習</h3>
+<p>如何將 <a href="https://medium.com/swlh/sick-of-javascript-just-use-browser-python-4b9679efe08b">https://medium.com/swlh/sick-of-javascript-just-use-browser-python-4b9679efe08b</a> 中的範例, 直接放入<a href="http://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>環境中執行? 又如何利用 <a href="https://github.com/mdecourse/webgame">https://github.com/mdecourse/webgame</a> 作為 template, 將程式碼轉移至獨立的網頁中運行.</p>
+<p>在對上述特定網頁上的程式進行改寫至<a href="http://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>與 <a href="https://github.com/mdecourse/webgame">webgame template</a> 之前, 我們先來看看, 以下這個在<a href="http://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>網頁中的 <a href="https://gist.github.com/mdecourse/379f02862e9dfd95dbc5241d4faa2ad4">clock 程式</a>, 到底是如何完成的.</p>
+<p>開始:</p>
+<p style="padding-left: 30px;">因為<a href="http://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>的網頁中已經事先建立 id="brython_div" 的 div 標註, 因此隨後可以利用此一 div, 插入其他所需要的 html 內容, 例如: 放入指定 id 名稱的 canvas 標註.</p>
+<p style="padding-left: 30px;">原始的<a href="https://gist.github.com/mdecourse/3db55f124185def5aac8e5d51579c484">程式碼</a>. 總計需要:</p>
+<p style="padding-left: 30px;">id = "game-board" 的 canvas</p>
+<p style="padding-left: 30px;">id = "score" 的 h3 或 div</p>
+<p style="padding-left: 30px;">id = "high-score" 的 div</p>
+<p style="padding-left: 30px;">id= instructions-btn 的 button</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 從 browser 導入 document 並設為 doc
+from browser import document as doc
+# 使用者可以透過 window 當作介面使用其他 Javascript 功能
+from browser import html, window
+# 用於定時執行特定函式
+import browser.timer
+# 導入數學模組
+import math
+# 導入亂數模組
+from random import random, randint
+ 
+def game():
+    global px, py, tc, gs, ax, ay, trail, tail, score
+    # px 為 snake 第一個點的 x 座標, 增量值為 xv
+    px += xv
+    py += yv
+    # 若 px 為負值則設定為 tc -1, 表示 tc 為 x 方向 limit
+    if px &lt; 0:
+        px = tc-1
+    if px &gt; tc-1:
+        px = 0
+    if py &lt; 0:
+        py = tc-1
+    if py &gt; tc-1:
+        py = 0
+    ctx.fillStyle = "black"
+    # 畫布填入黑色
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    # snake 為 lime 色
+    ctx.fillStyle = "lime"
+    # trail 為節數
+    # gs 為方塊 pixel 數
+    for i in range(len(trail)):
+        ctx.fillRect(trail[i][0]*gs, trail[i][1]*gs, gs-2, gs-2)
+        if trail[i][0] == px and trail[i][1] == py:
+            score = score if paused else 0
+            # snake 共有五節
+            tail = 5
+    trail.insert(0, [px, py])
+    while len(trail) &gt; tail:
+        trail.pop()
+    # ax, ay 為紅點座標
+    if ax == px and ay == py:
+        tail += 1
+        ax = math.floor(random()*tc)
+        ay = math.floor(random()*tc)
+        score += 1
+    update_score(score)
+    ctx.fillStyle = "red"
+    ctx.fillRect(ax*gs, ay*gs, gs-2, gs-2)
+ 
+def update_score(new_score):
+    global high_score
+    score.value = "Score: " + str(new_score)
+    #doc["score"].innerHTML = "Score: " + str(new_score)
+    if new_score &gt; high_score:
+        high_score.value = "High Score: " + str(new_score)
+        #doc["high-score"].innerHTML = "High Score: " + str(new_score)
+        high_score = new_score
+ 
+def key_push(evt):
+    global xv, yv, pre_pause, paused
+    key = evt.keyCode
+    if key == 37 and not paused:
+        xv = -1
+        yv = 0
+    elif key == 38 and not paused:
+        xv = 0
+        yv = -1
+    elif key == 39 and not paused:
+        xv = 1
+        yv = 0
+    elif key == 40 and not paused:
+        xv = 0
+        yv = 1
+    elif key == 32:
+        temp = [xv, yv]
+        xv = pre_pause[0]
+        yv = pre_pause[1]
+        pre_pause = [*temp]
+        paused = not paused
+ 
+def update_score(new_score):
+    global high_score
+    score_doc.value = "Score: " + str(new_score)
+    if new_score &gt; high_score:
+        high_score_doc.value = "High Score: " + str(new_score)
+        high_score = new_score
+ 
+def key_push(evt):
+    global xv, yv, pre_pause, paused
+    key = evt.keyCode
+    if key == 37 and not paused:
+        xv = -1
+        yv = 0
+    elif key == 38 and not paused:
+        xv = 0
+        yv = -1
+    elif key == 39 and not paused:
+        xv = 1
+        yv = 0
+    elif key == 40 and not paused:
+        xv = 0
+        yv = 1
+    elif key == 32:
+        temp = [xv, yv]
+        xv = pre_pause[0]
+        yv = pre_pause[1]
+        pre_pause = [*temp]
+        paused = not paused
+ 
+def show_instructions(evt):
+    print("test")
+     
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width = 800, height = 800)
+canvas.id = "game-board"
+canvas.width = 800
+canvas.height = 600
+brython_div = doc["brython_div"]
+brython_div &lt;= canvas
+ 
+score_doc = html.DIV("score")
+score_doc.id = "score"
+brython_div &lt;= score_doc
+ 
+high_score_doc = html.DIV("high-score")
+high_score_doc.id = "high-score"
+brython_div &lt;= high_score_doc
+ 
+button = html.BUTTON("Button")
+button.id = "instructions-btn"
+brython_div &lt;= button
+ 
+score = 0
+high_score = 0
+ 
+px = py = 10
+# gs*tc = canvas width and height
+gs = 20
+tc = 40
+ax = ay = 15
+xv = yv = 0
+trail = []
+tail = 5
+ 
+pre_pause = [0,0]
+paused = False
+ctx = canvas.getContext("2d")
+doc.addEventListener("keydown", key_push)
+instructions_btn = doc["instructions-btn"]
+instructions_btn.addEventListener("click", show_instructions)
+browser.timer.set_interval(game, 1000/15)</pre>
+<p style="padding-left: 30px;"></p>
+<p></p><h3>期中專案</h3>
 <p>這個計算機程式<span style="background-color: #ffff99;">個人專案</span>將從 Week1-Week7 期間執行, 並在 Week8-Week9 採網際簡報 (<a href="https://revealjs.com/">Reveal.js</a>) 與 OBS + Youtube 直播並錄影方式發表.</p>
 <h4>個人專案 template:</h4>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecourse/webgame">https://github.com/mdecourse/webgame</a></p>
@@ -5750,11 +5914,13 @@ doc["fourbar"].bind('click', Fourbar.prog)
 <p style="padding-left: 30px;"><a href="https://ggame.readthedocs.io/en/latest/index.html">https://ggame.readthedocs.io/en/latest/index.html</a></p>
 <p><a href="http://mde.tw/cp2021/downloads/ggame-readthedocs-io-en-latest.pdf">http://mde.tw/cp2021/downloads/ggame-readthedocs-io-en-latest.pdf</a></p>
 <h4>參考資料:</h4>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4302-4717-3">Foundation Game Design with HTML5 and JavaScript</a></p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4302-5801-8">Advanced Game Design with HTML5 and JavaScript</a></p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-3252-1">Introducing JavaScript Game Development </a></p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4302-6338-8">Physics for JavaScript Games, Animation, and Simulations</a></p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4302-6539-9">Building JavaScript Games</a></p><h2>ggame</h2>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4302-4717-3">Foundation Game Design with HTML5 and JavaScript</a> (校園網路下載電子書)</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4302-5801-8">Advanced Game Design with HTML5 and JavaScript</a> (校園網路下載電子書)</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-3252-1">Introducing JavaScript Game Development</a> (校園網路下載電子書)</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4302-6338-8">Physics for JavaScript Games, Animation, and Simulations</a> (校園網路下載電子書)</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4302-6539-9">Building JavaScript Games</a> (校園網路下載電子書)</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-0952-3">Build Your Own 2D Game Engine and Create Great Web Games</a> (校園網路下載電子書)</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-2583-7">Building a 2D Game Physics Engine</a> (校園網路下載電子書)</p><h2>ggame</h2>
 <p>參考的網際程式庫: <a href="https://github.com/mdecourse/ggame">https://github.com/mdecourse/ggame</a>, 使用說明: <a href="https://ggame.readthedocs.io/en/latest/index.html">https://ggame.readthedocs.io/en/latest/index.html</a></p>
 <p>由於此 ggame 程式庫使用</p>
 <p>jquery-3.3.1.min.js - <a href="https://jquery.com/">https://jquery.com/</a> <br/>jquery-ui.1.12.1.min.js - <a href="https://jqueryui.com/">https://jqueryui.com/</a> <br/>pixi-4.8.2.min.js - <a href="http://www.pixijs.com/">http://www.pixijs.com/</a> <br/>buzz-1.2.1.js - <a href="http://buzz.jaysalvat.com/">http://buzz.jaysalvat.com/</a> <br/>brython-3.7.0.js - <a href="https://brython.info/">https://brython.info/</a> <br/>brython_stdlib-3.7.0.js</p>
