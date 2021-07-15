@@ -2328,7 +2328,161 @@ doc["fourbar"].bind('click', Fourbar.prog)
 </script>
 </p>
 <!-- fourbar linkage ends -->
-<p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="clock1">clock1</button><button id="fourbar">Fourbar</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="nfulist">nfulist</button><button id="clear">Clear</button></p>
+<p></p>
+<!-- snake starts -->
+<script type="text/python3">
+from browser import document as doc
+# 導入位於 static 目錄下的 beditor.py 
+import beditor
+# 利用 beditor.py 中的 editor 類別建立案例, 對應到 kw1
+Snake = beditor.editor("""# 從 browser 導入 document 並設為 doc
+from browser import document as doc
+# 使用者可以透過 window 當作介面使用其他 Javascript 功能
+from browser import html, window
+# 用於定時執行特定函式
+import browser.timer
+# 導入數學模組
+import math
+# 導入亂數模組
+from random import random, randint
+
+def update_score(new_score):
+    global high_score
+    score_doc.innerHTML = "Score: " + str(new_score)
+    if new_score > high_score:
+        high_score_doc.innerHTML = "High Score: " + str(new_score)
+        high_score = new_score
+    
+def game():
+    global px, py, tc, gs, ax, ay, trail, tail, score
+    # px 為 snake 第一個點的 x 座標, 增量值為 xv
+    px += xv
+    py += yv
+    # 允許穿越四面牆, 以 tc 表示牆面座標極限
+    # 若 px 為負值則設定為 tc -1, 表示 tc 為 x 方向 limit
+    # x 座標方向的穿牆設定
+    if px < 0:
+        px = tc-1
+    if px > tc-1:
+        px = 0
+    # y 座標方向的穿牆設定
+    if py < 0:
+        py = tc-1
+    if py > tc-1:
+        py = 0
+    ctx.fillStyle = "black"
+    # 畫布填入黑色
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    # snake 為 lime 色
+    ctx.fillStyle = "lime"
+    # trail 為數列, 代表 snake 各節 [x,y] 座標
+    # trail = [[x0,y0], [x1, y1], [x2, y2]...]
+    # gs 為方塊邊長 pixel 數
+    for i in range(len(trail)):
+        # https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes
+        # fillRect(x, y, width, height)
+        ctx.fillRect(trail[i][0]*gs, trail[i][1]*gs, gs-2, gs-2)
+        # 若 snake 第一節座標 (px, py)  穿過身體任一節, 則 score 歸零
+        if trail[i][0] == px and trail[i][1] == py:
+            score = score if paused else 0
+            # snake reset 為五節
+            tail = 5
+    # trail 數列以碰到的 [px, py] 座標數列插入作為第一節
+    trail.insert(0, [px, py])
+    while len(trail) > tail:
+        # pop() 內建移除數列最後一個 element
+        trail.pop()
+    # ax, ay 為紅點座標
+    # 當 snake 第一節座標[px, py] 與紅色食物座標 [ax, ay] 重合
+    # 則 tail 增量, 即多一節且得分加 1, 然後食物座標 [ax, ay] 重新以亂數定位
+    if ax == px and ay == py:
+        tail += 1
+        ax = math.floor(random()*tc)
+        ay = math.floor(random()*tc)
+        score += 1
+    # 更新計分顯示
+    update_score(score)
+    ctx.fillStyle = "red"
+    ctx.fillRect(ax*gs, ay*gs, gs-2, gs-2)
+  
+def key_push(evt):
+    global xv, yv, pre_pause, paused
+    key = evt.keyCode
+    # 37 is left arrow key
+    # 74 is j key
+    if key == 74 and not paused:
+        xv = -1
+        yv = 0
+    # 38 is up arrow key
+    # 73 is i key
+    elif key == 73 and not paused:
+        xv = 0
+        yv = -1
+    # 39 is right arrow key
+    # 76 is l key
+    elif key == 76 and not paused:
+        xv = 1
+        yv = 0
+    # 40 is down arrow key
+    # 77 is m key
+    elif key == 77 and not paused:
+        xv = 0
+        yv = 1
+    # 32 is pause key
+    # 80 is p key
+    elif key == 80:
+        temp = [xv, yv]
+        xv = pre_pause[0]
+        yv = pre_pause[1]
+        pre_pause = [*temp]
+        paused = not paused
+  
+def show_instructions(evt):
+        window.alert("keys to control: i=up, m=down, j=left, l=right, p=pause")
+      
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width = 600, height = 600)
+canvas.id = "game-board"
+brython_div = doc["brython_div"]
+brython_div <= canvas
+  
+score_doc = html.DIV("score")
+score_doc.id = "score"
+brython_div <= score_doc
+  
+high_score_doc = html.DIV("high-score")
+high_score_doc.id = "high-score"
+brython_div <= high_score_doc
+  
+button = html.BUTTON("Keys to control")
+button.id = "instructions-btn"
+brython_div <= button
+  
+score = 0
+high_score = 0
+  
+px = py = 10
+# gs*tc = canvas width and height
+gs = 20
+tc = 30
+ax = ay = 15
+xv = yv = 0
+trail = []
+tail = 5
+  
+pre_pause = [0,0]
+paused = False
+ctx = canvas.getContext("2d")
+doc.addEventListener("keydown", key_push)
+instructions_btn = doc["instructions-btn"]
+instructions_btn.addEventListener("click", show_instructions)
+browser.timer.set_interval(game, 1000/15)
+""", "kw_editor", "kw_console", "kw__container", "kw_py_src")
+# id 為 "snake 的按鈕點按時, 執行 Snake 物件中的 prog 方法
+doc["snake"].bind('click', Snake.prog)
+</script>
+<!-- snake ends -->
+<p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="snake">貪食蛇</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="clock1">clock1</button><button id="fourbar">Fourbar</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="nfulist">nfulist</button><button id="clear">Clear</button></p>
 <h4>參考資料:</h4>
 <p><a href="/downloads/turtle_intro.pdf">turtle_intro.pdf</a></p>
 <p><a href="/downloads/turtle_intro2.pdf">turtle_intro2.pdf</a></p>
@@ -2457,8 +2611,7 @@ var width = window.innerWidth;
     drawCurves();
     updateDottedLines();
 </script>
-</p>
-<h3>Brython</h3>
+</p><h3>Brython</h3>
 <p><a href="https://github.com/brython-dev/brython/wiki/How-Brython-works">https://github.com/brython-dev/brython/wiki/How-Brython-works</a> </p>
 <p>上一頁的網際 Python 是透過 <a href="https://brython.info/">https://brython.info/</a> 完成, 當使用者在網頁中執行 Python 程式時, 透過 Brython 即時轉為 Javascript 後執行.</p>
 <p>Brython Google Group: <a href="https://groups.google.com/g/brython">https://groups.google.com/g/brython</a></p>
@@ -5732,13 +5885,173 @@ doc["fourbar"].bind('click', Fourbar.prog)
 </script>
 </p>
 <!-- fourbar linkage ends -->
-<p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="clock1">clock1</button><button id="fourbar">Fourbar</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="nfulist">nfulist</button><button id="clear">Clear</button></p>
+<p></p>
+<!-- snake starts -->
+<script type="text/python3">
+from browser import document as doc
+# 導入位於 static 目錄下的 beditor.py 
+import beditor
+# 利用 beditor.py 中的 editor 類別建立案例, 對應到 kw1
+Snake = beditor.editor("""# 從 browser 導入 document 並設為 doc
+from browser import document as doc
+# 使用者可以透過 window 當作介面使用其他 Javascript 功能
+from browser import html, window
+# 用於定時執行特定函式
+import browser.timer
+# 導入數學模組
+import math
+# 導入亂數模組
+from random import random, randint
+
+def update_score(new_score):
+    global high_score
+    score_doc.innerHTML = "Score: " + str(new_score)
+    if new_score > high_score:
+        high_score_doc.innerHTML = "High Score: " + str(new_score)
+        high_score = new_score
+    
+def game():
+    global px, py, tc, gs, ax, ay, trail, tail, score
+    # px 為 snake 第一個點的 x 座標, 增量值為 xv
+    px += xv
+    py += yv
+    # 允許穿越四面牆, 以 tc 表示牆面座標極限
+    # 若 px 為負值則設定為 tc -1, 表示 tc 為 x 方向 limit
+    # x 座標方向的穿牆設定
+    if px < 0:
+        px = tc-1
+    if px > tc-1:
+        px = 0
+    # y 座標方向的穿牆設定
+    if py < 0:
+        py = tc-1
+    if py > tc-1:
+        py = 0
+    ctx.fillStyle = "black"
+    # 畫布填入黑色
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    # snake 為 lime 色
+    ctx.fillStyle = "lime"
+    # trail 為數列, 代表 snake 各節 [x,y] 座標
+    # trail = [[x0,y0], [x1, y1], [x2, y2]...]
+    # gs 為方塊邊長 pixel 數
+    for i in range(len(trail)):
+        # https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes
+        # fillRect(x, y, width, height)
+        ctx.fillRect(trail[i][0]*gs, trail[i][1]*gs, gs-2, gs-2)
+        # 若 snake 第一節座標 (px, py)  穿過身體任一節, 則 score 歸零
+        if trail[i][0] == px and trail[i][1] == py:
+            score = score if paused else 0
+            # snake reset 為五節
+            tail = 5
+    # trail 數列以碰到的 [px, py] 座標數列插入作為第一節
+    trail.insert(0, [px, py])
+    while len(trail) > tail:
+        # pop() 內建移除數列最後一個 element
+        trail.pop()
+    # ax, ay 為紅點座標
+    # 當 snake 第一節座標[px, py] 與紅色食物座標 [ax, ay] 重合
+    # 則 tail 增量, 即多一節且得分加 1, 然後食物座標 [ax, ay] 重新以亂數定位
+    if ax == px and ay == py:
+        tail += 1
+        ax = math.floor(random()*tc)
+        ay = math.floor(random()*tc)
+        score += 1
+    # 更新計分顯示
+    update_score(score)
+    ctx.fillStyle = "red"
+    ctx.fillRect(ax*gs, ay*gs, gs-2, gs-2)
+  
+def key_push(evt):
+    global xv, yv, pre_pause, paused
+    key = evt.keyCode
+    # 37 is left arrow key
+    # 74 is j key
+    if key == 74 and not paused:
+        xv = -1
+        yv = 0
+    # 38 is up arrow key
+    # 73 is i key
+    elif key == 73 and not paused:
+        xv = 0
+        yv = -1
+    # 39 is right arrow key
+    # 76 is l key
+    elif key == 76 and not paused:
+        xv = 1
+        yv = 0
+    # 40 is down arrow key
+    # 77 is m key
+    elif key == 77 and not paused:
+        xv = 0
+        yv = 1
+    # 32 is pause key
+    # 80 is p key
+    elif key == 80:
+        temp = [xv, yv]
+        xv = pre_pause[0]
+        yv = pre_pause[1]
+        pre_pause = [*temp]
+        paused = not paused
+  
+def show_instructions(evt):
+        window.alert("keys to control: i=up, m=down, j=left, l=right, p=pause")
+      
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width = 600, height = 600)
+canvas.id = "game-board"
+brython_div = doc["brython_div"]
+brython_div <= canvas
+  
+score_doc = html.DIV("score")
+score_doc.id = "score"
+brython_div <= score_doc
+  
+high_score_doc = html.DIV("high-score")
+high_score_doc.id = "high-score"
+brython_div <= high_score_doc
+  
+button = html.BUTTON("Keys to control")
+button.id = "instructions-btn"
+brython_div <= button
+  
+score = 0
+high_score = 0
+  
+px = py = 10
+# gs*tc = canvas width and height
+gs = 20
+tc = 30
+ax = ay = 15
+xv = yv = 0
+trail = []
+tail = 5
+  
+pre_pause = [0,0]
+paused = False
+ctx = canvas.getContext("2d")
+doc.addEventListener("keydown", key_push)
+instructions_btn = doc["instructions-btn"]
+instructions_btn.addEventListener("click", show_instructions)
+browser.timer.set_interval(game, 1000/15)
+""", "kw_editor", "kw_console", "kw__container", "kw_py_src")
+# id 為 "snake 的按鈕點按時, 執行 Snake 物件中的 prog 方法
+doc["snake"].bind('click', Snake.prog)
+</script>
+<!-- snake ends -->
+<p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="snake">貪食蛇</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="clock1">clock1</button><button id="fourbar">Fourbar</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="nfulist">nfulist</button><button id="clear">Clear</button></p>
 <h4>參考資料:</h4>
 <p><a href="/downloads/turtle_intro.pdf">turtle_intro.pdf</a></p>
 <p><a href="/downloads/turtle_intro2.pdf">turtle_intro2.pdf</a></p>
-<p>其他擷取程式的方式: <a href="http://mde.tw/2017springvcp/blog/web-based-python.html">http://mde.tw/2017springvcp/blog/web-based-python.html</a></p><h3>改寫練習</h3>
-<p>如何將 <a href="https://medium.com/swlh/sick-of-javascript-just-use-browser-python-4b9679efe08b">https://medium.com/swlh/sick-of-javascript-just-use-browser-python-4b9679efe08b</a> 中的範例, 直接放入<a href="http://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>環境中執行? 又如何利用 <a href="https://github.com/mdecourse/webgame">https://github.com/mdecourse/webgame</a> 作為 template, 將程式碼轉移至獨立的網頁中運行.</p>
-<p>在對上述特定網頁上的程式進行改寫至<a href="http://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>與 <a href="https://github.com/mdecourse/webgame">webgame template</a> 之前, 我們先來看看, 以下這個在<a href="http://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>網頁中的 <a href="https://gist.github.com/mdecourse/379f02862e9dfd95dbc5241d4faa2ad4">clock 程式</a>, 到底是如何完成的.</p>
+<p>其他擷取程式的方式: <a href="http://mde.tw/2017springvcp/blog/web-based-python.html">http://mde.tw/2017springvcp/blog/web-based-python.html</a></p><h3>貪食蛇</h3>
+<p><a href="https://zh.wikipedia.org/wiki/%E8%B4%AA%E9%A3%9F%E8%9B%87">貪食蛇遊戲</a></p>
+<p>在遊戲中, 玩家操控一條細長的直線 (俗稱蛇或蟲), 它會不停前進, 玩家只能操控蛇的頭部朝向, 上下左右, 一路拾起觸碰到之物 (或稱作豆), 並要避免觸碰到自身或者其他障礙物. 每次貪食蛇吃掉一件食物, 它的身體便增長一段. 吃掉一些食物後會使蛇的移動速度逐漸加快, 讓遊戲的難度漸漸變大. 遊戲設計大致分為四面都有牆 (都不可穿越) 以及某部分的牆可以穿越, 以及四面牆都可以穿越的模式.</p>
+<h4>網際 Brython 程式練習:</h4>
+<p style="padding-left: 30px;">以下程式已經將 <a href="https://medium.com/swlh/sick-of-javascript-just-use-browser-python-4b9679efe08b">https://medium.com/swlh/sick-of-javascript-just-use-browser-python-4b9679efe08b</a> 中的範例, 改為可直接放入<a href="http://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>環境中執行.</p>
+<h4 style="padding-left: 30px;">練習1:</h4>
+<p style="padding-left: 60px;">請將下列程式改為以 <a href="https://github.com/mdecourse/webgame">webgame</a> 倉儲作為 template, 將程式碼轉移至獨立的網頁中運行.</p>
+<h4 style="padding-left: 30px;">練習2:</h4>
+<p style="padding-left: 60px;">若紅色方塊座標以亂數產生後, 電腦程式將該座標點告知貪食蛇, 請改寫下列程式, 導引貪食蛇吃下所有紅色方塊食物, 終至前進任何方向移動都無法避免碰觸身體為止.</p>
 <h4>Brython 鍵盤按鍵對應編號:</h4>
 <p style="padding-left: 30px;"><a href="https://brython.info/static_doc/en/keyboard_events.html">https://brython.info/static_doc/en/keyboard_events.html</a></p>
 <p style="padding-left: 30px;">keydown:</p>
@@ -5747,13 +6060,13 @@ doc["fourbar"].bind('click', Fourbar.prog)
 <p style="padding-left: 60px;">j code = 74, left code = 37</p>
 <p style="padding-left: 60px;">l code = 76, right code = 39</p>
 <p style="padding-left: 60px;">p code = 80, pause code = 32</p>
-<h4>開始:</h4>
+<h4>利用 Brython 插入 html:</h4>
 <p style="padding-left: 30px;">因為<a href="http://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>的網頁中已經事先建立 id="brython_div" 的 div 標註, 因此隨後可以利用此一 div, 插入其他所需要的 html 內容, 例如: 放入指定 id 名稱的 canvas 標註.</p>
 <p style="padding-left: 30px;">原始的<a href="https://gist.github.com/mdecourse/3db55f124185def5aac8e5d51579c484">程式碼</a>. 總計需要:</p>
-<p style="padding-left: 30px;">id = "game-board" 的 canvas</p>
-<p style="padding-left: 30px;">id = "score" 的 h3 或 div</p>
-<p style="padding-left: 30px;">id = "high-score" 的 div</p>
-<p style="padding-left: 30px;">id= instructions-btn 的 button</p>
+<p style="padding-left: 30px;">id = "game-board" 的 canvas 標註</p>
+<p style="padding-left: 30px;">id = "score" 的 div 標註</p>
+<p style="padding-left: 30px;">id = "high-score" 的 div 標註</p>
+<p style="padding-left: 30px;">id= instructions-btn 的 button, 用來說明控制按鍵</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 從 browser 導入 document 並設為 doc
 from browser import document as doc
 # 使用者可以透過 window 當作介面使用其他 Javascript 功能
@@ -5777,11 +6090,14 @@ def game():
     # px 為 snake 第一個點的 x 座標, 增量值為 xv
     px += xv
     py += yv
+    # 允許穿越四面牆, 以 tc 表示牆面座標極限
     # 若 px 為負值則設定為 tc -1, 表示 tc 為 x 方向 limit
+    # x 座標方向的穿牆設定
     if px &lt; 0:
         px = tc-1
     if px &gt; tc-1:
         px = 0
+    # y 座標方向的穿牆設定
     if py &lt; 0:
         py = tc-1
     if py &gt; tc-1:
@@ -5791,23 +6107,32 @@ def game():
     ctx.fillRect(0, 0, canvas.width, canvas.height)
     # snake 為 lime 色
     ctx.fillStyle = "lime"
-    # trail 為節數
+    # trail 為數列, 代表 snake 各節 [x,y] 座標
+    # trail = [[x0,y0], [x1, y1], [x2, y2]...]
     # gs 為方塊邊長 pixel 數
     for i in range(len(trail)):
+        # https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes
+        # fillRect(x, y, width, height)
         ctx.fillRect(trail[i][0]*gs, trail[i][1]*gs, gs-2, gs-2)
+        # 若 snake 第一節座標 (px, py)  穿過身體任一節, 則 score 歸零
         if trail[i][0] == px and trail[i][1] == py:
             score = score if paused else 0
-            # snake 共有五節
+            # snake reset 為五節
             tail = 5
+    # trail 數列以碰到的 [px, py] 座標數列插入作為第一節
     trail.insert(0, [px, py])
     while len(trail) &gt; tail:
+        # pop() 內建移除數列最後一個 element
         trail.pop()
     # ax, ay 為紅點座標
+    # 當 snake 第一節座標[px, py] 與紅色食物座標 [ax, ay] 重合
+    # 則 tail 增量, 即多一節且得分加 1, 然後食物座標 [ax, ay] 重新以亂數定位
     if ax == px and ay == py:
         tail += 1
         ax = math.floor(random()*tc)
         ay = math.floor(random()*tc)
         score += 1
+    # 更新計分顯示
     update_score(score)
     ctx.fillStyle = "red"
     ctx.fillRect(ax*gs, ay*gs, gs-2, gs-2)
