@@ -138,7 +138,15 @@ img.add_border {
     <div id="tipue_search_content">解題練習 << <a href='解題練習.html'>Previous</a> <a href='期中專案.html'>Next</a> >> 期中專案<br /><h1>改寫練習</h1>
 <p>如何將 <a href="https://medium.com/swlh/sick-of-javascript-just-use-browser-python-4b9679efe08b">https://medium.com/swlh/sick-of-javascript-just-use-browser-python-4b9679efe08b</a> 中的範例, 直接放入<a href="http://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>環境中執行? 又如何利用 <a href="https://github.com/mdecourse/webgame">https://github.com/mdecourse/webgame</a> 作為 template, 將程式碼轉移至獨立的網頁中運行.</p>
 <p>在對上述特定網頁上的程式進行改寫至<a href="http://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>與 <a href="https://github.com/mdecourse/webgame">webgame template</a> 之前, 我們先來看看, 以下這個在<a href="http://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>網頁中的 <a href="https://gist.github.com/mdecourse/379f02862e9dfd95dbc5241d4faa2ad4">clock 程式</a>, 到底是如何完成的.</p>
-<p>開始:</p>
+<h4>Brython 鍵盤按鍵對應編號:</h4>
+<p style="padding-left: 30px;"><a href="https://brython.info/static_doc/en/keyboard_events.html">https://brython.info/static_doc/en/keyboard_events.html</a></p>
+<p style="padding-left: 30px;">keydown:</p>
+<p style="padding-left: 60px;">i code = 73 , up code = 38</p>
+<p style="padding-left: 60px;">m code = 77, down code = 40</p>
+<p style="padding-left: 60px;">j code = 74, left code = 37</p>
+<p style="padding-left: 60px;">l code = 76, right code = 39</p>
+<p style="padding-left: 60px;">p code = 80, pause code = 32</p>
+<h4>開始:</h4>
 <p style="padding-left: 30px;">因為<a href="http://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>的網頁中已經事先建立 id="brython_div" 的 div 標註, 因此隨後可以利用此一 div, 插入其他所需要的 html 內容, 例如: 放入指定 id 名稱的 canvas 標註.</p>
 <p style="padding-left: 30px;">原始的<a href="https://gist.github.com/mdecourse/3db55f124185def5aac8e5d51579c484">程式碼</a>. 總計需要:</p>
 <p style="padding-left: 30px;">id = "game-board" 的 canvas</p>
@@ -155,7 +163,14 @@ import browser.timer
 import math
 # 導入亂數模組
 from random import random, randint
- 
+
+def update_score(new_score):
+    global high_score
+    score_doc.innerHTML = "Score: " + str(new_score)
+    if new_score &gt; high_score:
+        high_score_doc.innerHTML = "High Score: " + str(new_score)
+        high_score = new_score
+    
 def game():
     global px, py, tc, gs, ax, ay, trail, tail, score
     # px 為 snake 第一個點的 x 座標, 增量值為 xv
@@ -195,102 +210,72 @@ def game():
     update_score(score)
     ctx.fillStyle = "red"
     ctx.fillRect(ax*gs, ay*gs, gs-2, gs-2)
- 
-def update_score(new_score):
-    global high_score
-    score.value = "Score: " + str(new_score)
-    #doc["score"].innerHTML = "Score: " + str(new_score)
-    if new_score &gt; high_score:
-        high_score.value = "High Score: " + str(new_score)
-        #doc["high-score"].innerHTML = "High Score: " + str(new_score)
-        high_score = new_score
- 
+  
 def key_push(evt):
     global xv, yv, pre_pause, paused
     key = evt.keyCode
-    if key == 37 and not paused:
+    # 37 is left arrow key
+    # 74 is j key
+    if key == 74 and not paused:
         xv = -1
         yv = 0
-    elif key == 38 and not paused:
+    # 38 is up arrow key
+    # 73 is i key
+    elif key == 73 and not paused:
         xv = 0
         yv = -1
-    elif key == 39 and not paused:
+    # 39 is right arrow key
+    # 76 is l key
+    elif key == 76 and not paused:
         xv = 1
         yv = 0
-    elif key == 40 and not paused:
+    # 40 is down arrow key
+    # 77 is m key
+    elif key == 77 and not paused:
         xv = 0
         yv = 1
-    elif key == 32:
+    # 32 is pause key
+    # 80 is p key
+    elif key == 80:
         temp = [xv, yv]
         xv = pre_pause[0]
         yv = pre_pause[1]
         pre_pause = [*temp]
         paused = not paused
- 
-def update_score(new_score):
-    global high_score
-    score_doc.value = "Score: " + str(new_score)
-    if new_score &gt; high_score:
-        high_score_doc.value = "High Score: " + str(new_score)
-        high_score = new_score
- 
-def key_push(evt):
-    global xv, yv, pre_pause, paused
-    key = evt.keyCode
-    if key == 37 and not paused:
-        xv = -1
-        yv = 0
-    elif key == 38 and not paused:
-        xv = 0
-        yv = -1
-    elif key == 39 and not paused:
-        xv = 1
-        yv = 0
-    elif key == 40 and not paused:
-        xv = 0
-        yv = 1
-    elif key == 32:
-        temp = [xv, yv]
-        xv = pre_pause[0]
-        yv = pre_pause[1]
-        pre_pause = [*temp]
-        paused = not paused
- 
+  
 def show_instructions(evt):
-    print("test")
-     
+        window.alert("keys to control: i=up, m=down, j=left, l=right, p=pause")
+      
 # 利用 html 建立 canvas 超文件物件
-canvas = html.CANVAS(width = 800, height = 800)
+canvas = html.CANVAS(width = 600, height = 600)
 canvas.id = "game-board"
-canvas.width = 800
-canvas.height = 600
 brython_div = doc["brython_div"]
 brython_div &lt;= canvas
- 
+  
 score_doc = html.DIV("score")
 score_doc.id = "score"
 brython_div &lt;= score_doc
- 
+  
 high_score_doc = html.DIV("high-score")
 high_score_doc.id = "high-score"
 brython_div &lt;= high_score_doc
- 
-button = html.BUTTON("Button")
+  
+button = html.BUTTON("Keys to control")
 button.id = "instructions-btn"
 brython_div &lt;= button
- 
+  
 score = 0
 high_score = 0
- 
+  
 px = py = 10
 # gs*tc = canvas width and height
 gs = 20
-tc = 40
+tc = 30
 ax = ay = 15
 xv = yv = 0
 trail = []
 tail = 5
- 
+  
 pre_pause = [0,0]
 paused = False
 ctx = canvas.getContext("2d")
