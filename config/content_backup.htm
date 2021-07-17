@@ -2612,7 +2612,8 @@ var width = window.innerWidth;
     updateDottedLines();
 </script>
 </p><h3>Brython</h3>
-<p><a href="https://github.com/brython-dev/brython/wiki/How-Brython-works">https://github.com/brython-dev/brython/wiki/How-Brython-works</a> </p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/VJj-H4we71g" title="YouTube video player" width="560"></iframe></p>
+<p><a href="https://github.com/brython-dev/brython/wiki/How-Brython-works">https://github.com/brython-dev/brython/wiki/How-Brython-works</a></p>
 <p>上一頁的網際 Python 是透過 <a href="https://brython.info/">https://brython.info/</a> 完成, 當使用者在網頁中執行 Python 程式時, 透過 Brython 即時轉為 Javascript 後執行.</p>
 <p>Brython Google Group: <a href="https://groups.google.com/g/brython">https://groups.google.com/g/brython</a></p>
 <h4>Introduction guide to Brython:</h4>
@@ -6046,7 +6047,12 @@ doc["snake"].bind('click', Snake.prog)
 <p>其他擷取程式的方式: <a href="http://mde.tw/2017springvcp/blog/web-based-python.html">http://mde.tw/2017springvcp/blog/web-based-python.html</a></p><h3>貪食蛇</h3>
 <p><a href="https://zh.wikipedia.org/wiki/%E8%B4%AA%E9%A3%9F%E8%9B%87">貪食蛇遊戲</a></p>
 <p>在遊戲中, 玩家操控一條細長的直線 (俗稱蛇或蟲), 它會不停前進, 玩家只能操控蛇的頭部朝向, 上下左右, 一路拾起觸碰到之物 (或稱作豆), 並要避免觸碰到自身或者其他障礙物. 每次貪食蛇吃掉一件食物, 它的身體便增長一段. 吃掉一些食物後會使蛇的移動速度逐漸加快, 讓遊戲的難度漸漸變大. 遊戲設計大致分為四面都有牆 (都不可穿越) 以及某部分的牆可以穿越, 以及四面牆都可以穿越的模式.</p>
-<p>如何將 <a href="https://medium.com/swlh/sick-of-javascript-just-use-browser-python-4b9679efe08b">https://medium.com/swlh/sick-of-javascript-just-use-browser-python-4b9679efe08b</a> 中的範例, 直接放入<a href="http://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>環境中執行? 又如何利用 <a href="https://github.com/mdecourse/webgame">webgame</a> 作為 template, 將程式碼轉移至獨立的網頁中運行.</p>
+<h4>網際 Brython 程式練習:</h4>
+<p style="padding-left: 30px;">以下程式已經將 <a href="https://medium.com/swlh/sick-of-javascript-just-use-browser-python-4b9679efe08b">https://medium.com/swlh/sick-of-javascript-just-use-browser-python-4b9679efe08b</a> 中的範例, 改為可直接放入<a href="http://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>環境中執行.</p>
+<h4 style="padding-left: 30px;">練習1:</h4>
+<p style="padding-left: 60px;">請將下列程式改為以 <a href="https://github.com/mdecourse/webgame">webgame</a> 倉儲作為 template, 將程式碼轉移至獨立的網頁中運行.</p>
+<h4 style="padding-left: 30px;">練習2:</h4>
+<p style="padding-left: 60px;">若紅色方塊座標以亂數產生後, 電腦程式將該座標點告知貪食蛇, 請改寫下列程式, 導引貪食蛇吃下所有紅色方塊食物, 終至前進任何方向移動都無法避免碰觸身體為止.</p>
 <h4>Brython 鍵盤按鍵對應編號:</h4>
 <p style="padding-left: 30px;"><a href="https://brython.info/static_doc/en/keyboard_events.html">https://brython.info/static_doc/en/keyboard_events.html</a></p>
 <p style="padding-left: 30px;">keydown:</p>
@@ -6204,7 +6210,11 @@ doc.addEventListener("keydown", key_push)
 instructions_btn = doc["instructions-btn"]
 instructions_btn.addEventListener("click", show_instructions)
 browser.timer.set_interval(game, 1000/15)</pre>
-<p style="padding-left: 30px;"></p>
+<h4>References:</h4>
+<p style="padding-left: 30px;"><a href="/downloads/Greedy Best First Search in Automated Snake Game Solvers.pdf">Greedy Best First Search in Automated Snake Game Solvers.pdf</a></p>
+<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/snake-bot">https://github.com/mdecourse/snake-bot</a> </p>
+<h4 style="padding-left: 30px;">Snake in Pygame:</h4>
+<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/python_projects">https://github.com/mdecourse/python_projects</a> (<a href="https://www.youtube.com/watch?v=8dfePlONtls">Tutorial Video</a>)</p>
 <p></p><h3>期中專案</h3>
 <p>這個計算機程式<span style="background-color: #ffff99;">個人專案</span>將從 Week1-Week7 期間執行, 並在 Week8-Week9 採網際簡報 (<a href="https://revealjs.com/">Reveal.js</a>) 與 OBS + Youtube 直播並錄影方式發表.</p>
 <h4>個人專案 template:</h4>
