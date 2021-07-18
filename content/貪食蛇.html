@@ -221,6 +221,7 @@ def game():
     # 則 tail 增量, 即多一節且得分加 1, 然後食物座標 [ax, ay] 重新以亂數定位
     if ax == px and ay == py:
         tail += 1
+        # 請注意, 這裡所產生的 (ax, ay) 並沒有避開 snake 身體所佔據的座標點. 假如要合理考慮此點, 程式該如何修改?
         ax = math.floor(random()*tc)
         ay = math.floor(random()*tc)
         score += 1

@@ -1053,6 +1053,36 @@ doc["forloop"].bind('click', Forloop.prog)
 </p>
 <!-- forloop ends -->
 <p></p>
+<!-- ex6 starts -->
+<p>
+<script type="text/python3">
+from browser import document as doc
+import beditor
+Class_ex6 = beditor.editor("""# global variable i
+i = 2
+class myobj:
+    # local variable i
+    i = 1
+    print(i)
+    def method1(self):
+        # can only access global variable variable i
+        # can access local variable i through self.i 
+        return i, self.i
+def main():
+    myinst = myobj()
+    print(myinst.method1()) 
+
+print(__name__)
+
+if __name__ == "__main__":
+    main()
+""", "kw_editor", "kw_console", "kw__container", "kw_py_src")
+# id 為 "class_ex6" 的按鈕點按時, 執行 Class_ex6 物件中的 prog 方法
+doc["class_ex6"].bind('click', Class_ex6.prog)
+</script>
+</p>
+<!-- ex6 ends -->
+<p></p>
 <!-- guess start -->
 <p>
 <script type="text/python3">
@@ -2516,7 +2546,7 @@ browser.timer.set_interval(game, 1000/15)
 doc["snake"].bind('click', Snake.prog)
 </script>
 <!-- snake ends -->
-<p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="snake">貪食蛇</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="clock1">clock1</button><button id="fourbar">Fourbar</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="nfulist">nfulist</button><button id="clear">Clear</button></p>
+<p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="class_ex6">Ex6</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="snake">貪食蛇</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="clock1">clock1</button><button id="fourbar">Fourbar</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="nfulist">nfulist</button><button id="clear">Clear</button></p>
 <h4>參考資料:</h4>
 <p><a href="./../downloads/turtle_intro.pdf">turtle_intro.pdf</a></p>
 <p><a href="./../downloads/turtle_intro2.pdf">turtle_intro2.pdf</a></p>
