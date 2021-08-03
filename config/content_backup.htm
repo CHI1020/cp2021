@@ -3579,7 +3579,7 @@ setup(
 <p style="padding-left: 30px;"><a href="https://github.com/lark-parser/lark">https://github.com/lark-parser/lark</a></p>
 <p style="padding-left: 30px;"><a href="http://blog.erezsh.com/how-to-write-a-dsl-in-python-with-lark/">http://blog.erezsh.com/how-to-write-a-dsl-in-python-with-lark/</a></p>
 <h2>C</h2>
-<p>以 MSYS2 編譯 <a href="https://github.com/mdecourse/libgd">https://github.com/mdecourse/libgd</a> Graphics Library 為例:</p>
+<p>以 <a href="https://www.msys2.org/">MSYS2</a> 編譯 <a href="https://github.com/mdecourse/libgd">https://github.com/mdecourse/libgd</a> Graphics Library 為例:</p>
 <p>因為倉儲帶有 CMakeLists.txt, 可以採用 <a href="https://github.com/mdecourse/libgd">CMake</a> 建立編譯用的 Makefile.</p>
 <h4>編譯 C 實習第一步:</h4>
 <p>因為 libgd 倉儲程式碼並無子模組, 因此可以直接以 git clone 取下原始碼檔案.</p>
@@ -3596,11 +3596,11 @@ cmake .. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release
 mingw32-make</pre>
 <p>編譯完成後可以在 build/Bin 目錄建立 libgd.dll</p>
 <h4>編譯 C 實習第二步:</h4>
-<p>接下來可以利用 MSYS2 編譯 Lua 解譯程式套件 (也是採用 C 程式語言編寫).</p>
+<p>接下來可以利用 <a href="https://www.msys2.org/">MSYS2</a> 編譯 Lua 解譯程式套件 (也是採用 C 程式語言編寫).</p>
 <p>從 <a href="https://www.lua.org/ftp/">https://www.lua.org/ftp/</a> 可以下載 Lua 解譯器的原始碼, 為了之後配合 <a href="https://github.com/lua/lua/tree/063d4e4543088e7a21965bda8ee5a0f952a9029e">CoppeliaSim</a> <a href="https://www.coppeliarobotics.com/helpFiles/en/versionInfo.htm#coppeliaSim4.2.0">4.2.0 rev5</a>, 在此採用 Lua 5.3.5 的<a href="https://www.lua.org/ftp/lua-5.3.5.tar.gz">版本</a>.</p>
 <p>解開 lua-5.3.5.tar.gz 壓縮檔案後, 在命令列中 cd lua-5.3.5 後, 即可利用 mingw32-make mingw 完成編譯. 在 lua-5.3.5/src 中即可取得 lua53.dll, lua.exe 與 luac.exe.</p>
 <h4>編譯 C 實習第三步:</h4>
-<p>由於 <a href="https://github.com/cyberbotics/webots/wiki">Webots</a> 編譯過程(<a href="https://github.com/cyberbotics/webots/wiki">說明</a>)需要讓 Lua 可以透過 <a href="https://github.com/ittner/lua-gd">https://github.com/ittner/lua-gd</a> 呼叫上述第一步的 gd 繪圖程式庫, 因此接下仍然利用 MSYS2 編譯採 C 編寫的 lua-gd.</p>
+<p>由於 <a href="https://github.com/cyberbotics/webots/wiki">Webots</a> 編譯過程(<a href="https://github.com/cyberbotics/webots/wiki">說明</a>)需要讓 Lua 可以透過 <a href="https://github.com/ittner/lua-gd">https://github.com/ittner/lua-gd</a> 呼叫上述第一步的 gd 繪圖程式庫, 因此接下仍然利用 <a href="https://www.msys2.org/">MSYS2</a> 編譯採 C 編寫的 lua-gd.</p>
 <p>git clone <a href="https://github.com/ittner/lua-gd.git">https://github.com/ittner/lua-gd.git</a> 將原始碼取下放入 c:\tmp 目錄中.</p>
 <p>接下來由於要在 Windows 10 以 MSYS2 編譯 lua-gd, 因此 Makefile 必須配合 gd 繪圖程式庫與 Lua 解譯器所在位置修改如下:</p>
 <p>而且執行編譯後需要載入 gd.dll 並執行 test_features.lua 測試, 因此需要將所需的 dll 檔案 <a href="/downloads/lua-gd_required_dlls.7z">lua-gd_required_dlls.7z</a>  放入 lua-gd 原始碼目錄中.</p>
