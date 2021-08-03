@@ -2528,7 +2528,6 @@ doc["snake"].bind('click', Snake.prog)
 <p>
 <script src="/static/konva.min.js"></script>
 </p>
-<div id="container"></div>
 <p>
 <script>
 var width = window.innerWidth;
@@ -2643,7 +2642,12 @@ var width = window.innerWidth;
     drawCurves();
     updateDottedLines();
 </script>
-</p><h3>Brython</h3>
+</p>
+<h4>延伸練習題:</h4>
+<p style="padding-left: 30px;">上述網際 Python 程式範例執行, 是透過 <a href="https://brython.info/">Brython</a> 達成, 但是卻必須將所有 Python 範例程式碼逐一寫在網頁中 (<span style="background-color: #ccffcc;">方式 1</span>), 而 <a href="http://mde.tw/2017springvcp/blog/web-based-python.html">http://mde.tw/2017springvcp/blog/web-based-python.html</a> 的寫法, 則是將程式範例存入相對目錄中 (<span style="background-color: #ccffcc;">方式 2</span>), 然後當使用者點擊對應 button 時, 才將程式碼取出放入 editor 區域中.</p>
+<p style="padding-left: 30px;">至於 <a href="http://mde.tw/cp2019/content/Task2.html">http://mde.tw/cp2019/content/Task2.html</a> 的取檔案方式, 則是將 <a href="https://dart.dev/">Dart</a> 範例程式存入 <a href="https://docs.github.com/en/github/writing-on-github/editing-and-sharing-content-with-gists/creating-gists">Gist</a> (<span style="background-color: #ccffcc;">方式 3</span>), 然後取出最新對應版本後載入 editor 區域.</p>
+<p style="padding-left: 30px;">而 <a href="http://mde.tw/lab/downloads/lua/index.html?filename=guess2">http://mde.tw/lab/downloads/lua/index.html?filename=guess2</a> 則利用 URL <a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Methods">Request</a> 方法取 Get 變數值後, 再根據範例檔案名稱取出存於相對目錄的程式碼, 將內容放入 editor 區域中 (<span style="background-color: #ccffcc;">方式 4</span>).</p>
+<p style="padding-left: 30px;">請研究上述方式 1 的網際 Python 程式範例編輯與載入執行架構, 分別改為其他三種方式, 並討論其使用差異與優缺點.</p><h3>Brython</h3>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/VJj-H4we71g" title="YouTube video player" width="560"></iframe></p>
 <p><a href="https://github.com/brython-dev/brython/wiki/How-Brython-works">https://github.com/brython-dev/brython/wiki/How-Brython-works</a></p>
 <p>上一頁的網際 Python 是透過 <a href="https://brython.info/">https://brython.info/</a> 完成, 當使用者在網頁中執行 Python 程式時, 透過 Brython 即時轉為 Javascript 後執行.</p>
@@ -3311,6 +3315,8 @@ set path_vscode=%Disk%:\vscode;</pre>
 <h4>Rust 中文入門:</h4>
 <p style="padding-left: 30px;"><a href="https://rust-lang.tw/book-tw/title-page.html">https://rust-lang.tw/book-tw/title-page.html</a> (<a href="https://github.com/rust-tw/book-tw">on Github</a>, 利用 <a href="https://github.com/rust-tw/book-tw/blob/zh_tw/.github/workflows/main.yml">Github Actions</a> (<a href="https://github.com/features/actions">何謂 Github Actions</a>?), 以 <a href="https://github.com/rust-lang/mdBook">mdbook</a> 轉為 html)</p>
 <p style="padding-left: 30px;">Rust 編譯系統也包含在 <a href="https://mde.tw">KMOLab</a> <a href="http://mde.tw/cmstemplate/content/%E5%8F%AF%E6%94%9C%E7%B3%BB%E7%B5%B1.html">可攜系統</a>中.</p>
+<h4>學習利用 Rust 寫一個文字編輯器:</h4>
+<p style="padding-left: 30px;"><a href="https://www.philippflenker.com/hecto/">https://www.philippflenker.com/hecto/</a> </p>
 <p>2021 計算機程式主要透過網際 Brython 讓學員利用 Python 解決相關機械設計過程可能遭遇的問題, 接下來則將透過 Flask 編寫網際程式, 目的除了進行網際內容管理外, 也希望能夠在 Server 部署 CoppeliaSim headless server, 並利用影像串流將機電系統模擬的場景, 傳輸至使用者瀏覽器中, 以便進行後續的虛實整合模擬與控制, 其中 Rust 首先將扮演的角色為: <a href="https://bheisler.github.io/post/calling-rust-in-python/">讓 Python 能夠呼叫 Rust 所編寫的動態程式庫</a>, 或者採用 Rust 與 Python 程式能夠雙向溝通的 <a href="https://pyo3.rs/v0.14.1/">PyO3</a>, 如此 <a href="https://github.com/KmolYuan/metaheuristics-nature-rs">https://github.com/KmolYuan/metaheuristics-nature-rs</a> 中的演化運算程式庫, 便可以讓伺服器端的 Python 程式進行機械設計相關的演化運算.</p>
 <p>當然, 目前 <a href="https://mde.tw">KMOLab</a> 主要的網際程式都採用 Python + Flask 建置, 但之後也可以嘗試將部分網際程式轉由 Rust + <a href="https://actix.rs/">Actix Web</a> 建置.</p>
 <hr/>
@@ -3572,7 +3578,100 @@ setup(
 <h4>Domain Specific Language:</h4>
 <p style="padding-left: 30px;"><a href="https://github.com/lark-parser/lark">https://github.com/lark-parser/lark</a></p>
 <p style="padding-left: 30px;"><a href="http://blog.erezsh.com/how-to-write-a-dsl-in-python-with-lark/">http://blog.erezsh.com/how-to-write-a-dsl-in-python-with-lark/</a></p>
-<h2>CPP</h2>
+<h2>C</h2>
+<p>以 <a href="https://www.msys2.org/">MSYS2</a> 編譯 <a href="https://github.com/mdecourse/libgd">https://github.com/mdecourse/libgd</a> Graphics Library 為例:</p>
+<p>因為倉儲帶有 CMakeLists.txt, 可以採用 <a href="https://github.com/mdecourse/libgd">CMake</a> 建立編譯用的 Makefile.</p>
+<h4>編譯 C 實習第一步:</h4>
+<p>因為 libgd 倉儲程式碼並無子模組, 因此可以直接以 git clone 取下原始碼檔案.</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">git clone https://github.com/mdecourse/libgd.git
+
+cd libgd
+
+mkdir build
+
+cd build
+
+cmake .. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release
+
+mingw32-make</pre>
+<p>編譯完成後可以在 build/Bin 目錄建立 libgd.dll</p>
+<h4>編譯 C 實習第二步:</h4>
+<p>接下來可以利用 <a href="https://www.msys2.org/">MSYS2</a> 編譯 Lua 解譯程式套件 (也是採用 C 程式語言編寫).</p>
+<p>從 <a href="https://www.lua.org/ftp/">https://www.lua.org/ftp/</a> 可以下載 Lua 解譯器的原始碼, 為了之後配合 <a href="https://github.com/lua/lua/tree/063d4e4543088e7a21965bda8ee5a0f952a9029e">CoppeliaSim</a> <a href="https://www.coppeliarobotics.com/helpFiles/en/versionInfo.htm#coppeliaSim4.2.0">4.2.0 rev5</a>, 在此採用 Lua 5.3.5 的<a href="https://www.lua.org/ftp/lua-5.3.5.tar.gz">版本</a>.</p>
+<p>解開 lua-5.3.5.tar.gz 壓縮檔案後, 在命令列中 cd lua-5.3.5 後, 即可利用 mingw32-make mingw 完成編譯. 在 lua-5.3.5/src 中即可取得 lua53.dll, lua.exe 與 luac.exe.</p>
+<h4>編譯 C 實習第三步:</h4>
+<p>由於 <a href="https://github.com/cyberbotics/webots/wiki">Webots</a> 編譯過程(<a href="https://github.com/cyberbotics/webots/wiki">說明</a>)需要讓 Lua 可以透過 <a href="https://github.com/ittner/lua-gd">https://github.com/ittner/lua-gd</a> 呼叫上述第一步的 gd 繪圖程式庫, 因此接下仍然利用 <a href="https://www.msys2.org/">MSYS2</a> 編譯採 C 編寫的 lua-gd.</p>
+<p>git clone <a href="https://github.com/ittner/lua-gd.git">https://github.com/ittner/lua-gd.git</a> 將原始碼取下放入 c:\tmp 目錄中.</p>
+<p>接下來由於要在 Windows 10 以 MSYS2 編譯 lua-gd, 因此 Makefile 必須配合 gd 繪圖程式庫與 Lua 解譯器所在位置修改如下:</p>
+<p>而且執行編譯後需要載入 gd.dll 並執行 test_features.lua 測試, 因此需要將所需的 dll 檔案 <a href="/downloads/lua-gd_required_dlls.7z">lua-gd_required_dlls.7z</a>  放入 lua-gd 原始碼目錄中.</p>
+<p>編譯時進入 c:\tmp\lua-gd&gt;mingw32-make 即可完成編譯, 取得 gd.dll 與 Lua 解譯器及所需的 dll 檔案結合後, 即可與 SciTE 配合, 以 Lua 程式呼叫 gd 繪圖程式庫執行各種 2D Graphics 應用. 其中最重要的應用就是可以在往後的課程中自行編譯 <a href="https://cyberbotics.com/">Webots</a>, 建立延伸工具與其他軟體或硬體進行整合.</p>
+<p>Makefile for lua-gd</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># Lua-GD version. This one must be set.
+VERSION=2.0.33r3
+
+# Command used to run Lua code
+LUABIN=Y:/lua-5.3.5/lua.exe
+
+# Path to the utility 'gdlib-config'. This may be changed to compile the
+# module with development versions of libgd.
+GDLIBCONFIG=gdlib-config
+
+# Optimization for the brave of heart ;)
+OMITFP=-fomit-frame-pointer
+
+# ---------------------------------------------------------------------------
+# Manual configuration for Windows and systems without sed, pkgconfig, etc.
+# Uncomment, change and good luck :)
+
+OUTFILE=gd.dll
+CFLAGS=-O3 -Wall $(OMITFP)
+CFLAGS+=-IY:/lua-5.3.5/src -IC:/tmp/lua-gd -IC:/tmp/libgd/src
+CFLAGS+=-DVERSION=\"$(VERSION)\"
+GDFEATURES=-DGD_JPEG -DGD_FONTCONFIG -DGD_FREETYPE -DGD_PNG -DGD_GIF
+LFLAGS=-shared -L "Y:/lua-5.3.5" -lgd -llua53 -lm $(OMITFP)
+# ---------------------------------------------------------------------------
+
+
+all: test
+
+$(OUTFILE): gd.lo
+	$(CC) -o $(OUTFILE) gd.lo $(LFLAGS)
+
+test: $(OUTFILE)
+	$(LUABIN) test_features.lua
+
+gd.lo: luagd.c
+	$(CC) -o gd.lo -c $(GDFEATURES) $(CFLAGS) luagd.c
+
+install: $(OUTFILE)
+	install -D -s $(OUTFILE) $(DESTDIR)/$(INSTALL_PATH)/$(OUTFILE)
+
+
+# Rules for making a distribution tarball
+
+TDIR=lua-gd-$(VERSION)
+DFILES=COPYING README luagd.c lua-gd.spec Makefile test_features.lua
+dist: $(DISTFILES)
+	rm -f $(TDIR).tar.gz
+	mkdir $(TDIR)
+	mkdir -p $(TDIR)/doc $(TDIR)/demos $(TDIR)/debian
+	cp $(DFILES) $(TDIR)
+	cp demos/* $(TDIR)/demos/
+	cp doc/* $(TDIR)/doc/
+	cp debian/* $(TDIR)/debian/
+	tar czf $(TDIR).tar.gz $(TDIR)
+	rm -rf $(TDIR)
+
+clean:
+	rm -f $(OUTFILE) gd.lo
+	rm -rf $(TDIR) $(TDIR).tar.gz
+	rm -f demos/out.png demos/out.gif demos/counter.txt
+
+.PHONY: all test install clean dist
+</pre>
+<p></p>
+<p></p>
+<p></p><h2>CPP</h2>
 <p><a href="/get_page/DSL/Guide to Scientific Computing in C++">Guide to Scientific Computing in C++</a> (校園網路中下載電子書)</p>
 <p><a href="https://drive.google.com/file/d/1m6cmWu9AZhkBj6wFn9IiJlShcpGbz05g/view?usp=sharing">msys64_20210419.7z</a> (下載 3.5GB, 解開壓縮後 12GB)</p>
 <p style="padding-left: 30px;">功能: <a href="https://www.msys2.org/">Msys2</a> 安裝</p>
@@ -3676,7 +3775,15 @@ pacman -Sy mingw-w64-x86-64-cmake</pre>
 <p>One of the main features of Git is its Branching system. A branch is a copy of a project which you can work on without messing with the repository. This concept has been around for some time, but with Git, it is way faster and more efficient. Branching also comes along with Merging, which is the act of copying the changesets done in a branch back to the source.</p>
 <p>Generally, you create a branch to create or test a new feature and merge that branch back when you are satisfied with the work.</p>
 <p>There is also a simple concept that you might use a lot: Stashing.</p>
-<p>Stashing is the act of safely putting away your current edits so that you have clean environment to work on something completely different. You might want to use stashing when you are playing around or testing a feature but need to work on a new feature in priority. So, you stash your changes away and begin to write that feature. After you are done, you can get your changes back and apply them to your current working environment.</p><h3>Git Push</h3>
+<p>Stashing is the act of safely putting away your current edits so that you have clean environment to work on something completely different. You might want to use stashing when you are playing around or testing a feature but need to work on a new feature in priority. So, you stash your changes away and begin to write that feature. After you are done, you can get your changes back and apply them to your current working environment.</p>
+<h4>Git 與 Github 使用情境:</h4>
+<p style="padding-left: 30px;">在倉儲中將其他倉儲引入作為子模組 - 可以使用特定的子模組版本, 各子模組可以持續改版, 不會影響先前引用舊版本倉儲的運作.</p>
+<p style="padding-left: 60px;">git submodule add url_of_remote_repository local_directory_name</p>
+<p style="padding-left: 60px;">假如要將設為子模組的子模組內容更新到原設定版本, 使用:</p>
+<p style="padding-left: 90px;">git submodule update --init --recursive</p>
+<p style="padding-left: 60px;"></p>
+<p style="padding-left: 60px;"></p>
+<p style="padding-left: 60px;"></p><h3>Git Push</h3>
 <p>將近端改版資料新增提交等步驟都在近端完成, 但是 git push 則是要將改版資料推向遠端倉儲.</p>
 <p>共有三種方式可以取得 git push 的使用授權:</p>
 <ol>
@@ -3689,10 +3796,11 @@ pacman -Sy mingw-w64-x86-64-cmake</pre>
 <p>利用 <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">Github Personal Access Token</a> 進行 push 請參考<a href="https://stackoverflow.com/questions/68191392/password-authentication-is-temporarily-disabled-as-part-of-a-brownout-please-us">這裡</a>的說明.</p>
 <p style="padding-left: 30px;">語法為 url = <a href="https://&lt;token&gt;@github.com/mdecourse/report.git">https://&lt;token&gt;@github.com/mdecourse/report.git</a></p>
 <p>以 <a href="https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh">Github SSH </a>私鑰進行 push:</p>
-<p style="padding-left: 30px;">語法為 utl = git@&lt;putty_session&gt;:mdecourse/report.git</p>
-<p></p>
-<h2>解題練習</h2>
-<p>這個頁面已經將 ggame 從 brython 模組轉為 javascript 模組(<a href="http://mde.tw/cp2021/content/%E5%AD%B8%E7%BF%92%E7%A8%8B%E5%BC%8F.html">方法</a>), 名稱為 brython_modules.js 放在 downloads 目錄中.</p>
+<p style="padding-left: 30px;">語法為 utl = <a href="mailto:git@&lt;putty_session&gt;:mdecourse/report.git">git@&lt;putty_session&gt;:mdecourse/report.git</a></p>
+<h3>Github</h3>
+<p>網際介面操作 - 可以從瀏覽器新建或上傳近端電腦檔案, 可在兩台異地電腦之間傳遞對應檔案, 一台以瀏覽器登入 Github 倉儲上傳檔案, 另外一台則在其近端倉儲工作目錄中以 git pull 取下所上傳的檔案.</p>
+<p></p><h2>解題練習</h2>
+<p>這個頁面已經將 ggame 從 brython 模組轉為 javascript (<a href="/downloads/JavaScript Course Notes.pdf">note</a>) 模組(<a href="http://mde.tw/cp2021/content/%E5%AD%B8%E7%BF%92%E7%A8%8B%E5%BC%8F.html">方法</a>), 名稱為 brython_modules.js 放在 downloads 目錄中.</p>
 <h4>請利用下列網際編輯器, 開始學習如何使用 Python 解決問題, 一般機械設計流程會面臨什麼問題?</h4>
 <p><a href="https://link.springer.com/book/10.1007/978-3-030-20290-3">A Beginners Guide to Python 3 Programming</a> (校園網路下載電子書)</p>
 <p><a href="https://link.springer.com/book/10.1007/978-3-030-25943-3">Advanced Guide to Python 3 Programming</a> (校園網路下載電子書)</p>
