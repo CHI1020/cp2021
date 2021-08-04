@@ -135,111 +135,82 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">pixijs << <a href='pixijs.html'>Previous</a> <a href='Brython-server.html'>Next</a> >> Brython-server<br /><h1>pixijs1</h1>
-<p><a href="https://mdecp2018.github.io/finalproject-bgx/content/%E7%B6%B2%E9%9A%9B%E6%A8%A1%E6%93%AC%E7%A8%8B%E5%BC%8F.html">2018 參考資料</a></p>
-<p>ggame is for <a href="https://pixijs.io/examples-v4/#/demos-basic/container.js">pixi 4.8.2</a></p>
-<h4>Brython and pixi.js integrated html5 result:</h4>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.2/pixi.min.js"&gt;&lt;/script&gt;
-&lt;script src="./../cmsimde/static/brython.js"&gt;&lt;/script&gt;
-&lt;script src="./../cmsimde/static/brython_stdlib.js"&gt;&lt;/script&gt;
-&lt;script&gt;// &lt;![CDATA[
-window.onload=function(){
-brython({debug:1, pythonpath:['./../cmsimde/static/']});
+    <div id="tipue_search_content">C << <a href='C.html'>Previous</a> <a href='CPP.html'>Next</a> >> CPP<br /><h1>Cython</h1>
+<p>從 <a href="http://mde.tw/cp2021/content/C.html">C 程式語言的頁面</a>, 我們已經知道以純 C 編寫的 2D 繪圖程式庫 <a href="https://github.com/libgd/libgd">https://github.com/libgd/libgd</a> 可以直接利用可攜程式系統中的 <a href="https://www.msys2.org/">MSYS2</a> 進行編譯. 亦即可以編寫類似以下的 C 程式執行 2D 繪圖:</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include "gd.h"
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main()
+{
+	gdImagePtr im;
+	FILE *fp;
+	int cor_rad = 60;
+	im = gdImageCreateTrueColor(400, 400);
+	gdImageFilledRectangle(im, 0, 0, 399, 399, 0x00FFFFFF);
+
+	gdImageFilledArc (im, cor_rad, 399 - cor_rad, cor_rad *2, cor_rad *2, 90, 180, 0x0, gdPie);
+
+	fp = fopen("b.png", "wb");
+	if (!fp) {
+		fprintf(stderr, "Can't save png image.\n");
+		gdImageDestroy(im);
+		return 1;
+	}
+	gdImagePng(im, fp);
+	fclose(fp);
+
+	gdImageDestroy(im);
+	return 0;
 }
-// ]]&gt;&lt;/script&gt;
-&lt;div id="brython_div"&gt;&lt;/div&gt;
-&lt;div id="line_drawing"&gt;&lt;/div&gt;
-&lt;script type="text/python"&gt;// &lt;![CDATA[
-# from browser import window, document and html
-from browser import window, document, html
-# this is for animation, which is different from what javascipt implemented
-import browser.timer
-# use socket.gethostname() to differentiate where script is executed
-import socket
-
-# if executed under localhost
-if socket.gethostname() == "localhost":
-    site = ""
-else:
-    # when executed in remote site
-    site="./.."
-
-# let brython_div to be the div with id=brython_div
-brython_div = document["brython_div"]
-# use window to get PIXI object and let it be GFX
-GFX = window.PIXI
-# create new PIXI application
-App = GFX.Application.new
-# set application size and background
-app = App(400, 300, { 'transparent': True })
-# add application view into div markup
-brython_div.appendChild(app.view)
-# create Sprite from image file
-bunny = GFX.Sprite.fromImage(site+'/images/bunny.png')
-# center the sprite's anchor point, this is the center for the rotation of the graphics
-bunny.anchor.set(0.5)
-# move the sprite to the center of the screen
-bunny.x = app.screen.width / 2
-bunny.y = app.screen.height / 2
-# add Sprite into the application stage
-app.stage.addChild(bunny)
-
-def bunnyRotate():
-    bunny.rotation += 0.1
-
-browser.timer.set_interval(bunnyRotate, 30)
-// ]]&gt;&lt;/script&gt;</pre>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.2/pixi.min.js"></script>
-<script src="./../cmsimde/static/brython.js"></script>
-<script src="./../cmsimde/static/brython_stdlib.js"></script>
-<script>
-window.onload=function(){
-brython({debug:1, pythonpath:['./../cmsimde/static/']});
-}
-</script>
-<div id="brython_div"></div>
-<div id="line_drawing"></div>
-<script type="text/python">
-# from browser import window, document and html
-from browser import window, document, html
-# this is for animation, which is different from what javascipt implemented
-import browser.timer
-# use socket.gethostname() to differentiate where script is executed
-import socket
-
-# if executed under localhost
-if socket.gethostname() == "localhost":
-    site = ""
-else:
-    # when executed in remote site
-    site="./.."
-
-# let brython_div to be the div with id=brython_div
-brython_div = document["brython_div"]
-# use window to get PIXI object and let it be GFX
-GFX = window.PIXI
-# create new PIXI application
-App = GFX.Application.new
-# set application size and background
-app = App(400, 300, { 'transparent': True })
-# add application view into div markup
-brython_div.appendChild(app.view)
-# create Sprite from image file
-bunny = GFX.Sprite.fromImage(site+'/images/bunny.png')
-# center the sprite's anchor point, this is the center for the rotation of the graphics
-bunny.anchor.set(0.5)
-# move the sprite to the center of the screen
-bunny.x = app.screen.width / 2
-bunny.y = app.screen.height / 2
-# add Sprite into the application stage
-app.stage.addChild(bunny)
-
-def bunnyRotate():
-    bunny.rotation += 0.1
-
-browser.timer.set_interval(bunnyRotate, 30)
-</script>
-<br />pixijs << <a href='pixijs.html'>Previous</a> <a href='Brython-server.html'>Next</a> >> Brython-server</div>
+</pre>
+<p>但是除非再將 <a href="https://github.com/libgd/libgd">libgd</a> 處理成為 <a href="https://github.com/TinyCC/tinycc">Tiny CC </a>的程式庫, 然後在 <a href="https://www.scintilla.org/SciTE.html">SciTE</a> 編輯程式環境中以類解譯的方式執行 ANSI C 程式 (將 <a href="https://github.com/libgd/libgd">libgd</a> 編譯為可以讓 <a href="https://github.com/TinyCC/tinycc">Tiny CC</a> 直接呼叫使用的專案, 也是一個不錯的 C 程式語言練習題目), 否則上列的 C 程式每次執行都必須經過編譯與程式庫連結的流程才可進行繪圖. 所以在 C 程式語言的頁面中, 我們利用 Lua 解譯程式語言的特性, 也是利用 <a href="https://www.msys2.org/">MSYS2</a> 編譯, 取得 <a href="https://github.com/ittner/lua-gd">https://github.com/ittner/lua-gd</a> 程式碼編譯後, 可以讓 Lua 程式直接透過這個 Wrapper, 使用 <a href="https://github.com/libgd/libgd">libgd</a> 中的 2D 繪圖功能.</p>
+<p>透過相同的思路, 我們也可以利用 Python 解譯程式, 設法建立一個 Wrapper, 間接使用 <a href="https://github.com/libgd/libgd">libgd</a> 中的 2D 繪圖功能. <a href="https://github.com/NOAA-ORR-ERD/py_gd">https://github.com/NOAA-ORR-ERD/py_gd</a> 就是其中一個較新的程式倉儲, 利用 <a href="https://github.com/NOAA-ORR-ERD/py_gd">Cython</a> 編寫 Wrapper 程式.</p>
+<p>利用 Cython 編寫 C/C++ 動態程式庫的簡要說明, 可以參考這裡的<a href="https://stackoverflow.com/questions/16993927/using-cython-to-link-python-to-a-shared-library">問答</a>. 也可以從比較簡單的範例程式碼進行練習: <a href="https://github.com/stavshamir/cython-c-wrapper">https://github.com/stavshamir/cython-c-wrapper</a>.</p>
+<p>由於我們預計採用 <a href="https://www.msys2.org/">MSYS2</a> 進行 C 程式碼的編譯, 因此 Python 3.9 中的兩個地方必須進行修改, 才能使用 mingw32-make 處理 Python 建立與安裝模組的流程 (相關細節請參見 <a href="https://docs.python.org/3/library/distutils.html">https://docs.python.org/3/library/distutils.html</a>. 其中之一就是位於 Y:\Python395\Lib\distutils 目錄中的 cygwinccompiler.py 檔案. 必須套用下列函式碼:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def get_msvcr():
+    """Include the appropriate MSVC runtime library if Python was built
+    with MSVC 7.0 or later.
+    """
+    msc_pos = sys.version.find('MSC v.')
+    if msc_pos != -1:
+        msc_ver = sys.version[msc_pos+6:msc_pos+10]
+        if msc_ver == '1300':
+            # MSVC 7.0
+            return ['msvcr70']
+        elif msc_ver == '1310':
+            # MSVC 7.1
+            return ['msvcr71']
+        elif msc_ver == '1400':
+            # VS2005 / MSVC 8.0
+            return ['msvcr80']
+        elif msc_ver == '1500':
+            # VS2008 / MSVC 9.0
+            return ['msvcr90']
+        elif msc_ver == '1600':
+            # VS2010 / MSVC 10.0
+            return ['msvcr100']
+        elif msc_ver == '1700':
+            # Visual Studio 2012 / Visual C++ 11.0
+            return ['msvcr110']
+        elif msc_ver == '1800':
+            # Visual Studio 2013 / Visual C++ 12.0
+            return ['msvcr120']
+        elif msc_ver == '1900':
+            # Visual Studio 2015 / Visual C++ 14.0
+            # "msvcr140.dll no longer exists" http://blogs.msdn.com/b/vcblog/archive/2014/06/03/visual-studio-14-ctp.aspx
+            return ['vcruntime140']
+        elif 1910 &lt;= int(msc_ver) &lt;= 1916:
+            return ['vcruntime140']
+        elif 1920 &lt;= int(msc_ver) &lt;= 1928:
+            return ['vcruntime140']
+        else:
+            raise ValueError("Unknown MS Compiler version %s " % msc_ver)</pre>
+<p>另外有關 Python 3.9 可攜程式系統的更動就是在 Y:\Python395\Lib\distutils 目錄中, 新增一個 distutils.cfg 檔案, 內容為:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">[build]
+compiler = mingw32</pre>
+<p>表示當執行 python setup.py build 時, 編譯器將使用 mingw32 而非 Windows 操作系統中 Python 內定的 Visual Studio C++ (我們其實並不排斥使用 VC++, 只是必須透過虛擬操作系統才可以做成可攜 (直接在外接 SSD 中使用編譯系統), 感覺沒有 <a href="https://www.msys2.org/">MSYS2</a> 方便, 但是我們也因此付出許多代價, 但回報是採用 <a href="https://www.msys2.org/">MSYS2</a> 編譯 C/C++ 的過程比較接近 Linux 與 MacOS, 可以讓我們編寫跨操作系統平台的程式開發流程更加順利, 很慶幸 <a href="https://www.cyberbotics.com/">Webots</a> 的開發者也<a href="https://www.cyberbotics.com/doc/guide/compiling-controllers-in-a-terminal">認為如此</a>.</p>
+<p></p><br />C << <a href='C.html'>Previous</a> <a href='CPP.html'>Next</a> >> CPP</div>
         
     <!-- footer -->
       <div class="container">

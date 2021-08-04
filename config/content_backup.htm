@@ -3605,7 +3605,9 @@ mingw32-make</pre>
 <p>接下來由於要在 Windows 10 以 MSYS2 編譯 lua-gd, 因此 Makefile 必須配合 gd 繪圖程式庫與 Lua 解譯器所在位置修改如下:</p>
 <p>而且執行編譯後需要載入 gd.dll 並執行 test_features.lua 測試, 因此需要將所需的 dll 檔案 <a href="/downloads/lua-gd_required_dlls.7z">lua-gd_required_dlls.7z</a>  放入 lua-gd 原始碼目錄中.</p>
 <p>編譯時進入 c:\tmp\lua-gd&gt;mingw32-make 即可完成編譯, 取得 gd.dll 與 Lua 解譯器及所需的 dll 檔案結合後, 即可與 SciTE 配合, 以 Lua 程式呼叫 gd 繪圖程式庫執行各種 2D Graphics 應用. 其中最重要的應用就是可以在往後的課程中自行編譯 <a href="https://cyberbotics.com/">Webots</a>, 建立延伸工具與其他軟體或硬體進行整合.</p>
-<p>Makefile for lua-gd</p>
+<p>Makefile for lua-gd, 編譯完成結合 Lua 5.3.5 解譯器檔案: <a href="/downloads/lua-5.3.5_with_gd.7z">lua-5.3.5_with_gd.7z</a>.</p>
+<h4>編譯 C 實習第四步:</h4>
+<p>請將上述所完成 Lua + GD 程式庫檔案配置在可攜系統中, 並利用 Lua 程式執行各種 2D 繪圖.</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># Lua-GD version. This one must be set.
 VERSION=2.0.33r3
 
@@ -3671,7 +3673,8 @@ clean:
 </pre>
 <p></p>
 <p></p>
-<p></p><h2>CPP</h2>
+<p></p><h3>Cython</h3>
+<h2>CPP</h2>
 <p><a href="/get_page/DSL/Guide to Scientific Computing in C++">Guide to Scientific Computing in C++</a> (校園網路中下載電子書)</p>
 <p><a href="https://drive.google.com/file/d/1m6cmWu9AZhkBj6wFn9IiJlShcpGbz05g/view?usp=sharing">msys64_20210419.7z</a> (下載 3.5GB, 解開壓縮後 12GB)</p>
 <p style="padding-left: 30px;">功能: <a href="https://www.msys2.org/">Msys2</a> 安裝</p>
