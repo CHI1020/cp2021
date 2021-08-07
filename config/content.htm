@@ -3474,7 +3474,27 @@ if __name__ == '__main__':
 <h4>Python and SQLite:</h4>
 <p style="padding-left: 30px;"><a href="https://github.com/thombashi/SimpleSQLite">https://github.com/thombashi/SimpleSQLite</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/codewithlennylen/Python-SQLite-Tutorials">https://github.com/codewithlennylen/Python-SQLite-Tutorials</a></p>
-<h3>FossilPy</h3>
+<h3>RPA</h3>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4842-5729-6">The Robotic Process Automation Handbook</a> (從校園網路下載電子書)</p>
+<p style="padding-left: 30px;">the word "robotic" does not refer to a physical robot – instead, it is about a software-based robot (or bot) that can <span style="background-color: #ffff99;">automate human actions</span> in the workplace (generally for white collar applications in clerical and administrative functions). A bot can be delivered via the cloud or through downloadable software.</p>
+<p>RPA involves bots that perform a set of specified actions or tasks, such as the following:</p>
+<ol>
+<li>The cut-and-paste of information from one app  to another</li>
+<li>The opening of a web site and login</li>
+<li>The opening of an e-mail and attachments</li>
+<li>The read/write of a database</li>
+<li>The extraction of content from forms or documents</li>
+<li>The use of calculations and workflows</li>
+</ol>
+<p>Such things may sound kind of mundane, boring, and simplistic. But that’s the point. RPA is focused on those <span style="background-color: #ffff99;">tasks that are really a waste of efforts for workers</span>. Shouldn’t they be doing more important activities?</p>
+<h4>RPA 相關開源套件:</h4>
+<p style="padding-left: 30px;"><a href="https://github.com/pywinauto/pywinauto">https://github.com/pywinauto/pywinauto</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/tebelorg/RPA-Python">https://github.com/tebelorg/RPA-Python</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/FrankBGao/F2R_approach_RPA">https://github.com/FrankBGao/F2R_approach_RPA</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/Aksh97/EasyReq">https://github.com/Aksh97/EasyReq</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/rpabotsworld/awesome-rpa">https://github.com/rpabotsworld/awesome-rpa</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/A9T9/RPA">https://github.com/A9T9/RPA</a> </p>
+<p style="padding-left: 60px;"><a href="https://ui.vision/rpa">https://ui.vision/rpa</a> </p><h3>FossilPy</h3>
 <p><a href="https://github.com/gumblex/fossilpy">https://github.com/gumblex/fossilpy</a></p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import sqlite3
 con = sqlite3.connect('kmol.fossil')
@@ -3529,8 +3549,7 @@ def hello_world():
 if __name__ == '__main__':
     app.run()
     </pre>
-<p></p>
-<h3>Delta</h3>
+<p></p><h3>Delta</h3>
 <p>Delta format 的應用說明:</p>
 <p style="padding-left: 30px;">Suppose we have some text value a, and user has changed it to value b. Using delta function we can get a compressed delta value d that we can store and keep it along with the new text value b. If later user wants to see the previous version of text, we can use deltainv(b, d) to get the previous value a. If we keep all consequtive deltas we can use deltainv multiple times to get any of the earlier text versions.</p>
 <p>原始的 <a href="https://fossil-scm.org/home/doc/tip/www/delta_format.wiki">Fossil SCM Delta</a> 以 C 編寫.</p>
@@ -3584,7 +3603,7 @@ setup(
 <p style="padding-left: 30px;"><a href="http://blog.erezsh.com/how-to-write-a-dsl-in-python-with-lark/">http://blog.erezsh.com/how-to-write-a-dsl-in-python-with-lark/</a></p>
 <h2>C</h2>
 <p>以 <a href="https://www.msys2.org/">MSYS2</a> 編譯 <a href="https://github.com/mdecourse/libgd">https://github.com/mdecourse/libgd</a> Graphics Library 為例:</p>
-<p>因為倉儲帶有 CMakeLists.txt, 可以採用 <a href="https://github.com/mdecourse/libgd">CMake</a> 建立編譯用的 Makefile.</p>
+<p>因為倉儲帶有 CMakeLists.txt, 可以採用 <a href="https://github.com/mdecourse/libgd">CMake</a> 建立編譯用的 Makefile (<a href="/downloads/GNUMakeManual.pdf">GNU Make Manual.pdf</a>).</p>
 <h4>編譯 C 實習第一步:</h4>
 <p>因為 libgd 倉儲程式碼並無子模組, 因此可以直接以 git clone 取下原始碼檔案.</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">git clone https://github.com/mdecourse/libgd.git
@@ -3764,6 +3783,24 @@ pacman -Sy mingw-w64-x86-64-cmake</pre>
 <p><a href="https://drive.google.com/file/d/17M7Ro9NO2mmycvwOuK-10yYgs2oxFwEB/view?usp=sharing">msys64_20210419_clean.7z</a> (下載 87MB , 解開壓縮後 374MB)</p>
 <p style="padding-left: 30px;">功能: 尚未安裝任何 Package 的 <a href="https://www.msys2.org/">Msys2</a> 系統.</p>
 <p></p><h1>課程主題</h1>
+<p>在進入計算機程式課程主題之前, 必須要了解以下幾個與電腦軟硬體溝通的必備觀念與技術:</p>
+<p style="padding-left: 30px;">逐步養成多看英文相關資料的習慣, 不懂的單字與語法要設法儘快弄懂.</p>
+<p style="padding-left: 30px;">早日學會 Touch Typing 技巧 - <a href="https://www.typingclub.com/">https://www.typingclub.com/</a></p>
+<p style="padding-left: 30px;">花時間學會使用 PowerShell scripting:</p>
+<p style="padding-left: 60px;"><a href="https://docs.microsoft.com/zh-tw/powershell/">https://docs.microsoft.com/zh-tw/powershell/</a></p>
+<p style="padding-left: 60px;"><a href="https://leanpub.com/powershell101">https://leanpub.com/powershell101</a></p>
+<p style="padding-left: 30px;">了解與電腦硬體有關的英文術語:</p>
+<p style="padding-left: 60px;"><a href="/get_page/%E8%AA%B2%E7%A8%8B%E4%B8%BB%E9%A1%8C/有關 PowerShell:  https:/docs.microsoft.com/zh-tw/powershell/  https:/leanpub.com/powershell101">Introduction to personal computer.pdf</a></p>
+<p style="padding-left: 30px;">學會使用 Windows 10 並密切關注與 Windows 11 的差異:</p>
+<p style="padding-left: 60px;"><a href="https://en.wikipedia.org/wiki/Windows_11">https://en.wikipedia.org/wiki/Windows_11</a></p>
+<p style="padding-left: 60px;"><a href="https://www.cnet.com/tech/computing/windows-11-vs-windows-10-every-big-difference/">https://www.cnet.com/tech/computing/windows-11-vs-windows-10-every-big-difference/</a></p>
+<hr/>
+<h4>學習重點:</h4>
+<p style="padding-left: 30px;">學會如何運用 Github? - <a href="https://lab.github.com/">https://lab.github.com/</a></p>
+<p style="padding-left: 30px;">學會如何安裝課程所需套件 (假如在自己的筆電或桌機上工作)</p>
+<p style="padding-left: 30px;">學會如何製作可攜程式環境 (假如在電腦輔助設計室或其他公用電腦上工作)</p>
+<p style="padding-left: 30px;">了解計算機課程如何評分?</p>
+<hr/>
 <p>建立可攜系統在解決 ____ 問題?</p>
 <h4>建立可攜程式系統:</h4>
 <p style="padding-left: 30px;">從<a href="http://mde.tw/cmstemplate/content/%E5%8F%AF%E6%94%9C%E7%B3%BB%E7%B5%B1.html">可攜系統</a>中選擇所需組合, 搭建可用於維護個人倉儲與網站內容用之隨身程式系統.</p>
@@ -3808,8 +3845,7 @@ pacman -Sy mingw-w64-x86-64-cmake</pre>
 <li>延伸網際正齒輪齒形繪製, 完成齒輪減速機<a href="https://github.com/mdecourse/wcms-scrum1">齒面寬設計</a>運算與囓合圖.</li>
 <li>Python 與 <a href="https://robodk.com/index">RoboDK</a></li>
 </ol>
-<p></p>
-<h2>倉儲與網頁</h2>
+<p></p><h2>倉儲與網頁</h2>
 <p>本課程網頁的倉儲位於:</p>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecourse/cp2021.git">https://github.com/mdecourse/cp2021.git</a> - <a href="https://mde.tw/cp2021">Github Pages</a></p>
 <p style="padding-left: 30px;"><a href="https://gitlab.com/mdecourse/cp2021.git">https://gitlab.com/mdecourse/cp2021.git</a> - <a href="https://mdecourse.gitlab.io/cp2021/">Gitlab Pages</a></p>
@@ -3838,7 +3874,7 @@ pacman -Sy mingw-w64-x86-64-cmake</pre>
 <p><a href="https://www.bosch.com/stories/bringing-open-source-to-mechanical-engineering/">https://www.bosch.com/stories/bringing-open-source-to-mechanical-engineering/</a></p>
 <p><a href="https://towardsdatascience.com/transition-from-mechanical-engineer-to-machine-learning-engineer-or-data-scientist-786b9887537">https://towardsdatascience.com/transition-from-mechanical-engineer-to-machine-learning-engineer-or-data-scientist-786b9887537</a></p>
 <p><a href="https://git-scm.com/book/zh-tw/v2">Git Book</a> (中文)</p>
-<p><a href="https://link.springer.com/book/10.1007/978-1-4842-5313-7">Beginning Git and Github</a> (英文)</p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4842-5313-7">Beginning Git and Github</a> (英文, 可從校園網路下載)</p>
 <p>What can Git do?</p>
 <p>Remember all those problems we tried to solve at the beginning of this chapter? Well, Git can solve them all. It can even solve problems you didn’t know you had!</p>
 <p>First, it works great with tracking changes. You can</p>
@@ -8057,7 +8093,22 @@ class KeyEvent(_Event):
 <h4 style="padding-left: 30px;">jQuery-UI</h4>
 <p style="padding-left: 30px;"><a href="https://jqueryui.com/">https://jqueryui.com/</a></p>
 <h4 style="padding-left: 30px;">buzz</h4>
-<p style="padding-left: 30px;"><a href="https://buzz.jaysalvat.com/">https://buzz.jaysalvat.com/</a></p><h3>pixijs</h3>
+<p style="padding-left: 30px;"><a href="https://buzz.jaysalvat.com/">https://buzz.jaysalvat.com/</a></p>
+<h3>TypeScript</h3>
+<p>能否將 <a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> 以 TypeScript 改寫,或者轉為 VSCode 的 Extension?</p>
+<p style="padding-left: 30px;"><a href="https://code.visualstudio.com/api/get-started/your-first-extension">https://code.visualstudio.com/api/get-started/your-first-extension</a></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/a5DX5pQ9p5M" title="YouTube video player" width="560"></iframe></p>
+<p><a href="https://www.typescriptlang.org/">https://www.typescriptlang.org/</a></p>
+<p><a href="https://github.com/microsoft/vscode">https://github.com/microsoft/vscode</a></p>
+<p style="padding-left: 30px;">在隨身系統啟動時, 需要 Y:\home_ipv6\AppData\Roaming 目錄才能開啟, 因為需要新增 Y:\home_ipv6\AppData\Roaming\Code\Dictionaries 目錄備用.</p>
+<p style="padding-left: 30px;">Command Palette (Ctrl+Shift+P)</p>
+<p><a href="https://github.com/boltex/leointeg">https://github.com/boltex/leointeg</a></p>
+<p style="padding-left: 30px;">以 TypeScript 編寫將 Leo Editor 功能轉為 VSCode 的 Extension.</p>
+<p>2013 <a href="https://link.springer.com/book/10.1007/978-1-4302-5726-4">TypeScript Revealed</a> (請從校園網路下載）</p>
+<p>2018 <a href="https://link.springer.com/book/10.1007/978-1-4842-3249-1">Pro TypeScript</a> (請從校園網路下載）</p>
+<p>2019 <a href="https://link.springer.com/book/10.1007/978-1-4842-4979-6">Essential TypeScript</a> (請從校園網路下載）</p>
+<p>2019 <a href="https://link.springer.com/book/10.1007/978-1-4842-4395-4">Beginning Javascript</a> (請從校園網路下載）</p>
+<p>2019 <a href="https://link.springer.com/book/10.1007/978-1-4842-4224-7">Visual Studio Code Distilled</a></p><h3>pixijs</h3>
 <p>PixiJS — The HTML5 Creation Engine</p>
 <p>Create Great Interactive Graphics or Games and the Web</p>
 <p><a href="https://link.springer.com/book/10.1007/978-1-4842-1094-9">Learn Pixi.js</a> (從校園網路中下載電子書)</p>
@@ -8256,6 +8307,7 @@ browser.timer.set_interval(bunnyRotate, 30)
 <p style="padding-left: 60px;"><a href="https://github.com/mdecourse/report/blob/main/.github/workflows/demo.yaml">https://github.com/mdecourse/report/blob/main/.github/workflows/demo.yaml</a></p>
 <p style="padding-left: 60px;"><a href="https://github.com/mdecourse/4072pj1">https://github.com/mdecourse/4072pj1</a></p><h1>可攜系統</h1>
 <p>建立可攜系統在解決 ____ 問題?</p>
+<p>Visual Studio Code: 直接從 <a href="https://code.visualstudio.com/Download">https://code.visualstudio.com/Download</a> 下載 zip 版本, 解開壓縮後放入 data 目錄, 且在 home_ipv6 與 home_ipv4 目錄下建立 AppData/Roaming 目錄, 並將 Code.exe 的路經納入 path 環境變數設定.</p>
 <p><a href="https://drive.google.com/file/d/1hTvN4mCk2b_enIK204HA0AVPsd3GPlh5/view?usp=sharing">portablekmol_base.7z</a> (下載 118MB, 解開壓縮後 148MB)</p>
 <p style="padding-left: 30px;">包括 data 目錄與 start_ipv6.bat, start_ipv4.bat, stop.bat</p>
 <p style="padding-left: 30px;">功能: 啟動後可以啟動 SciTE 編輯器, 可用於類解譯 ANSI C 程式, 以及 <a href="https://solvespace.com">Solvespace</a>.</p>
