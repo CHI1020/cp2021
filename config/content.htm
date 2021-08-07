@@ -2518,7 +2518,117 @@ browser.timer.set_interval(game, 1000/15)
 doc["snake"].bind('click', Snake.prog)
 </script>
 <!-- snake ends -->
-<p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="class_ex6">Ex6</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="snake">貪食蛇</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="clock1">clock1</button><button id="fourbar">Fourbar</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="nfulist">nfulist</button><button id="clear">Clear</button></p>
+<p></p>
+<!-- sudoku starts -->
+<script type="text/python3">
+from browser import document as doc
+# 導入位於 static 目錄下的 beditor.py 
+import beditor
+# 利用 beditor.py 中的 editor 類別建立案例, 對應到 kw1
+Sudoku = beditor.editor("""# from https://github.com/BHoggs/sudoku-speedtest
+#from timeit import default_timer as timer
+
+board = [
+    [0,0,0, 0,3,0, 0,0,0],
+    [0,0,1, 0,7,6, 9,4,0],
+    [0,8,0, 9,0,0, 0,0,0],
+
+    [0,4,0, 0,0,1, 0,0,0],
+    [0,2,8, 0,9,0, 0,0,0],
+    [0,0,0, 0,0,0, 1,6,0],
+
+    [7,0,0, 8,0,0, 0,0,0],
+    [0,0,0, 0,0,0, 4,0,2],
+    [0,9,0, 0,1,0, 3,0,0]
+]
+
+def print_board():
+    global board
+    for i in range(9):
+        if i % 3 == 0 and i != 0:
+            print ("- - - - - - - - - - -")
+
+        for j in range(9):
+            if j % 3 == 0 and j != 0:
+                print("| ", end='')
+
+            if j == 8:
+                print (board[i][j])
+
+            else:
+                print (str(board[i][j]) + " ", end='')
+
+def find_empty():
+    global board
+    for i in range(9):
+        for j in range(9):
+            if board[i][j] == 0:
+                return (i, j)  # row, col
+
+    return None
+
+
+def valid(num, pos):
+    global board
+    # Check row
+    for i in range(9):
+        if board[pos[0]][i] == num and pos[1] != i:
+            return False
+
+    # Check column
+    for i in range(9):
+        if board[i][pos[1]] == num and pos[0] != i:
+            return False
+
+    # Check box
+    box_x = pos[1] // 3
+    box_y = pos[0] // 3
+
+    for i in range(box_y*3, box_y*3 + 3):
+        for j in range(box_x*3, box_x*3 + 3):
+            if board[i][j] == num and (i,j) != pos:
+                return False
+
+    return True
+
+def solve():
+    global board
+    find = find_empty()
+    if not find:
+        return True
+
+    else:
+        row, col = find
+        #print ("Solving... Row: %d, Col: %d" % (row+1,col+1), end='')
+
+    for i in range(1, 10):
+        if valid(i, (row, col)):
+            board[row][col] = i
+
+            if solve():
+                return True
+
+            board[row][col] = 0
+
+    return False
+
+
+print_board()
+
+#start = timer()
+solve()
+#print("")
+#print("Seconds to Solve: ", timer() - start)
+
+print ("")
+print ("_____________________")
+print_board()
+""", "kw_editor", "kw_console", "kw__container", "kw_py_src")
+# id 為 "sudoku 的按鈕點按時, 執行 Sudoku 物件中的 prog 方法
+doc["sudoku"].bind('click', Sudoku.prog)
+</script>
+<!-- sudoku ends -->
+<p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="class_ex6">Ex6</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="snake">貪食蛇</button><button id="sudoku">Sudoku</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="clock1">clock1</button><button id="fourbar">Fourbar</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="nfulist">nfulist</button><button id="clear">Clear</button></p>
 <h4>參考資料:</h4>
 <p><a href="/downloads/turtle_intro.pdf">turtle_intro.pdf</a></p>
 <p><a href="/downloads/turtle_intro2.pdf">turtle_intro2.pdf</a></p>
@@ -3427,7 +3537,131 @@ async fn main() -&gt; std::io::Result&lt;()&gt; {
 <p><a href="https://link.springer.com/book/10.1007/978-1-4842-4480-7">Practical Haskell</a> (校園網路中下載電子書)</p>
 <p><a href="https://link.springer.com/book/10.1007/978-1-4842-3739-7">Practical Web Development with Haskell</a> (校園中下載電子書)</p>
 <p><a href="https://link.springer.com/book/10.1007/978-1-4302-6251-0">Beginning Haskell</a> (校園網路下載電子書)</p>
-<p><a href="https://link.springer.com/book/10.1007/978-1-4842-4507-1">Haskell Quick Syntax Reference</a> (校園網路下載電子書)</p><h2>RoboDK</h2>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4842-4507-1">Haskell Quick Syntax Reference</a> (校園網路下載電子書)</p>
+<h3>PowerShell</h3>
+<p><a href="https://github.com/PowerShell/PowerShell">https://github.com/PowerShell/PowerShell</a></p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4842-4504-0">PowerShell and Python Together</a> (從校園網路下載電子書)</p>
+<p>在<a href="https://old.reddit.com/r/PowerShell/comments/8gztev/any_way_i_can_speed_this_script_up/">網友的幫忙</a>下, 將部分程式碼改寫, 從原先 9 小時執行時間縮減為 20 分鐘.</p>
+<p><a href="https://old.reddit.com/r/PowerShell/comments/jncf3z/how_can_i_speed_up_this_validation_script/">這個案例</a>從 7 小時縮減為 5 分鐘.</p>
+<p><a href="https://old.reddit.com/r/PowerShell/comments/9qu7nj/suggestions_to_speed_this_up/">這個案例</a>從 10 分鐘縮減為 30 秒.</p>
+<p><a href="https://old.reddit.com/r/PowerShell/comments/8r53r3/help_with_time_optimization_of_script/">這個案例</a>從 9 秒縮減為 0.75 秒.</p>
+<p><a href="https://en.wikipedia.org/wiki/Sudoku">sudoku</a>.ps1 (from <a href="https://bpa.st/QCHA">https://bpa.st/QCHA</a> )</p>
+<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false">$global:board = @(
+    @(0,0,0, 0,3,0, 0,0,0),
+    @(0,0,1, 0,7,6, 9,4,0),
+    @(0,8,0, 9,0,0, 0,0,0),
+
+    @(0,4,0, 0,0,1, 0,0,0),
+    @(0,2,8, 0,9,0, 0,0,0),
+    @(0,0,0, 0,0,0, 1,6,0),
+
+    @(7,0,0, 8,0,0, 0,0,0),
+    @(0,0,0, 0,0,0, 4,0,2),
+    @(0,9,0, 0,1,0, 3,0,0)
+)
+
+function print_board {
+    foreach ($i in 0..8) {
+        if ($i % 3 -eq 0 -and $i -ne 0) {
+            Write-Host "- - - - - - - - - - -"
+        }
+
+        foreach ($j in 0..8) {
+            if ($j % 3 -eq 0 -and $j -ne 0) {
+                Write-Host "| " -NoNewline
+            }
+
+            if ($j -eq 8) {
+                Write-Host $global:board[$i][$j]
+            }
+            else {
+                Write-Host ([string]$global:board[$i][$j] + " ") -NoNewline
+            }
+        }
+    }
+}
+
+class Sudoku
+{
+    static [bool] valid([int]$num, [int]$row, [int]$col) {
+        # Check row
+        foreach ($i in 0..8) {
+            if ($global:board[$row][$i] -eq $num -and $col -ne $i) {
+                return $False
+            }
+        }
+
+        # Check column
+        foreach ($i in 0..8) {
+            if ($global:board[$i][$col] -eq $num -and $row -ne $i) {
+                return $False
+            }
+        } 
+
+        # Check box
+        $box_x = [math]::floor($col / 3)
+        $box_y = [math]::floor($row / 3)
+
+        foreach ($i in ($box_y*3)..($box_y*3 + 2)) {
+            foreach ($j in ($box_x * 3)..($box_x*3 + 2)) {
+                if ($global:board[$i][$j] -eq $num -and ($i -ne $col) -and ($j -ne $col)) {
+                    return $False
+                }
+            }
+        }
+
+        return $True
+    }
+
+    static [System.Tuple[int,int]] find_empty() {
+        foreach ($i in 0..8) {
+            foreach ($j in 0..8) {
+                if ($global:board[$i][$j] -eq 0) {
+                    return [Tuple]::Create($i, $j)  # row, col
+                }
+            }
+        }
+        return $null
+        
+    }
+}
+
+function solve {
+    $find = [Sudoku]::find_empty()
+    if (-not $find) {
+        return $True
+    }
+    else {
+        $row, $col = $find.Item1, $find.Item2
+        #Write-Progress -Activity "Solving..." -CurrentOperation "Row: $($row+1), Col: $($col+1)" -PercentComplete ([math]::round($row*$col/64*100))
+        #Write-Host "`rSolving... Row: $($row+1), Col: $($col+1)" -NoNewline
+    }
+
+    foreach ($i in 1..9) {
+        if ([sudoku]::valid($i, $row, $col)) {
+            $global:board[$row][$col] = $i
+            #print_board
+
+            if (solve) {
+                return $True
+            }
+
+            $global:board[$row][$col] = 0
+        }
+    }
+
+    return $False
+}
+
+print_board
+$time = Measure-Command {solve}
+Write-Host ""
+Write-Host "Seconds to Solve: $($time.TotalSeconds)"
+Write-Host ""
+Write-Host "_____________________"
+print_board
+</pre>
+<p></p><h2>RoboDK</h2>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/nv7mOBDA_Z8" title="YouTube video player" width="560"></iframe></p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/dkRaf5n3OKs" title="YouTube video player" width="560"></iframe></p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/3EqzMzszMV0" title="YouTube video player" width="560"></iframe></p>
@@ -6327,7 +6561,118 @@ browser.timer.set_interval(game, 1000/15)
 doc["snake"].bind('click', Snake.prog)
 </script>
 <!-- snake ends -->
-<p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="class_ex6">Ex6</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="snake">貪食蛇</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="clock1">clock1</button><button id="fourbar">Fourbar</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="nfulist">nfulist</button><button id="clear">Clear</button></p>
+<p></p>
+<!-- sudoku starts -->
+<script type="text/python3">
+from browser import document as doc
+# 導入位於 static 目錄下的 beditor.py 
+import beditor
+# 利用 beditor.py 中的 editor 類別建立案例, 對應到 kw1
+Sudoku = beditor.editor("""# from https://github.com/BHoggs/sudoku-speedtest
+#from timeit import default_timer as timer
+
+board = [
+    [0,0,0, 0,3,0, 0,0,0],
+    [0,0,1, 0,7,6, 9,4,0],
+    [0,8,0, 9,0,0, 0,0,0],
+
+    [0,4,0, 0,0,1, 0,0,0],
+    [0,2,8, 0,9,0, 0,0,0],
+    [0,0,0, 0,0,0, 1,6,0],
+
+    [7,0,0, 8,0,0, 0,0,0],
+    [0,0,0, 0,0,0, 4,0,2],
+    [0,9,0, 0,1,0, 3,0,0]
+]
+
+def print_board():
+    global board
+    for i in range(9):
+        if i % 3 == 0 and i != 0:
+            print ("- - - - - - - - - - -")
+
+        for j in range(9):
+            if j % 3 == 0 and j != 0:
+                print("| ", end='')
+
+            if j == 8:
+                print (board[i][j])
+
+            else:
+                print (str(board[i][j]) + " ", end='')
+
+def find_empty():
+    global board
+    for i in range(9):
+        for j in range(9):
+            if board[i][j] == 0:
+                return (i, j)  # row, col
+
+    return None
+
+
+def valid(num, pos):
+    global board
+    # Check row
+    for i in range(9):
+        if board[pos[0]][i] == num and pos[1] != i:
+            return False
+
+    # Check column
+    for i in range(9):
+        if board[i][pos[1]] == num and pos[0] != i:
+            return False
+
+    # Check box
+    box_x = pos[1] // 3
+    box_y = pos[0] // 3
+
+    for i in range(box_y*3, box_y*3 + 3):
+        for j in range(box_x*3, box_x*3 + 3):
+            if board[i][j] == num and (i,j) != pos:
+                return False
+
+    return True
+
+def solve():
+    global board
+    find = find_empty()
+    if not find:
+        return True
+
+    else:
+        row, col = find
+        #print ("Solving... Row: %d, Col: %d" % (row+1,col+1), end='')
+
+    for i in range(1, 10):
+        if valid(i, (row, col)):
+            board[row][col] = i
+
+            if solve():
+                return True
+
+            board[row][col] = 0
+
+    return False
+
+
+print_board()
+
+#start = timer()
+solve()
+#print("")
+#print("Seconds to Solve: ", timer() - start)
+
+print ("")
+print ("_____________________")
+print_board()
+
+""", "kw_editor", "kw_console", "kw__container", "kw_py_src")
+# id 為 "sudoku 的按鈕點按時, 執行 Sudoku 物件中的 prog 方法
+doc["sudoku"].bind('click', Sudoku.prog)
+</script>
+<!-- sudoku ends -->
+<p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="class_ex6">Ex6</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="snake">貪食蛇</button><button id="sudoku">Sudoku</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="clock1">clock1</button><button id="fourbar">Fourbar</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="nfulist">nfulist</button><button id="clear">Clear</button></p>
 <h4>參考資料:</h4>
 <p><a href="/downloads/turtle_intro.pdf">turtle_intro.pdf</a></p>
 <p><a href="/downloads/turtle_intro2.pdf">turtle_intro2.pdf</a></p>
@@ -8347,13 +8692,13 @@ pacman -Sy mingw-w64-x86-64-cmake</pre>
 <p style="padding-left: 30px;">功能: 採 Apache 2.0 使用授權的開放源套件, 可用於機電資控制系統設計與模擬.</p><h2>Lua 解譯</h2>
 <p>學習 Lua 要做什麼? 能夠解決 ____  問題?</p>
 <p>網際 Lua 解譯: <a href="http://mde.tw/lab/downloads/lua/index.html">http://mde.tw/lab/downloads/lua/index.html</a></p>
+<p style="padding-left: 30px;">進階練習: 利用 MSYS2 中的 MinGW64 安裝 mingw-w64-x86_64-toolchain 後就可以自行編譯採 C 編寫的 Lua 解譯程式碼 (<a href="https://www.lua.org/ftp/">下載 Lua 原始碼</a>).</p>
 <p>SciTE 編輯器中的 Lua.properties 設定:</p>
 <p>選擇利用 y:\lua-5.4.3\luac 與 lua 編譯或解譯 .lua 程式檔案.</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">command.compile.*.lua=y:\lua-5.4.3\luac -o "$(FileName).luc" "$(FileNameExt)"
 # Lua 5.1
 command.go.*.lua=y:\lua-5.4.3\lua "$(FileNameExt)"</pre>
-<p></p>
-<h1>CMSiMDE</h1>
+<p></p><h1>CMSiMDE</h1>
 <p>CMSiMDE (<a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a>) 是一套以 Python 與 Flask 框架編寫的網際內容管理系統,</p>
 <p>使用 CMSiMDE 建議使用者安裝 flask flask_cors bs4 lxml pelican markdown leo 等模組. 其中的 flask flask_cors bs4 lxml pelican markdown為啟動 CMSiMDE 的必要模組, 而 leo 則是 CMSMDE 開發者所使用的大綱管理工具, 可以用於與 CMSiMDE 整合的 Pelican blog 及 Reveal.js 網際簡報編輯之用.</p>
 <h2>建立網頁</h2>

@@ -136,89 +136,130 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Spacewar << <a href='Spacewar.html'>Previous</a> <a href='Flutter.html'>Next</a> >> Flutter<br /><h1>Flask</h1>
-<p>Server 端 (Flask):</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask, render_template, request, jsonify
- 
-# Initialize the Flask application
-app = Flask(__name__)
- 
-@app.route('/')
-def index():
-    return render_template('index.html')
- 
-@app.route('/add_numbers', methods=['POST'])
-def add_numbers():
-    a = request.form.get('a', 0, type=int)
-    b = request.form.get('b', 0, type=int)
-    #return jsonify(result = a+b)
-    # 必須傳回字串?
-    return str(a+b)
- 
-if __name__ == '__main__':
-    app.run(debug=True)</pre>
-<p>Client 端 (Brython):</p>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-  &lt;head&gt;
-    &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"&gt;&lt;/script&gt;
-    &lt;link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"&gt;
-    &lt;script src="http://brython.info/src/brython_dist.js"&gt;&lt;/script&gt;
-  &lt;/head&gt;
-  &lt;body onload="brython()"&gt;
-  &lt;script type="text/python"&gt;
-    from browser import document
-    from browser import ajax
-    # https://www.brython.info/static_doc/en/ajax.html
-     
-    def on_complete(req):
-        document["txt_area"] .clear()
-        if req.status==200 or req.status==0:
-            document["txt_area"] &lt;= req.text
-        else:
-            document["txt_area"] &lt;= "error "+req.text
-             
-    def get(url):  
-        # req 從 ajax 模組中的 ajax 類別建立案例, 為一個 ajax 物件        
-        req = ajax.ajax()
-        # a 為 id="A" 輸入欄位中所輸入的值
-        a = document['A'].value
-        # b 為 id="B" 輸入欄位中所輸入的值        
-        b = document['B'].value
-        # ajax 物件中的 bind 方法, 第一個輸入變數為 evt, 'complete' 表示 ajax 從伺服器取值完成後, 執行 on_complete 函式
-        req.bind('complete', on_complete)
-        req.open('POST', url, True)
-        req.set_header('content-type','application/x-www-form-urlencoded')
-        req.send({"a": a, "b":b}) 
-     
-    # 使用者按下 id="calculate" 按鈕, 將會執行上述 get("/add_numbers") 函式
-    document['calculate'].bind('click',lambda ev:get('/add_numbers'))
- 
-&lt;/script&gt;
-   
-    &lt;div class="container"&gt;
-      &lt;div class="header"&gt;
-        &lt;h3 class="text-muted"&gt;Brython ajax example&lt;/h3&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-    &lt;input type="text" id="A" size="5" name="a"&gt; +
-    &lt;input type="text" id ="B" size="5" name="b"&gt; =
-    &lt;div id="txt_area"&gt;&lt;/div&gt;
-    &lt;p&gt;&lt;button id="calculate"&gt;calculate server side&lt;/button&gt;
-      &lt;/form&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</pre>
-<h4>學習資源:</h4>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/cmstemplate">https://github.com/mdecourse/cmstemplate</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/scissor-rock-paper">https://github.com/mdecourse/scissor-rock-paper</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/scissor-rock-paper2">https://github.com/mdecourse/scissor-rock-paper2</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/wcms-scrum1">https://github.com/mdecourse/wcms-scrum1</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/chiamingyen/pygrouf">https://github.com/chiamingyen/pygrouf</a></p>
-<p></p>
-<br />Spacewar << <a href='Spacewar.html'>Previous</a> <a href='Flutter.html'>Next</a> >> Flutter</div>
+    <div id="tipue_search_content">Haskell << <a href='Haskell.html'>Previous</a> <a href='RoboDK.html'>Next</a> >> RoboDK<br /><h1>PowerShell</h1>
+<p><a href="https://github.com/PowerShell/PowerShell">https://github.com/PowerShell/PowerShell</a></p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4842-4504-0">PowerShell and Python Together</a> (從校園網路下載電子書)</p>
+<p>在<a href="https://old.reddit.com/r/PowerShell/comments/8gztev/any_way_i_can_speed_this_script_up/">網友的幫忙</a>下, 將部分程式碼改寫, 從原先 9 小時執行時間縮減為 20 分鐘.</p>
+<p><a href="https://old.reddit.com/r/PowerShell/comments/jncf3z/how_can_i_speed_up_this_validation_script/">這個案例</a>從 7 小時縮減為 5 分鐘.</p>
+<p><a href="https://old.reddit.com/r/PowerShell/comments/9qu7nj/suggestions_to_speed_this_up/">這個案例</a>從 10 分鐘縮減為 30 秒.</p>
+<p><a href="https://old.reddit.com/r/PowerShell/comments/8r53r3/help_with_time_optimization_of_script/">這個案例</a>從 9 秒縮減為 0.75 秒.</p>
+<p><a href="https://en.wikipedia.org/wiki/Sudoku">sudoku</a>.ps1 (from <a href="https://bpa.st/QCHA">https://bpa.st/QCHA</a> )</p>
+<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false">$global:board = @(
+    @(0,0,0, 0,3,0, 0,0,0),
+    @(0,0,1, 0,7,6, 9,4,0),
+    @(0,8,0, 9,0,0, 0,0,0),
+
+    @(0,4,0, 0,0,1, 0,0,0),
+    @(0,2,8, 0,9,0, 0,0,0),
+    @(0,0,0, 0,0,0, 1,6,0),
+
+    @(7,0,0, 8,0,0, 0,0,0),
+    @(0,0,0, 0,0,0, 4,0,2),
+    @(0,9,0, 0,1,0, 3,0,0)
+)
+
+function print_board {
+    foreach ($i in 0..8) {
+        if ($i % 3 -eq 0 -and $i -ne 0) {
+            Write-Host "- - - - - - - - - - -"
+        }
+
+        foreach ($j in 0..8) {
+            if ($j % 3 -eq 0 -and $j -ne 0) {
+                Write-Host "| " -NoNewline
+            }
+
+            if ($j -eq 8) {
+                Write-Host $global:board[$i][$j]
+            }
+            else {
+                Write-Host ([string]$global:board[$i][$j] + " ") -NoNewline
+            }
+        }
+    }
+}
+
+class Sudoku
+{
+    static [bool] valid([int]$num, [int]$row, [int]$col) {
+        # Check row
+        foreach ($i in 0..8) {
+            if ($global:board[$row][$i] -eq $num -and $col -ne $i) {
+                return $False
+            }
+        }
+
+        # Check column
+        foreach ($i in 0..8) {
+            if ($global:board[$i][$col] -eq $num -and $row -ne $i) {
+                return $False
+            }
+        } 
+
+        # Check box
+        $box_x = [math]::floor($col / 3)
+        $box_y = [math]::floor($row / 3)
+
+        foreach ($i in ($box_y*3)..($box_y*3 + 2)) {
+            foreach ($j in ($box_x * 3)..($box_x*3 + 2)) {
+                if ($global:board[$i][$j] -eq $num -and ($i -ne $col) -and ($j -ne $col)) {
+                    return $False
+                }
+            }
+        }
+
+        return $True
+    }
+
+    static [System.Tuple[int,int]] find_empty() {
+        foreach ($i in 0..8) {
+            foreach ($j in 0..8) {
+                if ($global:board[$i][$j] -eq 0) {
+                    return [Tuple]::Create($i, $j)  # row, col
+                }
+            }
+        }
+        return $null
+        
+    }
+}
+
+function solve {
+    $find = [Sudoku]::find_empty()
+    if (-not $find) {
+        return $True
+    }
+    else {
+        $row, $col = $find.Item1, $find.Item2
+        #Write-Progress -Activity "Solving..." -CurrentOperation "Row: $($row+1), Col: $($col+1)" -PercentComplete ([math]::round($row*$col/64*100))
+        #Write-Host "`rSolving... Row: $($row+1), Col: $($col+1)" -NoNewline
+    }
+
+    foreach ($i in 1..9) {
+        if ([sudoku]::valid($i, $row, $col)) {
+            $global:board[$row][$col] = $i
+            #print_board
+
+            if (solve) {
+                return $True
+            }
+
+            $global:board[$row][$col] = 0
+        }
+    }
+
+    return $False
+}
+
+print_board
+$time = Measure-Command {solve}
+Write-Host ""
+Write-Host "Seconds to Solve: $($time.TotalSeconds)"
+Write-Host ""
+Write-Host "_____________________"
+print_board
+</pre>
+<p></p><br />Haskell << <a href='Haskell.html'>Previous</a> <a href='RoboDK.html'>Next</a> >> RoboDK</div>
         
     <!-- footer -->
       <div class="container">

@@ -62,6 +62,7 @@
 <script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushHaxe.js"></script>
 <script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushXml.js"></script>
 <script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPhp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPowerShell.js"></script>
 <script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushLua.js"></script>
 <script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCpp.js"></script>
 <script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCss.js"></script>
@@ -124,7 +125,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='學習程式.html'>學習程式</a><li><a href='機械設計知識.html'>機械設計知識</a><li class='has-children'><a href='Python.html'>Python</a><ul class='dropdown'><li><a href='Brython.html'>Brython</a><li><a href='網際模擬程式.html'>網際模擬程式</a><li><a href='Spacewar.html'>Spacewar</a><li><a href='Flask.html'>Flask</a><li><a href='Flutter.html'>Flutter</a><li><a href='Rust.html'>Rust</a><li><a href='Haskell.html'>Haskell</a></li></ul><li><a href='RoboDK.html'>RoboDK</a><li class='has-children'><a href='開發範例.html'>開發範例</a><ul class='dropdown'><li><a href='網際程式.html'>網際程式</a><li><a href='RPA.html'>RPA</a><li><a href='FossilPy.html'>FossilPy</a><li><a href='Delta.html'>Delta</a><li><a href='DSL.html'>DSL</a></li></ul><li class='has-children'><a href='C.html'>C</a><ul class='dropdown'><li><a href='Cython.html'>Cython</a></li></ul><li><a href='CPP.html'>CPP</a></li></ul><li class='has-children'><a href='課程主題.html'>課程主題</a><ul class='dropdown'><li class='has-children'><a href='倉儲與網頁.html'>倉儲與網頁</a><ul class='dropdown'><li><a href='Why Git.html'>Why Git</a><li><a href='Git Push.html'>Git Push</a><li><a href='Github.html'>Github</a></li></ul><li class='has-children'><a href='解題練習.html'>解題練習</a><ul class='dropdown'><li><a href='貪食蛇.html'>貪食蛇</a><li><a href='期中專案.html'>期中專案</a></li></ul><li class='has-children'><a href='ggame.html'>ggame</a><ul class='dropdown'><li><a href='Deno.html'>Deno</a><li><a href='TypeScript.html'>TypeScript</a><li><a href='pixijs.html'>pixijs</a><li><a href='pixijs1.html'>pixijs1</a></li></ul><li><a href='Brython-server.html'>Brython-server</a><li><a href='虛擬主機.html'>虛擬主機</a></li></ul><li class='has-children'><a href='可攜系統.html'>可攜系統</a><ul class='dropdown'><li><a href='Lua 解譯.html'>Lua 解譯</a></li></ul><li class='has-children'><a href='CMSiMDE.html'>CMSiMDE</a><ul class='dropdown'><li><a href='建立網頁.html'>建立網頁</a><li class='has-children'><a href='基本操作.html'>基本操作</a><ul class='dropdown'><li><a href='客製化.html'>客製化</a><li><a href='編輯網頁內容.html'>編輯網頁內容</a><li><a href='上傳與引用檔案.html'>上傳與引用檔案</a><li><a href='上傳與引用圖片.html'>上傳與引用圖片</a><li><a href='嵌入程式碼.html'>嵌入程式碼</a><li><a href='嵌入影片檔.html'>嵌入影片檔</a><li><a href='檢視 STL.html'>檢視 STL</a></li></ul><li><a href='Gitlab 同步.html'>Gitlab 同步</a><li><a href='Heroku 部署.html'>Heroku 部署</a><li><a href='Fossil SCM.html'>Fossil SCM</a></li></ul><li class='has-children'><a href='注意事項.html'>注意事項</a><ul class='dropdown'><li><a href='標題選擇.html'>標題選擇</a><li><a href='靜態網頁 404.html'>靜態網頁 404</a><li><a href='動態網站錯誤.html'>動態網站錯誤</a></li></ul><li class='has-children'><a href='延伸開發.html'>延伸開發</a><ul class='dropdown'><li class='has-children'><a href='已知問題.html'>已知問題</a><ul class='dropdown'><li><a href='IPv6.html'>IPv6</a><li><a href='MathJax.html'>MathJax</a><li><a href='html 分頁.html'>html 分頁</a><li><a href='template.html'>template</a></li>
+                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='學習程式.html'>學習程式</a><li><a href='機械設計知識.html'>機械設計知識</a><li class='has-children'><a href='Python.html'>Python</a><ul class='dropdown'><li><a href='Brython.html'>Brython</a><li><a href='網際模擬程式.html'>網際模擬程式</a><li><a href='Spacewar.html'>Spacewar</a><li><a href='Flask.html'>Flask</a><li><a href='Flutter.html'>Flutter</a><li><a href='Rust.html'>Rust</a><li><a href='Haskell.html'>Haskell</a><li><a href='PowerShell.html'>PowerShell</a></li></ul><li><a href='RoboDK.html'>RoboDK</a><li class='has-children'><a href='開發範例.html'>開發範例</a><ul class='dropdown'><li><a href='網際程式.html'>網際程式</a><li><a href='RPA.html'>RPA</a><li><a href='FossilPy.html'>FossilPy</a><li><a href='Delta.html'>Delta</a><li><a href='DSL.html'>DSL</a></li></ul><li class='has-children'><a href='C.html'>C</a><ul class='dropdown'><li><a href='Cython.html'>Cython</a></li></ul><li><a href='CPP.html'>CPP</a></li></ul><li class='has-children'><a href='課程主題.html'>課程主題</a><ul class='dropdown'><li class='has-children'><a href='倉儲與網頁.html'>倉儲與網頁</a><ul class='dropdown'><li><a href='Why Git.html'>Why Git</a><li><a href='Git Push.html'>Git Push</a><li><a href='Github.html'>Github</a></li></ul><li class='has-children'><a href='解題練習.html'>解題練習</a><ul class='dropdown'><li><a href='貪食蛇.html'>貪食蛇</a><li><a href='期中專案.html'>期中專案</a></li></ul><li class='has-children'><a href='ggame.html'>ggame</a><ul class='dropdown'><li><a href='Deno.html'>Deno</a><li><a href='TypeScript.html'>TypeScript</a><li><a href='pixijs.html'>pixijs</a><li><a href='pixijs1.html'>pixijs1</a></li></ul><li><a href='Brython-server.html'>Brython-server</a><li><a href='虛擬主機.html'>虛擬主機</a></li></ul><li class='has-children'><a href='可攜系統.html'>可攜系統</a><ul class='dropdown'><li><a href='Lua 解譯.html'>Lua 解譯</a></li></ul><li class='has-children'><a href='CMSiMDE.html'>CMSiMDE</a><ul class='dropdown'><li><a href='建立網頁.html'>建立網頁</a><li class='has-children'><a href='基本操作.html'>基本操作</a><ul class='dropdown'><li><a href='客製化.html'>客製化</a><li><a href='編輯網頁內容.html'>編輯網頁內容</a><li><a href='上傳與引用檔案.html'>上傳與引用檔案</a><li><a href='上傳與引用圖片.html'>上傳與引用圖片</a><li><a href='嵌入程式碼.html'>嵌入程式碼</a><li><a href='嵌入影片檔.html'>嵌入影片檔</a><li><a href='檢視 STL.html'>檢視 STL</a></li></ul><li><a href='Gitlab 同步.html'>Gitlab 同步</a><li><a href='Heroku 部署.html'>Heroku 部署</a><li><a href='Fossil SCM.html'>Fossil SCM</a></li></ul><li class='has-children'><a href='注意事項.html'>注意事項</a><ul class='dropdown'><li><a href='標題選擇.html'>標題選擇</a><li><a href='靜態網頁 404.html'>靜態網頁 404</a><li><a href='動態網站錯誤.html'>動態網站錯誤</a></li></ul><li class='has-children'><a href='延伸開發.html'>延伸開發</a><ul class='dropdown'><li class='has-children'><a href='已知問題.html'>已知問題</a><ul class='dropdown'><li><a href='IPv6.html'>IPv6</a><li><a href='MathJax.html'>MathJax</a><li><a href='html 分頁.html'>html 分頁</a><li><a href='template.html'>template</a></li>
                       </ul>
                 </nav>
               </div>
@@ -2546,7 +2547,118 @@ browser.timer.set_interval(game, 1000/15)
 doc["snake"].bind('click', Snake.prog)
 </script>
 <!-- snake ends -->
-<p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="class_ex6">Ex6</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="snake">貪食蛇</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="clock1">clock1</button><button id="fourbar">Fourbar</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="nfulist">nfulist</button><button id="clear">Clear</button></p>
+<p></p>
+<!-- sudoku starts -->
+<script type="text/python3">
+from browser import document as doc
+# 導入位於 static 目錄下的 beditor.py 
+import beditor
+# 利用 beditor.py 中的 editor 類別建立案例, 對應到 kw1
+Sudoku = beditor.editor("""# from https://github.com/BHoggs/sudoku-speedtest
+#from timeit import default_timer as timer
+
+board = [
+    [0,0,0, 0,3,0, 0,0,0],
+    [0,0,1, 0,7,6, 9,4,0],
+    [0,8,0, 9,0,0, 0,0,0],
+
+    [0,4,0, 0,0,1, 0,0,0],
+    [0,2,8, 0,9,0, 0,0,0],
+    [0,0,0, 0,0,0, 1,6,0],
+
+    [7,0,0, 8,0,0, 0,0,0],
+    [0,0,0, 0,0,0, 4,0,2],
+    [0,9,0, 0,1,0, 3,0,0]
+]
+
+def print_board():
+    global board
+    for i in range(9):
+        if i % 3 == 0 and i != 0:
+            print ("- - - - - - - - - - -")
+
+        for j in range(9):
+            if j % 3 == 0 and j != 0:
+                print("| ", end='')
+
+            if j == 8:
+                print (board[i][j])
+
+            else:
+                print (str(board[i][j]) + " ", end='')
+
+def find_empty():
+    global board
+    for i in range(9):
+        for j in range(9):
+            if board[i][j] == 0:
+                return (i, j)  # row, col
+
+    return None
+
+
+def valid(num, pos):
+    global board
+    # Check row
+    for i in range(9):
+        if board[pos[0]][i] == num and pos[1] != i:
+            return False
+
+    # Check column
+    for i in range(9):
+        if board[i][pos[1]] == num and pos[0] != i:
+            return False
+
+    # Check box
+    box_x = pos[1] // 3
+    box_y = pos[0] // 3
+
+    for i in range(box_y*3, box_y*3 + 3):
+        for j in range(box_x*3, box_x*3 + 3):
+            if board[i][j] == num and (i,j) != pos:
+                return False
+
+    return True
+
+def solve():
+    global board
+    find = find_empty()
+    if not find:
+        return True
+
+    else:
+        row, col = find
+        #print ("Solving... Row: %d, Col: %d" % (row+1,col+1), end='')
+
+    for i in range(1, 10):
+        if valid(i, (row, col)):
+            board[row][col] = i
+
+            if solve():
+                return True
+
+            board[row][col] = 0
+
+    return False
+
+
+print_board()
+
+#start = timer()
+solve()
+#print("")
+#print("Seconds to Solve: ", timer() - start)
+
+print ("")
+print ("_____________________")
+print_board()
+
+""", "kw_editor", "kw_console", "kw__container", "kw_py_src")
+# id 為 "sudoku 的按鈕點按時, 執行 Sudoku 物件中的 prog 方法
+doc["sudoku"].bind('click', Sudoku.prog)
+</script>
+<!-- sudoku ends -->
+<p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="class_ex6">Ex6</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="snake">貪食蛇</button><button id="sudoku">Sudoku</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="clock1">clock1</button><button id="fourbar">Fourbar</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="nfulist">nfulist</button><button id="clear">Clear</button></p>
 <h4>參考資料:</h4>
 <p><a href="./../downloads/turtle_intro.pdf">turtle_intro.pdf</a></p>
 <p><a href="./../downloads/turtle_intro2.pdf">turtle_intro2.pdf</a></p>
