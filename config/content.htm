@@ -2652,7 +2652,183 @@ doc["sudoku"].bind('click', Sudoku.prog)
 </script>
 </p>
 <!-- sudoku ends -->
-<p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="class_ex6">Ex6</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="snake">貪食蛇</button><button id="sudoku">Sudoku</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="clock1">clock1</button><button id="fourbar">Fourbar</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="nfulist">nfulist</button><button id="clear">Clear</button></p>
+<p></p>
+<!-- autosnake starts -->
+<script type="text/python3">
+from browser import document as doc
+# 導入位於 static 目錄下的 beditor.py 
+import beditor
+# 利用 beditor.py 中的 editor 類別建立案例, 對應到 kw1
+Autosnake = beditor.editor("""# 從 browser 導入 document 並設為 doc
+from browser import document as doc
+# 使用者可以透過 window 當作介面使用其他 Javascript 功能
+from browser import html, window
+# 用於定時執行特定函式
+import browser.timer
+# 導入數學模組
+import math
+# 導入亂數模組
+from random import random, randint
+ 
+def update_score(new_score):
+    global high_score
+    score_doc.innerHTML = "Score: " + str(new_score)
+    if new_score > high_score:
+        high_score_doc.innerHTML = "High Score: " + str(new_score)
+        high_score = new_score
+        
+def eat(px, py, ax, ay):
+    global xv, yv, pre_pause, paused
+    # (px, py) go to (ax, ay) through incremented xv, yv
+    if ax != px or ay != py:
+        if ax > px and not paused:
+            xv = 1
+            yv = 0
+        if ax < px and not paused:
+            xv = -1
+            yv = 0
+        if ay > py and not paused:
+            xv = 0
+            yv = 1
+        if ay < py and not paused:
+            xv = 0
+            yv = -1
+            
+def game():
+    global px, py, tc, gs, ax, ay, trail, tail, score
+    # px 為 snake 第一個點的 x 座標, 增量值為 xv
+    px += xv
+    py += yv
+    # 允許穿越四面牆, 以 tc 表示牆面座標極限
+    # 若 px 為負值則設定為 tc -1, 表示 tc 為 x 方向 limit
+    # x 座標方向的穿牆設定
+    if px < 0:
+        px = tc-1
+    if px > tc-1:
+        px = 0
+    # y 座標方向的穿牆設定
+    if py < 0:
+        py = tc-1
+    if py > tc-1:
+        py = 0
+    ctx.fillStyle = "black"
+    # 畫布填入黑色
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    # snake 為 lime 色
+    ctx.fillStyle = "lime"
+    # trail 為數列, 代表 snake 各節 [x,y] 座標
+    # trail = [[x0,y0], [x1, y1], [x2, y2]...]
+    # gs 為方塊邊長 pixel 數
+    for i in range(len(trail)):
+        # https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes
+        # fillRect(x, y, width, height)
+        ctx.fillRect(trail[i][0]*gs, trail[i][1]*gs, gs-2, gs-2)
+        # 若 snake 第一節座標 (px, py)  穿過身體任一節, 則 score 歸零
+        if trail[i][0] == px and trail[i][1] == py:
+            score = score if paused else 0
+            # snake reset 為五節
+            tail = 5
+    # trail 數列以碰到的 [px, py] 座標數列插入作為第一節
+    trail.insert(0, [px, py])
+    while len(trail) > tail:
+        # pop() 內建移除數列最後一個 element
+        trail.pop()
+    # ax, ay 為紅點座標
+    # 當 snake 第一節座標[px, py] 與紅色食物座標 [ax, ay] 重合
+    # 則 tail 增量, 即多一節且得分加 1, 然後食物座標 [ax, ay] 重新以亂數定位
+    if ax == px and ay == py:
+        tail += 1
+        ax = math.floor(random()*tc)
+        ay = math.floor(random()*tc)
+        score += 1
+    # [ax, ay] is known here
+    # [px, py] is where the head of the snake
+    # xv needed to be incremented from px to ax first
+    # and yv needed to be incremented from py to ay
+    eat(px, py, ax, ay)
+    # 更新計分顯示
+    update_score(score)
+    ctx.fillStyle = "red"
+    ctx.fillRect(ax*gs, ay*gs, gs-2, gs-2)
+   
+def key_push(evt):
+    global xv, yv, pre_pause, paused
+    key = evt.keyCode
+    # 37 is left arrow key
+    # 74 is j key
+    if key == 74 and not paused:
+        xv = -1
+        yv = 0
+    # 38 is up arrow key
+    # 73 is i key
+    elif key == 73 and not paused:
+        xv = 0
+        yv = -1
+    # 39 is right arrow key
+    # 76 is l key
+    elif key == 76 and not paused:
+        xv = 1
+        yv = 0
+    # 40 is down arrow key
+    # 77 is m key
+    elif key == 77 and not paused:
+        xv = 0
+        yv = 1
+    # 32 is pause key
+    # 80 is p key
+    elif key == 80:
+        temp = [xv, yv]
+        xv = pre_pause[0]
+        yv = pre_pause[1]
+        pre_pause = [*temp]
+        paused = not paused
+   
+def show_instructions(evt):
+        window.alert("keys to control: i=up, m=down, j=left, l=right, p=pause")
+       
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width = 600, height = 600)
+canvas.id = "game-board"
+brython_div = doc["brython_div"]
+brython_div <= canvas
+   
+score_doc = html.DIV("score")
+score_doc.id = "score"
+brython_div <= score_doc
+   
+high_score_doc = html.DIV("high-score")
+high_score_doc.id = "high-score"
+brython_div <= high_score_doc
+   
+button = html.BUTTON("Keys to control")
+button.id = "instructions-btn"
+brython_div <= button
+   
+score = 0
+high_score = 0
+   
+px = py = 10
+# gs*tc = canvas width and height
+gs = 20
+tc = 30
+ax = ay = 15
+xv = yv = 0
+trail = []
+tail = 5
+   
+pre_pause = [0,0]
+paused = False
+ctx = canvas.getContext("2d")
+doc.addEventListener("keydown", key_push)
+instructions_btn = doc["instructions-btn"]
+instructions_btn.addEventListener("click", show_instructions)
+browser.timer.set_interval(game, 1000/15)
+""", "kw_editor", "kw_console", "kw__container", "kw_py_src")
+# id 為 "autosnake 的按鈕點按時, 執行 Autosnake 物件中的 prog 方法
+doc["autosnake"].bind('click', Autosnake.prog)
+</script>
+<!-- autosnake ends -->
+<p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="class_ex6">Ex6</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="snake">貪食蛇</button><button id="autosnake">貪食蛇2</button><button id="sudoku">Sudoku</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="clock1">clock1</button><button id="fourbar">Fourbar</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="nfulist">nfulist</button><button id="clear">Clear</button></p>
 <h4>參考資料:</h4>
 <p><a href="/downloads/turtle_intro.pdf">turtle_intro.pdf</a></p>
 <p><a href="/downloads/turtle_intro2.pdf">turtle_intro2.pdf</a></p>
@@ -2785,8 +2961,7 @@ var width = window.innerWidth;
 <p style="padding-left: 30px;">上述網際 Python 程式範例執行, 是透過 <a href="https://brython.info/">Brython</a> 達成, 但是卻必須將所有 Python 範例程式碼逐一寫在網頁中 (<span style="background-color: #ccffcc;">方式 1</span>), 而 <a href="http://mde.tw/2017springvcp/blog/web-based-python.html">http://mde.tw/2017springvcp/blog/web-based-python.html</a> 的寫法, 則是將程式範例存入相對目錄中 (<span style="background-color: #ccffcc;">方式 2</span>), 然後當使用者點擊對應 button 時, 才將程式碼取出放入 editor 區域中.</p>
 <p style="padding-left: 30px;">至於 <a href="http://mde.tw/cp2019/content/Task2.html">http://mde.tw/cp2019/content/Task2.html</a> 的取檔案方式, 則是將 <a href="https://dart.dev/">Dart</a> 範例程式存入 <a href="https://docs.github.com/en/github/writing-on-github/editing-and-sharing-content-with-gists/creating-gists">Gist</a> (<span style="background-color: #ccffcc;">方式 3</span>), 然後取出最新對應版本後載入 editor 區域.</p>
 <p style="padding-left: 30px;">而 <a href="http://mde.tw/lab/downloads/lua/index.html?filename=guess2">http://mde.tw/lab/downloads/lua/index.html?filename=guess2</a> 則利用 URL <a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Methods">Request</a> 方法取 Get 變數值後, 再根據範例檔案名稱取出存於相對目錄的程式碼, 將內容放入 editor 區域中 (<span style="background-color: #ccffcc;">方式 4</span>).</p>
-<p style="padding-left: 30px;">請研究上述方式 1 的網際 Python 程式範例編輯與載入執行架構, 分別改為其他三種方式, 並討論其使用差異與優缺點.</p>
-<h3>Brython</h3>
+<p style="padding-left: 30px;">請研究上述方式 1 的網際 Python 程式範例編輯與載入執行架構, 分別改為其他三種方式, 並討論其使用差異與優缺點.</p><h3>Brython</h3>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/VJj-H4we71g" title="YouTube video player" width="560"></iframe></p>
 <p><a href="https://github.com/brython-dev/brython/wiki/How-Brython-works">https://github.com/brython-dev/brython/wiki/How-Brython-works</a></p>
 <p>上一頁的網際 Python 是透過 <a href="https://brython.info/">https://brython.info/</a> 完成, 當使用者在網頁中執行 Python 程式時, 透過 Brython 即時轉為 Javascript 後執行.</p>
@@ -3439,7 +3614,7 @@ if __name__ == '__main__':
 <p>Windows 64 位元環境中的可攜 Flutter 跨平台 App 開發系統:</p>
 <p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1X8icOyPgABAkKHYaDLXPSoy7U7nyxqzW/view?usp=sharing">下載 Flutter_portable_20210707.7z</a> (下載 4.7 GB, 解開壓縮後約 20GB)</p>
 <p>可攜系統中的 Android sdk 容量約 7.5 GB, Flutter 與 Dart 容量約 1.6 GB, Java jdk 容量約 200MB. vscode 約 530 MB, home_mdecourse 目錄下含手機 emulator 檔案容量約 9.3 GB.</p>
-<p>利用 Visual Studio Code 開發 Flutter App 之前, 必須啟動 BlueStacks (<a href="https://drive.google.com/file/d/1X8icOyPgABAkKHYaDLXPSoy7U7nyxqzW/view?usp=sharing">Flutter_portable_20210707.7z</a> 中 data/ref 目錄有 BlueStacks 第 4 版安裝檔案, 而最新的版本可以從 <a href="https://www.bluestacks.com">https://www.bluestacks.com</a> 下載), 並且啟用 Android Debug Bridge (ADB) 功能, 之後在 Flutter 隨身系統啟動後, 在命令列視窗中執行 adb connect localhost:5555, 就可以直接利用 BlueStacks 作為虛擬手機介面進行 Flutter App 的執行.</p>
+<p>利用 Visual Studio Code 開發 Flutter App 之前, 必須啟動 BlueStacks (<a href="https://drive.google.com/file/d/1X8icOyPgABAkKHYaDLXPSoy7U7nyxqzW/view?usp=sharing">Flutter_portable_20210707.7z</a> 中 data/ref 目錄有 BlueStacks 第 4 版安裝檔案, 而最新的版本可以從 <a href="https://www.bluestacks.com">https://www.bluestacks.com</a> 下載), 並且啟用 Android Debug Bridge (ADB) 功能, 之後在 Flutter 可攜系統啟動後, 在命令列視窗中執行 adb connect localhost:5555, 就可以直接利用 BlueStacks 作為虛擬手機介面進行 Flutter App 的執行.</p>
 <p>當 Visual Studio Code 執行時, 目前必須要啟用 IPv4 網路協定才可正常建立 App 並安裝於 BlueStacks 手機介面中, 之後必須再看看是否能夠直接在 IPv6 網路協定下正常運作.</p>
 <p>以下為 Flutter 可攜系統所需的啟動設定檔內容:</p>
 <div>
@@ -3462,8 +3637,7 @@ set path_vscode=%Disk%:\vscode;</pre>
 <p style="padding-left: 30px;"><a href="http://mde.tw/cp2019/content/DartLang.html">http://mde.tw/cp2019/content/DartLang.html</a></p>
 <p style="padding-left: 30px;"><a href="http://mde.tw/cp2019/content/DartLang.html">http://mde.tw/cp2019/content/DartLang.html</a></p>
 </div>
-</div>
-<h3>Rust</h3>
+</div><h3>Rust</h3>
 <h4>Rust 中文入門:</h4>
 <p style="padding-left: 30px;"><a href="https://rust-lang.tw/book-tw/title-page.html">https://rust-lang.tw/book-tw/title-page.html</a> (<a href="https://github.com/rust-tw/book-tw">on Github</a>, 利用 <a href="https://github.com/rust-tw/book-tw/blob/zh_tw/.github/workflows/main.yml">Github Actions</a> (<a href="https://github.com/features/actions">何謂 Github Actions</a>?), 以 <a href="https://github.com/rust-lang/mdBook">mdbook</a> 轉為 html)</p>
 <p style="padding-left: 30px;">Rust 編譯系統也包含在 <a href="https://mde.tw">KMOLab</a> <a href="http://mde.tw/cmstemplate/content/%E5%8F%AF%E6%94%9C%E7%B3%BB%E7%B5%B1.html">可攜系統</a>中.</p>
@@ -6735,12 +6909,187 @@ doc["sudoku"].bind('click', Sudoku.prog)
 </script>
 </p>
 <!-- sudoku ends -->
-<p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="class_ex6">Ex6</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="snake">貪食蛇</button><button id="sudoku">Sudoku</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="clock1">clock1</button><button id="fourbar">Fourbar</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="nfulist">nfulist</button><button id="clear">Clear</button></p>
+<p></p>
+<!-- autosnake starts -->
+<script type="text/python3">
+from browser import document as doc
+# 導入位於 static 目錄下的 beditor.py 
+import beditor
+# 利用 beditor.py 中的 editor 類別建立案例, 對應到 kw1
+Autosnake = beditor.editor("""# 從 browser 導入 document 並設為 doc
+from browser import document as doc
+# 使用者可以透過 window 當作介面使用其他 Javascript 功能
+from browser import html, window
+# 用於定時執行特定函式
+import browser.timer
+# 導入數學模組
+import math
+# 導入亂數模組
+from random import random, randint
+ 
+def update_score(new_score):
+    global high_score
+    score_doc.innerHTML = "Score: " + str(new_score)
+    if new_score > high_score:
+        high_score_doc.innerHTML = "High Score: " + str(new_score)
+        high_score = new_score
+        
+def eat(px, py, ax, ay):
+    global xv, yv, pre_pause, paused
+    # (px, py) go to (ax, ay) through incremented xv, yv
+    if ax != px or ay != py:
+        if ax > px and not paused:
+            xv = 1
+            yv = 0
+        if ax < px and not paused:
+            xv = -1
+            yv = 0
+        if ay > py and not paused:
+            xv = 0
+            yv = 1
+        if ay < py and not paused:
+            xv = 0
+            yv = -1
+            
+def game():
+    global px, py, tc, gs, ax, ay, trail, tail, score
+    # px 為 snake 第一個點的 x 座標, 增量值為 xv
+    px += xv
+    py += yv
+    # 允許穿越四面牆, 以 tc 表示牆面座標極限
+    # 若 px 為負值則設定為 tc -1, 表示 tc 為 x 方向 limit
+    # x 座標方向的穿牆設定
+    if px < 0:
+        px = tc-1
+    if px > tc-1:
+        px = 0
+    # y 座標方向的穿牆設定
+    if py < 0:
+        py = tc-1
+    if py > tc-1:
+        py = 0
+    ctx.fillStyle = "black"
+    # 畫布填入黑色
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    # snake 為 lime 色
+    ctx.fillStyle = "lime"
+    # trail 為數列, 代表 snake 各節 [x,y] 座標
+    # trail = [[x0,y0], [x1, y1], [x2, y2]...]
+    # gs 為方塊邊長 pixel 數
+    for i in range(len(trail)):
+        # https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes
+        # fillRect(x, y, width, height)
+        ctx.fillRect(trail[i][0]*gs, trail[i][1]*gs, gs-2, gs-2)
+        # 若 snake 第一節座標 (px, py)  穿過身體任一節, 則 score 歸零
+        if trail[i][0] == px and trail[i][1] == py:
+            score = score if paused else 0
+            # snake reset 為五節
+            tail = 5
+    # trail 數列以碰到的 [px, py] 座標數列插入作為第一節
+    trail.insert(0, [px, py])
+    while len(trail) > tail:
+        # pop() 內建移除數列最後一個 element
+        trail.pop()
+    # ax, ay 為紅點座標
+    # 當 snake 第一節座標[px, py] 與紅色食物座標 [ax, ay] 重合
+    # 則 tail 增量, 即多一節且得分加 1, 然後食物座標 [ax, ay] 重新以亂數定位
+    if ax == px and ay == py:
+        tail += 1
+        ax = math.floor(random()*tc)
+        ay = math.floor(random()*tc)
+        score += 1
+    # [ax, ay] is known here
+    # [px, py] is where the head of the snake
+    # xv needed to be incremented from px to ax first
+    # and yv needed to be incremented from py to ay
+    eat(px, py, ax, ay)
+    # 更新計分顯示
+    update_score(score)
+    ctx.fillStyle = "red"
+    ctx.fillRect(ax*gs, ay*gs, gs-2, gs-2)
+   
+def key_push(evt):
+    global xv, yv, pre_pause, paused
+    key = evt.keyCode
+    # 37 is left arrow key
+    # 74 is j key
+    if key == 74 and not paused:
+        xv = -1
+        yv = 0
+    # 38 is up arrow key
+    # 73 is i key
+    elif key == 73 and not paused:
+        xv = 0
+        yv = -1
+    # 39 is right arrow key
+    # 76 is l key
+    elif key == 76 and not paused:
+        xv = 1
+        yv = 0
+    # 40 is down arrow key
+    # 77 is m key
+    elif key == 77 and not paused:
+        xv = 0
+        yv = 1
+    # 32 is pause key
+    # 80 is p key
+    elif key == 80:
+        temp = [xv, yv]
+        xv = pre_pause[0]
+        yv = pre_pause[1]
+        pre_pause = [*temp]
+        paused = not paused
+   
+def show_instructions(evt):
+        window.alert("keys to control: i=up, m=down, j=left, l=right, p=pause")
+       
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width = 600, height = 600)
+canvas.id = "game-board"
+brython_div = doc["brython_div"]
+brython_div <= canvas
+   
+score_doc = html.DIV("score")
+score_doc.id = "score"
+brython_div <= score_doc
+   
+high_score_doc = html.DIV("high-score")
+high_score_doc.id = "high-score"
+brython_div <= high_score_doc
+   
+button = html.BUTTON("Keys to control")
+button.id = "instructions-btn"
+brython_div <= button
+   
+score = 0
+high_score = 0
+   
+px = py = 10
+# gs*tc = canvas width and height
+gs = 20
+tc = 30
+ax = ay = 15
+xv = yv = 0
+trail = []
+tail = 5
+   
+pre_pause = [0,0]
+paused = False
+ctx = canvas.getContext("2d")
+doc.addEventListener("keydown", key_push)
+instructions_btn = doc["instructions-btn"]
+instructions_btn.addEventListener("click", show_instructions)
+browser.timer.set_interval(game, 1000/15)
+""", "kw_editor", "kw_console", "kw__container", "kw_py_src")
+# id 為 "autosnake 的按鈕點按時, 執行 Autosnake 物件中的 prog 方法
+doc["autosnake"].bind('click', Autosnake.prog)
+</script>
+<!-- autosnake ends -->
+<p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="class_ex6">Ex6</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="snake">貪食蛇</button><button id="autosnake">貪食蛇2</button><button id="sudoku">Sudoku</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="clock1">clock1</button><button id="fourbar">Fourbar</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="nfulist">nfulist</button><button id="clear">Clear</button></p>
 <h4>參考資料:</h4>
 <p><a href="/downloads/turtle_intro.pdf">turtle_intro.pdf</a></p>
 <p><a href="/downloads/turtle_intro2.pdf">turtle_intro2.pdf</a></p>
-<p>其他擷取程式的方式: <a href="http://mde.tw/2017springvcp/blog/web-based-python.html">http://mde.tw/2017springvcp/blog/web-based-python.html</a></p>
-<h3>貪食蛇</h3>
+<p>其他擷取程式的方式: <a href="http://mde.tw/2017springvcp/blog/web-based-python.html">http://mde.tw/2017springvcp/blog/web-based-python.html</a></p><h3>貪食蛇</h3>
 <p><a href="https://zh.wikipedia.org/wiki/%E8%B4%AA%E9%A3%9F%E8%9B%87">貪食蛇遊戲</a></p>
 <p>在遊戲中, 玩家操控一條細長的直線 (俗稱蛇或蟲), 它會不停前進, 玩家只能操控蛇的頭部朝向, 上下左右, 一路拾起觸碰到之物 (或稱作豆), 並要避免觸碰到自身或者其他障礙物. 每次貪食蛇吃掉一件食物, 它的身體便增長一段. 吃掉一些食物後會使蛇的移動速度逐漸加快, 讓遊戲的難度漸漸變大. 遊戲設計大致分為四面都有牆 (都不可穿越) 以及某部分的牆可以穿越, 以及四面牆都可以穿越的模式.</p>
 <h4>網際 Brython 程式練習:</h4>
@@ -8733,53 +9082,715 @@ browser.timer.set_interval(bunnyRotate, 30)
 <h4 style="padding-left: 30px;">應用範例:</h4>
 <p style="padding-left: 60px;"><a href="https://github.com/mdecourse/report/blob/main/.github/workflows/demo.yaml">https://github.com/mdecourse/report/blob/main/.github/workflows/demo.yaml</a></p>
 <p style="padding-left: 60px;"><a href="https://github.com/mdecourse/4072pj1">https://github.com/mdecourse/4072pj1</a></p>
-<h1>可攜系統</h1>
-<p>建立可攜系統在解決 ____ 問題?</p>
-<p>Visual Studio Code: 直接從 <a href="https://code.visualstudio.com/Download">https://code.visualstudio.com/Download</a> 下載 zip 版本, 解開壓縮後放入 data 目錄, 且在 home_ipv6 與 home_ipv4 目錄下建立 AppData/Roaming 目錄, 並將 Code.exe 的路經納入 path 環境變數設定.</p>
-<p><a href="https://drive.google.com/file/d/1hTvN4mCk2b_enIK204HA0AVPsd3GPlh5/view?usp=sharing">portablekmol_base.7z</a> (下載 118MB, 解開壓縮後 148MB)</p>
-<p style="padding-left: 30px;">包括 data 目錄與 start_ipv6.bat, start_ipv4.bat, stop.bat</p>
-<p style="padding-left: 30px;">功能: 啟動後可以啟動 SciTE 編輯器, 可用於類解譯 ANSI C 程式, 以及 <a href="https://solvespace.com">Solvespace</a>.</p>
-<p><a href="https://drive.google.com/file/d/1BGfN5R6Yw1e9Unm4u8GCRP4xcSuYfCSE/view?usp=sharing">Python395.7z</a> (下載 123MB, 解開壓縮後 495MB)</p>
-<p style="padding-left: 30px;">功能: 與 <a href="https://drive.google.com/file/d/1hTvN4mCk2b_enIK204HA0AVPsd3GPlh5/view?usp=sharing">portablekmol_base.7z</a> 結合後, 可以利用 SciTE 編輯器執行 Python 程式.</p>
-<p style="padding-left: 30px;">請注意: 由於 CMSiMDE 改用 <a href="https://blog.miguelgrinberg.com/post/running-your-flask-application-over-https">adhoc ssl_context</a> 啟動近端伺服器, 因此 Python 解譯系統必須加裝 pyopenssl 模組: pip install pyopenssl,  且安裝前要先將系統 proxy 暫時關閉.</p>
-<p><a href="https://drive.google.com/file/d/1RW51wCJ056TdWvjharBKOl6FM9iewpHI/view?usp=sharing">portablegit_2.31.1.7z</a> (下載 60MB, 解開壓縮後 286MB)</p>
-<p style="padding-left: 30px;">功能: 與 <a href="https://drive.google.com/file/d/1hTvN4mCk2b_enIK204HA0AVPsd3GPlh5/view?usp=sharing">portablekmol_base.7z</a> 結合後, 可以利用可攜程式系統的命令列視窗執行 git 指令.</p>
-<p><a href="https://drive.google.com/file/d/1JDmc_b4BLwGh4hQ7Tatq02EXmiPLrNZV/view?usp=sharing">lua-5.4.3.7z</a> (下載 662KB, 解開壓縮後 4MB)</p>
-<p style="padding-left: 30px;">功能: 與 <a href="https://drive.google.com/file/d/1hTvN4mCk2b_enIK204HA0AVPsd3GPlh5/view?usp=sharing">portablekmol_base.7z</a> 結合後, 可以利用 SciTE 編輯器執行 Lua 程式.</p>
-<p><a href="https://drive.google.com/file/d/1u-Efwoizvqn9WJdcL0fez7a2d0ulGBcs/view?usp=sharing">PUTTY.7z</a> (下載 940KB, 解開壓縮後 4MB)</p>
-<p style="padding-left: 30px;">功能: plink.exe 可以與 git 結合, 利用 Putty.exe 中所設定的 session 名稱進行 SSH 連線.</p>
-<p><a href="https://drive.google.com/file/d/1m6cmWu9AZhkBj6wFn9IiJlShcpGbz05g/view?usp=sharing">msys64_20210419.7z</a> (下載 3.5GB, 解開壓縮後 12GB)</p>
-<p style="padding-left: 30px;">功能: <a href="https://www.msys2.org/">Msys2</a> 安裝</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">pacman -S mingw-w64-x86_64-toolchain
-pacman -Sy mingw-w64-x86_64-qt5
-pacman -Sy mingw-w64-x86_64-qt5-static
-pacman -Sy mingw-w64-x86_64-ffmpeg
-pacman -Sy mingw-w64-x86-64-cmake</pre>
-<p><a href="https://drive.google.com/file/d/17M7Ro9NO2mmycvwOuK-10yYgs2oxFwEB/view?usp=sharing">msys64_20210419_clean.7z</a> (下載 87MB , 解開壓縮後 374MB)</p>
-<p style="padding-left: 30px;">功能: 尚未安裝任何 Package 的 <a href="https://www.msys2.org/">Msys2</a> 系統.</p>
-<p><a href="https://drive.google.com/file/d/1X8icOyPgABAkKHYaDLXPSoy7U7nyxqzW/view?usp=sharing">Flutter_portable_20210707.7z</a> (下載 4.7 GB, 解開壓縮後約 20GB)</p>
-<p style="padding-left: 30px;">可攜系統中的 Android sdk 容量約 7.5 GB, Flutter 與 Dart 容量約 1.6 GB, Java jdk 容量約 200MB. vscode 約 530 MB, home_mdecourse 目錄下含手機 emulator 檔案容量約 9.3 GB.</p>
-<p><a href="https://drive.google.com/file/d/1MmLHqk2i3Ei2Bf3EoNOjaLVO6RHqJtb4/view?usp=sharing">node-v14.17.2-x64.7z</a> (下載 17MB, 解開壓縮後 78MB)</p>
-<p><a href="https://drive.google.com/file/d/1SDLtjyddvFs9OHobMu7Ddx6Doa15RVMY/view?usp=sharing">rust_1.53.0_portable_for_msys2.7z</a> (下載 147MB , 解開壓縮後 1.13GB)</p>
-<p><a href="https://drive.google.com/file/d/1CZfEjvHtQSlAch83jHmw4Ivz6WubPu8h/view?usp=sharing">Erlang 10.7 and Elixir portable.7z</a> for Windows (下載 62MB , 解開壓縮後 340MB)</p>
-<p>Deno 1.11.5: <a href="https://github.com/denoland/deno/releases/">https://github.com/denoland/deno/releases/</a> 直接下載 Windows 版本解開壓縮後 55MB, 放入可攜系統 data 目錄中即可執行.</p>
-<p><a href="https://drive.google.com/file/d/1a9onsFJavy_eXDyzpLJIIVTxEhgAdRYV/view?usp=sharing">CoppeliaSimEdu 4.0.0.7z</a> for Windows 64 位元操作系統(下載 134MB, 解開壓縮後 337MB)</p>
-<p><a href="https://drive.google.com/file/d/1nF63ZLxueDlRjWdzXxTg13Pc5MjeCecs/view?usp=sharing">CoppeliaSimEdu 4.0.0.zip</a> for Mac, 解開壓縮後必須將 coppeliaSim.app 目錄改名為 coppeliaSim 後進入執行sudo xattr -r -d com.apple.quarantine *, 以便解除 Mac 對非 App Store 下載套件所設定的隔離屬性. 然後以 /Users/account/copsim4/coppeliaSim/Contents/MacOS/coppeliaSim 啟動 Coppeliasim.</p>
-<p><a href="https://drive.google.com/file/d/1iXtPtMOxH6-k7UiYrOS9BYRU4muJi_KM/view?usp=sharing">CoppeliaSimEdu 4.0.0.tar.xz</a> for Ubuntu</p>
-<p style="padding-left: 30px;">功能: 可免費提供大學機電資整合課程使用, 且開放原始碼, 可用於機電資控制系統設計與模擬 (InfoMechaTronic control system design and simulation).</p>
-<p><a href="https://drive.google.com/file/d/1ih24k0G-vKnB1OjOIxHV4Gyz-bmlxeCU/view?usp=sharing">robodk_522.7z</a> (下載 364MB, 解開壓縮後 1GB)</p>
-<p style="padding-left: 30px;">功能: 提供限縮功能版本 Free Trial, 只可模擬但無法存檔, 可用於工業級機械手臂在線與離線控制系統設計與模擬.</p>
-<p><a href="https://drive.google.com/file/d/1uDJCaxDsed_5ZTdsHNOfGQ51JnT3aNP0/view?usp=sharing">Range3.7z</a> (下載 27MB, 解開壓縮後 109MB)</p>
-<p style="padding-left: 30px;">功能: 開放源 FEM (Finite Element Method) 分析套件.</p>
-<p><a href="https://drive.google.com/file/d/1ITHNrhemifHloS_x3BAchyQxMUKma0AI/view?usp=sharing">webots-R2021a.7z</a> (下載 1.5GB, 解開壓所後 2.9GB)</p>
-<p style="padding-left: 30px;">功能: 採 Apache 2.0 使用授權的開放源套件, 可用於機電資控制系統設計與模擬.</p>
-<h2>Lua 解譯</h2>
-<p>學習 Lua 要做什麼? 能夠解決 ____  問題?</p>
-<p>網際 Lua 解譯: <a href="http://mde.tw/lab/downloads/lua/index.html">http://mde.tw/lab/downloads/lua/index.html</a></p>
-<p style="padding-left: 30px;">進階練習: 利用 MSYS2 中的 MinGW64 安裝 mingw-w64-x86_64-toolchain 後就可以自行編譯採 C 編寫的 Lua 解譯程式碼 (<a href="https://www.lua.org/ftp/">下載 Lua 原始碼</a>).</p>
-<p>SciTE 編輯器中的 Lua.properties 設定:</p>
-<p>選擇利用 y:\lua-5.4.3\luac 與 lua 編譯或解譯 .lua 程式檔案.</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">command.compile.*.lua=y:\lua-5.4.3\luac -o "$(FileName).luc" "$(FileNameExt)"
-# Lua 5.1
-command.go.*.lua=y:\lua-5.4.3\lua "$(FileNameExt)"</pre>
+<h1>實習內容</h1>
+<p>計算機程式在學習如何將做事的過程 (process) 及直覺 (intuitions) 予以形式化 (formalize), 並且著手開發一種方式來準確地 (precisely) 討論如何運用知識 (knowledge).</p>
+<p><a href="https://www.merriam-webster.com/dictionary/formalize">Formalize</a> 在字義上為 "to give a certain or definite form to".</p>
+<p>Certain 與 definite 都是明確的意思. 因此所謂將做事過程 (也就是解題過程) 與直覺 (也就是認為可以解題的方式), 用明確的方式加以表示, 才能放入電腦要求計算機執行運算, 最終得到工程師想要的結果.</p>
+<p>至於準確運用知識, 是站在使用電腦當下工程師的認知行事, 擁有對計算機運作流程越多知識與經驗的人, 就越能夠發揮計算機的功能.</p>
+<p>學習計算機程式的過程, 學習者將會面臨何種挑戰?</p>
+<h4 style="padding-left: 30px;">挑戰一:</h4>
+<p style="padding-left: 60px;">是否已經做好了與電腦溝通的準備?</p>
+<h4 style="padding-left: 30px;">挑戰二:</h4>
+<p style="padding-left: 60px;">到底要用電腦解決什麼問題?</p>
+<h4>電腦打字競賽:</h4>
+<p style="padding-left: 30px;">與電腦溝通可以透過鍵盤, 滑鼠, 觸控, 聲控, 影像辨識及手勢等方式. 我們先來接受第一個利用鍵盤輸入與電腦溝通的挑戰:</p>
+<p style="padding-left: 60px;">我們從<a href="https://www.snhu.edu/about-us/newsroom/2018/06/what-is-computer-programming">這裡</a>取出以下這四個英文句子, 然後要請大家在 <a href="https://translate.google.com.tw/?hl=zh-TW">Google 翻譯頁面</a>中的左側 (也就是英文輸入框) 用鍵盤打字輸入下列四段英文, 然後 Google Translate 服務就會幫我們翻譯成右方的繁體中文內容.</p>
+<p style="padding-left: 60px;">你必須設法調整好兩個瀏覽器的畫面 (一上一下 或一左一右), 然後準備好一邊看著下面這段英文內容, 一方面用鍵盤打字逐一輸入每個單字, 準備好了, 我們就要開始來進行英文輸入挑戰比賽 (但是不可以使用 Ctrl + C 與 Ctrl + V 複製與貼上作弊, 雖然我們知道這是大學生最熟悉且擅長的三種技能:-), 大家都準備好之後, 老師喊開始, 才能著手打字, 快速打完這段文字的, 就可以舉手, 我們將要找出全班英文打字速度最快的前六名同學.</p>
+<p>What is Computer Programming and How to Become a Computer Programmer</p>
+<p>Computer programming is the process that professionals use to write code that instructs how a computer, application or software program performs.</p>
+<p>At its most basic, computer programming is a set of instructions to facilitate specific actions.</p>
+<p>If you're wondering what a computer programmer is, it's a professional that creates instructions for a computer to execute by writing and testing code that enables applications and software programs to operate successfully.</p>
+<h4>課程挑戰二:</h4>
+<p style="padding-left: 30px;">假如我們上一個挑戰競賽順利進行的話, 各班已經出現英文打字速度最快的前六名學員, 接下來我們要接受計算機程式課程的第二個挑戰:</p>
+<p style="padding-left: 60px;">我們將在每一個座位橫排中 (每 9 位同學) 抽出一位同學, 請他(她) 告訴我們機械設計工程師到底希望用電腦解決什麼問題?</p>
+<p style="padding-left: 60px;">這裡將牽涉:</p>
+<ol>
+<li>要如何"公平地"抽出每一座位橫排中的某一位同學? (我們知道通常不會有自願舉手, 勇於表達的同學)</li>
+<li>要如何(長期)收集被抽中同學所發表的內容? (假如我們接下來每個禮拜都來玩這個挑戰"遊戲"的話!)</li>
+<li>或者我們不要用抽的, 我們想要重新玩挑戰一, 讓全班所有學員都同時在同一個電腦畫面上進行英文打字輸入比賽, 而且要同時接受挑戰二, 在同一個電腦畫面上收集每一位同學的發言內容.</li>
+</ol><h2>Stage1</h2>
+<p>經過前面的課程說明, 我們已經知道, 學習計算機程式需要與電腦溝通, 而現階段機械設計工程師與電腦溝通的重要方式就是英文與中文的鍵盤輸入, 假如您對 touch typing 技巧還不是很熟練, 一定要自行找時間練習.</p>
+<p>至於挑戰二中所列出, 有關機械設計工程師希望利用電腦解決的問題可能太過廣泛, 可能是因為下列這段敘述:</p>
+<p>Computer programming is to learn how to formalize intuitions about process, how to do things, starting to develop a way to talk precisely about how-to knowledge.</p>
+<p>其中的關鍵字是明確, 直覺, 流程, 做事, 開發, 精確與如何解題所牽涉的知識. 重新組合一下就成為:</p>
+<p>將直覺做事的過程轉化為利用知識解決問題. 而計算機程式則是居中希望採用的工具與方法.</p>
+<p>一般來說採用計算機解決問題牽涉程式語言, 演算法與資料結構等三大類. 在這一門課程中:</p>
+<ol>
+<li>程式語言主要採用 Python, 但也會提到 Javascript 與其他相關程式語言.</li>
+<li>演算法沒有特別指名, 而是逐步從直覺的解題方式進行推演, 針對比較複雜的問題, 再從<a href="http://mde.tw/cp2021/downloads/ProblemSolvingwithAlgorithmsandDataStructures.pdf">演算法與資料結構電子書</a>中尋找可能的解題方法.</li>
+<li>至於資料結構或資料庫, 在這裡並不會深入探討, 但是隨著工程問題的複雜化, 最終仍必須將許多流程以 bot (例如: <a href="http://mde.tw/cp2021/content/RPA.html">RPA</a>) 的方式安排, 自然也就避不開要學習使用合適的資料結構進行檔案收集與儲存.</li>
+</ol>
+<p>接下來我們希望在 Stage1 的任務工作項目中, 將一方面練習 Python 程式語法, 並逐步導入使用可攜與分散式版次管理系統:</p>
+<p>Task1: 在<a href="https://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>網頁上學習簡單的 Python</p>
+<p>Task2: 下載客製化的可攜程式系統</p>
+<p>Task3: 使用 git 分散式版次管理</p><h3>Task1</h3>
+<p>在<a href="https://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>網頁上學習簡單的 Python</p>
+<p>Task1 將要開始利用"<a href="/get_page/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92">解題練習</a>"頁面, 學習如何利用 Python 解決問題. 由於目前第一階段的學習希望利用網頁的方式執行 Python, 因此是透過 Brython 的程式庫達成, 使用者在網頁上編寫 Python 程式碼, 然後透過 Brython 即時將 Python 程式碼轉為 Javascript, 並且直接在網頁上執行.</p>
+<p>我們希望解決的第一個問題是: 如何利用電腦畫圖, 比方說, 在螢幕上畫一個小紅色方塊, 大小為 20x20 pixel.</p>
+<p>首先讓瀏覽器指向解題練習的頁面, 然後在程式表單中輸入下列程式碼, 第一次為了快速看到執行結果, 可以使用 Ctrl + C 與 Ctrl + V 將下列的程式碼複製貼上, 然後點擊 Run.</p>
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+<!-- for ggame -->
+<p>
+<script src="/static/jquery-3.3.1.min.js"></script>
+<script src="/static/jquery-ui.1.12.1.min.js"></script>
+<script src="/static/pixi-3.0.5.min.js"></script>
+<script src="/static/buzz-1.2.1.js"></script>
+<script src="/static/bs.js"></script>
+<script src="/downloads/brython_modules.js"></script>
+</p>
+<!-- Cango 程式庫 -->
+<p>
+<script src="/static/Cango-13v08-min.js"></script>
+<script src="/static/CangoAxes-4v01-min.js"></script>
+<script src="/static/gearUtils-05.js"></script>
+</p>
+<!-- for Konva 程式庫 -->
+<p>
+<script src="/static/konva.min.js"></script>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
+}
+</script>
+</p>
+<p><!-- 導入 FileSaver 與 filereader --></p>
+<p>
+<script src="/static/ace/FileSaver.min.js" type="text/javascript"></script>
+<script src="/static/ace/filereader.js" type="text/javascript"></script>
+</p>
+<p><!-- 導入 ace --></p>
+<p>
+<script src="/static/ace/ace.js" type="text/javascript"></script>
+<script src="/static/ace/ext-language_tools.js" type="text/javascript"></script>
+<script src="/static/ace/mode-python3.js" type="text/javascript"></script>
+<script src="/static/ace/snippets/python.js" type="text/javascript"></script>
+</p>
+<p><!-- 請注意, 這裡使用 Javascript 將 localStorage["py_src"] 中存在近端瀏覽器的程式碼, 由使用者決定存檔名稱--></p>
+<p>
+<script type="text/javascript">
+function doSave(storage_id, filename){
+    var blob = new Blob([localStorage[storage_id]], {type: "text/plain;charset=utf-8"});
+    filename = document.getElementById(filename).value
+    saveAs(blob, filename+".py");
+}
+</script>
+</p>
+<p><!-- 印出程式1--></p>
+<script type="text/python3">
+from browser import document as doc
+from browser import html
+import ace
+# 清除畫布
+def clear_bd(ev):
+    bd = doc["brython_div"]
+    bd.clear()
+# Brython 內建的 container 名稱為  'container' 且 turtle 輸出為 svg 必須使用 div 訂定 id
+Ace = ace.Editor(editor_id="kw_editor", console_id="kw_console", container_id="kw__container", storage_id="kw_py_src" )
+Ace.editor.setValue("""from browser import html
+from browser import document as doc
+
+canvas = html.CANVAS(width = 400, height = 100)
+canvas.id = "game-board"
+brython_div = doc["brython_div"]
+brython_div <= canvas
+
+ctx = canvas.getContext("2d")
+ctx.fillStyle = "black"
+ctx.fillRect(0, 0, canvas.width, canvas.height)""")
+Ace.editor.scrollToRow(0)
+Ace.editor.gotoLine(0)
+# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
+doc['kw_run'].bind('click', Ace.run)
+doc['kw_show_console'].bind('click', Ace.show_console)
+doc['kw_clear_console'].bind('click', Ace.clear_console)
+doc['clear_bd'].bind('click', clear_bd)
+</script>
+<p><!-- 用來顯示程式碼的 editor 區域 --></p>
+<div id="kw_editor" style="width: 600px; height: 300px;"></div>
+<p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
+<form><label>Filename: <input id="kw_filename" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src', 'kw_filename');" type="submit" value="Save"/></form>
+<p><button id="kw_run">Run</button> <button id="kw_show_console">Output</button> <button id="kw_clear_console">清除輸出區</button><button id="clear_bd">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
+<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console"></textarea></div>
+<div id="brython_div"></div>
+<!-- 結束列印程式 1 -->
+<p>假如您看到畫面下方出現一片黑, 這就對了, 接下來我們來看, 為什麼幾行程式碼可以利用 <a href="https://developer.mozilla.org/en-US/docs/Glossary/HTML">html</a> webgl 規格中的 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">canvas</a> API在網頁中繪圖.</p>
+<p>執行上面這個程式, 衍生出下列疑問:</p>
+<p>什麼是 html?</p>
+<p>什麼是 webgl?</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4302-3997-0">Beginning WebGL for HTML5</a> (從校園網路中下載電子書)</p>
+<p>什麼是 canvas?</p>
+<p>什麼是 Context?</p>
+<p>什麼是 API?</p>
+<p>說好的 Python  程式碼在哪裡?</p>
+<p>Python 程式為什麼可以直接在網頁上畫圖? (其實不是直接, 而是透過 Brython 程式庫轉為 Javascript 後執行)</p>
+<p>請試著摸索一下上面的原始碼, 您可以把它修改為, 讓它在網頁中劃出一個左上角座標位於 (100, 100) 且長寬為20x20 pixel (pixel 是什麼?) 大小的紅色區域嗎?</p>
+<p>假如將上面的程式改為下列程式碼, 且按一下"請除繪圖區"以及"清除輸出區"等按鈕, 再按下 Run, 應該就可以在左上角座標位於 (100, 100) 的紅色方塊:</p>
+<p><!-- 印出程式2--></p>
+<script type="text/python3">
+from browser import document as doc
+from browser import html
+import ace
+# 清除畫布
+def clear_bd2(ev):
+    bd = doc["brython_div2"]
+    bd.clear()
+# Brython 內建的 container 名稱為  'container' 且 turtle 輸出為 svg 必須使用 div 訂定 id
+Ace2 = ace.Editor(editor_id="kw_editor2", console_id="kw_console2", container_id="kw__container2", storage_id="kw_py_src2" )
+Ace2.editor.setValue("""from browser import html
+from browser import document as doc
+
+canvas = html.CANVAS(width = 400, height = 100)
+canvas.id = "game-board2"
+brython_div = doc["brython_div2"]
+brython_div <= canvas
+
+ctx = canvas.getContext("2d")
+ctx.fillStyle = "red"
+ctx.fillRect(200, 50, 20, 20)""")
+Ace2.editor.scrollToRow(0)
+Ace2.editor.gotoLine(0)
+# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
+doc['kw_run2'].bind('click', Ace2.run)
+doc['kw_show_console2'].bind('click', Ace2.show_console)
+doc['kw_clear_console2'].bind('click', Ace2.clear_console)
+doc['clear_bd2'].bind('click', clear_bd2)
+</script>
+<p><!-- 用來顯示程式碼的 editor 區域 --></p>
+<div id="kw_editor2" style="width: 600px; height: 300px;"></div>
+<p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
+<form><label>Filename: <input id="kw_filename2" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src2', 'kw_filename2');" type="submit" value="Save"/></form>
+<p><button id="kw_run2">Run</button> <button id="kw_show_console2">Output</button> <button id="kw_clear_console2">清除輸出區</button><button id="clear_bd2">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
+<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console2"></textarea></div>
+<div id="brython_div2"></div>
+<!--  結束列印程式 2 -->
+<p>其中有關 fillRect() 函式的定義在<a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillRect">這裡</a>. 表示前兩個輸入變數為座標, 而後兩個輸入變數則分別為四邊形 (Rectangle) 的 width 與 height.</p>
+<p>假如我們又學會使用 Brython 的 <a href="https://brython.info/static_doc/en/timer.html">browser.timer</a> 中 set_interval 的用法, 並且將顯示與抹除紅色方塊區域的程式寫入函式 (Function), 並且利用判斷式限制其運動範圍, 就可以讓紅色方塊動起來:</p>
+<p><!-- 印出程式3--></p>
+<script type="text/python3">
+from browser import document as doc
+from browser import html
+import ace
+# 清除畫布
+def clear_bd3(ev):
+    bd = doc["brython_div3"]
+    bd.clear()
+# Brython 內建的 container 名稱為  'container' 且 turtle 輸出為 svg 必須使用 div 訂定 id
+Ace3 = ace.Editor(editor_id="kw_editor3", console_id="kw_console3", container_id="kw__container3", storage_id="kw_py_src3" )
+Ace3.editor.setValue("""from browser import html
+from browser import document as doc
+import browser.timer
+
+canvas = html.CANVAS(width = 400, height = 100)
+canvas.id = "game-board3"
+brython_div = doc["brython_div3"]
+brython_div <= canvas
+ctx = canvas.getContext("2d")
+px = 0
+py = 50
+width = 20
+height = 20
+speed = 2
+
+def game():
+    global px, py, width, height, speed
+    ctx.clearRect(px, py, width, height)
+    ctx.fillStyle = "red"
+    px += speed
+    if px < 0 or (px + width) > canvas.width:
+        speed = -speed
+    ctx.fillRect(px, py, width, height)
+    
+browser.timer.set_interval(game, 10)""")
+Ace3.editor.scrollToRow(0)
+Ace3.editor.gotoLine(0)
+# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
+doc['kw_run3'].bind('click', Ace3.run)
+doc['kw_show_console3'].bind('click', Ace3.show_console)
+doc['kw_clear_console3'].bind('click', Ace3.clear_console)
+doc['clear_bd3'].bind('click', clear_bd3)
+</script>
+<p><!-- 用來顯示程式碼的 editor 區域 --></p>
+<div id="kw_editor3" style="width: 600px; height: 300px;"></div>
+<p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
+<form><label>Filename: <input id="kw_filename3" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src3', 'kw_filename3');" type="submit" value="Save"/></form>
+<p><button id="kw_run3">Run</button> <button id="kw_show_console3">Output</button> <button id="kw_clear_console3">清除輸出區</button><button id="clear_bd3">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
+<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console3"></textarea></div>
+<div id="brython_div3"></div>
+<!-- 結束列印程式3 -->
+<p>接下來假如我們更深入研究有關物體碰撞相關的演算法, 就可以設法安排更複雜的 2D 物體碰撞模擬, 而這種透過物理碰撞邏輯或運動模擬來編寫的電腦程式, 就可以用於機械工程設計, 在機構實作測試之前, 先進行各種可行性或特性分析, 以節省測試時間與成本.</p>
+<h4>Bouncing algorithm:</h4>
+<p style="padding-left: 30px;"><a href="https://www.101computing.net/bouncing-algorithm/">https://www.101computing.net/bouncing-algorithm/</a></p>
+<p style="padding-left: 30px;"><a href="https://stackoverflow.com/questions/19472050/bouncing-ball-between-4-walls-destination-algorithm">https://stackoverflow.com/questions/19472050/bouncing-ball-between-4-walls-destination-algorithm</a></p>
+<p style="padding-left: 30px;"><a href="https://stackoverflow.com/questions/8715592/bouncing-ball-logics">https://stackoverflow.com/questions/8715592/bouncing-ball-logics</a></p>
+<h4>Brython:</h4>
+<p style="padding-left: 30px;"><a href="https://brython.info/static_doc/en/intro.html">https://brython.info/static_doc/en/intro.html</a></p>
+<p style="padding-left: 30px;"><a href="https://brython.info/static_doc/en/timer.html">https://brython.info/static_doc/en/timer.html</a></p><h3>Task2</h3>
+<h4>下載客製化的可攜程式系統</h4>
+<p>客製化是一個希望讓每位客戶都能滿意的服務, 當需求變更時, 客戶可以自己調整安排每一個細節, 讓流程達到盡善盡美, 而在利用電腦與計算機程式解題的過程, 也是如此.</p>
+<p>在此我們希望打造一個能夠客製化的可攜程式系統, 以便有效利用計算機程式方法解決問題.</p>
+<p>而 Task1 這個工作任務希望解決下列問題:</p>
+<ol>
+<li>可以利用可攜 SSD 碟存放個人化的程式系統與隱私資料 (SSH private key)</li>
+<li>可以設法保留每一個電腦工作階段 (Sessions) 所儲存的檔案版本</li>
+<li>不用擔心近端 (Local) 電腦硬體毀損後, 丟失任何一個工作階段所儲存的資料內容</li>
+</ol>
+<p>現代人已經很熟悉利用數位裝置彼此之間的認證 (Certification) 傳遞重要資料, 其中包括金流與隱私資料 (例如:信件,線上對話與健保卡存取等), 身為一個機械設計工程師必須學會保護個人的身分 (Identity) 資料 (例如: 電子郵箱帳號以及手機實名登錄的各種 Apps 帳號), 只是當我們身為客戶 (Client) 時, 是使用別人所打造的系統服務. 而機械設計工程師則需要打造讓其他人使用的各種服務, 因為所有的實體製造零組件, 源頭都是從我們所建構的 3D 虛擬檔案逐一 realized 的.</p>
+<p>以上這段文字有下列關鍵字:</p>
+<ol>
+<li>SSD</li>
+<li>Private key</li>
+<li>Sessions</li>
+<li>Local</li>
+<li>Certification</li>
+<li>Identity</li>
+<li>Apps</li>
+<li>Client</li>
+<li>Realized</li>
+</ol>
+<p>Task2 就是希望在打造客製化可攜程式系統的同時, 先了解與這些關鍵字有關的內容. 至於所謂的"客製化可攜程式系統", 可以直接從線上下載 <a href="https://drive.google.com/file/d/1hEGgONw8ahNs7JPAKOurc7JvGfhgO2zY/view?usp=sharing">compile_copsim_for_pj2022.7z</a> (download file size 4 GB, uncompressed file size 14 GB). 你可以先在電腦輔助設計室中的電腦桌面展開壓縮檔案. 但最終希望可以將可攜系統全部或部份資料存入個人的 USB 隨身碟.</p>
+<ol>
+<li>假如 USB 隨身碟存取速度夠快, 可以將 <a href="https://drive.google.com/file/d/1hEGgONw8ahNs7JPAKOurc7JvGfhgO2zY/view?usp=sharing">compile_copsim_for_pj2022.7z</a> 14GB 的檔案存入</li>
+<li>但是假如 USB 隨身碟存取速度不夠快 (請參見<a href="https://www.tripplite.com/products/usb-connectivity-types-standards">相關規格</a>), 可以採用 Hybrid 的方式, 僅將啟動檔案與 home_ipv6 以及其他必要檔案存在 USB 隨身碟, 並透過 start.bat 取用存在 C 槽硬碟中的其他檔案.</li>
+</ol>
+<h4>Task2 實習內容:</h4>
+<ol>
+<li>下載 <a href="https://drive.google.com/file/d/1hEGgONw8ahNs7JPAKOurc7JvGfhgO2zY/view?usp=sharing">compile_copsim_for_pj2022.7z</a>, 在桌面解開壓縮檔案後,點擊 start.bat, 啟動隨身系統.</li>
+<li>到 <a href="https://github.com/">https://github.com/</a> 建立一個帳號, 帳號名稱可以自選, 過程中必須要進入與 Github 帳號綁定的 Email 系統完成帳號驗證後, 該 Github 帳號才能使用.</li>
+<li>完成 Github 帳號認證後, 請建立一個測試用的倉儲, 倉儲名稱可以自選.</li>
+<li>接下來我們要直接在線上, 利用上一個步驟所建立的倉儲, 在線上編輯一個簡單的 Python 程式檔案 (可以是上個禮拜用 random 模組隨機產生整數的程式碼), 並改版三次 (可以利用 Task1 頁面中的三個程式碼).</li>
+<li>最後一個步驟是, 學習如何在這個 Github 倉儲, 找出這個 Python 程式的三個改版前與改版後的內容.</li>
+</ol>
 <p></p>
+<p></p><h3>Task3</h3>
+<h4>使用 git 分散式版次管理</h4>
+<p>請登入 @gm 帳號後, 下載 <a href="https://drive.google.com/file/d/1LW-UHAY9Hgvnfk14Cknt3PXFNr6huw9t/view?usp=sharing">cp2021_textbook.pdf</a> 課程教材.</p>
+<p>在 Task3 工作項目中, 希望能將 Task1 與 Task2 已經練習過的 Python 程式碼, 存入 Github 倉儲管理, 並逐步根據 <a href="https://drive.google.com/file/d/1LW-UHAY9Hgvnfk14Cknt3PXFNr6huw9t/view?usp=sharing">cp2021_textbook.pdf</a> 學習 Python 相關用法. 目的是有能力直接在 Brython 的環境中修改貪食蛇遊戲的程式碼.</p>
+<p>以下為按下 Run 之後, 可以利用 i, j, l, m 等鍵盤上的 key 控制 snake 的移動方向:</p>
+<!-- 導入 brython -->
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+<!-- for ggame -->
+<p>
+<script src="/static/jquery-3.3.1.min.js"></script>
+<script src="/static/jquery-ui.1.12.1.min.js"></script>
+<script src="/static/pixi-3.0.5.min.js"></script>
+<script src="/static/buzz-1.2.1.js"></script>
+<script src="/static/bs.js"></script>
+<script src="/downloads/brython_modules.js"></script>
+</p>
+<!-- Cango 程式庫 -->
+<p>
+<script src="/static/Cango-13v08-min.js"></script>
+<script src="/static/CangoAxes-4v01-min.js"></script>
+<script src="/static/gearUtils-05.js"></script>
+</p>
+<!-- for Konva 程式庫 -->
+<p>
+<script src="/static/konva.min.js"></script>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
+}
+</script>
+</p>
+<p><!-- 導入 FileSaver 與 filereader --></p>
+<p>
+<script src="/static/ace/FileSaver.min.js" type="text/javascript"></script>
+<script src="/static/ace/filereader.js" type="text/javascript"></script>
+</p>
+<p><!-- 導入 ace --></p>
+<p>
+<script src="/static/ace/ace.js" type="text/javascript"></script>
+<script src="/static/ace/ext-language_tools.js" type="text/javascript"></script>
+<script src="/static/ace/mode-python3.js" type="text/javascript"></script>
+<script src="/static/ace/snippets/python.js" type="text/javascript"></script>
+</p>
+<p><!-- 請注意, 這裡使用 Javascript 將 localStorage["py_src"] 中存在近端瀏覽器的程式碼, 由使用者決定存檔名稱--></p>
+<p>
+<script type="text/javascript">
+function doSave(storage_id, filename){
+    var blob = new Blob([localStorage[storage_id]], {type: "text/plain;charset=utf-8"});
+    filename = document.getElementById(filename).value
+    saveAs(blob, filename+".py");
+}
+</script>
+</p>
+<p><!-- 印出程式1--></p>
+<p>
+<script type="text/python3">
+from browser import document as doc
+from browser import html
+import ace
+# 清除畫布
+def clear_bd1(ev):
+    bd = doc["brython_div1"]
+    bd.clear()
+# Brython 內建的 container 名稱為  'container' 且 turtle 輸出為 svg 必須使用 div 訂定 id
+Ace1 = ace.Editor(editor_id="kw_editor1", console_id="kw_console1", container_id="kw__container1", storage_id="kw_py_src1" )
+Ace1.editor.setValue("""# 從 browser 導入 document 並設為 doc
+from browser import document as doc
+# 使用者可以透過 window 當作介面使用其他 Javascript 功能
+from browser import html, window
+# 用於定時執行特定函式
+import browser.timer
+# 導入數學模組
+import math
+# 導入亂數模組
+from random import random, randint
+
+def update_score(new_score):
+    global high_score
+    score_doc.innerHTML = "Score: " + str(new_score)
+    if new_score > high_score:
+        high_score_doc.innerHTML = "High Score: " + str(new_score)
+        high_score = new_score
+    
+def game():
+    global px, py, tc, gs, ax, ay, trail, tail, score
+    # px 為 snake 第一個點的 x 座標, 增量值為 xv
+    px += xv
+    py += yv
+    # 允許穿越四面牆, 以 tc 表示牆面座標極限
+    # 若 px 為負值則設定為 tc -1, 表示 tc 為 x 方向 limit
+    # x 座標方向的穿牆設定
+    if px < 0:
+        px = tc-1
+    if px > tc-1:
+        px = 0
+    # y 座標方向的穿牆設定
+    if py < 0:
+        py = tc-1
+    if py > tc-1:
+        py = 0
+    ctx.fillStyle = "black"
+    # 畫布填入黑色
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    # snake 為 lime 色
+    ctx.fillStyle = "lime"
+    # trail 為數列, 代表 snake 各節 [x,y] 座標
+    # trail = [[x0,y0], [x1, y1], [x2, y2]...]
+    # gs 為方塊邊長 pixel 數
+    for i in range(len(trail)):
+        # https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes
+        # fillRect(x, y, width, height)
+        ctx.fillRect(trail[i][0]*gs, trail[i][1]*gs, gs-2, gs-2)
+        # 若 snake 第一節座標 (px, py)  穿過身體任一節, 則 score 歸零
+        if trail[i][0] == px and trail[i][1] == py:
+            score = score if paused else 0
+            # snake reset 為五節
+            tail = 5
+    # trail 數列以碰到的 [px, py] 座標數列插入作為第一節
+    trail.insert(0, [px, py])
+    while len(trail) > tail:
+        # pop() 內建移除數列最後一個 element
+        trail.pop()
+    # ax, ay 為紅點座標
+    # 當 snake 第一節座標[px, py] 與紅色食物座標 [ax, ay] 重合
+    # 則 tail 增量, 即多一節且得分加 1, 然後食物座標 [ax, ay] 重新以亂數定位
+    if ax == px and ay == py:
+        tail += 1
+        ax = math.floor(random()*tc)
+        ay = math.floor(random()*tc)
+        score += 1
+    # 更新計分顯示
+    update_score(score)
+    ctx.fillStyle = "red"
+    ctx.fillRect(ax*gs, ay*gs, gs-2, gs-2)
+  
+def key_push1(evt):
+    global xv, yv, pre_pause, paused
+    key = evt.keyCode
+    # 37 is left arrow key
+    # 74 is j key
+    if key == 74 and not paused:
+        xv = -1
+        yv = 0
+    # 38 is up arrow key
+    # 73 is i key
+    elif key == 73 and not paused:
+        xv = 0
+        yv = -1
+    # 39 is right arrow key
+    # 76 is l key
+    elif key == 76 and not paused:
+        xv = 1
+        yv = 0
+    # 40 is down arrow key
+    # 77 is m key
+    elif key == 77 and not paused:
+        xv = 0
+        yv = 1
+    # 32 is pause key
+    # 80 is p key
+    elif key == 80:
+        temp = [xv, yv]
+        xv = pre_pause[0]
+        yv = pre_pause[1]
+        pre_pause = [*temp]
+        paused = not paused
+  
+def show_instructions1(evt):
+        window.alert("keys to control: i=up, m=down, j=left, l=right, p=pause")
+      
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width = 600, height = 600)
+canvas.id = "game-board1"
+brython_div = doc["brython_div1"]
+brython_div <= canvas
+  
+score_doc = html.DIV("score1")
+score_doc.id = "score1"
+brython_div <= score_doc
+  
+high_score_doc = html.DIV("high-score1")
+high_score_doc.id = "high-score1"
+brython_div <= high_score_doc
+  
+button = html.BUTTON("Keys to control1")
+button.id = "instructions-btn1"
+brython_div <= button
+  
+score = 0
+high_score = 0
+  
+px = py = 10
+# gs*tc = canvas width and height
+gs = 20
+tc = 30
+ax = ay = 15
+xv = yv = 0
+trail = []
+tail = 5
+  
+pre_pause = [0,0]
+paused = False
+ctx = canvas.getContext("2d")
+doc.addEventListener("keydown", key_push1)
+instructions_btn = doc["instructions-btn1"]
+instructions_btn.addEventListener("click", show_instructions1)
+browser.timer.set_interval(game, 1000/15)""")
+Ace1.editor.scrollToRow(0)
+Ace1.editor.gotoLine(0)
+# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
+doc['kw_run1'].bind('click', Ace1.run)
+doc['kw_show_console1'].bind('click', Ace1.show_console)
+doc['kw_clear_console1'].bind('click', Ace1.clear_console)
+doc['clear_bd1'].bind('click', clear_bd1)
+</script>
+</p>
+<p><!-- 用來顯示程式碼的 editor 區域 --></p>
+<div id="kw_editor1" style="width: 600px; height: 300px;"></div>
+<p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
+<form><label>Filename: <input id="kw_filename1" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src1', 'kw_filename1');" type="submit" value="Save"/></form>
+<p><button id="kw_run1">Run</button> <button id="kw_show_console1">Output</button> <button id="kw_clear_console1">清除輸出區</button><button id="clear_bd1">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
+<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console1"></textarea></div>
+<div id="brython_div1"></div>
+<p><!-- 結束列印程式1 --></p>
+<p>而下列程式的貪食蛇遊戲則是根據紅色球的位置, 自動導引 snake 前往吞食, 但有時會穿越自己身體而遭截斷, 因此希望能夠導入更好的導引模式, 找出此一遊戲可取得的最長 snake 紀錄.</p>
+<p><!-- 印出程式2--></p>
+<p>
+<script type="text/python3">
+from browser import document as doc
+from browser import html
+import ace
+# 清除畫布
+def clear_bd2(ev):
+    bd = doc["brython_div2"]
+    bd.clear()
+# Brython 內建的 container 名稱為  'container' 且 turtle 輸出為 svg 必須使用 div 訂定 id
+Ace2 = ace.Editor(editor_id="kw_editor2", console_id="kw_console2", container_id="kw__container2", storage_id="kw_py_src2" )
+Ace2.editor.setValue("""# 從 browser 導入 document 並設為 doc
+from browser import document as doc
+# 使用者可以透過 window 當作介面使用其他 Javascript 功能
+from browser import html, window
+# 用於定時執行特定函式
+import browser.timer
+# 導入數學模組
+import math
+# 導入亂數模組
+from random import random, randint
+ 
+def update_score2(new_score):
+    global high_score
+    score_doc.innerHTML = "Score: " + str(new_score)
+    if new_score > high_score:
+        high_score_doc.innerHTML = "High Score: " + str(new_score)
+        high_score = new_score
+        
+def eat(px, py, ax, ay):
+    global xv, yv, pre_pause, paused
+    # (px, py) go to (ax, ay) through incremented xv, yv
+    if ax != px or ay != py:
+        if ax > px and not paused:
+            xv = 1
+            yv = 0
+        if ax < px and not paused:
+            xv = -1
+            yv = 0
+        if ay > py and not paused:
+            xv = 0
+            yv = 1
+        if ay < py and not paused:
+            xv = 0
+            yv = -1
+            
+def game2():
+    global px, py, tc, gs, ax, ay, trail, tail, score
+    # px 為 snake 第一個點的 x 座標, 增量值為 xv
+    px += xv
+    py += yv
+    # 允許穿越四面牆, 以 tc 表示牆面座標極限
+    # 若 px 為負值則設定為 tc -1, 表示 tc 為 x 方向 limit
+    # x 座標方向的穿牆設定
+    if px < 0:
+        px = tc-1
+    if px > tc-1:
+        px = 0
+    # y 座標方向的穿牆設定
+    if py < 0:
+        py = tc-1
+    if py > tc-1:
+        py = 0
+    ctx.fillStyle = "black"
+    # 畫布填入黑色
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    # snake 為 lime 色
+    ctx.fillStyle = "lime"
+    # trail 為數列, 代表 snake 各節 [x,y] 座標
+    # trail = [[x0,y0], [x1, y1], [x2, y2]...]
+    # gs 為方塊邊長 pixel 數
+    for i in range(len(trail)):
+        # https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes
+        # fillRect(x, y, width, height)
+        ctx.fillRect(trail[i][0]*gs, trail[i][1]*gs, gs-2, gs-2)
+        # 若 snake 第一節座標 (px, py)  穿過身體任一節, 則 score 歸零
+        if trail[i][0] == px and trail[i][1] == py:
+            score = score if paused else 0
+            # snake reset 為五節
+            tail = 5
+    # trail 數列以碰到的 [px, py] 座標數列插入作為第一節
+    trail.insert(0, [px, py])
+    while len(trail) > tail:
+        # pop() 內建移除數列最後一個 element
+        trail.pop()
+    # ax, ay 為紅點座標
+    # 當 snake 第一節座標[px, py] 與紅色食物座標 [ax, ay] 重合
+    # 則 tail 增量, 即多一節且得分加 1, 然後食物座標 [ax, ay] 重新以亂數定位
+    if ax == px and ay == py:
+        tail += 1
+        ax = math.floor(random()*tc)
+        ay = math.floor(random()*tc)
+        score += 1
+    # [ax, ay] is known here
+    # [px, py] is where the head of the snake
+    # xv needed to be incremented from px to ax first
+    # and yv needed to be incremented from py to ay
+    eat(px, py, ax, ay)
+    # 更新計分顯示
+    update_score2(score)
+    ctx.fillStyle = "red"
+    ctx.fillRect(ax*gs, ay*gs, gs-2, gs-2)
+   
+def key_push2(evt):
+    global xv, yv, pre_pause, paused
+    key = evt.keyCode
+    # 37 is left arrow key
+    # 74 is j key
+    if key == 74 and not paused:
+        xv = -1
+        yv = 0
+    # 38 is up arrow key
+    # 73 is i key
+    elif key == 73 and not paused:
+        xv = 0
+        yv = -1
+    # 39 is right arrow key
+    # 76 is l key
+    elif key == 76 and not paused:
+        xv = 1
+        yv = 0
+    # 40 is down arrow key
+    # 77 is m key
+    elif key == 77 and not paused:
+        xv = 0
+        yv = 1
+    # 32 is pause key
+    # 80 is p key
+    elif key == 80:
+        temp = [xv, yv]
+        xv = pre_pause[0]
+        yv = pre_pause[1]
+        pre_pause = [*temp]
+        paused = not paused
+   
+def show_instructions2(evt):
+        window.alert("keys to control: i=up, m=down, j=left, l=right, p=pause")
+       
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width = 600, height = 600)
+canvas.id = "game-board2"
+brython_div = doc["brython_div2"]
+brython_div <= canvas
+   
+score_doc = html.DIV("score2")
+score_doc.id = "score2"
+brython_div <= score_doc
+   
+high_score_doc = html.DIV("high-score2")
+high_score_doc.id = "high-score2"
+brython_div <= high_score_doc
+   
+button = html.BUTTON("Keys to control")
+button.id = "instructions-btn2"
+brython_div <= button
+   
+score = 0
+high_score = 0
+   
+px = py = 10
+# gs*tc = canvas width and height
+gs = 20
+tc = 30
+ax = ay = 15
+xv = yv = 0
+trail = []
+tail = 5
+   
+pre_pause = [0,0]
+paused = False
+ctx = canvas.getContext("2d")
+doc.addEventListener("keydown", key_push2)
+instructions_btn = doc["instructions-btn2"]
+instructions_btn.addEventListener("click", show_instructions2)
+browser.timer.set_interval(game2, 1000/15)""")
+Ace2.editor.scrollToRow(0)
+Ace2.editor.gotoLine(0)
+# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
+doc['kw_run2'].bind('click', Ace2.run)
+doc['kw_show_console2'].bind('click', Ace2.show_console)
+doc['kw_clear_console2'].bind('click', Ace2.clear_console)
+doc['clear_bd2'].bind('click', clear_bd2)
+</script>
+</p>
+<p><!-- 用來顯示程式碼的 editor 區域 --></p>
+<div id="kw_editor2" style="width: 600px; height: 300px;"></div>
+<p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
+<form><label>Filename: <input id="kw_filename2" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src2', 'kw_filename2');" type="submit" value="Save"/></form>
+<p><button id="kw_run2">Run</button> <button id="kw_show_console2">Output</button> <button id="kw_clear_console2">清除輸出區</button><button id="clear_bd2">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
+<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console2"></textarea></div>
+<div id="brython_div2"></div>
+<p><!-- 結束列印程式2 --></p><h2>Stage2</h2>
+<h4>Brython tutorial</h4>
+<p style="padding-left: 30px;"><a href="https://brython.info/static_tutorial/en/index.html">https://brython.info/static_tutorial/en/index.html</a></p>
+<h4>WebGL</h4>
+<p>以下內容取自 <a href="https://link.springer.com/book/10.1007/978-1-4302-3997-0">Beginning WebGL for HTML5</a> (從校園網路中下載電子書)</p>
+<p>The HTML5 document in uses the shorter &lt;!doctype html&gt; and &lt;html&gt; declaration available <br/>in HTML5. In the &lt;head&gt; section, we set the browser title bar contents and then add some basic styling that will change the &lt;body&gt; background to gray and the &lt;canvas&gt; background to white. This is not necessary but helps us to easily see the canvas boundary. The content of the body is a single canvas element. If viewing the document with an old browser that does not support the HTML 5 canvas element, the message "Your browser does not support the HTML5 canvas element." will be displayed.</p>
+<p>Getting Context</p>
+<p>When we draw inside of a canvas element, we have more than one option of how we produce our image. Each option corresponds to a different application programming interface (API) with different available functionality and implementation details and is known as a particular context of the canvas. At the moment there are two canvas contexts: "2D" and "webgl". The canvas element does not really care which context we use, but it needs to explicitly know so that it can provide us with an appropriate object that exposes the desired API.</p>
+<p>To obtain a context, we call the canvas method getContext. This method takes a context name as a first parameter and an optional second argument. The WebGL context name will be "webgl"</p>
+<p>WebGL has a color buffer, depth buffer, and stencil buffer. A buffer is a block of memory that can be written to and read from, and temporarily stores data. The color buffer holds color information—red, green, and blue values—and optionally an alpha value that stores the amount of transparency/opacity. The depth buffer stores information on a pixel’s depth component (z-value). As the map from 3D world space to 2D screen space can result in several points being projected to the same (x,y) canvas value, the z-values are compared and only one point, usually the nearest, is kept and rendered.</p>
+<p>The stencil buffer is used to outline areas to render or not render. When an area of an image is marked off to not render, it is known as masking that area. The entire image, including the masked portions, is known as a stencil. <br/>The stencil buffer can also be used in combination with the depth buffer to optimize performance by not attempting to render portions of a scene that are determined to be not viewable. By default, the color buffer’s alpha channel is enabled and so is the depth buffer, but the stencil buffer is disabled. As previously mentioned, these can be modified by specifying the second optional parameter when obtaining the WebGL context</p>
+<h4>參考資料:</h4>
+<p style="padding-left: 30px;"><a href="https://pypi.org/project/brip/">https://pypi.org/project/brip/</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/rayluo/easter">https://github.com/rayluo/easter</a></p>
