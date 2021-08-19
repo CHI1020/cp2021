@@ -4144,10 +4144,12 @@ clean:
 
 .PHONY: all test install clean dist
 </pre>
-<p></p>
-<p></p>
-<p></p>
-<h3>Cython</h3>
+<h4>Lua 實習第五步:</h4>
+<p style="padding-left: 30px;">結合 <a href="https://github.com/aphenriques/gnuplot">https://github.com/aphenriques/gnuplot</a> 與 <a href="http://www.gnuplot.info/">gnuplot</a></p>
+<p style="padding-left: 30px;">下載 <a href="https://drive.google.com/file/d/10WTzjMosketDZZVIlYB7H948lFPrWpYU/view?usp=sharing">gnuplot_lua_tinyc.7z</a></p>
+<h4 style="padding-left: 30px;"> 參考資料:</h4>
+<p style="padding-left: 60px;"><a href="https://mde.tw/cad2020/content/W7.html">https://mde.tw/cad2020/content/W7.html</a></p>
+<p></p><h3>Cython</h3>
 <p>從 <a href="http://mde.tw/cp2021/content/C.html">C 程式語言的頁面</a>, 我們已經知道以純 C 編寫的 2D 繪圖程式庫 <a href="https://github.com/libgd/libgd">https://github.com/libgd/libgd</a> 可以直接利用可攜程式系統中的 <a href="https://www.msys2.org/">MSYS2</a> 進行編譯. 亦即可以編寫類似以下的 C 程式執行 2D 繪圖:</p>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include "gd.h"
 #include &lt;stdio.h&gt;
