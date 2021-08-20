@@ -43,6 +43,10 @@
 <p style="padding-left: 30px;"><a href="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei">全頁檢視</a></p>
 <p><iframe height="600" src="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei" width="800"></iframe></p>
 <h2>學習程式</h2>
+<p>知道除了 Windows 操作系統外, 還有 Unix 系列的操作系統, 除了一般 GUI 文字編輯器外, 在 Unix terminal 中, 可以 <a href="/downloads/Learning_the_vi_Editor.pdf">Learning_the_vi_Editor.pdf</a> 執行文字資料編輯.</p>
+<p><img caption="false" class="add_border" height="463" src="/images/what_is_unix.png" width="600"/></p>
+<h4>Windows OS versions:</h4>
+<p><img alt="" class="add_border" height="304" src="/images/windows_os_version.png" width="600"/>(Source: <a href="https://en.wikipedia.org/wiki/Microsoft_Windows">https://en.wikipedia.org/wiki/Microsoft_Windows</a>)</p>
 <p>學習計算機程式語言的態度建議: <a href="https://learnpythonthehardway.org/book/intro.html">https://learnpythonthehardway.org/book/intro.html</a></p>
 <ol>
 <li>必得<span style="text-decoration: underline;"><span style="background-color: #ffff99;">花工夫</span></span>才學得來 (The hard way is easier, <a href="https://betterprogramming.pub/why-you-should-learn-to-program-the-hard-way-7961df96c5c5">ref1</a>, <a href="https://www.freecodecamp.org/news/learn-to-code-the-hard-way-65dece5b0005/">ref2</a>)</li>
@@ -79,8 +83,11 @@
 <p style="padding-left: 30px;"><a href="https://github.com/mdecourse/lookupdict">https://github.com/mdecourse/lookupdict</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecourse/scissor-rock-paper2">https://github.com/mdecourse/scissor-rock-paper2</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecourse/wcms-scrum1">https://github.com/mdecourse/wcms-scrum1</a></p>
-<h4>Python 語法</h4>
-<p>由於 Github Pages 不允許伺服 __init__.py 檔案, 因此必須將 <a href="https://github.com/BrythonServer/ggame">ggame</a> 採用 <a href="https://brython.info/static_doc/en/import.html">https://brython.info/static_doc/en/import.html</a> 中 Optimization 的方式轉為 brython_modules.js 後直接以 script 標註導入頁面.</p>
+<h4>學習運用 Python:</h4>
+<p style="padding-left: 30px;"><a href="https://mde.tw">KMOLab</a> 認為, 機械設計工程師在大一之所以先學習運用 Python, 是因為透過網際 Python 的教學, 可以快速解決一些簡單的工程問題, 加上網際 HTML 與 WebGL 中的 Canvas, 學員可以透過動畫與簡單線上遊戲, 逐步了解變數, 函式, 重複迴圈, 判斷式, 滑鼠事件與基本物件導向程式的概念.</p>
+<p style="padding-left: 30px;">接下來若再能透過 Flask 與 SolidWorks, Inventor 及 NX12 的 API 進行互動, 使用者就可以在先前電腦輔助繪圖的技術能力中, 培養參數化與動態系統對於協同產品設計的配置能力.</p>
+<p style="padding-left: 30px;">在此一學習程式的過程中, 使用者會先接觸 Python 以及 Javascript, 隨著網際內容管理的需求, HTML 與 CSS 的基本運用就會逐一成為必要能力.</p>
+<p style="padding-left: 30px;">由於 Github Pages 不允許伺服 __init__.py 檔案, 因此必須將 <a href="https://github.com/BrythonServer/ggame">ggame</a> 採用 <a href="https://brython.info/static_doc/en/import.html">https://brython.info/static_doc/en/import.html</a> 中 Optimization 的方式轉為 brython_modules.js 後直接以 script 標註導入頁面.</p>
 <h4 style="padding-left: 30px;">將 ggame 中的 Brython 程式碼轉為 brython_modules.js 的方法:</h4>
 <p style="padding-left: 60px;">在可攜系統中的 Python 安裝 brython 模組: pip install brython</p>
 <p style="padding-left: 60px;">將所安裝 brython 模組中的 brython_stdlib.js 複製一份到 ggame 倉儲中, 確定目前 ggame 目錄架構為:</p>
@@ -90,16 +97,23 @@
 <p style="padding-left: 60px;">接下來執行 y:\tmp\github\ggame&gt;python -m brython --modules</p>
 <p style="padding-left: 60px;">完成後, 就可以在 y:\tmp\github\ggame&gt; 目錄中建立 brython_modules.js</p>
 <p style="padding-left: 60px;">以本頁面的作法是將 ggame 所需的 graphics 檔案放至 images 目錄中, 而 brython_modules.js 則放至 downloads 目錄後, 以 /downloads/brython_modules.js 放入 script 標註中引用.</p>
-<p>Python 3 官方教材: <a href="https://docs.python.org/3/index.html">https://docs.python.org/3/index.html</a></p>
-<p>Python tutorial: <a href="https://docs.python.org/3/tutorial/index.html">https://docs.python.org/3/tutorial/index.html</a> (英文)</p>
-<p>Python tutorial: <a href="https://docs.python.org/zh-tw/3/tutorial/">https://docs.python.org/zh-tw/3/tutorial/</a> (中文)</p>
-<p><a href="https://link.springer.com/book/10.1007/978-981-10-3277-6">Programming with Python</a> (校園網路下載電子書)</p>
-<p><a href="/downloads/ProblemSolvingwithAlgorithmsandDataStructures.pdf">利用演算法 (Algorithms) 與資料結構 (Data Structures) 解題</a> (英文) (<a href="https://www.cs.auckland.ac.nz/compsci105s1c/resources/">來源</a>)</p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-84800-070-4">The Algorithm Design Manual</a> (校園網路下載電子書)</p>
-<p>網頁上的 Python - Brython: <a href="https://www.brython.info/static_doc/en/intro.html">https://www.brython.info/static_doc/en/intro.html</a> (解譯式)</p>
-<p style="padding-left: 30px;"><a href="http://brython.info/gallery/?C=M;O=D">Brython Gallery</a></p>
-<p>網頁上的 Python GUI- Flexx: <a href="https://flexx.readthedocs.io/en/stable/">https://flexx.readthedocs.io/en/stable/</a> (轉譯式)</p>
-<h2>機械設計知識</h2>
+<p style="padding-left: 30px;">Python 3 官方教材: <a href="https://docs.python.org/3/index.html">https://docs.python.org/3/index.html</a></p>
+<p style="padding-left: 30px;">Python tutorial: <a href="https://docs.python.org/3/tutorial/index.html">https://docs.python.org/3/tutorial/index.html</a> (英文)</p>
+<p style="padding-left: 30px;">Python tutorial: <a href="https://docs.python.org/zh-tw/3/tutorial/">https://docs.python.org/zh-tw/3/tutorial/</a> (中文)</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-981-10-3277-6">Programming with Python</a> (校園網路下載電子書)</p>
+<p style="padding-left: 30px;"><a href="/downloads/ProblemSolvingwithAlgorithmsandDataStructures.pdf">利用演算法 (Algorithms) 與資料結構 (Data Structures) 解題</a> (英文) (<a href="https://www.cs.auckland.ac.nz/compsci105s1c/resources/">來源</a>)</p>
+<p style="padding-left: 60px;"><a href="/downloads/Algorithms.pdf">Algorithms.pdf</a></p>
+<p style="padding-left: 60px;"><a href="https://link.springer.com/book/10.1007/978-1-84800-070-4">The Algorithm Design Manual</a> (校園網路下載電子書)</p>
+<p style="padding-left: 30px;">網頁上的 Python - Brython: <a href="https://www.brython.info/static_doc/en/intro.html">https://www.brython.info/static_doc/en/intro.html</a> (解譯式)</p>
+<p style="padding-left: 60px;"><a href="http://brython.info/gallery/?C=M;O=D">Brython Gallery</a></p>
+<p style="padding-left: 30px;">網頁上的 Python GUI- Flexx: <a href="https://flexx.readthedocs.io/en/stable/">https://flexx.readthedocs.io/en/stable/</a> (轉譯式)</p>
+<h4>學習運用 C:</h4>
+<p style="padding-left: 30px;">過去機械設計工程師學習 C, 或許著眼在數值分析, 期望透過 C 程式解微分方程式, 對系統模型進行最佳化分析, 但是現在使用 Python + numpy + scipy + matplotlib + Cython, 不僅可以快速建立系統模型, 一旦透過 Cython 轉換為最終的編譯程式, 執行速度也可以很接近 C, 因此目前機械設計工程師之所以仍需要學習 C 的原因, 已經轉為機電系統控制, 期望透過 C 的可攜性, 能夠在各種控制硬體 (晶片) 上進行取捨.</p>
+<p style="padding-left: 30px;">尤其現在的個人電腦已經全面採用 <a href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface">UEFI</a> 開機, 機械設計工程師在機電資整合產品開發流程中, 對於運用 C 程式編寫電腦底層的軟體元件有較大的空間 (相對於之前的 <a href="https://en.wikipedia.org/wiki/BIOS">BIOS</a> 可能<a href="https://softwareengineering.stackexchange.com/questions/298628/which-programming-language-is-used-to-write-a-bios-program">需要採組合語言編寫</a>).</p>
+<p style="padding-left: 30px;"><a href="/downloads/C_Programming.pdf">C_Programming.pdf</a></p>
+<p style="padding-left: 30px;"><a href="/downloads/EssentialC.pdf">EssentialC.pdf</a></p>
+<p style="padding-left: 30px;"><a href="/downloads/ModernC.pdf">ModernC.pdf</a></p>
+<p style="padding-left: 30px;"><a href="/downloads/gnu_c_programming_tutorial.pdf">gnu_c_programming_tutorial.pdf</a></p><h2>機械設計知識</h2>
 <p>Brython (Browser Python) 在網頁的執行速度並不很快, 因此比較適合初學者用來學習 Python 語法. 或者透過 WebGL 編寫架構較為簡單的機械設計模擬程式. 也可以與 Server 端的 Python + Flask 結合, 將功能較為完整的 Javascript 導入為程式庫.</p>
 <p>對於機械設計相關, 運算較複雜的流程, 可以採用 Python + <a href="https://cython.org/">Cython</a> 寫為動態連結程式庫. 或者利用 Rust 編寫可以讓 Python 呼叫的動態連結程式庫. 至於前端運算較複雜的程式, 則可以採用 <a href="https://www.typescriptlang.org/">Typescript</a> 或 <a href="https://www.rust-lang.org/">Rust</a> + <a href="https://webassembly.org/">Wasm</a> 的方式編寫.</p>
 <h4>以下是與機械設計有關的內容, 大部分電子書可以從校園網路中下載:</h4>
@@ -3527,6 +3541,7 @@ app.run()
 </script>
 </p>
 <h3>Flask</h3>
+<p>網際程式對於機械設計工程師之所以重要, 是因為機械設計流程與許多不同專業及製造團隊緊密連結, 傳統上無論是採用企業資源管理 (ERP), 製造資源管理 (MRP), 產品資料管理 (PDM) 或產品生命週期管理 (PLM) 系統, 所有的實體產品零組件, 都源自機械設計部門的電腦輔助設計與工程分析模型. 因此如何透過動態整合 (程式方法) 將設計分析資訊與各不同專業與製造流程部門進行即時互動調控, 將是機械設計工程師所面臨的重要考驗之一.</p>
 <p>Server 端 (Flask):</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask, render_template, request, jsonify
  
@@ -3608,8 +3623,7 @@ if __name__ == '__main__':
 <p style="padding-left: 30px;"><a href="https://github.com/mdecourse/scissor-rock-paper2">https://github.com/mdecourse/scissor-rock-paper2</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecourse/wcms-scrum1">https://github.com/mdecourse/wcms-scrum1</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/chiamingyen/pygrouf">https://github.com/chiamingyen/pygrouf</a></p>
-<p></p>
-<h3>Flutter</h3>
+<p></p><h3>Flutter</h3>
 <p>Flutter 是 2015 年由 Google 提出的手機跨 iOS 與 Android 平台應用程式開發框架, 第一版釋出時間為 2017 年 5 月. Flutter 框架除了可以開發手機程式外, 也可用於單機或網際程式開發.</p>
 <p>Windows 64 位元環境中的可攜 Flutter 跨平台 App 開發系統:</p>
 <p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1X8icOyPgABAkKHYaDLXPSoy7U7nyxqzW/view?usp=sharing">下載 Flutter_portable_20210707.7z</a> (下載 4.7 GB, 解開壓縮後約 20GB)</p>
@@ -4148,8 +4162,7 @@ clean:
 <p style="padding-left: 30px;">結合 <a href="https://github.com/aphenriques/gnuplot">https://github.com/aphenriques/gnuplot</a> 與 <a href="http://www.gnuplot.info/">gnuplot</a></p>
 <p style="padding-left: 30px;">下載 <a href="https://drive.google.com/file/d/10WTzjMosketDZZVIlYB7H948lFPrWpYU/view?usp=sharing">gnuplot_lua_tinyc.7z</a></p>
 <h4 style="padding-left: 30px;"> 參考資料:</h4>
-<p style="padding-left: 60px;"><a href="https://mde.tw/cad2020/content/W7.html">https://mde.tw/cad2020/content/W7.html</a> </p>
-<p></p>
+<p style="padding-left: 60px;"><a href="https://mde.tw/cad2020/content/W7.html">https://mde.tw/cad2020/content/W7.html</a></p>
 <p></p><h3>Cython</h3>
 <p>從 <a href="http://mde.tw/cp2021/content/C.html">C 程式語言的頁面</a>, 我們已經知道以純 C 編寫的 2D 繪圖程式庫 <a href="https://github.com/libgd/libgd">https://github.com/libgd/libgd</a> 可以直接利用可攜程式系統中的 <a href="https://www.msys2.org/">MSYS2</a> 進行編譯. 亦即可以編寫類似以下的 C 程式執行 2D 繪圖:</p>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include "gd.h"
@@ -9128,6 +9141,7 @@ browser.timer.set_interval(bunnyRotate, 30)
 <p>Task2: 下載客製化的可攜程式系統</p>
 <p>Task3: 使用 git 分散式版次管理</p><h3>Task1</h3>
 <p>在<a href="https://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>網頁上學習簡單的 Python</p>
+<p style="padding-left: 30px;">在進入 Task1 之前, 可以先在<a href="https://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>網頁上, 跟著 <a href="/downloads/Non-Programmers_Tutorial_for_Python_3.pdf">Non-Programmers_Tutorial_for_Python_3.pdf</a> 的內容, 感受一下 Python 程式的用法.</p>
 <p>Task1 將要開始利用"<a href="/get_page/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92">解題練習</a>"頁面, 學習如何利用 Python 解決問題. 由於目前第一階段的學習希望利用網頁的方式執行 Python, 因此是透過 Brython 的程式庫達成, 使用者在網頁上編寫 Python 程式碼, 然後透過 Brython 即時將 Python 程式碼轉為 Javascript, 並且直接在網頁上執行.</p>
 <p>我們希望解決的第一個問題是: 如何利用電腦畫圖, 比方說, 在螢幕上畫一個小紅色方塊, 大小為 20x20 pixel.</p>
 <p>首先讓瀏覽器指向解題練習的頁面, 然後在程式表單中輸入下列程式碼, 第一次為了快速看到執行結果, 可以使用 Ctrl + C 與 Ctrl + V 將下列的程式碼複製貼上, 然後點擊 Run.</p>
@@ -9801,6 +9815,17 @@ doc['clear_bd2'].bind('click', clear_bd2)
 <p style="padding-left: 30px;"><a href="https://github.com/mdecourse/snake">https://github.com/mdecourse/snake</a> </p>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecourse/snake-1">https://github.com/mdecourse/snake-1</a> </p>
 <p style="padding-left: 30px;"><a href="/downloads/graph_search_algorithm.pdf">graph_search_algorithm.pdf</a></p><h2>Stage2</h2>
+<h4>期末專案:</h4>
+<p style="padding-left: 30px;">請各學員登入 github.com 後, 連結至 <a href="https://github.com/mdecourse/webgame">https://github.com/mdecourse/webgame</a> 選擇將 webgame 倉儲作為 template 後新增網際程式倉儲. 利用 Github Pages 建立一個線上遊戲.</p>
+<h4 style="padding-left: 30px;">範例:</h4>
+<p style="padding-left: 60px;"><a href="https://github.com/D4rk1n/JS-Flappy-Bird">https://github.com/D4rk1n/JS-Flappy-Bird</a></p>
+<p style="padding-left: 60px;"><a href="https://github.com/ondras/custom-tetris">https://github.com/ondras/custom-tetris</a></p>
+<p style="padding-left: 60px;"><a href="https://github.com/MattSurabian/DuckHunt-JS">https://github.com/MattSurabian/DuckHunt-JS</a></p>
+<p style="padding-left: 30px;">參考資料:</p>
+<p style="padding-left: 60px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-1094-9">2015 Learn Pixi.js</a> (在校園網路下載電子書)</p>
+<p style="padding-left: 60px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-0952-3">2015 uild Your Own 2D Game Engine and Create Great Web Games</a> (在校園網路下載電子書)</p>
+<p style="padding-left: 60px;"><a href="https://link.springer.com/book/10.1007/978-1-4302-4717-3">2012 Foundation Game Design with HTML5 and JavaScript</a> (在校園網路下載電子書)</p>
+<p style="padding-left: 60px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-1097-0">2017 The Advanced Game Developer's Toolkit</a> (在校園網路下載電子書)</p>
 <h4>Brython tutorial</h4>
 <p style="padding-left: 30px;"><a href="https://brython.info/static_tutorial/en/index.html">https://brython.info/static_tutorial/en/index.html</a></p>
 <h4>WebGL</h4>
