@@ -1,4 +1,7 @@
 <h1>About</h1>
+<h4><a href="https://mde.tw">KMOLab</a> 上課的目的: 鼓勵每一位同學都能及早<span style="background-color: #ffff99;">確定努力的目標</span>, 證明自己具備<span style="background-color: #ffff99;">獨立研究與解題能力</span>.</h4>
+<p>這裡是國立虎尾科技大學 - 機械設計工程系 - 計算機程式課程網站.</p>
+<hr/>
 <p>Python 程式語言可以編寫網際內容管理系統 (<a href="https://github.com/mdecourse/cmstemplate">cmstemplate</a>), 可以執行虛實整合系統的強化學習 (<a href="https://github.com/mdecourse/4072pj1">4072pj1</a>), 也能<a href="https://www.youtube.com/watch?v=3EqzMzszMV0">控制</a>數位場景中的機電模擬系統, 並進行機構合成 (<a href="https://github.com/mdecourse/4072pj3">4072pj3</a>), 但在 <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 與 <a href="https://cyberbotics.com/">Webots </a>系統模擬過程, 為了開發效率, 使用者需要透過 Lua 程式才能與 C++ 底層溝通, 並且後續的零組件強度分析, 大多依賴 C++ 程式套件完成 (<a href="https://github.com/mdecourse/4072pj2">4072pj2</a>), 而開發者若希望實現機電模擬系統的<a href="http://mde.tw/cd2020/content/Microcontroller.html">控制</a>, 則通常利用 C 程式執行.</p>
 <p>隨著雲端部署與隨身裝置的緊密結合下, 假如在十年前, 要編寫 Javascript 的伺服器端 runtime, C++ 會是個不錯的選擇 (<a href="https://nodejs.org">node.js</a>), 但此刻採用 Rust 才比較<a href="https://thenewstack.io/rust-by-the-numbers-the-rust-programming-language-in-2021/">符合潮流</a>, 至於網際前後端若能同時執行最新版的 Javascript 與 <a href="https://www.typescriptlang.org/">Typescript</a>, 可以省去開發者不少麻煩 (<a href="https://deno.land/">Deno</a>). 當然隨身裝置中的各式 App, 若能採用 <a href="https://dart.dev/">Dart</a> 程式語言的 <a href="https://flutter.dev/">Flutter</a> 跨平台架構編寫, 並且依賴 <a href="https://elixir-lang.org/">Elixir</a> 分散式容錯伺服器進行<a href="https://github.com/ukncsc/zero-trust-architecture">零信任</a> (Zero Trust) 與<a href="https://en.wikipedia.org/wiki/Edge_computing">邊緣運算</a> (Edge Computing) 配置, 或許才能進一步有效因應目前各種詭譎多變的數位環境.</p>
 <p>各位技職體系大學新鮮人, 歡迎進入二十一世紀第三個十年的計算機程式世代.</p>
@@ -43,7 +46,9 @@
 <p style="padding-left: 30px;"><a href="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei">全頁檢視</a></p>
 <p><iframe height="600" src="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei" width="800"></iframe></p>
 <h2>學習程式</h2>
-<p>知道除了 Windows 操作系統外, 還有 Unix 系列的操作系統, 除了一般 GUI 文字編輯器外, 在 Unix terminal 中, 可以 <a href="/downloads/Learning_the_vi_Editor.pdf">Learning_the_vi_Editor.pdf</a> 執行文字資料編輯.</p>
+<p>機械設計專長的工程師除了熟悉 Windows 操作系統外, 之所以還必須學習操作 Unix 系列的系統, 是因為機械設計流程牽涉許多機電資相關跨領域專長細節, 過程中需要透過集中或分散式架構與多人進行協同, 能夠將編寫程式的平台擴及 Windows 與 Unix 操作系統 (包含 Linux 與 MacOS), 預計可增進配置系統的範圍與彈性, 強化機械設計工作效能.</p>
+<p>在學習各種電腦操作系統的過程, 除了一般 GUI 文字編輯器外, 在 Unix terminal 中, 還必須學習利用純文字介面編輯器, <a href="/downloads/Learning_the_vi_Editor.pdf">Learning_the_vi_Editor.pdf</a> 執行文字資料編輯.</p>
+<p>以下為與 Unix 及 Windows 操作系統有關的開發年表:</p>
 <p><img caption="false" class="add_border" height="463" src="/images/what_is_unix.png" width="600"/></p>
 <h4>Windows OS versions:</h4>
 <p><img alt="" class="add_border" height="304" src="/images/windows_os_version.png" width="600"/>(Source: <a href="https://en.wikipedia.org/wiki/Microsoft_Windows">https://en.wikipedia.org/wiki/Microsoft_Windows</a>)</p>
@@ -198,7 +203,7 @@ function doSave(storage_id, filename){
 <p style="padding-left: 30px;"><a href="https://www.sciencebuddies.org/science-fair-projects/engineering-design-process/engineering-design-process-steps">https://www.sciencebuddies.org/science-fair-projects/engineering-design-process/engineering-design-process-steps</a></p>
 <p style="padding-left: 30px;"><a href="https://www.twi-global.com/technical-knowledge/faqs/engineering-design-process">https://www.twi-global.com/technical-knowledge/faqs/engineering-design-process</a></p>
 <p style="padding-left: 30px;">The top five design challenges cited by engineers were (<a href="https://news.aucotec.com/how-to-solve-the-5-top-engineering-design-challenges/">source</a>):</p>
-<p style="padding-left: 60px;">Frequent design changes (39%)<br/>Changing design requirements (34%)<br/>Projects are understaffed (29%)<br/>Increased product complexity (25%)<br/>Problems/errors are found too late (19%)</p>
+<p style="padding-left: 60px;">Frequent design changes (39%)<br/>Changing design requirements (34%)<br/>Projects are understaffed (29%)<br/>Increased product complexity (25%)<br>Problems/errors are found too late (19%)</br></p>
 <p><!-- 印出版次與關鍵字程式 --></p>
 <p>
 <script type="text/python3">
@@ -2668,6 +2673,7 @@ doc["sudoku"].bind('click', Sudoku.prog)
 <!-- sudoku ends -->
 <p></p>
 <!-- autosnake starts -->
+<p>
 <script type="text/python3">
 from browser import document as doc
 # 導入位於 static 目錄下的 beditor.py 
@@ -2841,6 +2847,7 @@ browser.timer.set_interval(game, 1000/15)
 # id 為 "autosnake 的按鈕點按時, 執行 Autosnake 物件中的 prog 方法
 doc["autosnake"].bind('click', Autosnake.prog)
 </script>
+</p>
 <!-- autosnake ends -->
 <p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="class_ex6">Ex6</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="snake">貪食蛇</button><button id="autosnake">貪食蛇2</button><button id="sudoku">Sudoku</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="clock1">clock1</button><button id="fourbar">Fourbar</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="nfulist">nfulist</button><button id="clear">Clear</button></p>
 <h4>參考資料:</h4>
@@ -2975,7 +2982,9 @@ var width = window.innerWidth;
 <p style="padding-left: 30px;">上述網際 Python 程式範例執行, 是透過 <a href="https://brython.info/">Brython</a> 達成, 但是卻必須將所有 Python 範例程式碼逐一寫在網頁中 (<span style="background-color: #ccffcc;">方式 1</span>), 而 <a href="http://mde.tw/2017springvcp/blog/web-based-python.html">http://mde.tw/2017springvcp/blog/web-based-python.html</a> 的寫法, 則是將程式範例存入相對目錄中 (<span style="background-color: #ccffcc;">方式 2</span>), 然後當使用者點擊對應 button 時, 才將程式碼取出放入 editor 區域中.</p>
 <p style="padding-left: 30px;">至於 <a href="http://mde.tw/cp2019/content/Task2.html">http://mde.tw/cp2019/content/Task2.html</a> 的取檔案方式, 則是將 <a href="https://dart.dev/">Dart</a> 範例程式存入 <a href="https://docs.github.com/en/github/writing-on-github/editing-and-sharing-content-with-gists/creating-gists">Gist</a> (<span style="background-color: #ccffcc;">方式 3</span>), 然後取出最新對應版本後載入 editor 區域.</p>
 <p style="padding-left: 30px;">而 <a href="http://mde.tw/lab/downloads/lua/index.html?filename=guess2">http://mde.tw/lab/downloads/lua/index.html?filename=guess2</a> 則利用 URL <a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Methods">Request</a> 方法取 Get 變數值後, 再根據範例檔案名稱取出存於相對目錄的程式碼, 將內容放入 editor 區域中 (<span style="background-color: #ccffcc;">方式 4</span>).</p>
-<p style="padding-left: 30px;">請研究上述方式 1 的網際 Python 程式範例編輯與載入執行架構, 分別改為其他三種方式, 並討論其使用差異與優缺點.</p><h3>Brython</h3>
+<p style="padding-left: 30px;">請研究上述方式 1 的網際 Python 程式範例編輯與載入執行架構, 分別改為其他三種方式, 並討論其使用差異與優缺點.</p>
+<p style="padding-left: 30px;"><a href="http://doctorsrn.cn/2019/08/08/CodingInterviewChinese2/">Python 刷題練習</a></p>
+<h3>Brython</h3>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/VJj-H4we71g" title="YouTube video player" width="560"></iframe></p>
 <p><a href="https://github.com/brython-dev/brython/wiki/How-Brython-works">https://github.com/brython-dev/brython/wiki/How-Brython-works</a></p>
 <p>上一頁的網際 Python 是透過 <a href="https://brython.info/">https://brython.info/</a> 完成, 當使用者在網頁中執行 Python 程式時, 透過 Brython 即時轉為 Javascript 後執行.</p>
@@ -3623,7 +3632,8 @@ if __name__ == '__main__':
 <p style="padding-left: 30px;"><a href="https://github.com/mdecourse/scissor-rock-paper2">https://github.com/mdecourse/scissor-rock-paper2</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecourse/wcms-scrum1">https://github.com/mdecourse/wcms-scrum1</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/chiamingyen/pygrouf">https://github.com/chiamingyen/pygrouf</a></p>
-<p></p><h3>Flutter</h3>
+<p></p>
+<h3>Flutter</h3>
 <p>Flutter 是 2015 年由 Google 提出的手機跨 iOS 與 Android 平台應用程式開發框架, 第一版釋出時間為 2017 年 5 月. Flutter 框架除了可以開發手機程式外, 也可用於單機或網際程式開發.</p>
 <p>Windows 64 位元環境中的可攜 Flutter 跨平台 App 開發系統:</p>
 <p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1X8icOyPgABAkKHYaDLXPSoy7U7nyxqzW/view?usp=sharing">下載 Flutter_portable_20210707.7z</a> (下載 4.7 GB, 解開壓縮後約 20GB)</p>
@@ -3651,7 +3661,8 @@ set path_vscode=%Disk%:\vscode;</pre>
 <p style="padding-left: 30px;"><a href="http://mde.tw/cp2019/content/DartLang.html">http://mde.tw/cp2019/content/DartLang.html</a></p>
 <p style="padding-left: 30px;"><a href="http://mde.tw/cp2019/content/DartLang.html">http://mde.tw/cp2019/content/DartLang.html</a></p>
 </div>
-</div><h3>Rust</h3>
+</div>
+<h3>Rust</h3>
 <h4>Rust 中文入門:</h4>
 <p style="padding-left: 30px;"><a href="https://rust-lang.tw/book-tw/title-page.html">https://rust-lang.tw/book-tw/title-page.html</a> (<a href="https://github.com/rust-tw/book-tw">on Github</a>, 利用 <a href="https://github.com/rust-tw/book-tw/blob/zh_tw/.github/workflows/main.yml">Github Actions</a> (<a href="https://github.com/features/actions">何謂 Github Actions</a>?), 以 <a href="https://github.com/rust-lang/mdBook">mdbook</a> 轉為 html)</p>
 <p style="padding-left: 30px;">Rust 編譯系統也包含在 <a href="https://mde.tw">KMOLab</a> <a href="http://mde.tw/cmstemplate/content/%E5%8F%AF%E6%94%9C%E7%B3%BB%E7%B5%B1.html">可攜系統</a>中.</p>
@@ -4163,7 +4174,8 @@ clean:
 <p style="padding-left: 30px;">下載 <a href="https://drive.google.com/file/d/10WTzjMosketDZZVIlYB7H948lFPrWpYU/view?usp=sharing">gnuplot_lua_tinyc.7z</a></p>
 <h4 style="padding-left: 30px;"> 參考資料:</h4>
 <p style="padding-left: 60px;"><a href="https://mde.tw/cad2020/content/W7.html">https://mde.tw/cad2020/content/W7.html</a></p>
-<p></p><h3>Cython</h3>
+<p></p>
+<h3>Cython</h3>
 <p>從 <a href="http://mde.tw/cp2021/content/C.html">C 程式語言的頁面</a>, 我們已經知道以純 C 編寫的 2D 繪圖程式庫 <a href="https://github.com/libgd/libgd">https://github.com/libgd/libgd</a> 可以直接利用可攜程式系統中的 <a href="https://www.msys2.org/">MSYS2</a> 進行編譯. 亦即可以編寫類似以下的 C 程式執行 2D 繪圖:</p>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include "gd.h"
 #include &lt;stdio.h&gt;
@@ -4339,6 +4351,7 @@ pacman -Sy mingw-w64-x86-64-cmake</pre>
 <p style="padding-left: 60px;">何謂(電腦)伺服 (serving)?</p>
 <p style="padding-left: 60px;">何謂 Fossil SCM？</p>
 <h3>Why Git</h3>
+<p>為什麼 <a href="https://ist.mit.edu/github-enterprise">https://ist.mit.edu/github-enterprise</a> 與 <a href="https://support.cc.gatech.edu/support-tools/faq/what-gt-github-enterprise">https://support.cc.gatech.edu/support-tools/faq/what-gt-github-enterprise</a> 都使用 Git 與 Github?</p>
 <p><a href="https://asmehackathon2020.github.io/">https://asmehackathon2020.github.io/</a></p>
 <p><a href="https://sassafras13.github.io/Gitwiththeflow/">https://sassafras13.github.io/Gitwiththeflow/</a></p>
 <p><a href="https://github.com/m2n037/awesome-mecheng">https://github.com/m2n037/awesome-mecheng</a></p>
@@ -6927,6 +6940,7 @@ doc["sudoku"].bind('click', Sudoku.prog)
 <!-- sudoku ends -->
 <p></p>
 <!-- autosnake starts -->
+<p>
 <script type="text/python3">
 from browser import document as doc
 # 導入位於 static 目錄下的 beditor.py 
@@ -7100,12 +7114,14 @@ browser.timer.set_interval(game, 1000/15)
 # id 為 "autosnake 的按鈕點按時, 執行 Autosnake 物件中的 prog 方法
 doc["autosnake"].bind('click', Autosnake.prog)
 </script>
+</p>
 <!-- autosnake ends -->
 <p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="class_ex6">Ex6</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="snake">貪食蛇</button><button id="autosnake">貪食蛇2</button><button id="sudoku">Sudoku</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="clock1">clock1</button><button id="fourbar">Fourbar</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="nfulist">nfulist</button><button id="clear">Clear</button></p>
 <h4>參考資料:</h4>
 <p><a href="/downloads/turtle_intro.pdf">turtle_intro.pdf</a></p>
 <p><a href="/downloads/turtle_intro2.pdf">turtle_intro2.pdf</a></p>
-<p>其他擷取程式的方式: <a href="http://mde.tw/2017springvcp/blog/web-based-python.html">http://mde.tw/2017springvcp/blog/web-based-python.html</a></p><h3>貪食蛇</h3>
+<p>其他擷取程式的方式: <a href="http://mde.tw/2017springvcp/blog/web-based-python.html">http://mde.tw/2017springvcp/blog/web-based-python.html</a></p>
+<h3>貪食蛇</h3>
 <p><a href="https://zh.wikipedia.org/wiki/%E8%B4%AA%E9%A3%9F%E8%9B%87">貪食蛇遊戲</a></p>
 <p>在遊戲中, 玩家操控一條細長的直線 (俗稱蛇或蟲), 它會不停前進, 玩家只能操控蛇的頭部朝向, 上下左右, 一路拾起觸碰到之物 (或稱作豆), 並要避免觸碰到自身或者其他障礙物. 每次貪食蛇吃掉一件食物, 它的身體便增長一段. 吃掉一些食物後會使蛇的移動速度逐漸加快, 讓遊戲的難度漸漸變大. 遊戲設計大致分為四面都有牆 (都不可穿越) 以及某部分的牆可以穿越, 以及四面牆都可以穿越的模式.</p>
 <h4>網際 Brython 程式練習:</h4>
@@ -9124,7 +9140,28 @@ browser.timer.set_interval(bunnyRotate, 30)
 <li>要如何"公平地"抽出每一座位橫排中的某一位同學? (我們知道通常不會有自願舉手, 勇於表達的同學)</li>
 <li>要如何(長期)收集被抽中同學所發表的內容? (假如我們接下來每個禮拜都來玩這個挑戰"遊戲"的話!)</li>
 <li>或者我們不要用抽的, 我們想要重新玩挑戰一, 讓全班所有學員都同時在同一個電腦畫面上進行英文打字輸入比賽, 而且要同時接受挑戰二, 在同一個電腦畫面上收集每一位同學的發言內容.</li>
-</ol><h2>Stage1</h2>
+</ol>
+<h2>分散式版次管理</h2>
+<h4>請分別至下列網站申請帳號:</h4>
+<p style="padding-left: 30px;">Github: <a href="https://github.com/">https://github.com/</a></p>
+<h4 style="padding-left: 60px;">實作:</h4>
+<p style="padding-left: 90px;"><a href="https://backlog.com/git-tutorial/tw/">https://backlog.com/git-tutorial/tw/</a></p>
+<p style="padding-left: 90px;"><a href="https://github.com/doggy8088/Learn-Git-in-30-days/blob/master/zh-tw/README.md">https://github.com/doggy8088/Learn-Git-in-30-days/blob/master/zh-tw/README.md</a></p>
+<p style="padding-left: 90px;"><a href="https://gitbook.tw/interview">https://gitbook.tw/interview</a></p>
+<p style="padding-left: 90px;"><a href="https://git-scm.com/book/zh-tw/v2/">https://git-scm.com/book/zh-tw/v2/</a></p>
+<p style="padding-left: 90px;"><a href="https://mde.tw/cmstemplate">https://mde.tw/cmstemplate</a></p>
+<p style="padding-left: 30px;">Gitlab: <a href="https://gitlab.com/users/sign_up">https://gitlab.com/users/sign_up</a></p>
+<p style="padding-left: 30px;">Bitbucket: <a href="https://id.atlassian.com/signup?application=bitbucket&amp;continue=https%3A//bitbucket.org/account/signin/%3Foptintocst%3D1%26next%3D/%3Faidsignup%3D1">Bitbucket sign up</a></p>
+<p style="padding-left: 30px;">Heroku: <a href="https://www.heroku.com/">https://www.heroku.com/</a></p>
+<h4>請分別取得下列網站的 Windows 版工具:</h4>
+<p style="padding-left: 30px;">Fossil SCM: <a href="https://www.fossil-scm.org">https://www.fossil-scm.org</a></p>
+<p style="padding-left: 30px;">GitExtension: <a href="https://github.com/gitextensions/gitextensions/releases/tag/v3.5.3">https://github.com/gitextensions/gitextensions/releases/tag/v3.5.3</a></p>
+<p style="padding-left: 30px;">Zoomit: <a href="https://docs.microsoft.com/en-us/sysinternals/downloads/zoomit">https://docs.microsoft.com/en-us/sysinternals/downloads/zoomit</a></p>
+<p style="padding-left: 30px;">FFMpeg: <a href="https://ffmpeg.org/download.html">https://ffmpeg.org/download.html</a></p>
+<p style="padding-left: 30px;">ShareX: <a href="https://github.com/ShareX/ShareX/releases">https://github.com/ShareX/ShareX/releases</a></p>
+<p style="padding-left: 30px;">Wink: <a href="https://www.debugmode.com/wink/">https://www.debugmode.com/wink/</a></p>
+<p></p>
+<h2>Stage1</h2>
 <p>經過前面的課程說明, 我們已經知道, 學習計算機程式需要與電腦溝通, 而現階段機械設計工程師與電腦溝通的重要方式就是英文與中文的鍵盤輸入, 假如您對 touch typing 技巧還不是很熟練, 一定要自行找時間練習.</p>
 <p>至於挑戰二中所列出, 有關機械設計工程師希望利用電腦解決的問題可能太過廣泛, 可能是因為下列這段敘述:</p>
 <p>Computer programming is to learn how to formalize intuitions about process, how to do things, starting to develop a way to talk precisely about how-to knowledge.</p>
@@ -9139,14 +9176,17 @@ browser.timer.set_interval(bunnyRotate, 30)
 <p>接下來我們希望在 Stage1 的任務工作項目中, 將一方面練習 Python 程式語法, 並逐步導入使用可攜與分散式版次管理系統:</p>
 <p>Task1: 在<a href="https://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>網頁上學習簡單的 Python</p>
 <p>Task2: 下載客製化的可攜程式系統</p>
-<p>Task3: 使用 git 分散式版次管理</p><h3>Task1</h3>
+<p>Task3: 使用 git 分散式版次管理</p>
+<h3>Task1</h3>
 <p>在<a href="https://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>網頁上學習簡單的 Python</p>
 <p style="padding-left: 30px;">在進入 Task1 之前, 可以先在<a href="https://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>網頁上, 跟著 <a href="/downloads/Non-Programmers_Tutorial_for_Python_3.pdf">Non-Programmers_Tutorial_for_Python_3.pdf</a> 的內容, 感受一下 Python 程式的用法.</p>
 <p>Task1 將要開始利用"<a href="/get_page/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92">解題練習</a>"頁面, 學習如何利用 Python 解決問題. 由於目前第一階段的學習希望利用網頁的方式執行 Python, 因此是透過 Brython 的程式庫達成, 使用者在網頁上編寫 Python 程式碼, 然後透過 Brython 即時將 Python 程式碼轉為 Javascript, 並且直接在網頁上執行.</p>
 <p>我們希望解決的第一個問題是: 如何利用電腦畫圖, 比方說, 在螢幕上畫一個小紅色方塊, 大小為 20x20 pixel.</p>
 <p>首先讓瀏覽器指向解題練習的頁面, 然後在程式表單中輸入下列程式碼, 第一次為了快速看到執行結果, 可以使用 Ctrl + C 與 Ctrl + V 將下列的程式碼複製貼上, 然後點擊 Run.</p>
+<p>
 <script src="/static/brython.js"></script>
 <script src="/static/brython_stdlib.js"></script>
+</p>
 <!-- for ggame -->
 <p>
 <script src="/static/jquery-3.3.1.min.js"></script>
@@ -9194,6 +9234,7 @@ function doSave(storage_id, filename){
 </script>
 </p>
 <p><!-- 印出程式1--></p>
+<p>
 <script type="text/python3">
 from browser import document as doc
 from browser import html
@@ -9223,6 +9264,7 @@ doc['kw_show_console'].bind('click', Ace.show_console)
 doc['kw_clear_console'].bind('click', Ace.clear_console)
 doc['clear_bd'].bind('click', clear_bd)
 </script>
+</p>
 <p><!-- 用來顯示程式碼的 editor 區域 --></p>
 <div id="kw_editor" style="width: 600px; height: 300px;"></div>
 <p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
@@ -9244,6 +9286,7 @@ doc['clear_bd'].bind('click', clear_bd)
 <p>請試著摸索一下上面的原始碼, 您可以把它修改為, 讓它在網頁中劃出一個左上角座標位於 (100, 100) 且長寬為20x20 pixel (pixel 是什麼?) 大小的紅色區域嗎?</p>
 <p>假如將上面的程式改為下列程式碼, 且按一下"請除繪圖區"以及"清除輸出區"等按鈕, 再按下 Run, 應該就可以在左上角座標位於 (100, 100) 的紅色方塊:</p>
 <p><!-- 印出程式2--></p>
+<p>
 <script type="text/python3">
 from browser import document as doc
 from browser import html
@@ -9273,6 +9316,7 @@ doc['kw_show_console2'].bind('click', Ace2.show_console)
 doc['kw_clear_console2'].bind('click', Ace2.clear_console)
 doc['clear_bd2'].bind('click', clear_bd2)
 </script>
+</p>
 <p><!-- 用來顯示程式碼的 editor 區域 --></p>
 <div id="kw_editor2" style="width: 600px; height: 300px;"></div>
 <p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
@@ -9284,6 +9328,7 @@ doc['clear_bd2'].bind('click', clear_bd2)
 <p>其中有關 fillRect() 函式的定義在<a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillRect">這裡</a>. 表示前兩個輸入變數為座標, 而後兩個輸入變數則分別為四邊形 (Rectangle) 的 width 與 height.</p>
 <p>假如我們又學會使用 Brython 的 <a href="https://brython.info/static_doc/en/timer.html">browser.timer</a> 中 set_interval 的用法, 並且將顯示與抹除紅色方塊區域的程式寫入函式 (Function), 並且利用判斷式限制其運動範圍, 就可以讓紅色方塊動起來:</p>
 <p><!-- 印出程式3--></p>
+<p>
 <script type="text/python3">
 from browser import document as doc
 from browser import html
@@ -9327,6 +9372,7 @@ doc['kw_show_console3'].bind('click', Ace3.show_console)
 doc['kw_clear_console3'].bind('click', Ace3.clear_console)
 doc['clear_bd3'].bind('click', clear_bd3)
 </script>
+</p>
 <p><!-- 用來顯示程式碼的 editor 區域 --></p>
 <div id="kw_editor3" style="width: 600px; height: 300px;"></div>
 <p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
@@ -9342,7 +9388,8 @@ doc['clear_bd3'].bind('click', clear_bd3)
 <p style="padding-left: 30px;"><a href="https://stackoverflow.com/questions/8715592/bouncing-ball-logics">https://stackoverflow.com/questions/8715592/bouncing-ball-logics</a></p>
 <h4>Brython:</h4>
 <p style="padding-left: 30px;"><a href="https://brython.info/static_doc/en/intro.html">https://brython.info/static_doc/en/intro.html</a></p>
-<p style="padding-left: 30px;"><a href="https://brython.info/static_doc/en/timer.html">https://brython.info/static_doc/en/timer.html</a></p><h3>Task2</h3>
+<p style="padding-left: 30px;"><a href="https://brython.info/static_doc/en/timer.html">https://brython.info/static_doc/en/timer.html</a></p>
+<h3>Task2</h3>
 <h4>下載客製化的可攜程式系統</h4>
 <p>客製化是一個希望讓每位客戶都能滿意的服務, 當需求變更時, 客戶可以自己調整安排每一個細節, 讓流程達到盡善盡美, 而在利用電腦與計算機程式解題的過程, 也是如此.</p>
 <p>在此我們希望打造一個能夠客製化的可攜程式系統, 以便有效利用計算機程式方法解決問題.</p>
@@ -9379,14 +9426,17 @@ doc['clear_bd3'].bind('click', clear_bd3)
 <li>最後一個步驟是, 學習如何在這個 Github 倉儲, 找出這個 Python 程式的三個改版前與改版後的內容.</li>
 </ol>
 <p></p>
-<p></p><h3>Task3</h3>
+<p></p>
+<h3>Task3</h3>
 <h4>使用 git 分散式版次管理</h4>
 <p>請登入 @gm 帳號後, 下載 <a href="https://drive.google.com/file/d/1LW-UHAY9Hgvnfk14Cknt3PXFNr6huw9t/view?usp=sharing">cp2021_textbook.pdf</a> 課程教材.</p>
 <p>在 Task3 工作項目中, 希望能將 Task1 與 Task2 已經練習過的 Python 程式碼, 存入 Github 倉儲管理, 並逐步根據 <a href="https://drive.google.com/file/d/1LW-UHAY9Hgvnfk14Cknt3PXFNr6huw9t/view?usp=sharing">cp2021_textbook.pdf</a> 學習 Python 相關用法. 目的是有能力直接在 Brython 的環境中修改貪食蛇遊戲的程式碼.</p>
 <p>以下為按下 Run 之後, 可以利用 i, j, l, m 等鍵盤上的 key 控制 snake 的移動方向:</p>
 <!-- 導入 brython -->
+<p>
 <script src="/static/brython.js"></script>
 <script src="/static/brython_stdlib.js"></script>
+</p>
 <!-- for ggame -->
 <p>
 <script src="/static/jquery-3.3.1.min.js"></script>
@@ -9812,9 +9862,10 @@ doc['clear_bd2'].bind('click', clear_bd2)
 <p style="padding-left: 30px;"><a href="https://github.com/topics/greedy-best-first-search?l=python">https://github.com/topics/greedy-best-first-search?l=python</a></p>
 <p style="padding-left: 30px;"><a href="https://www.javatpoint.com/ai-informed-search-algorithms">https://www.javatpoint.com/ai-informed-search-algorithms</a></p>
 <p style="padding-left: 30px;"><a href="https://en.wikipedia.org/wiki/Best-first_search">https://en.wikipedia.org/wiki/Best-first_search</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/snake">https://github.com/mdecourse/snake</a> </p>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/snake-1">https://github.com/mdecourse/snake-1</a> </p>
-<p style="padding-left: 30px;"><a href="/downloads/graph_search_algorithm.pdf">graph_search_algorithm.pdf</a></p><h2>Stage2</h2>
+<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/snake">https://github.com/mdecourse/snake</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/snake-1">https://github.com/mdecourse/snake-1</a></p>
+<p style="padding-left: 30px;"><a href="/downloads/graph_search_algorithm.pdf">graph_search_algorithm.pdf</a></p>
+<h2>Stage2</h2>
 <h4>期末專案:</h4>
 <p style="padding-left: 30px;">請各學員登入 github.com 後, 連結至 <a href="https://github.com/mdecourse/webgame">https://github.com/mdecourse/webgame</a> 選擇將 webgame 倉儲作為 template 後新增網際程式倉儲. 利用 Github Pages 建立一個線上遊戲.</p>
 <h4 style="padding-left: 30px;">範例:</h4>
@@ -9826,6 +9877,7 @@ doc['clear_bd2'].bind('click', clear_bd2)
 <p style="padding-left: 60px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-0952-3">2015 uild Your Own 2D Game Engine and Create Great Web Games</a> (在校園網路下載電子書)</p>
 <p style="padding-left: 60px;"><a href="https://link.springer.com/book/10.1007/978-1-4302-4717-3">2012 Foundation Game Design with HTML5 and JavaScript</a> (在校園網路下載電子書)</p>
 <p style="padding-left: 60px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-1097-0">2017 The Advanced Game Developer's Toolkit</a> (在校園網路下載電子書)</p>
+<p style="padding-left: 60px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-0952-3">2015 Build Your Own 2D Game Engine and Create Great Web Games</a> (在校園網路下載電子書)</p>
 <h4>Brython tutorial</h4>
 <p style="padding-left: 30px;"><a href="https://brython.info/static_tutorial/en/index.html">https://brython.info/static_tutorial/en/index.html</a></p>
 <h4>WebGL</h4>
