@@ -143,17 +143,16 @@ img.add_border {
 <p>將近端改版資料新增提交等步驟都在近端完成, 但是 git push 則是要將改版資料推向遠端倉儲.</p>
 <p>共有三種方式可以取得 git push 的使用授權:</p>
 <ol>
-<li>以該倉儲對應的帳號密碼進行 push</li>
-<li>以該倉儲對應的 Personal Access Token 進行 push</li>
+<li>以該倉儲對應的帳號密碼進行 push (Github 已經<a href="https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/">不再接受</a>使用者採帳號與密碼 push 改版內容)</li>
+<li>以該倉儲對應的 <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">Personal Access Token</a> 進行 push</li>
 <li>以該倉儲對應帳號的 SSH 私鑰進行 push</li>
 </ol>
-<p>以帳號密碼進行 push:</p>
+<p>以帳號密碼進行 push (目前已經不再接受採帳號密碼 push):</p>
 <p style="padding-left: 30px;">語法為 url = https://github.com/mdecourse/report.git</p>
 <p>利用 <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">Github Personal Access Token</a> 進行 push 請參考<a href="https://stackoverflow.com/questions/68191392/password-authentication-is-temporarily-disabled-as-part-of-a-brownout-please-us">這裡</a>的說明.</p>
 <p style="padding-left: 30px;">語法為 url = <a href="https://&lt;token&gt;@github.com/mdecourse/report.git">https://&lt;token&gt;@github.com/mdecourse/report.git</a></p>
 <p>以 <a href="https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh">Github SSH </a>私鑰進行 push:</p>
-<p style="padding-left: 30px;">語法為 utl = <a href="mailto:git@&lt;putty_session&gt;:mdecourse/report.git">git@&lt;putty_session&gt;:mdecourse/report.git</a></p>
-<br />Why Git << <a href='Why Git.html'>Previous</a> <a href='Github.html'>Next</a> >> Github</div>
+<p style="padding-left: 30px;">語法為 utl = <a href="mailto:git@&lt;putty_session&gt;:mdecourse/report.git">git@&lt;putty_session&gt;:mdecourse/report.git</a></p><br />Why Git << <a href='Why Git.html'>Previous</a> <a href='Github.html'>Next</a> >> Github</div>
         
     <!-- footer -->
       <div class="container">
