@@ -3,6 +3,7 @@
 <p><a href="https://mde.tw">KMOLab</a> 上課的目的: 鼓勵每一位同學都能及早<span style="background-color: #ffff99;">確定努力的目標</span>, 證明自己具備<span style="background-color: #ffff99;">獨立研究與解題能力</span>.</p>
 <p>本課程的主要倉儲位於: <a href="https://github.com/mdecourse/cp2021">https://github.com/mdecourse/cp2021</a></p>
 <p>與課程相關的訊息, 指定作業與問答區位於: <a href="https://github.com/mdecourse/cp2021/discussions">https://github.com/mdecourse/cp2021/discussions</a> </p>
+<p>gitter: <a href="https://gitter.im/mdecourse/cp2021">https://gitter.im/mdecourse/cp2021</a> (<span style="background-color: #ccffcc;">線上課程時段訊息發布區</span>)</p>
 <hr/>
 <p>Python 程式語言可以編寫網際內容管理系統 (<a href="https://github.com/mdecourse/cmstemplate">cmstemplate</a>), 可以執行虛實整合系統的強化學習 (<a href="https://github.com/mdecourse/4072pj1">4072pj1</a>), 也能<a href="https://www.youtube.com/watch?v=3EqzMzszMV0">控制</a>數位場景中的機電模擬系統, 並進行機構合成 (<a href="https://github.com/mdecourse/4072pj3">4072pj3</a>), 但在 <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 與 <a href="https://cyberbotics.com/">Webots </a>系統模擬過程, 為了開發效率, 使用者需要透過 Lua 程式才能與 C++ 底層溝通, 並且後續的零組件強度分析, 大多依賴 C++ 程式套件完成 (<a href="https://github.com/mdecourse/4072pj2">4072pj2</a>), 而開發者若希望實現機電模擬系統的<a href="http://mde.tw/cd2020/content/Microcontroller.html">控制</a>, 則通常利用 C 程式執行.</p>
 <p>隨著雲端部署與隨身裝置的緊密結合下, 假如在十年前, 要編寫 Javascript 的伺服器端 runtime, C++ 會是個不錯的選擇 (<a href="https://nodejs.org">node.js</a>), 但此刻採用 Rust 才比較<a href="https://thenewstack.io/rust-by-the-numbers-the-rust-programming-language-in-2021/">符合潮流</a>, 至於網際前後端若能同時執行最新版的 Javascript 與 <a href="https://www.typescriptlang.org/">Typescript</a>, 可以省去開發者不少麻煩 (<a href="https://deno.land/">Deno</a>). 當然隨身裝置中的各式 App, 若能採用 <a href="https://dart.dev/">Dart</a> 程式語言的 <a href="https://flutter.dev/">Flutter</a> 跨平台架構編寫, 並且依賴 <a href="https://elixir-lang.org/">Elixir</a> 分散式容錯伺服器進行<a href="https://github.com/ukncsc/zero-trust-architecture">零信任</a> (Zero Trust) 與<a href="https://en.wikipedia.org/wiki/Edge_computing">邊緣運算</a> (Edge Computing) 配置, 或許才能進一步有效因應目前各種詭譎多變的數位環境.</p>
@@ -11,11 +12,11 @@
 <h4>有關系列課程:</h4>
 <p style="padding-left: 30px;">KMOLab: <a href="https://mde.tw">https://mde.tw</a> 負責開設計算機程式 (大一), 網際內容管理 (五專與大一), 電腦輔助設計實習 (大二) 與協同產品設計實習 (大二) 等四門課, 計算機程式將從網際 Python (<a href="https://brython.info/">Brython</a>) 開始, 透過<a href="https://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>頁面, 讓學員利用 Python, <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript">Javascript</a> 與 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/WebGL_API/Tutorial/Getting_started_with_WebGL">WebGL</a> 建立簡單的網際程式, 從中學習如何利用程式解決簡單的工程問題.</p>
 <p style="padding-left: 30px;">計算機程式課程所採用的 textbook: <a href="https://link.springer.com/book/10.1007/978-981-10-3277-6">Programming with Python</a>, 2016 by T R Padmanabhan, 學員可以自行從校園網路中下載.</p>
-<p style="padding-left: 30px;">KMOLab 課程要求學員利用 <a href="https://github.com">Github</a>, <a href="https://about.gitlab.com/">Gitlab</a>, <a href="https://bitbucket.org/">Bitbucket</a> 與 <a href="https://www.heroku.com/">Heroku</a> 建立同步網站累積個人學習歷程.</p>
+<p style="padding-left: 30px;"><a href="https://mde.tw">KMOLab</a> 課程要求學員利用 <a href="https://github.com">Github</a>, <a href="https://about.gitlab.com/">Gitlab</a>, <a href="https://bitbucket.org/">Bitbucket</a> 與 <a href="https://www.heroku.com/">Heroku</a> 建立同步網站累積個人學習歷程.</p>
 <p style="padding-left: 30px;">網際內容管理課程則主要透過 <a href="https://flask.palletsprojects.com/en/2.0.x/">Flask</a> 與 <a href="https://www.fossil-scm.org">Fossil SCM</a> 的結合, 讓學員使用 Python 建立與機械設計流程相關的網際系統.</p>
 <p style="padding-left: 30px;">電腦輔助設計實習與協同產品設計實習則從網際 Python 程式與 SolidWorks, Inventor, NX 等系統的 API 應用練習開始, 導引學員了解如何以網際程式方法提升產品設計彈性, 並利用 <a href="https://github.com/solvespace/solvespace">Solvespace</a>, <a href="https://github.com/CoppeliaRobotics">CoppeliaSim</a> 與 <a href="https://github.com/cyberbotics/webots">Webots</a> 等開放源套件, 建立與 <a href="https://en.wikipedia.org/wiki/Flexible_manufacturing_system">Flexible Manufacturing System</a> 相關的機電整合模擬與控制系統.</p>
+<p style="padding-left: 30px;"><a href="https://mde.tw">KMOLab</a> 課程同時要求學員建立 <a href="https://tw.linkedin.com/">https://tw.linkedin.com/</a> 帳號, 並持續維護資料, 初期可以採用中文編寫, 大學畢業前則必須將相關履歷資料改以英文編寫.</p>
 <h4>開場:</h4>
-<p style="padding-left: 30px;">這裡是國立虎尾科技大學-機械設計工程系-計算機程式課程網站.</p>
 <p style="padding-left: 30px;">學計算機程式做什麼? 其他人是<a href="https://itw01.com/YHAE5HS.html">如何學習計算機程式</a> (<a href="https://feross.org/how-i-learned-to-program-computers/">原始文章</a>, <a href="https://feross.org/">作者</a>)?</p>
 <hr/>
 <h4>啟示:</h4>
@@ -2852,8 +2853,8 @@ doc["autosnake"].bind('click', Autosnake.prog)
 <!-- autosnake ends -->
 <p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="class_ex6">Ex6</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="snake">貪食蛇</button><button id="autosnake">貪食蛇2</button><button id="sudoku">Sudoku</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="clock1">clock1</button><button id="fourbar">Fourbar</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="nfulist">nfulist</button><button id="clear">Clear</button></p>
 <h4>參考資料:</h4>
-<p><a href="/downloads/turtle_intro.pdf">turtle_intro.pdf</a></p>
-<p><a href="/downloads/turtle_intro2.pdf">turtle_intro2.pdf</a></p>
+<p style="padding-left: 30px;"><a href="https://docs.python.org/3/library/turtle.html">https://docs.python.org/3/library/turtle.html</a></p>
+<p style="padding-left: 30px;"><a href="https://realpython.com/beginners-guide-python-turtle/">https://realpython.com/beginners-guide-python-turtle/</a></p>
 <p>其他擷取程式的方式: <a href="http://mde.tw/2017springvcp/blog/web-based-python.html">http://mde.tw/2017springvcp/blog/web-based-python.html</a></p>
 <h4>Qt for Python</h4>
 <p><a href="https://www.qt.io/qt-for-python">https://www.qt.io/qt-for-python</a></p>
@@ -7117,10 +7118,9 @@ doc["autosnake"].bind('click', Autosnake.prog)
 <!-- autosnake ends -->
 <p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="class_ex6">Ex6</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="snake">貪食蛇</button><button id="autosnake">貪食蛇2</button><button id="sudoku">Sudoku</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="clock1">clock1</button><button id="fourbar">Fourbar</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="nfulist">nfulist</button><button id="clear">Clear</button></p>
 <h4>參考資料:</h4>
-<p><a href="/downloads/turtle_intro.pdf">turtle_intro.pdf</a></p>
-<p><a href="/downloads/turtle_intro2.pdf">turtle_intro2.pdf</a></p>
-<p>其他擷取程式的方式: <a href="http://mde.tw/2017springvcp/blog/web-based-python.html">http://mde.tw/2017springvcp/blog/web-based-python.html</a></p>
-<h3>貪食蛇</h3>
+<p style="padding-left: 30px;"><a href="https://docs.python.org/3/library/turtle.html">https://docs.python.org/3/library/turtle.html</a></p>
+<p style="padding-left: 30px;"><a href="https://realpython.com/beginners-guide-python-turtle/">https://realpython.com/beginners-guide-python-turtle/</a></p>
+<p>其他擷取程式的方式: <a href="http://mde.tw/2017springvcp/blog/web-based-python.html">http://mde.tw/2017springvcp/blog/web-based-python.html</a></p><h3>貪食蛇</h3>
 <p><a href="https://zh.wikipedia.org/wiki/%E8%B4%AA%E9%A3%9F%E8%9B%87">貪食蛇遊戲</a></p>
 <p>在遊戲中, 玩家操控一條細長的直線 (俗稱蛇或蟲), 它會不停前進, 玩家只能操控蛇的頭部朝向, 上下左右, 一路拾起觸碰到之物 (或稱作豆), 並要避免觸碰到自身或者其他障礙物. 每次貪食蛇吃掉一件食物, 它的身體便增長一段. 吃掉一些食物後會使蛇的移動速度逐漸加快, 讓遊戲的難度漸漸變大. 遊戲設計大致分為四面都有牆 (都不可穿越) 以及某部分的牆可以穿越, 以及四面牆都可以穿越的模式.</p>
 <h4>網際 Brython 程式練習:</h4>

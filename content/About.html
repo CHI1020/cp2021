@@ -92,7 +92,7 @@ img.add_border {
 
 </head>
 <body>
-<div class='container'><nav>
+<div class='container-fluid'><nav>
         
     <div class="site-wrap">
 
@@ -144,7 +144,7 @@ img.add_border {
 <p><a href="https://mde.tw">KMOLab</a> 上課的目的: 鼓勵每一位同學都能及早<span style="background-color: #ffff99;">確定努力的目標</span>, 證明自己具備<span style="background-color: #ffff99;">獨立研究與解題能力</span>.</p>
 <p>本課程的主要倉儲位於: <a href="https://github.com/mdecourse/cp2021">https://github.com/mdecourse/cp2021</a></p>
 <p>與課程相關的訊息, 指定作業與問答區位於: <a href="https://github.com/mdecourse/cp2021/discussions">https://github.com/mdecourse/cp2021/discussions</a> </p>
-<p>gitter: <a href="https://gitter.im/mdecourse/cp2021">https://gitter.im/mdecourse/cp2021</a></p>
+<p>gitter: <a href="https://gitter.im/mdecourse/cp2021">https://gitter.im/mdecourse/cp2021</a> (<span style="background-color: #ccffcc;">線上課程時段訊息發布區</span>)</p>
 <hr/>
 <p>Python 程式語言可以編寫網際內容管理系統 (<a href="https://github.com/mdecourse/cmstemplate">cmstemplate</a>), 可以執行虛實整合系統的強化學習 (<a href="https://github.com/mdecourse/4072pj1">4072pj1</a>), 也能<a href="https://www.youtube.com/watch?v=3EqzMzszMV0">控制</a>數位場景中的機電模擬系統, 並進行機構合成 (<a href="https://github.com/mdecourse/4072pj3">4072pj3</a>), 但在 <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 與 <a href="https://cyberbotics.com/">Webots </a>系統模擬過程, 為了開發效率, 使用者需要透過 Lua 程式才能與 C++ 底層溝通, 並且後續的零組件強度分析, 大多依賴 C++ 程式套件完成 (<a href="https://github.com/mdecourse/4072pj2">4072pj2</a>), 而開發者若希望實現機電模擬系統的<a href="http://mde.tw/cd2020/content/Microcontroller.html">控制</a>, 則通常利用 C 程式執行.</p>
 <p>隨著雲端部署與隨身裝置的緊密結合下, 假如在十年前, 要編寫 Javascript 的伺服器端 runtime, C++ 會是個不錯的選擇 (<a href="https://nodejs.org">node.js</a>), 但此刻採用 Rust 才比較<a href="https://thenewstack.io/rust-by-the-numbers-the-rust-programming-language-in-2021/">符合潮流</a>, 至於網際前後端若能同時執行最新版的 Javascript 與 <a href="https://www.typescriptlang.org/">Typescript</a>, 可以省去開發者不少麻煩 (<a href="https://deno.land/">Deno</a>). 當然隨身裝置中的各式 App, 若能採用 <a href="https://dart.dev/">Dart</a> 程式語言的 <a href="https://flutter.dev/">Flutter</a> 跨平台架構編寫, 並且依賴 <a href="https://elixir-lang.org/">Elixir</a> 分散式容錯伺服器進行<a href="https://github.com/ukncsc/zero-trust-architecture">零信任</a> (Zero Trust) 與<a href="https://en.wikipedia.org/wiki/Edge_computing">邊緣運算</a> (Edge Computing) 配置, 或許才能進一步有效因應目前各種詭譎多變的數位環境.</p>
@@ -153,11 +153,11 @@ img.add_border {
 <h4>有關系列課程:</h4>
 <p style="padding-left: 30px;">KMOLab: <a href="https://mde.tw">https://mde.tw</a> 負責開設計算機程式 (大一), 網際內容管理 (五專與大一), 電腦輔助設計實習 (大二) 與協同產品設計實習 (大二) 等四門課, 計算機程式將從網際 Python (<a href="https://brython.info/">Brython</a>) 開始, 透過<a href="https://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>頁面, 讓學員利用 Python, <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript">Javascript</a> 與 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/WebGL_API/Tutorial/Getting_started_with_WebGL">WebGL</a> 建立簡單的網際程式, 從中學習如何利用程式解決簡單的工程問題.</p>
 <p style="padding-left: 30px;">計算機程式課程所採用的 textbook: <a href="https://link.springer.com/book/10.1007/978-981-10-3277-6">Programming with Python</a>, 2016 by T R Padmanabhan, 學員可以自行從校園網路中下載.</p>
-<p style="padding-left: 30px;">KMOLab 課程要求學員利用 <a href="https://github.com">Github</a>, <a href="https://about.gitlab.com/">Gitlab</a>, <a href="https://bitbucket.org/">Bitbucket</a> 與 <a href="https://www.heroku.com/">Heroku</a> 建立同步網站累積個人學習歷程.</p>
+<p style="padding-left: 30px;"><a href="https://mde.tw">KMOLab</a> 課程要求學員利用 <a href="https://github.com">Github</a>, <a href="https://about.gitlab.com/">Gitlab</a>, <a href="https://bitbucket.org/">Bitbucket</a> 與 <a href="https://www.heroku.com/">Heroku</a> 建立同步網站累積個人學習歷程.</p>
 <p style="padding-left: 30px;">網際內容管理課程則主要透過 <a href="https://flask.palletsprojects.com/en/2.0.x/">Flask</a> 與 <a href="https://www.fossil-scm.org">Fossil SCM</a> 的結合, 讓學員使用 Python 建立與機械設計流程相關的網際系統.</p>
 <p style="padding-left: 30px;">電腦輔助設計實習與協同產品設計實習則從網際 Python 程式與 SolidWorks, Inventor, NX 等系統的 API 應用練習開始, 導引學員了解如何以網際程式方法提升產品設計彈性, 並利用 <a href="https://github.com/solvespace/solvespace">Solvespace</a>, <a href="https://github.com/CoppeliaRobotics">CoppeliaSim</a> 與 <a href="https://github.com/cyberbotics/webots">Webots</a> 等開放源套件, 建立與 <a href="https://en.wikipedia.org/wiki/Flexible_manufacturing_system">Flexible Manufacturing System</a> 相關的機電整合模擬與控制系統.</p>
+<p style="padding-left: 30px;"><a href="https://mde.tw">KMOLab</a> 課程同時要求學員建立 <a href="https://tw.linkedin.com/">https://tw.linkedin.com/</a> 帳號, 並持續維護資料, 初期可以採用中文編寫, 大學畢業前則必須將相關履歷資料改以英文編寫.</p>
 <h4>開場:</h4>
-<p style="padding-left: 30px;">這裡是國立虎尾科技大學-機械設計工程系-計算機程式課程網站.</p>
 <p style="padding-left: 30px;">學計算機程式做什麼? 其他人是<a href="https://itw01.com/YHAE5HS.html">如何學習計算機程式</a> (<a href="https://feross.org/how-i-learned-to-program-computers/">原始文章</a>, <a href="https://feross.org/">作者</a>)?</p>
 <hr/>
 <h4>啟示:</h4>
@@ -174,7 +174,7 @@ img.add_border {
 <p>Overview and Introduction to Lisp (<a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video-lectures/">source</a>, <a href="http://mde.tw/cad2021/downloads/Overview_Into_to_Lisp.txt">Closed Caption</a>)</p>
 <hr/>
 <h4>榜樣:</h4>
-<p style="padding-left: 30px;">學習利用計算機程式解決問題的年齡<a href="https://www.israel21c.org/israel-to-introduce-stem-studies-in-kindergarten/">愈早越好</a>(<a href="./../downloads/Computer Science High School Curriculum in Israel and Lithuania – Comparison and Teachers Views.pdf">觀點</a>), 因為解決問題必須要將能精確運用或搜尋到對的知識, 將直覺過程轉化為電腦能夠處理的格式. 越早針對有興趣解題的領域啟蒙, 便越能及早在求學階段獲取相應的知識, 加入適當的團隊, 逐步透過專案解題, 累積更多經驗. 以下是 Bill Gates 述說其早年與計算機程式有關的歷程.</p>
+<p style="padding-left: 30px;">學習利用計算機程式解決問題的年齡<a href="https://www.israel21c.org/israel-to-introduce-stem-studies-in-kindergarten/">愈早越好</a>(<a href="./../downloads/Computer Science High School Curriculum in Israel and Lithuania – Comparison and Teachers Views.pdf">觀點</a>), 因為解決問題必須要將能精確運用或搜尋到對的知識, 將直覺過程轉化為電腦能夠處理的格式. 越早針對有興趣解題的領域啟蒙, 便越能及早在求學階段獲取相應的知識, 加入適當的團隊, 逐步透過專案解題, 累積更多經驗. 以下是 Bill Gates 述說其早年與計算機程式學習及應用有關的歷程.</p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/vYXQTrYPenQ" title="YouTube video player" width="560"></iframe></p>
 <h4>參考資料:</h4>
 <p style="padding-left: 30px;">Repository: <a href="https://github.com/mdecourse/cp2021">https://github.com/mdecourse/cp2021</a></p>
