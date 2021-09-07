@@ -2,7 +2,7 @@
         <head>
         <title>CP2021</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -139,17 +139,124 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">RoboDK << <a href='RoboDK.html'>Previous</a> <a href='網際程式.html'>Next</a> >> 網際程式<br /><h1>開發範例</h1>
-<h4>平面機構分析與合成:</h4>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/ps2020">https://github.com/mdecourse/ps2020</a></p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/YOnLdzrLivM" title="YouTube video player" width="560"></iframe></p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/ZAGrFV1jCdk" title="YouTube video player" width="560"></iframe></p>
-<h4>Python GUI with Serial port communication:</h4>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/Pyquino">https://github.com/mdecourse/Pyquino</a></p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/R26R_07rkIc" title="YouTube video player" width="560"></iframe></p>
-<p><a href="https://github.com/mdecourse/virtualkossel">https://github.com/mdecourse/virtualkossel</a></p>
-<p style="padding-left: 30px;"><a href="http://mde.tw/virtualkossel/">http://mde.tw/virtualkossel/</a></p>
-<p></p><br />RoboDK << <a href='RoboDK.html'>Previous</a> <a href='網際程式.html'>Next</a> >> 網際程式</div>
+    <div id="tipue_search_content">Gist << <a href='Gist.html'>Previous</a> <a href='解題練習.html'>Next</a> >> 解題練習<br /><h1>Brythonsrc</h1>
+<p>用於建立上一頁 Gist 的 html 原始碼:</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;h2&gt;Gist&lt;/h2&gt;
+&lt;h4&gt;以下讓使用者將 Python 範例程式存入 &lt;a href="https://docs.github.com/en/github/writing-on-github/editing-and-sharing-content-with-gists/creating-gists"&gt;Github Gist&lt;/a&gt; 後, 經由程式 pubic Gist URL 連結, 以按鈕放入編輯器中執行:&lt;/h4&gt;
+&lt;!-- 導入 brython 程式庫 --&gt;
+&lt;script src="./../cmsimde/static/brython.js"&gt;&lt;/script&gt;
+&lt;script src="./../cmsimde/static/brython_stdlib.js"&gt;&lt;/script&gt;
+&lt;!-- 啟動 Brython --&gt;
+&lt;script&gt;// &lt;![CDATA[
+window.onload=function(){
+brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
+}
+// ]]&gt;&lt;/script&gt;
+&lt;p&gt;&lt;!-- 導入 FileSaver 與 filereader --&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;script type="text/javascript" src="./../cmsimde/static/ace/FileSaver.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cmsimde/static/ace/filereader.js"&gt;&lt;/script&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;!-- 導入 ace --&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;script type="text/javascript" src="./../cmsimde/static/ace/ace.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cmsimde/static/ace/ext-language_tools.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cmsimde/static/ace/mode-python3.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cmsimde/static/ace/snippets/python.js"&gt;&lt;/script&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;!-- 請注意, 這裡使用 Javascript 將 localStorage["py_src"] 中存在近端瀏覽器的程式碼, 由使用者決定存檔名稱--&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;script type="text/javascript"&gt;// &lt;![CDATA[
+function doSave(storage_id, filename){
+    var blob = new Blob([localStorage[storage_id]], {type: "text/plain;charset=utf-8"});
+    filename = document.getElementById(filename).value
+    saveAs(blob, filename+".py");
+}
+// ]]&gt;&lt;/script&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;!-- 印出版次與關鍵字程式 --&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;script type="text/python3"&gt;// &lt;![CDATA[
+from browser import document as doc
+from browser import html
+import ace
+# 清除畫布
+def clear_bd(ev):
+    bd = doc["brython_div"]
+    bd.clear()
+# Brython 3.3.4 內建的 container 名稱為  'container' 且 turtle 輸出為 svg 必須使用 div 訂定 id
+Ace = ace.Editor(editor_id="kw_editor", console_id="kw_console", container_id="kw__container", storage_id="kw_py_src" )
+# 從 gist 取出程式碼後, 放入 editor 作為 default 程式
+url = "https://gist.githubusercontent.com/mdecourse/379f02862e9dfd95dbc5241d4faa2ad4/raw/e3dc77e68bbfb8f00eef2e78d3c8d2323b0f17da/clock.py"
+data = open(url).read()
+Ace.editor.setValue(data)
+Ace.editor.scrollToRow(0)
+Ace.editor.gotoLine(0)
+# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
+doc['kw_run'].bind('click', Ace.run)
+doc['kw_show_console'].bind('click', Ace.show_console)
+doc['kw_clear_console'].bind('click', Ace.clear_console)
+doc['clear_bd'].bind('click', clear_bd)
+// ]]&gt;&lt;/script&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;!-- 用來顯示程式碼的 editor 區域 --&gt;&lt;/p&gt;
+&lt;div id="kw_editor" style="width: 600px; height: 300px;"&gt;&lt;/div&gt;
+&lt;p&gt;&lt;!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --&gt;&lt;/p&gt;
+&lt;!-- 存擋表單開始 --&gt;&lt;form&gt;&lt;label&gt;Filename: &lt;input id="kw_filename" placeholder="input file name" type="text"&gt;.py&lt;/label&gt; &lt;input onclick="doSave('kw_py_src', 'kw_filename');" type="submit" value="Save"&gt;&lt;/form&gt;&lt;!-- 存擋表單結束 --&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;!-- 執行與清除按鈕開始 --&gt;
+&lt;p&gt;&lt;button id="kw_run"&gt;Run&lt;/button&gt; &lt;button id="kw_show_console"&gt;Output&lt;/button&gt; &lt;button id="kw_clear_console"&gt;清除輸出區&lt;/button&gt;&lt;button id="clear_bd"&gt;清除繪圖區&lt;/button&gt;&lt;button onclick="window.location.reload()"&gt;Reload&lt;/button&gt;&lt;/p&gt;
+&lt;!-- 執行與清除按鈕結束 --&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;!-- 程式編輯檔案 --&gt;
+&lt;div style="width: 100%; height: 100%;"&gt;&lt;textarea autocomplete="off" id="kw_console"&gt;&lt;/textarea&gt;&lt;/div&gt;
+&lt;!-- 程式輸入位置 --&gt;
+&lt;div id="brython_div"&gt;&lt;/div&gt;
+&lt;div class="col-md-0" height="1" id="graphics-column" width="1"&gt;&lt;/div&gt;
+&lt;!-- 開始建立程式範例以及對應按鈕 --&gt;
+&lt;p&gt;&lt;button id="snake"&gt;Snake&lt;/button&gt;&lt;button id="clock"&gt;Clock&lt;/button&gt;&lt;button id="two_link_ik"&gt;Two link IK&lt;/button&gt;&lt;/p&gt;
+&lt;!-- clock 開始 --&gt;
+&lt;script type="text/python3"&gt;// &lt;![CDATA[
+# 導入 document 與 beditor
+from browser import document
+import beditor
+# 設定按鈕 id 名稱 name 與 原始碼對應 url
+name = "clock"
+url = "https://gist.githubusercontent.com/mdecourse/379f02862e9dfd95dbc5241d4faa2ad4/raw/e3dc77e68bbfb8f00eef2e78d3c8d2323b0f17da/clock.py"
+# 利用 open 與 read 取回原始碼
+src = open(url).read()
+# 將原始碼放入 editor
+e = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+# 設定 id 為 name 的元件按下後會執行 e.prog, 意即將原始碼放入 editor 中
+document[name].bind('click', e.prog)
+// ]]&gt;&lt;/script&gt;
+&lt;!-- clock 結束 --&gt;
+&lt;p&gt;&lt;!-- snake 開始 --&gt;
+&lt;script type="text/python3"&gt;// &lt;![CDATA[
+from browser import document as doc
+# 導入位於 static 目錄下的 beditor.py 
+import beditor
+# 利用 beditor.py 中的 editor 類別建立案例, 對應到 snake
+snake_url = "https://gist.githubusercontent.com/mdecourse/d306a1f57e53bfd6466eaae20bcb9439/raw/2160a12b9fec9707a120a383ed5d38b9b78a02cf/snake.py"
+snake_src = open(snake_url).read()
+snake = beditor.editor(snake_src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+# id 為 "snake" 的按鈕點按時, 執行 snake 物件中的 prog 方法
+doc["snake"].bind('click', snake.prog)
+// ]]&gt;&lt;/script&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;!-- snake 結束--&gt;&lt;/p&gt;
+&lt;!-- two link robot ik starts --&gt;
+&lt;script type="text/python3"&gt;// &lt;![CDATA[
+# based on https://mde.tw/cd2021/content/W14-W15.html
+from browser import document as doc
+import beditor
+url = "https://gist.githubusercontent.com/mdecourse/b58d23e73ff57c9ab1334f2e01cdc6e0/raw/2a0393fff3f621bc0267f2102697e586f99b8282/two_link_ik.py"
+src = open(url).read()
+two_link_ik = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+doc["two_link_ik"].bind('click', two_link_ik.prog)
+// ]]&gt;&lt;/script&gt;
+&lt;!-- two link robot ik ends --&gt;</pre>
+<p></p><br />Gist << <a href='Gist.html'>Previous</a> <a href='解題練習.html'>Next</a> >> 解題練習</div>
         
     <!-- footer -->
       <div class="container">
