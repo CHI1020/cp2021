@@ -4475,7 +4475,7 @@ doc['clear_bd'].bind('click', clear_bd)
 <div id="brython_div"></div>
 <div class="col-md-0" height="1" id="graphics-column" width="1"></div>
 <!-- 開始建立程式範例以及對應按鈕 -->
-<p><button id="snake">Snake</button><button id="clock">Clock</button><button id="two_link_ik">Two link IK</button></p>
+<p><button id="snake">Snake</button><button id="clock">Clock</button><button id="two_link_ik">Two link IK</button><button id="bezier">Bezier</button><button id="spur_num">Spur</button></p>
 <!-- clock 開始 -->
 <script type="text/python3">
 # 導入 document 與 beditor
@@ -4516,7 +4516,31 @@ src = open(url).read()
 two_link_ik = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
 doc["two_link_ik"].bind('click', two_link_ik.prog)
 </script>
-<!-- two link robot ik ends --><h3>Brythonsrc</h3>
+<!-- two link robot ik ends -->
+<p></p>
+<!-- bezier 開始 -->
+<script type="text/python3">
+import beditor
+from browser import document
+url = "https://gist.githubusercontent.com/mdecourse/2089a943b8fc260c2ca3ce4d0c886b1f/raw/e70f973d0b58f9db5fc6932960ef633421792f35/bezier24v3.py"
+src = open(url).read()
+bezier = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+document["bezier"].bind("click", bezier.prog)
+</script>
+<!-- bezier 結束 -->
+<p></p>
+<!-- canvas spur gear with num setting starts -->
+<script type="text/python3">
+from browser import document
+import beditor
+url = "https://gist.githubusercontent.com/mdecourse/626206cf3b2a9a9a69f7ce4bb4a116f0/raw/970e2653a7207828b3814c2c867892903734522a/spur_set_num.py"
+src = open(url).read()
+spur_num = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+document["spur_num"].bind('click', spur_num.prog)
+</script>
+<!-- canvas spur gear with num setting ends -->
+<script src="https://mde.tw/eng/cmsimde/static/Cango-24v03-min.js"></script>
+<script src="https://mde.tw/eng/cmsimde/static/gearUtils-09.js"></script><h3>Brythonsrc</h3>
 <p>用於建立上一頁 Gist 的 html 原始碼:</p>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;h2&gt;Gist&lt;/h2&gt;
 &lt;h4&gt;以下讓使用者將 Python 範例程式存入 &lt;a href="https://docs.github.com/en/github/writing-on-github/editing-and-sharing-content-with-gists/creating-gists"&gt;Github Gist&lt;/a&gt; 後, 經由程式 pubic Gist URL 連結, 以按鈕放入編輯器中執行:&lt;/h4&gt;

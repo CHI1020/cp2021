@@ -10224,7 +10224,7 @@ doc['clear_bd'].bind('click', clear_bd)
 <div id="brython_div"></div>
 <div class="col-md-0" height="1" id="graphics-column" width="1"></div>
 <!-- 開始建立程式範例以及對應按鈕 -->
-<p><button id="snake">Snake</button><button id="clock">Clock</button><button id="two_link_ik">Two link IK</button><button id="bezier">Bezier</button></p>
+<p><button id="snake">Snake</button><button id="clock">Clock</button><button id="two_link_ik">Two link IK</button><button id="bezier">Bezier</button><button id="spur_num">Spur</button></p>
 <!-- clock 開始 -->
 <script type="text/python3">
 # 導入 document 與 beditor
@@ -10277,5 +10277,16 @@ bezier = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_
 document["bezier"].bind("click", bezier.prog)
 </script>
 <!-- bezier 結束 -->
+<p></p>
+<!-- canvas spur gear with num setting starts -->
+<script type="text/python3">
+from browser import document
+import beditor
+url = "https://gist.githubusercontent.com/mdecourse/626206cf3b2a9a9a69f7ce4bb4a116f0/raw/970e2653a7207828b3814c2c867892903734522a/spur_set_num.py"
+src = open(url).read()
+spur_num = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+document["spur_num"].bind('click', spur_num.prog)
+</script>
+<!-- canvas spur gear with num setting ends -->
 <script src="https://mde.tw/eng/cmsimde/static/Cango-24v03-min.js"></script>
 <script src="https://mde.tw/eng/cmsimde/static/gearUtils-09.js"></script>
