@@ -139,11 +139,128 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">PowerShell << <a href='PowerShell.html'>Previous</a> <a href='開發範例.html'>Next</a> >> 開發範例<br /><h1>RoboDK</h1>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/nv7mOBDA_Z8" title="YouTube video player" width="560"></iframe></p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/dkRaf5n3OKs" title="YouTube video player" width="560"></iframe></p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/3EqzMzszMV0" title="YouTube video player" width="560"></iframe></p>
-<br />PowerShell << <a href='PowerShell.html'>Previous</a> <a href='開發範例.html'>Next</a> >> 開發範例</div>
+    <div id="tipue_search_content">Disqus << <a href='Disqus.html'>Previous</a> <br /><h1>Cango</h1>
+<p>這裡所指的 Cango 為 <a href="https://www.arc.id.au/CanvasGraphics.html">https://www.arc.id.au/CanvasGraphics.html</a>, 也就是採用 Javascript 編寫的 Canvas 程式套件, 可以用來進行 2D 靜態與動態繪圖. 也有進階版的 3D 繪圖程式庫: <a href="https://www.arc.id.au/Canvas3DGraphics.html">https://www.arc.id.au/Canvas3DGraphics.html</a></p>
+<p>透過 Brython 中的 <a href="https://brython.info/static_doc/en/javascript.html">https://brython.info/static_doc/en/javascript.html</a>, 可以試著將 Cango 程式導入 CMSiMDE 頁面中, 學習目標是用來進行 2D/3D 機構模擬.</p>
+<p>首先要在此頁導入 Brython, 作法就是將 <a href="https://mde.tw/cp2021/content/Brythonsrc.html">Brythonsrc</a> 頁面的超文件碼放入本頁面.</p>
+<p>接著就必須要注意有關 CMSiMDE 程式庫的引用方式, 若採 submodule 方式引入 CMSiMDE, 使用者並沒有修改子模組版本內容的權限, 因此若要修改 CMSiMDE 程式庫的內容 (例如: 在此頁就是要更新 Cango 程式庫版本, 就必須進入 CMSiMDE 的 static 目錄改版), 就必須採用不以 submodule 的方式導入 CMSiMDE.</p>
+<p>換言之, 自開學之初, 就必須要在各自的 Github 帳號下建立上述兩者採不同模式導入 CMSiMDE 程式庫的倉儲, 然後逐步跟著上課進度學習, 就可以逐步了解 Python, Javascript, html, css, Flask 等程式技術整合的架構與技巧, 並利用這些工具來解決機械設計問題.</p>
+<p>另外, 必須要敏捷地關注與 computer programming 相關技術的發展, 目前我們正在使用 Python 與 Flask 構建的同時, 在 Windows 與 Ubuntu 上使用的模式並不相同. 在 Windows 我們主要是用近端動態網頁系統來維護 Github Pages 上的靜態網頁. 若將 CMSiMDE 放到 Ubuntu, 則是希望建立廣域網路上的協同主機 (如 <a href="https://github.com/mdecourse/cd2021pj1">https://github.com/mdecourse/cd2021pj1</a>), 所採用的伺服器啟動模式為 <a href="https://uwsgi-docs.readthedocs.io/en/latest/">uWSGI</a> (請參見 <a href="https://2019wcm.blogspot.com/2019/05/wcm-week-15.html">ref1</a>, <a href="https://mde.tw/cp2019/content/Ubuntu%20%E4%BC%BA%E6%9C%8D%E5%99%A8.html">ref2</a>).</p>
+<p>至於目前的發展中的 <a href="https://fastapi.tiangolo.com/">FaskAPI</a> 與 <a href="https://asgi.readthedocs.io/en/latest/">ASGI</a> 正在崛起, <a href="https://flask.palletsprojects.com/en/2.0.x/">Flask</a> 與 <a href="https://uwsgi-docs.readthedocs.io/en/latest/">uWSGI</a> 在未來幾年將會逐步被這些新技術所取代. 但是大家也不用過度恐慌, 因為新技術的崛起雖然終究會取代舊技術, 但是這些舊技術就會與 IPv4 協定一樣, 還會在許多場合停留很久, 但採用舊技術所開發的解題方案, 大多只是為了除錯與維護運作, 新的解題方案大多會採用新技術, 除非條件不允許, 否則沒有理由受到舊技術的牽絆了.</p>
+<h4>以下讓使用者將 Python 範例程式存入 <a href="https://docs.github.com/en/github/writing-on-github/editing-and-sharing-content-with-gists/creating-gists">Github Gist</a> 後, 經由程式 pubic Gist URL 連結, 以按鈕放入編輯器中執行:</h4>
+<!-- 導入 brython 程式庫 -->
+<script src="./../cmsimde/static/brython.js"></script>
+<script src="./../cmsimde/static/brython_stdlib.js"></script>
+<!-- 啟動 Brython -->
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
+}
+</script>
+<p><!-- 導入 FileSaver 與 filereader --></p>
+<p>
+<script src="./../cmsimde/static/ace/FileSaver.min.js" type="text/javascript"></script>
+<script src="./../cmsimde/static/ace/filereader.js" type="text/javascript"></script>
+</p>
+<p><!-- 導入 ace --></p>
+<p>
+<script src="./../cmsimde/static/ace/ace.js" type="text/javascript"></script>
+<script src="./../cmsimde/static/ace/ext-language_tools.js" type="text/javascript"></script>
+<script src="./../cmsimde/static/ace/mode-python3.js" type="text/javascript"></script>
+<script src="./../cmsimde/static/ace/snippets/python.js" type="text/javascript"></script>
+</p>
+<p><!-- 請注意, 這裡使用 Javascript 將 localStorage["py_src"] 中存在近端瀏覽器的程式碼, 由使用者決定存檔名稱--></p>
+<p>
+<script type="text/javascript">
+function doSave(storage_id, filename){
+    var blob = new Blob([localStorage[storage_id]], {type: "text/plain;charset=utf-8"});
+    filename = document.getElementById(filename).value
+    saveAs(blob, filename+".py");
+}
+</script>
+</p>
+<p><!-- 印出版次與關鍵字程式 --></p>
+<p>
+<script type="text/python3">
+from browser import document as doc
+from browser import html
+import ace
+# 清除畫布
+def clear_bd(ev):
+    bd = doc["brython_div"]
+    bd.clear()
+# Brython 3.3.4 內建的 container 名稱為  'container' 且 turtle 輸出為 svg 必須使用 div 訂定 id
+Ace = ace.Editor(editor_id="kw_editor", console_id="kw_console", container_id="kw__container", storage_id="kw_py_src" )
+# 從 gist 取出程式碼後, 放入 editor 作為 default 程式
+url = "https://gist.githubusercontent.com/mdecourse/379f02862e9dfd95dbc5241d4faa2ad4/raw/e3dc77e68bbfb8f00eef2e78d3c8d2323b0f17da/clock.py"
+data = open(url).read()
+Ace.editor.setValue(data)
+Ace.editor.scrollToRow(0)
+Ace.editor.gotoLine(0)
+# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
+doc['kw_run'].bind('click', Ace.run)
+doc['kw_show_console'].bind('click', Ace.show_console)
+doc['kw_clear_console'].bind('click', Ace.clear_console)
+doc['clear_bd'].bind('click', clear_bd)
+</script>
+</p>
+<p><!-- 用來顯示程式碼的 editor 區域 --></p>
+<div id="kw_editor" style="width: 600px; height: 300px;"></div>
+<p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
+<!-- 存擋表單開始 --><form><label>Filename: <input id="kw_filename" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src', 'kw_filename');" type="submit" value="Save"/></form><!-- 存擋表單結束 -->
+<p></p>
+<!-- 執行與清除按鈕開始 -->
+<p><button id="kw_run">Run</button> <button id="kw_show_console">Output</button> <button id="kw_clear_console">清除輸出區</button><button id="clear_bd">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
+<!-- 執行與清除按鈕結束 -->
+<p></p>
+<!-- 程式編輯檔案 -->
+<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console"></textarea></div>
+<!-- 程式輸入位置 -->
+<div id="brython_div"></div>
+<div class="col-md-0" height="1" id="graphics-column" width="1"></div>
+<!-- 開始建立程式範例以及對應按鈕 -->
+<p><button id="snake">Snake</button><button id="clock">Clock</button><button id="two_link_ik">Two link IK</button></p>
+<!-- clock 開始 -->
+<script type="text/python3">
+# 導入 document 與 beditor
+from browser import document
+import beditor
+# 設定按鈕 id 名稱 name 與 原始碼對應 url
+name = "clock"
+url = "https://gist.githubusercontent.com/mdecourse/379f02862e9dfd95dbc5241d4faa2ad4/raw/e3dc77e68bbfb8f00eef2e78d3c8d2323b0f17da/clock.py"
+# 利用 open 與 read 取回原始碼
+src = open(url).read()
+# 將原始碼放入 editor
+e = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+# 設定 id 為 name 的元件按下後會執行 e.prog, 意即將原始碼放入 editor 中
+document[name].bind('click', e.prog)
+</script>
+<!-- clock 結束 -->
+<p><!-- snake 開始 -->
+<script type="text/python3">
+from browser import document as doc
+# 導入位於 static 目錄下的 beditor.py 
+import beditor
+# 利用 beditor.py 中的 editor 類別建立案例, 對應到 snake
+snake_url = "https://gist.githubusercontent.com/mdecourse/d306a1f57e53bfd6466eaae20bcb9439/raw/2160a12b9fec9707a120a383ed5d38b9b78a02cf/snake.py"
+snake_src = open(snake_url).read()
+snake = beditor.editor(snake_src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+# id 為 "snake" 的按鈕點按時, 執行 snake 物件中的 prog 方法
+doc["snake"].bind('click', snake.prog)
+</script>
+</p>
+<p><!-- snake 結束--></p>
+<!-- two link robot ik starts -->
+<script type="text/python3">
+# based on https://mde.tw/cd2021/content/W14-W15.html
+from browser import document as doc
+import beditor
+url = "https://gist.githubusercontent.com/mdecourse/b58d23e73ff57c9ab1334f2e01cdc6e0/raw/2a0393fff3f621bc0267f2102697e586f99b8282/two_link_ik.py"
+src = open(url).read()
+two_link_ik = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+doc["two_link_ik"].bind('click', two_link_ik.prog)
+</script>
+<!-- two link robot ik ends --><br />Disqus << <a href='Disqus.html'>Previous</a> </div>
         
     <!-- footer -->
       <div class="container">

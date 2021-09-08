@@ -2993,7 +2993,7 @@ var width = window.innerWidth;
 <h4>Introduction guide to Brython:</h4>
 <p style="padding-left: 30px;"><a href="https://stackabuse.com/an-introductory-guide-to-brython">https://stackabuse.com/an-introductory-guide-to-brython</a></p>
 <p style="padding-left: 30px;"><a href="https://www.geeksforgeeks.org/introduction-to-brython/">https://www.geeksforgeeks.org/introduction-to-brython/</a></p>
-<p style="padding-left: 30px;"><a href="https://realpython.com/brython-python-in-browser/">https://realpython.com/brython-python-in-browser/</a></p>
+<p style="padding-left: 30px;"><a href="https://realpython.com/brython-python-in-browser/">https://realpython.com/brython-python-in-browser/</a> </p>
 <h4>Game in Brython:</h4>
 <p style="padding-left: 30px;"><a href="https://medium.com/swlh/sick-of-javascript-just-use-browser-python-4b9679efe08b">https://medium.com/swlh/sick-of-javascript-just-use-browser-python-4b9679efe08b</a></p>
 <h4>Calculator in Brython:</h4>
@@ -3076,8 +3076,7 @@ td{
     &lt;/body&gt;
 &lt;/html&gt;</pre>
 <h4>延伸練習:</h4>
-<p style="padding-left: 30px;">請將上述網際加減乘除計算機, 以 Brython(Browser Python) 改為<a href="https://www.eeweb.com/tools/online-scientific-calculator/">網際工程用計算機</a>.</p>
-<h3>網際模擬程式</h3>
+<p style="padding-left: 30px;">請將上述網際加減乘除計算機, 以 Brython(Browser Python) 改為<a href="https://www.eeweb.com/tools/online-scientific-calculator/">網際工程用計算機</a>.</p><h3>網際模擬程式</h3>
 <p><a href="https://mdecp2018.github.io/finalproject-bgx/content/%E7%B6%B2%E9%9A%9B%E6%A8%A1%E6%93%AC%E7%A8%8B%E5%BC%8F.html">網際模擬程式原始網頁</a></p>
 <p><a href="https://github.com/mdecourse/webgame">https://github.com/mdecourse/webgame</a> 是一套源自<a href="https://github.com/tiggerntatie/brython-server"> https://github.com/tiggerntatie/brython-server</a> 的網際模擬程式庫, 適合用來開發線上遊戲或與工程設計相關的網際程式.</p>
 <p>之前的 js 程式庫都採用遠端資料, 目前將各程式庫升級為最新版本, 且改為自帶程式庫.</p>
@@ -4404,7 +4403,7 @@ pacman -Sy mingw-w64-x86-64-cmake</pre>
 <p>網際介面操作 - 可以從瀏覽器新建或上傳近端電腦檔案, 可在兩台異地電腦之間傳遞對應檔案, 一台以瀏覽器登入 Github 倉儲上傳檔案, 另外一台則在其近端倉儲工作目錄中以 git pull 取下所上傳的檔案.</p>
 <p></p>
 <h2>Gist</h2>
-<h4>以下讓使用者將 Python 範例程式存入 <a href="https://docs.github.com/en/github/writing-on-github/editing-and-sharing-content-with-gists/creating-gists">Github Gist</a> 後, 經由程式 pubic Gist URL 連結, 以按鈕放入編輯器中執行:</h4>
+<h4>以下讓使用者將 Python 範例程式 (<a href="https://brython.info/static_tutorial/en/index.html">Brython</a>) 存入 <a href="https://docs.github.com/en/github/writing-on-github/editing-and-sharing-content-with-gists/creating-gists">Github Gist</a> 後, 經由程式 pubic Gist URL 連結, 以按鈕放入編輯器中執行:</h4>
 <!-- 導入 brython 程式庫 -->
 <script src="/static/brython.js"></script>
 <script src="/static/brython_stdlib.js"></script>
@@ -4520,11 +4519,11 @@ doc["two_link_ik"].bind('click', two_link_ik.prog)
 <!-- two link robot ik ends --><h3>Brythonsrc</h3>
 <p>用於建立上一頁 Gist 的 html 原始碼:</p>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;h2&gt;Gist&lt;/h2&gt;
-&lt;h4&gt;以下讓使用者將 Python 範例程式存入 Github Gist 後, 經由程式 Gist URL 連結, 以按鈕放入編輯器中執行:&lt;/h4&gt;
+&lt;h4&gt;以下讓使用者將 Python 範例程式存入 &lt;a href="https://docs.github.com/en/github/writing-on-github/editing-and-sharing-content-with-gists/creating-gists"&gt;Github Gist&lt;/a&gt; 後, 經由程式 pubic Gist URL 連結, 以按鈕放入編輯器中執行:&lt;/h4&gt;
 &lt;!-- 導入 brython 程式庫 --&gt;
 &lt;script src="/static/brython.js"&gt;&lt;/script&gt;
 &lt;script src="/static/brython_stdlib.js"&gt;&lt;/script&gt;
-&lt;!-- 啟動 Brython, python 模組可以放入 /static/ 與 downloads 目錄中 --&gt;
+&lt;!-- 啟動 Brython --&gt;
 &lt;script&gt;// &lt;![CDATA[
 window.onload=function(){
 brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
@@ -4535,7 +4534,7 @@ brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
 &lt;script type="text/javascript" src="/static/ace/FileSaver.min.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript" src="/static/ace/filereader.js"&gt;&lt;/script&gt;
 &lt;/p&gt;
-&lt;p&gt;&lt;!-- 導入 ace 編輯器--&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- 導入 ace --&gt;&lt;/p&gt;
 &lt;p&gt;
 &lt;script type="text/javascript" src="/static/ace/ace.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript" src="/static/ace/ext-language_tools.js"&gt;&lt;/script&gt;
@@ -4552,7 +4551,7 @@ function doSave(storage_id, filename){
 }
 // ]]&gt;&lt;/script&gt;
 &lt;/p&gt;
-&lt;p&gt;&lt;!-- 內建直接導入 editor 的 clock brython 程式 --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- 印出版次與關鍵字程式 --&gt;&lt;/p&gt;
 &lt;p&gt;
 &lt;script type="text/python3"&gt;// &lt;![CDATA[
 from browser import document as doc
@@ -4588,11 +4587,11 @@ doc['clear_bd'].bind('click', clear_bd)
 &lt;p&gt;&lt;/p&gt;
 &lt;!-- 程式編輯檔案 --&gt;
 &lt;div style="width: 100%; height: 100%;"&gt;&lt;textarea autocomplete="off" id="kw_console"&gt;&lt;/textarea&gt;&lt;/div&gt;
-&lt;!-- 程式輸出位置 --&gt;
+&lt;!-- 程式輸入位置 --&gt;
 &lt;div id="brython_div"&gt;&lt;/div&gt;
 &lt;div class="col-md-0" height="1" id="graphics-column" width="1"&gt;&lt;/div&gt;
 &lt;!-- 開始建立程式範例以及對應按鈕 --&gt;
-&lt;p&gt;&lt;button id="snake"&gt;Snake&lt;/button&gt;&lt;button id="clock"&gt;Clock&lt;/button&gt;&lt;/p&gt;
+&lt;p&gt;&lt;button id="snake"&gt;Snake&lt;/button&gt;&lt;button id="clock"&gt;Clock&lt;/button&gt;&lt;button id="two_link_ik"&gt;Two link IK&lt;/button&gt;&lt;/p&gt;
 &lt;!-- clock 開始 --&gt;
 &lt;script type="text/python3"&gt;// &lt;![CDATA[
 # 導入 document 與 beditor
@@ -4622,7 +4621,18 @@ snake = beditor.editor(snake_src, "kw_editor", "kw_console", "kw__container", "k
 doc["snake"].bind('click', snake.prog)
 // ]]&gt;&lt;/script&gt;
 &lt;/p&gt;
-&lt;p&gt;&lt;!-- snake 結束--&gt;&lt;/p&gt;</pre>
+&lt;p&gt;&lt;!-- snake 結束--&gt;&lt;/p&gt;
+&lt;!-- two link robot ik starts --&gt;
+&lt;script type="text/python3"&gt;// &lt;![CDATA[
+# based on https://mde.tw/cd2021/content/W14-W15.html
+from browser import document as doc
+import beditor
+url = "https://gist.githubusercontent.com/mdecourse/b58d23e73ff57c9ab1334f2e01cdc6e0/raw/2a0393fff3f621bc0267f2102697e586f99b8282/two_link_ik.py"
+src = open(url).read()
+two_link_ik = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+doc["two_link_ik"].bind('click', two_link_ik.prog)
+// ]]&gt;&lt;/script&gt;
+&lt;!-- two link robot ik ends --&gt;</pre>
 <p></p><h2>解題練習</h2>
 <p>這個頁面已經將 ggame 從 brython 模組轉為 javascript (<a href="/downloads/JavaScript Course Notes.pdf">note</a>) 模組(<a href="http://mde.tw/cp2021/content/%E5%AD%B8%E7%BF%92%E7%A8%8B%E5%BC%8F.html">方法</a>), 名稱為 brython_modules.js 放在 downloads 目錄中.</p>
 <h4>請利用下列網際編輯器, 開始學習如何使用 Python 解決問題, 一般機械設計流程會面臨什麼問題?</h4>
@@ -10110,3 +10120,144 @@ doc['clear_bd2'].bind('click', clear_bd2)
 <h4>參考資料:</h4>
 <p style="padding-left: 30px;"><a href="https://pypi.org/project/brip/">https://pypi.org/project/brip/</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/rayluo/easter">https://github.com/rayluo/easter</a></p>
+<h2>Disqus</h2>
+<p>試著將 <a href="https://mde.tw/eng/content/Disqus%20for%20fxxxtech.html">https://mde.tw/eng/content/Disqus%20for%20fxxxtech.html</a> 留言超文件加到這一頁.</p>
+<div id="disqus_thread"></div>
+<script>
+/**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://https-mde-tw-eng.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<h2>Cango</h2>
+<p>這裡所指的 Cango 為 <a href="https://www.arc.id.au/CanvasGraphics.html">https://www.arc.id.au/CanvasGraphics.html</a>, 也就是採用 Javascript 編寫的 Canvas 程式套件, 可以用來進行 2D 靜態與動態繪圖. 也有進階版的 3D 繪圖程式庫: <a href="https://www.arc.id.au/Canvas3DGraphics.html">https://www.arc.id.au/Canvas3DGraphics.html</a></p>
+<p>透過 Brython 中的 <a href="https://brython.info/static_doc/en/javascript.html">https://brython.info/static_doc/en/javascript.html</a>, 可以試著將 Cango 程式導入 CMSiMDE 頁面中, 學習目標是用來進行 2D/3D 機構模擬.</p>
+<p>首先要在此頁導入 Brython, 作法就是將 <a href="https://mde.tw/cp2021/content/Brythonsrc.html">Brythonsrc</a> 頁面的超文件碼放入本頁面.</p>
+<p>接著就必須要注意有關 CMSiMDE 程式庫的引用方式, 若採 submodule 方式引入 CMSiMDE, 使用者並沒有修改子模組版本內容的權限, 因此若要修改 CMSiMDE 程式庫的內容 (例如: 在此頁就是要更新 Cango 程式庫版本, 就必須進入 CMSiMDE 的 static 目錄改版), 就必須採用不以 submodule 的方式導入 CMSiMDE.</p>
+<p>換言之, 自開學之初, 就必須要在各自的 Github 帳號下建立上述兩者採不同模式導入 CMSiMDE 程式庫的倉儲, 然後逐步跟著上課進度學習, 就可以逐步了解 Python, Javascript, html, css, Flask 等程式技術整合的架構與技巧, 並利用這些工具來解決機械設計問題.</p>
+<h4>以下讓使用者將 Python 範例程式存入 <a href="https://docs.github.com/en/github/writing-on-github/editing-and-sharing-content-with-gists/creating-gists">Github Gist</a> 後, 經由程式 pubic Gist URL 連結, 以按鈕放入編輯器中執行:</h4>
+<!-- 導入 brython 程式庫 -->
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+<!-- 啟動 Brython -->
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
+}
+</script>
+<p><!-- 導入 FileSaver 與 filereader --></p>
+<p>
+<script src="/static/ace/FileSaver.min.js" type="text/javascript"></script>
+<script src="/static/ace/filereader.js" type="text/javascript"></script>
+</p>
+<p><!-- 導入 ace --></p>
+<p>
+<script src="/static/ace/ace.js" type="text/javascript"></script>
+<script src="/static/ace/ext-language_tools.js" type="text/javascript"></script>
+<script src="/static/ace/mode-python3.js" type="text/javascript"></script>
+<script src="/static/ace/snippets/python.js" type="text/javascript"></script>
+</p>
+<p><!-- 請注意, 這裡使用 Javascript 將 localStorage["py_src"] 中存在近端瀏覽器的程式碼, 由使用者決定存檔名稱--></p>
+<p>
+<script type="text/javascript">
+function doSave(storage_id, filename){
+    var blob = new Blob([localStorage[storage_id]], {type: "text/plain;charset=utf-8"});
+    filename = document.getElementById(filename).value
+    saveAs(blob, filename+".py");
+}
+</script>
+</p>
+<p><!-- 印出版次與關鍵字程式 --></p>
+<p>
+<script type="text/python3">
+from browser import document as doc
+from browser import html
+import ace
+# 清除畫布
+def clear_bd(ev):
+    bd = doc["brython_div"]
+    bd.clear()
+# Brython 3.3.4 內建的 container 名稱為  'container' 且 turtle 輸出為 svg 必須使用 div 訂定 id
+Ace = ace.Editor(editor_id="kw_editor", console_id="kw_console", container_id="kw__container", storage_id="kw_py_src" )
+# 從 gist 取出程式碼後, 放入 editor 作為 default 程式
+url = "https://gist.githubusercontent.com/mdecourse/379f02862e9dfd95dbc5241d4faa2ad4/raw/e3dc77e68bbfb8f00eef2e78d3c8d2323b0f17da/clock.py"
+data = open(url).read()
+Ace.editor.setValue(data)
+Ace.editor.scrollToRow(0)
+Ace.editor.gotoLine(0)
+# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
+doc['kw_run'].bind('click', Ace.run)
+doc['kw_show_console'].bind('click', Ace.show_console)
+doc['kw_clear_console'].bind('click', Ace.clear_console)
+doc['clear_bd'].bind('click', clear_bd)
+</script>
+</p>
+<p><!-- 用來顯示程式碼的 editor 區域 --></p>
+<div id="kw_editor" style="width: 600px; height: 300px;"></div>
+<p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
+<!-- 存擋表單開始 --><form><label>Filename: <input id="kw_filename" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src', 'kw_filename');" type="submit" value="Save"/></form><!-- 存擋表單結束 -->
+<p></p>
+<!-- 執行與清除按鈕開始 -->
+<p><button id="kw_run">Run</button> <button id="kw_show_console">Output</button> <button id="kw_clear_console">清除輸出區</button><button id="clear_bd">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
+<!-- 執行與清除按鈕結束 -->
+<p></p>
+<!-- 程式編輯檔案 -->
+<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console"></textarea></div>
+<!-- 程式輸入位置 -->
+<div id="brython_div"></div>
+<div class="col-md-0" height="1" id="graphics-column" width="1"></div>
+<!-- 開始建立程式範例以及對應按鈕 -->
+<p><button id="snake">Snake</button><button id="clock">Clock</button><button id="two_link_ik">Two link IK</button></p>
+<!-- clock 開始 -->
+<script type="text/python3">
+# 導入 document 與 beditor
+from browser import document
+import beditor
+# 設定按鈕 id 名稱 name 與 原始碼對應 url
+name = "clock"
+url = "https://gist.githubusercontent.com/mdecourse/379f02862e9dfd95dbc5241d4faa2ad4/raw/e3dc77e68bbfb8f00eef2e78d3c8d2323b0f17da/clock.py"
+# 利用 open 與 read 取回原始碼
+src = open(url).read()
+# 將原始碼放入 editor
+e = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+# 設定 id 為 name 的元件按下後會執行 e.prog, 意即將原始碼放入 editor 中
+document[name].bind('click', e.prog)
+</script>
+<!-- clock 結束 -->
+<p><!-- snake 開始 -->
+<script type="text/python3">
+from browser import document as doc
+# 導入位於 static 目錄下的 beditor.py 
+import beditor
+# 利用 beditor.py 中的 editor 類別建立案例, 對應到 snake
+snake_url = "https://gist.githubusercontent.com/mdecourse/d306a1f57e53bfd6466eaae20bcb9439/raw/2160a12b9fec9707a120a383ed5d38b9b78a02cf/snake.py"
+snake_src = open(snake_url).read()
+snake = beditor.editor(snake_src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+# id 為 "snake" 的按鈕點按時, 執行 snake 物件中的 prog 方法
+doc["snake"].bind('click', snake.prog)
+</script>
+</p>
+<p><!-- snake 結束--></p>
+<!-- two link robot ik starts -->
+<script type="text/python3">
+# based on https://mde.tw/cd2021/content/W14-W15.html
+from browser import document as doc
+import beditor
+url = "https://gist.githubusercontent.com/mdecourse/b58d23e73ff57c9ab1334f2e01cdc6e0/raw/2a0393fff3f621bc0267f2102697e586f99b8282/two_link_ik.py"
+src = open(url).read()
+two_link_ik = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+doc["two_link_ik"].bind('click', two_link_ik.prog)
+</script>
+<!-- two link robot ik ends -->
