@@ -10149,6 +10149,7 @@ doc['clear_bd2'].bind('click', clear_bd2)
 <p>換言之, 自開學之初, 就必須要在各自的 Github 帳號下建立上述兩者採不同模式導入 CMSiMDE 程式庫的倉儲, 然後逐步跟著上課進度學習, 就可以逐步了解 Python, Javascript, html, css, Flask 等程式技術整合的架構與技巧, 並利用這些工具來解決機械設計問題.</p>
 <p>另外, 必須要敏捷地關注與 computer programming 相關技術的發展, 目前我們正在使用 Python 與 Flask 構建的同時, 在 Windows 與 Ubuntu 上使用的模式並不相同. 在 Windows 我們主要是用近端動態網頁系統來維護 Github Pages 上的靜態網頁. 若將 CMSiMDE 放到 Ubuntu, 則是希望建立廣域網路上的協同主機 (如 <a href="https://github.com/mdecourse/cd2021pj1">https://github.com/mdecourse/cd2021pj1</a>), 所採用的伺服器啟動模式為 <a href="https://uwsgi-docs.readthedocs.io/en/latest/">uWSGI</a> (請參見 <a href="https://2019wcm.blogspot.com/2019/05/wcm-week-15.html">ref1</a>, <a href="https://mde.tw/cp2019/content/Ubuntu%20%E4%BC%BA%E6%9C%8D%E5%99%A8.html">ref2</a>).</p>
 <p>至於目前的發展中的 <a href="https://fastapi.tiangolo.com/">FaskAPI</a> 與 <a href="https://asgi.readthedocs.io/en/latest/">ASGI</a> 正在崛起, <a href="https://flask.palletsprojects.com/en/2.0.x/">Flask</a> 與 <a href="https://uwsgi-docs.readthedocs.io/en/latest/">uWSGI</a> 在未來幾年將會逐步被這些新技術所取代. 但是大家也不用過度恐慌, 因為新技術的崛起雖然終究會取代舊技術, 但是這些舊技術就會與 IPv4 協定一樣, 還會在許多場合停留很久, 但採用舊技術所開發的解題方案, 大多只是為了除錯與維護運作, 新的解題方案大多會採用新技術, 除非條件不允許, 否則沒有理由受到舊技術的牽絆了.</p>
+<p>以下的 Cango 範例採用 <a href="https://mde.tw/eng/cmsimde/static/Cango-24v03-min.js">https://mde.tw/eng/cmsimde/static/Cango-24v03-min.js</a> 因為目前 CMSiMDE 仍使用舊版 Cango, 必須將所有範例全部改為 24v03 之後, 才會將 CMSiMDE Cango 升級為 24v03 版.</p>
 <h4>以下讓使用者將 Python 範例程式存入 <a href="https://docs.github.com/en/github/writing-on-github/editing-and-sharing-content-with-gists/creating-gists">Github Gist</a> 後, 經由程式 pubic Gist URL 連結, 以按鈕放入編輯器中執行:</h4>
 <!-- 導入 brython 程式庫 -->
 <script src="/static/brython.js"></script>
@@ -10221,7 +10222,7 @@ doc['clear_bd'].bind('click', clear_bd)
 <div id="brython_div"></div>
 <div class="col-md-0" height="1" id="graphics-column" width="1"></div>
 <!-- 開始建立程式範例以及對應按鈕 -->
-<p><button id="snake">Snake</button><button id="clock">Clock</button><button id="two_link_ik">Two link IK</button></p>
+<p><button id="snake">Snake</button><button id="clock">Clock</button><button id="two_link_ik">Two link IK</button><button id="bezier">Bezier</button></p>
 <!-- clock 開始 -->
 <script type="text/python3">
 # 導入 document 與 beditor
@@ -10263,3 +10264,16 @@ two_link_ik = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "k
 doc["two_link_ik"].bind('click', two_link_ik.prog)
 </script>
 <!-- two link robot ik ends -->
+<p></p>
+<!-- bezier 開始 -->
+<script type="text/python3">
+import beditor
+from browser import document
+url = "https://gist.githubusercontent.com/mdecourse/2089a943b8fc260c2ca3ce4d0c886b1f/raw/e70f973d0b58f9db5fc6932960ef633421792f35/bezier24v3.py"
+src = open(url).read()
+bezier = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+document["bezier"].bind("click", bezier.prog)
+</script>
+<!-- bezier 結束 -->
+<script src="https://mde.tw/eng/cmsimde/static/Cango-24v03-min.js">
+</script>
