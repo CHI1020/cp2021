@@ -10150,6 +10150,8 @@ doc['clear_bd2'].bind('click', clear_bd2)
 <p>另外, 必須要敏捷地關注與 computer programming 相關技術的發展, 目前我們正在使用 Python 與 Flask 構建的同時, 在 Windows 與 Ubuntu 上使用的模式並不相同. 在 Windows 我們主要是用近端動態網頁系統來維護 Github Pages 上的靜態網頁. 若將 CMSiMDE 放到 Ubuntu, 則是希望建立廣域網路上的協同主機 (如 <a href="https://github.com/mdecourse/cd2021pj1">https://github.com/mdecourse/cd2021pj1</a>), 所採用的伺服器啟動模式為 <a href="https://uwsgi-docs.readthedocs.io/en/latest/">uWSGI</a> (請參見 <a href="https://2019wcm.blogspot.com/2019/05/wcm-week-15.html">ref1</a>, <a href="https://mde.tw/cp2019/content/Ubuntu%20%E4%BC%BA%E6%9C%8D%E5%99%A8.html">ref2</a>).</p>
 <p>至於目前的發展中的 <a href="https://fastapi.tiangolo.com/">FaskAPI</a> 與 <a href="https://asgi.readthedocs.io/en/latest/">ASGI</a> 正在崛起, <a href="https://flask.palletsprojects.com/en/2.0.x/">Flask</a> 與 <a href="https://uwsgi-docs.readthedocs.io/en/latest/">uWSGI</a> 在未來幾年將會逐步被這些新技術所取代. 但是大家也不用過度恐慌, 因為新技術的崛起雖然終究會取代舊技術, 但是這些舊技術就會與 IPv4 協定一樣, 還會在許多場合停留很久, 但採用舊技術所開發的解題方案, 大多只是為了除錯與維護運作, 新的解題方案大多會採用新技術, 除非條件不允許, 否則沒有理由受到舊技術的牽絆了.</p>
 <p>以下的 Cango 範例採用 <a href="https://mde.tw/eng/cmsimde/static/Cango-24v03-min.js">https://mde.tw/eng/cmsimde/static/Cango-24v03-min.js</a> 因為目前 CMSiMDE 仍使用舊版 Cango, 必須將所有範例全部改為 24v03 之後, 才會將 CMSiMDE Cango 升級為 24v03 版.</p>
+<p>根據 <a href="https://www.arc.id.au/GearDrawing.html">https://www.arc.id.au/GearDrawing.html</a> gearUtils 目前最新版仍為 09 版, 因此可以直接引用 CMSiMDE 目前的版本.</p>
+<p>根據 <a href="https://www.arc.id.au/CangoAnimationManual.html">https://www.arc.id.au/CangoAnimationManual.html</a> 取得 CangoAnimation 程式庫.</p>
 <h4>以下讓使用者將 Python 範例程式存入 <a href="https://docs.github.com/en/github/writing-on-github/editing-and-sharing-content-with-gists/creating-gists">Github Gist</a> 後, 經由程式 pubic Gist URL 連結, 以按鈕放入編輯器中執行:</h4>
 <!-- 導入 brython 程式庫 -->
 <script src="/static/brython.js"></script>
@@ -10222,7 +10224,7 @@ doc['clear_bd'].bind('click', clear_bd)
 <div id="brython_div"></div>
 <div class="col-md-0" height="1" id="graphics-column" width="1"></div>
 <!-- 開始建立程式範例以及對應按鈕 -->
-<p><button id="snake">Snake</button><button id="clock">Clock</button><button id="two_link_ik">Two link IK</button><button id="bezier">Bezier</button></p>
+<p><button id="snake">Snake</button><button id="clock">Clock</button><button id="two_link_ik">Two link IK</button><button id="bezier">Bezier</button><button id="spur_num">Spur</button></p>
 <!-- clock 開始 -->
 <script type="text/python3">
 # 導入 document 與 beditor
@@ -10275,5 +10277,16 @@ bezier = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_
 document["bezier"].bind("click", bezier.prog)
 </script>
 <!-- bezier 結束 -->
-<script src="https://mde.tw/eng/cmsimde/static/Cango-24v03-min.js">
+<p></p>
+<!-- canvas spur gear with num setting starts -->
+<script type="text/python3">
+from browser import document
+import beditor
+url = "https://gist.githubusercontent.com/mdecourse/626206cf3b2a9a9a69f7ce4bb4a116f0/raw/970e2653a7207828b3814c2c867892903734522a/spur_set_num.py"
+src = open(url).read()
+spur_num = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+document["spur_num"].bind('click', spur_num.prog)
 </script>
+<!-- canvas spur gear with num setting ends -->
+<script src="https://mde.tw/eng/cmsimde/static/Cango-24v03-min.js"></script>
+<script src="https://mde.tw/eng/cmsimde/static/gearUtils-09.js"></script>
