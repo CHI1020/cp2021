@@ -9432,6 +9432,7 @@ browser.timer.set_interval(bunnyRotate, 30)
 <li>Spur1 按鈕可帶出三個水平排列的齒輪組囓合輪廓繪圖, 並且可由使用者分別從表單輸入三個齒輪的齒數與共同壓力角.</li>
 <li>Spur2 按鈕則可帶出三個以 L 形排列的齒輪組囓合輪廓繪圖, 並且可由使用者分別從表單輸入三個齒輪的齒數與共同壓力角.</li>
 <li>請利用 <a href="https://www.arc.id.au/GearDrawing.html">https://www.arc.id.au/GearDrawing.html</a> 中的 gearUtils-09.js 執行上述兩個題目的正齒輪繪圖.</li>
+<li>請在上述四個題目中各加上一個 Animation 按鈕, 使用者按下後, 各齒輪可以依照 input 轉速模擬囓合傳動.</li>
 </ol>
 <hr/>
 <h4>題目二練習目的:</h4>
@@ -10345,5 +10346,8 @@ spur_num = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_p
 document["spur_num"].bind('click', spur_num.prog)
 </script>
 <!-- canvas spur gear with num setting ends -->
-<script src="https://mde.tw/eng/cmsimde/static/Cango-24v03-min.js"></script>
-<script src="https://mde.tw/eng/cmsimde/static/gearUtils-09.js"></script>
+<p></p>
+<!-- 導入 gearUtils-0.9.js Cango 齒輪繪圖程式庫 -->
+<script src="https://mde.tw/cp2021/cmsimde/static/Cango-24v03-min.js"></script>
+<script src="https://mde.tw/cp2021/cmsimde/static/gearUtils-09.js"></script>
+<script src="https://mde.tw/cp2021/cmsimde/static/SVGpathUtils-6v03-min.js"></script>
