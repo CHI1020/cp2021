@@ -139,44 +139,55 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Task1 << <a href='Task1.html'>Previous</a> <a href='Task3.html'>Next</a> >> Task3<br /><h1>Task2</h1>
-<h4>下載客製化的可攜程式系統</h4>
-<p>客製化是一個希望讓每位客戶都能滿意的服務, 當需求變更時, 客戶可以自己調整安排每一個細節, 讓流程達到盡善盡美, 而在利用電腦與計算機程式解題的過程, 也是如此.</p>
-<p>在此我們希望打造一個能夠客製化的可攜程式系統, 以便有效利用計算機程式方法解決問題.</p>
-<p>而 Task1 這個工作任務希望解決下列問題:</p>
-<ol>
-<li>可以利用可攜 SSD 碟存放個人化的程式系統與隱私資料 (SSH private key)</li>
-<li>可以設法保留每一個電腦工作階段 (Sessions) 所儲存的檔案版本</li>
-<li>不用擔心近端 (Local) 電腦硬體毀損後, 丟失任何一個工作階段所儲存的資料內容</li>
-</ol>
-<p>現代人已經很熟悉利用數位裝置彼此之間的認證 (Certification) 傳遞重要資料, 其中包括金流與隱私資料 (例如:信件,線上對話與健保卡存取等), 身為一個機械設計工程師必須學會保護個人的身分 (Identity) 資料 (例如: 電子郵箱帳號以及手機實名登錄的各種 Apps 帳號), 只是當我們身為客戶 (Client) 時, 是使用別人所打造的系統服務. 而機械設計工程師則需要打造讓其他人使用的各種服務, 因為所有的實體製造零組件, 源頭都是從我們所建構的 3D 虛擬檔案逐一 realized 的.</p>
-<p>以上這段文字有下列關鍵字:</p>
-<ol>
-<li>SSD</li>
-<li>Private key</li>
-<li>Sessions</li>
-<li>Local</li>
-<li>Certification</li>
-<li>Identity</li>
-<li>Apps</li>
-<li>Client</li>
-<li>Realized</li>
-</ol>
-<p>Task2 就是希望在打造客製化可攜程式系統的同時, 先了解與這些關鍵字有關的內容. 至於所謂的"客製化可攜程式系統", 可以直接從線上下載 <a href="https://drive.google.com/file/d/1hEGgONw8ahNs7JPAKOurc7JvGfhgO2zY/view?usp=sharing">compile_copsim_for_pj2022.7z</a> (download file size 4 GB, uncompressed file size 14 GB). 你可以先在電腦輔助設計室中的電腦桌面展開壓縮檔案. 但最終希望可以將可攜系統全部或部份資料存入個人的 USB 隨身碟.</p>
-<ol>
-<li>假如 USB 隨身碟存取速度夠快, 可以將 <a href="https://drive.google.com/file/d/1hEGgONw8ahNs7JPAKOurc7JvGfhgO2zY/view?usp=sharing">compile_copsim_for_pj2022.7z</a> 14GB 的檔案存入</li>
-<li>但是假如 USB 隨身碟存取速度不夠快 (請參見<a href="https://www.tripplite.com/products/usb-connectivity-types-standards">相關規格</a>), 可以採用 <a href="https://mde.tw/wcmj2021/content/Hybrid%20System.html">Hybrid System</a> 的方式, 僅將啟動檔案與 home_ipv6 以及其他必要檔案存在 USB 隨身碟, 並透過 start.bat 取用存在 C 槽硬碟中的其他檔案.</li>
-</ol>
-<h4>Task2 實習內容:</h4>
-<ol>
-<li>下載 <a href="https://drive.google.com/file/d/1hEGgONw8ahNs7JPAKOurc7JvGfhgO2zY/view?usp=sharing">compile_copsim_for_pj2022.7z</a>, 在桌面解開壓縮檔案後,點擊 start.bat, 啟動隨身系統.</li>
-<li>到 <a href="https://github.com/">https://github.com/</a> 建立一個帳號, 帳號名稱可以自選, 過程中必須要進入與 Github 帳號綁定的 Email 系統完成帳號驗證後, 該 Github 帳號才能使用.</li>
-<li>完成 Github 帳號認證後, 請建立一個測試用的倉儲, 倉儲名稱可以自選.</li>
-<li>接下來我們要直接在線上, 利用上一個步驟所建立的倉儲, 在線上編輯一個簡單的 Python 程式檔案 (可以是上個禮拜用 random 模組隨機產生整數的程式碼), 並改版三次 (可以利用 Task1 頁面中的三個程式碼).</li>
-<li>最後一個步驟是, 學習如何在這個 Github 倉儲, 找出這個 Python 程式的三個改版前與改版後的內容.</li>
-</ol>
-<p></p>
-<p></p><br />Task1 << <a href='Task1.html'>Previous</a> <a href='Task3.html'>Next</a> >> Task3</div>
+    <div id="tipue_search_content">rungist << <a href='rungist.html'>Previous</a> <br /><h1>rungist src</h1>
+<p>以下為上一頁 rungist 的原始碼:</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;h2&gt;rungist&lt;/h2&gt;
+&lt;p&gt;rungist 在頁面中採 Javascript 呼叫 Brython 函式的方式, 讓使用者可以直接以 URL Get 執行 Gist 上的 Brython 程式. 建構的目的是讓學員可以利用 URL 繳交統一格式的 Brython 作業程式. 只要在 rungist 頁面加上 ?src=gist_url, 就可以將靜態繪圖或 animation 呈現在畫面中.&lt;/p&gt;
+&lt;p&gt;以下連結左邊為 local 動態網頁編輯用, 而右邊的連結則為遠端 rungist 的 demo 範例.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/cango_gear1.py"&gt;Cango gear&lt;/a&gt; (for local link only) (&lt;a href="https://mde.tw/cp2021/content/rungist.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/cango_gear1.py"&gt;Cango gear&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;&lt;a href="/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/626206cf3b2a9a9a69f7ce4bb4a116f0/raw/970e2653a7207828b3814c2c867892903734522a/spur_set_num.py"&gt;Spur with form input&lt;/a&gt; (for local link only) (&lt;a href="https://mde.tw/cp2021/content/rungist.html?src=https://gist.githubusercontent.com/mdecourse/626206cf3b2a9a9a69f7ce4bb4a116f0/raw/970e2653a7207828b3814c2c867892903734522a/spur_set_num.py"&gt;Spur with form input&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;&lt;a href="/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/three_spur_rotating.py"&gt;local three gears&lt;/a&gt; (&lt;a href="https://mde.tw/cp2021/content/rungist.html?src=https://localhost:9445/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/three_spur_rotating.py"&gt;remote three gears&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;&lt;a href="/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/379f02862e9dfd95dbc5241d4faa2ad4/raw/e3dc77e68bbfb8f00eef2e78d3c8d2323b0f17da/clock.py"&gt;local clock&lt;/a&gt; &lt;a href="https://mde.tw/cp2021/content/rungist.html?src=https://gist.githubusercontent.com/mdecourse/379f02862e9dfd95dbc5241d4faa2ad4/raw/e3dc77e68bbfb8f00eef2e78d3c8d2323b0f17da/clock.py"&gt;remote clock&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/get_page/rungist/1"&gt;rungist&lt;/a&gt; (for local edit)&lt;/p&gt;
+&lt;!-- 導入 brython 程式庫 --&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;script src="./../cmsimde/static/brython.js"&gt;&lt;/script&gt;
+&lt;script src="./../cmsimde/static/brython_stdlib.js"&gt;&lt;/script&gt;
+&lt;!-- 啟動 Brython --&gt;
+&lt;script&gt;// &lt;![CDATA[
+window.onload=function(){
+    brython();
+}
+// ]]&gt;&lt;/script&gt;
+&lt;script&gt;// &lt;![CDATA[
+$(document).ready( function() {
+ //brython();
+ brythonListener();
+ //document.getElementById('run_brython').click(); 
+});
+// ]]&gt;&lt;/script&gt;
+&lt;p&gt;&lt;button id="run_brython"&gt;run&lt;/button&gt;&lt;/p&gt;
+&lt;script type="text/python"&gt;// &lt;![CDATA[
+from browser import document
+from browser import window
+
+def run():
+    prog = open(document.query["src"]).read()
+    ns = {'__name__':'__main__'}
+    exec(prog, ns)
+
+window.brythonListener=run()
+
+document["run_brython"].bind("click", run)
+// ]]&gt;&lt;/script&gt;
+&lt;div id="brython_div"&gt;&lt;/div&gt;
+&lt;p&gt;&lt;canvas id="cango_gear" width="600" height="400"&gt;&lt;/canvas&gt;&lt;/p&gt;
+&lt;div class="col-md-0" height="1" id="graphics-column" width="1"&gt;&lt;/div&gt;
+&lt;!-- 導入 gearUtils-0.9.js Cango 齒輪繪圖程式庫 --&gt;
+&lt;script src="https://mde.tw/cp2021/cmsimde/static/Cango-24v03-min.js"&gt;&lt;/script&gt;
+&lt;script src="https://mde.tw/cp2021/cmsimde/static/gearUtils-09.js"&gt;&lt;/script&gt;
+&lt;script src="https://mde.tw/cp2021/cmsimde/static/SVGpathUtils-6v03-min.js"&gt;&lt;/script&gt;</pre>
+<p></p><br />rungist << <a href='rungist.html'>Previous</a> </div>
         
     <!-- footer -->
       <div class="container">
