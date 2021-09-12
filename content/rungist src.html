@@ -146,7 +146,7 @@ img.add_border {
 &lt;p&gt;以下連結左邊為 local 動態網頁編輯用, 而右邊的連結則為遠端 rungist 的 demo 範例.&lt;/p&gt;
 &lt;p&gt;&lt;a href="/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/cango_gear1.py"&gt;Cango gear&lt;/a&gt; (for local link only) (&lt;a href="https://mde.tw/cp2021/content/rungist.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/cango_gear1.py"&gt;Cango gear&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;&lt;a href="/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/626206cf3b2a9a9a69f7ce4bb4a116f0/raw/970e2653a7207828b3814c2c867892903734522a/spur_set_num.py"&gt;Spur with form input&lt;/a&gt; (for local link only) (&lt;a href="https://mde.tw/cp2021/content/rungist.html?src=https://gist.githubusercontent.com/mdecourse/626206cf3b2a9a9a69f7ce4bb4a116f0/raw/970e2653a7207828b3814c2c867892903734522a/spur_set_num.py"&gt;Spur with form input&lt;/a&gt;)&lt;/p&gt;
-&lt;p&gt;&lt;a href="/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/three_spur_rotating.py"&gt;local three gears&lt;/a&gt; (&lt;a href="https://mde.tw/cp2021/content/rungist.html?src=https://localhost:9445/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/three_spur_rotating.py"&gt;remote three gears&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;&lt;a href="/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/three_spur_rotating.py"&gt;local three gears&lt;/a&gt; (&lt;a href="https://mde.tw/cp2021/content/rungist.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/three_spur_rotating.py"&gt;remote three gears&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;&lt;a href="/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/379f02862e9dfd95dbc5241d4faa2ad4/raw/e3dc77e68bbfb8f00eef2e78d3c8d2323b0f17da/clock.py"&gt;local clock&lt;/a&gt; &lt;a href="https://mde.tw/cp2021/content/rungist.html?src=https://gist.githubusercontent.com/mdecourse/379f02862e9dfd95dbc5241d4faa2ad4/raw/e3dc77e68bbfb8f00eef2e78d3c8d2323b0f17da/clock.py"&gt;remote clock&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="/get_page/rungist/1"&gt;rungist&lt;/a&gt; (for local edit)&lt;/p&gt;
 &lt;!-- 導入 brython 程式庫 --&gt;
@@ -159,14 +159,13 @@ window.onload=function(){
     brython();
 }
 // ]]&gt;&lt;/script&gt;
+&lt;!-- 頁面載入後執行 brythonListener() --&gt;
 &lt;script&gt;// &lt;![CDATA[
 $(document).ready( function() {
- //brython();
- brythonListener();
- //document.getElementById('run_brython').click(); 
+    brythonListener();
 });
 // ]]&gt;&lt;/script&gt;
-&lt;p&gt;&lt;button id="run_brython"&gt;run&lt;/button&gt;&lt;/p&gt;
+&lt;!-- 建立讓 Javascript 執行的 brython 程式 --&gt;
 &lt;script type="text/python"&gt;// &lt;![CDATA[
 from browser import document
 from browser import window
@@ -176,13 +175,11 @@ def run():
     ns = {'__name__':'__main__'}
     exec(prog, ns)
 
-window.brythonListener=run()
-
-document["run_brython"].bind("click", run)
+# 透過 window 將 Brython 的 run() 函式與 Javascript 的  brythonListner 函式對應
+window.brythonListener = run()
 // ]]&gt;&lt;/script&gt;
+&lt;!-- Brython 程式執行的結果, 都以 brython_div 作為切入位置 --&gt;
 &lt;div id="brython_div"&gt;&lt;/div&gt;
-&lt;p&gt;&lt;canvas id="cango_gear" width="600" height="400"&gt;&lt;/canvas&gt;&lt;/p&gt;
-&lt;div class="col-md-0" height="1" id="graphics-column" width="1"&gt;&lt;/div&gt;
 &lt;!-- 導入 gearUtils-0.9.js Cango 齒輪繪圖程式庫 --&gt;
 &lt;script src="https://mde.tw/cp2021/cmsimde/static/Cango-24v03-min.js"&gt;&lt;/script&gt;
 &lt;script src="https://mde.tw/cp2021/cmsimde/static/gearUtils-09.js"&gt;&lt;/script&gt;
