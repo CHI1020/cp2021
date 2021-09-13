@@ -125,6 +125,11 @@
 <h3>程式儲存</h3>
 <p>利用<a href="https://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a>頁面可以直接在瀏覽器上練習編寫簡單的 Python 程式, 而寫好的 Python 程式應該存在哪裡?</p>
 <p>由於 <a href="https://mde.tw">KMOLab</a> 所開設的課程, 都要求學員要申請 <a href="https://github.com/">Github</a>, <a href="https://gitlab.com">Gitlab</a>, <a href="https://bitbucket.org/">Bitbucket</a> 與 <a href="https://www.heroku.com/">Heroku</a> 帳號, 而且要使用 Github 倉儲與網頁紀錄各自的學習歷程, 因此直接在瀏覽器上編寫的 Python 程式, 可以分別存在倉儲的 downloads 目錄, 以及 Github 帳號下對應的 Gist 區.</p>
+<p>亦即:</p>
+<ol>
+<li>假如採用近端隨身程式系統, 編寫程式後同時維護各自倉儲的動態與靜態網頁, 則所編寫的 Python 程式, 可以同時存在倉儲 downloads 區, 以及將程式複製存入個人 Github 帳號下的 Gist 區.</li>
+<li>假如沒有使用近端隨身程式系統, 只有利用電腦瀏覽器或 Chromebook 等硬體, 可以在 Python 程式定版後, 直接複製到個人帳號下的 Gist 區儲存及引用.</li>
+</ol>
 <p>採用 <a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 作為動態與靜態網頁的倉儲, 其 downloads 目錄中的檔案, 可以直接透過 URL 擷取, 雖然也可納入 Git 分散式版次管理, 但是管理與引用沒有 Gist 方便. 因為每一個 Github Gist 中所儲存的程式, 可以根據實習階段將同一組程式集合在同一個版次號下 (帳號下的 Gist 編號), 然後再用該編號下的檔案編號擷取同一組 Gist 下的不同版次程式.</p>
 <p>例如:</p>
 <p style="padding-left: 30px;"><a href="https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/3f98d46cdf791bd764beca645950a69f90e651c9/three_spur_rotating.py">第一版的 three_spur_rotating.py</a></p>
@@ -2975,12 +2980,13 @@ var width = window.innerWidth;
 <p style="padding-left: 30px;"><a href="http://doctorsrn.cn/2019/08/08/CodingInterviewChinese2/">Python 刷題練習</a></p><h3>Brython</h3>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/VJj-H4we71g" title="YouTube video player" width="560"></iframe></p>
 <p><a href="https://github.com/brython-dev/brython/wiki/How-Brython-works">https://github.com/brython-dev/brython/wiki/How-Brython-works</a></p>
+<p>Javascript 教程: <a href="https://wangdoc.com/javascript/index.html">https://wangdoc.com/javascript/index.html</a></p>
 <p>上一頁的網際 Python 是透過 <a href="https://brython.info/">https://brython.info/</a> 完成, 當使用者在網頁中執行 Python 程式時, 透過 Brython 即時轉為 Javascript 後執行.</p>
 <p>Brython Google Group: <a href="https://groups.google.com/g/brython">https://groups.google.com/g/brython</a></p>
 <h4>Introduction guide to Brython:</h4>
 <p style="padding-left: 30px;"><a href="https://stackabuse.com/an-introductory-guide-to-brython">https://stackabuse.com/an-introductory-guide-to-brython</a></p>
 <p style="padding-left: 30px;"><a href="https://www.geeksforgeeks.org/introduction-to-brython/">https://www.geeksforgeeks.org/introduction-to-brython/</a></p>
-<p style="padding-left: 30px;"><a href="https://realpython.com/brython-python-in-browser/">https://realpython.com/brython-python-in-browser/</a> </p>
+<p style="padding-left: 30px;"><a href="https://realpython.com/brython-python-in-browser/">https://realpython.com/brython-python-in-browser/</a></p>
 <h4>Game in Brython:</h4>
 <p style="padding-left: 30px;"><a href="https://medium.com/swlh/sick-of-javascript-just-use-browser-python-4b9679efe08b">https://medium.com/swlh/sick-of-javascript-just-use-browser-python-4b9679efe08b</a></p>
 <h4>Calculator in Brython:</h4>
@@ -4161,8 +4167,8 @@ clean:
 <p style="padding-left: 30px;">下載 <a href="https://drive.google.com/file/d/10WTzjMosketDZZVIlYB7H948lFPrWpYU/view?usp=sharing">gnuplot_lua_tinyc.7z</a></p>
 <h4 style="padding-left: 30px;"> 參考資料:</h4>
 <p style="padding-left: 60px;"><a href="https://mde.tw/cad2020/content/W7.html">https://mde.tw/cad2020/content/W7.html</a></p>
-<p></p>
-<h3>Cython</h3>
+<p>C 語言教程: <a href="https://wangdoc.com/clang/">https://wangdoc.com/clang/</a></p>
+<p></p><h3>Cython</h3>
 <p>從 <a href="http://mde.tw/cp2021/content/C.html">C 程式語言的頁面</a>, 我們已經知道以純 C 編寫的 2D 繪圖程式庫 <a href="https://github.com/libgd/libgd">https://github.com/libgd/libgd</a> 可以直接利用可攜程式系統中的 <a href="https://www.msys2.org/">MSYS2</a> 進行編譯. 亦即可以編寫類似以下的 C 程式執行 2D 繪圖:</p>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include "gd.h"
 #include &lt;stdio.h&gt;
