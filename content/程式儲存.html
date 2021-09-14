@@ -148,10 +148,13 @@ img.add_border {
 <li>假如沒有使用近端隨身程式系統, 只有利用電腦瀏覽器或 Chromebook 等硬體, 可以在 Python 程式定版後, 直接複製到個人帳號下的 Gist 區儲存及引用.</li>
 </ol>
 <p>採用 <a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 作為動態與靜態網頁的倉儲, 其 downloads 目錄中的檔案, 可以直接透過 URL 擷取, 雖然也可納入 Git 分散式版次管理, 但是管理與引用沒有 Gist 方便. 因為每一個 Github Gist 中所儲存的程式, 可以根據實習階段將同一組程式集合在同一個版次號下 (帳號下的 Gist 編號), 然後再用該編號下的檔案編號擷取同一組 Gist 下的不同版次程式.</p>
-<p>例如:</p>
-<p style="padding-left: 30px;"><a href="https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/3f98d46cdf791bd764beca645950a69f90e651c9/three_spur_rotating.py">第一版的 three_spur_rotating.py</a></p>
-<p style="padding-left: 30px;">修正各齒輪中心點位置的<a href="https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/three_spur_rotating.py">第二版 three_spur_rotating.py</a></p>
-<p>由於每一個 Gist 也是 Repository, 因此利用 Gist 儲存 Python 程式, 可以很清楚查詢每一個改版內容間的差異 (例如: 以 <a href="https://www.arc.id.au/CanvasGraphics.html">Cango 程式庫</a>編寫的<a href="https://gist.github.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/revisions">正齒輪模擬範例程式</a>).</p>
+<h4>例如:</h4>
+<p style="padding-left: 30px;"><a href="https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/3f98d46cdf791bd764beca645950a69f90e651c9/three_spur_rotating.py">第一版的 three_spur_rotating.py</a> (<a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/3f98d46cdf791bd764beca645950a69f90e651c9/three_spur_rotating.py">執行</a>)</p>
+<p style="padding-left: 30px;">修正各齒輪中心點位置的<a href="https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/three_spur_rotating.py">第二版 three_spur_rotating.py</a> (<a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/three_spur_rotating.py">執行</a>)</p>
+<h4 style="padding-left: 30px;">延伸練習題:</h4>
+<p style="padding-left: 60px;">上面這個程式可以設法再利用 Brython 增加三個輸入表單分別設定各齒輪的齒數, 可以在各位對 Brython 與 HTML 更加了解之後當作練習題目.</p>
+<p style="padding-left: 60px;">也可以與正齒輪傳動組的<a href="https://wcms-scrum1.herokuapp.com/gear_index">齒面寬設計</a>題目 (<a href="https://github.com/mdecourse/wcms-scrum1">原始碼</a>) 結合. 在設計運算完成後, 利用 SVG (或 DXF) 畫出正齒輪輪廓, 進入 CAD 長出厚度後, 以 3D 列印出所需要的正齒輪零件.</p>
+<p>由於每一個 Gist 也是 Repository, 因此利用 Gist 儲存 Python 程式, 可以很清楚查詢每一個改版內容間的差異, 例如: 以 <a href="https://www.arc.id.au/CanvasGraphics.html">Cango 程式庫</a>編寫的<a href="https://gist.github.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/revisions">正齒輪模擬範例程式</a> (<a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/cango_gear1.py">執行</a>).</p>
 <p>而且如 <a href="https://mde.tw/cp2021/content/Cango.html">Cango 程式範例</a>頁面所示, 使用者將 Python 程式 (或 Brython 程式) 儲存至 Gist 之後, 可以再利用以下的 beditor.py, 在網頁中安排按鈕, 點擊後可將 Gist 中所存放的 Python 程式版本放入網際程式編輯區, 按下 Run 後就可以直接執行.</p>
 <p>beditor.py</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import ace

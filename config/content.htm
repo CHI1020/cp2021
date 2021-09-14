@@ -131,10 +131,13 @@
 <li>假如沒有使用近端隨身程式系統, 只有利用電腦瀏覽器或 Chromebook 等硬體, 可以在 Python 程式定版後, 直接複製到個人帳號下的 Gist 區儲存及引用.</li>
 </ol>
 <p>採用 <a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 作為動態與靜態網頁的倉儲, 其 downloads 目錄中的檔案, 可以直接透過 URL 擷取, 雖然也可納入 Git 分散式版次管理, 但是管理與引用沒有 Gist 方便. 因為每一個 Github Gist 中所儲存的程式, 可以根據實習階段將同一組程式集合在同一個版次號下 (帳號下的 Gist 編號), 然後再用該編號下的檔案編號擷取同一組 Gist 下的不同版次程式.</p>
-<p>例如:</p>
-<p style="padding-left: 30px;"><a href="https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/3f98d46cdf791bd764beca645950a69f90e651c9/three_spur_rotating.py">第一版的 three_spur_rotating.py</a></p>
-<p style="padding-left: 30px;">修正各齒輪中心點位置的<a href="https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/three_spur_rotating.py">第二版 three_spur_rotating.py</a></p>
-<p>由於每一個 Gist 也是 Repository, 因此利用 Gist 儲存 Python 程式, 可以很清楚查詢每一個改版內容間的差異 (例如: 以 <a href="https://www.arc.id.au/CanvasGraphics.html">Cango 程式庫</a>編寫的<a href="https://gist.github.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/revisions">正齒輪模擬範例程式</a>).</p>
+<h4>例如:</h4>
+<p style="padding-left: 30px;"><a href="https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/3f98d46cdf791bd764beca645950a69f90e651c9/three_spur_rotating.py">第一版的 three_spur_rotating.py</a> (<a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/3f98d46cdf791bd764beca645950a69f90e651c9/three_spur_rotating.py">執行</a>)</p>
+<p style="padding-left: 30px;">修正各齒輪中心點位置的<a href="https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/three_spur_rotating.py">第二版 three_spur_rotating.py</a> (<a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/three_spur_rotating.py">執行</a>)</p>
+<h4 style="padding-left: 30px;">延伸練習題:</h4>
+<p style="padding-left: 60px;">上面這個程式可以設法再利用 Brython 增加三個輸入表單分別設定各齒輪的齒數, 可以在各位對 Brython 與 HTML 更加了解之後當作練習題目.</p>
+<p style="padding-left: 60px;">也可以與正齒輪傳動組的<a href="https://wcms-scrum1.herokuapp.com/gear_index">齒面寬設計</a>題目 (<a href="https://github.com/mdecourse/wcms-scrum1">原始碼</a>) 結合. 在設計運算完成後, 利用 SVG (或 DXF) 畫出正齒輪輪廓, 進入 CAD 長出厚度後, 以 3D 列印出所需要的正齒輪零件.</p>
+<p>由於每一個 Gist 也是 Repository, 因此利用 Gist 儲存 Python 程式, 可以很清楚查詢每一個改版內容間的差異, 例如: 以 <a href="https://www.arc.id.au/CanvasGraphics.html">Cango 程式庫</a>編寫的<a href="https://gist.github.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/revisions">正齒輪模擬範例程式</a> (<a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/cango_gear1.py">執行</a>).</p>
 <p>而且如 <a href="https://mde.tw/cp2021/content/Cango.html">Cango 程式範例</a>頁面所示, 使用者將 Python 程式 (或 Brython 程式) 儲存至 Gist 之後, 可以再利用以下的 beditor.py, 在網頁中安排按鈕, 點擊後可將 Gist 中所存放的 Python 程式版本放入網際程式編輯區, 按下 Run 後就可以直接執行.</p>
 <p>beditor.py</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import ace
@@ -299,7 +302,7 @@ class Editor():
 </pre>
 <p></p><h2>機械設計知識</h2>
 <p><a href="https://brython.info/">Brython</a> (Browser Python) 在網頁的執行速度並不很快, 因此比較適合初學者用來學習 Python 語法. 或者透過 WebGL 編寫架構較為簡單的機械設計模擬程式. 也可以與 Server 端的 Python + Flask 結合, 將功能較為完整的 Javascript 導入為程式庫.</p>
-<p>對於機械設計相關, 運算較複雜的流程, 可以採用 Python + <a href="https://cython.org/">Cython</a> 寫為動態連結程式庫. 或者利用 Rust 編寫可以讓 Python 呼叫的動態連結程式庫. 至於前端運算較複雜的程式, 則可以採用 <a href="https://www.typescriptlang.org/">Typescript</a> 或 <a href="https://www.rust-lang.org/">Rust</a> + <a href="https://webassembly.org/">Wasm</a> 的方式編寫.</p>
+<p>對於機械設計相關, 運算較複雜的流程, 可以採用 Python + <a href="https://cython.org/">Cython</a> 寫為動態連結程式庫. 或者利用 Rust 編寫可以讓 Python 呼叫的動態連結程式庫 (有人甚至認為: <a href="https://towardsdatascience.com/thought-you-loved-python-wait-until-you-meet-rust-64a06d976ce">以為喜歡 Python? 等遇見 Rust 之後再說</a> (<a href="https://github.com/KmolYuan?tab=repositories">呈堂見證</a>, 以 Rust 寫的 Python 解譯器: <a href="https://github.com/RustPython/RustPython">RustPython</a>). 有興趣請參閱, <a href="https://stackoverflow.blog/2020/01/20/what-is-rust-and-why-is-it-so-popular/">為何 Rust 如此受歡迎</a>?). 至於前端運算較複雜的程式, 則可以採用 <a href="https://www.typescriptlang.org/">Typescript</a> 或 <a href="https://www.rust-lang.org/">Rust</a> + <a href="https://webassembly.org/">Wasm</a> 的方式編寫.</p>
 <h4>以下是與機械設計有關的內容, 大部分電子書可以從校園網路中下載:</h4>
 <p><a href="https://pythonnumericalmethods.berkeley.edu/notebooks/Index.html">Python Programming And Numerical Methods: A Guide For Engineers And Scientists</a></p>
 <p><a href="https://www.algorist.com/algorist.html">Algorithm Design Manual</a></p>
@@ -2982,7 +2985,7 @@ var width = window.innerWidth;
 <p><a href="https://github.com/brython-dev/brython/wiki/How-Brython-works">https://github.com/brython-dev/brython/wiki/How-Brython-works</a></p>
 <p style="padding-left: 30px;">HTML 教程: <a href="https://wangdoc.com/html/">https://wangdoc.com/html/</a></p>
 <p style="padding-left: 30px;">Javascript 教程: <a href="https://wangdoc.com/javascript/index.html">https://wangdoc.com/javascript/index.html</a></p>
-<p>上一頁的網際 Python 是透過 <a href="https://brython.info/">https://brython.info/</a> 完成, 當使用者在網頁中執行 Python 程式時, 透過 Brython 即時轉為 Javascript 後執行.</p>
+<p>上一頁的網際 Python 是透過 <a href="https://brython.info/">https://brython.info/</a> 完成, 當使用者在網頁中執行 Python 程式時, 透過 Brython 即時轉為 Javascript 後執行. (<a href="https://en.wikipedia.org/wiki/B%C3%A9zier_curve">Bezier</a> <a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/2089a943b8fc260c2ca3ce4d0c886b1f/raw/e70f973d0b58f9db5fc6932960ef633421792f35/bezier24v3.py">範例</a>)</p>
 <p>Brython Google Group: <a href="https://groups.google.com/g/brython">https://groups.google.com/g/brython</a></p>
 <h4>Introduction guide to Brython:</h4>
 <p style="padding-left: 30px;"><a href="https://stackabuse.com/an-introductory-guide-to-brython">https://stackabuse.com/an-introductory-guide-to-brython</a></p>
@@ -2990,7 +2993,7 @@ var width = window.innerWidth;
 <p style="padding-left: 30px;"><a href="https://realpython.com/brython-python-in-browser/">https://realpython.com/brython-python-in-browser/</a></p>
 <h4>Game in Brython:</h4>
 <p style="padding-left: 30px;"><a href="https://medium.com/swlh/sick-of-javascript-just-use-browser-python-4b9679efe08b">https://medium.com/swlh/sick-of-javascript-just-use-browser-python-4b9679efe08b</a></p>
-<h4>Calculator in Brython:</h4>
+<h4>Calculator in Brython (應該可以透過 Brython <a href="https://brython.info/static_doc/en/html.html">html</a> 將 style 放入程式中):</h4>
 <p><a href="https://codehs.com/tutorial/zach/Intro_to_Brython_-_Calculator">https://codehs.com/tutorial/zach/Intro_to_Brython_-_Calculator</a></p>
 <p><a href="/downloads/calculator.html">calculator.html</a></p>
 <p><iframe height="300" src="/downloads/calculator.html" width="640"></iframe></p>
@@ -3684,6 +3687,10 @@ set path_vscode=%Disk%:\vscode;</pre>
 <p style="padding-left: 30px;"><a href="https://gitter.im/rustpython/Lobby">https://gitter.im/rustpython/Lobby</a></p>
 <p style="padding-left: 30px;"><a href="https://searchapparchitecture.techtarget.com/news/252496553/Google-Microsoft-back-Python-and-Rust-programming-languages">https://searchapparchitecture.techtarget.com/news/252496553/Google-Microsoft-back-Python-and-Rust-programming-languages</a></p>
 <p style="padding-left: 30px;"><a href="https://developers.redhat.com/blog/2017/11/16/speed-python-using-rust#why_does_it_matter_for_a_python_developer_">Speed up your python using Rust</a></p>
+<p style="padding-left: 60px;">高階抽象下仍不失其對於低階層面的控制</p>
+<p style="padding-left: 60px;">在編譯階段就能揪出平行運算與記憶體管理上的錯誤</p>
+<p style="padding-left: 60px;">由於沒有 runtime, 因此可以跟各種 runtime 結合運用, 以 Rust 寫的原生延伸程式, 可以與 node.js, python 或 lua 結合應用. 後續關注 <a href="https://github.com/getsentry/milksnake">milksnake</a> 與 <a href="https://github.com/PyO3/pyo3">pyo3</a>.</p>
+<p style="padding-left: 60px;">從<a href="https://mde.tw/cmstemplate/content/%E5%8F%AF%E6%94%9C%E7%B3%BB%E7%B5%B1.html">可攜系統</a>中下載 Rust, 然後進行實作, 編譯後的 Rust 可以導入 Python 呼叫.</p>
 <p style="padding-left: 30px;"><a href="https://blog.yasking.org/a/rust-create-dll-using-by-python-nodejs.html">https://blog.yasking.org/a/rust-create-dll-using-by-python-nodejs.html</a></p>
 <p style="padding-left: 30px;"><span style="background-color: #ffff99;">Python interpreter written in Rust</span>: <a href="https://github.com/RustPython/RustPython">https://github.com/RustPython/RustPython</a></p>
 <p style="padding-left: 60px;"><a href="https://archive.fosdem.org/2019/schedule/event/rust_python/attachments/slides/2846/export/events/attachments/rust_python/slides/2846/RustPython_fosdem2019.pdf">https://archive.fosdem.org/2019/schedule/event/rust_python/attachments/slides/2846/export/events/attachments/rust_python/slides/2846/RustPython_fosdem2019.pdf</a></p>
@@ -3761,8 +3768,7 @@ async fn main() -&gt; std::io::Result&lt;()&gt; {
 <p style="padding-left: 30px;"><a href="https://rust-lang-nursery.github.io/rust-cookbook/intro.html">https://rust-lang-nursery.github.io/rust-cookbook/intro.html</a></p>
 <p style="padding-left: 30px;"><a href="https://dhghomon.github.io/easy_rust/">https://dhghomon.github.io/easy_rust/</a></p>
 <p style="padding-left: 30px;"><a href="https://serokell.io/blog/rust-guide#data-ownership-model">https://serokell.io/blog/rust-guide#data-ownership-model</a></p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/zF34dRivLOw" title="YouTube video player" width="560"></iframe></p>
-<h3>Haskell</h3>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/zF34dRivLOw" title="YouTube video player" width="560"></iframe></p><h3>Haskell</h3>
 <p><a href="https://pandoc.org/">https://pandoc.org/</a> 就是採用 Haskell 編寫.</p>
 <p><a href="https://serokell.io/blog/10-reasons-to-use-haskell">https://serokell.io/blog/10-reasons-to-use-haskell</a></p>
 <p><a href="https://link.springer.com/book/10.1007/978-1-4842-4480-7">Practical Haskell</a> (校園網路中下載電子書)</p>
