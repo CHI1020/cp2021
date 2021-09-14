@@ -139,14 +139,97 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Rust << <a href='Rust.html'>Previous</a> <a href='PowerShell.html'>Next</a> >> PowerShell<br /><h1>Haskell</h1>
-<p><a href="https://pandoc.org/">https://pandoc.org/</a> 就是採用 Haskell 編寫.</p>
-<p><a href="https://serokell.io/blog/10-reasons-to-use-haskell">https://serokell.io/blog/10-reasons-to-use-haskell</a></p>
-<p><a href="https://link.springer.com/book/10.1007/978-1-4842-4480-7">Practical Haskell</a> (校園網路中下載電子書)</p>
-<p><a href="https://link.springer.com/book/10.1007/978-1-4842-3739-7">Practical Web Development with Haskell</a> (校園中下載電子書)</p>
-<p><a href="https://link.springer.com/book/10.1007/978-1-4302-6251-0">Beginning Haskell</a> (校園網路下載電子書)</p>
-<p><a href="https://link.springer.com/book/10.1007/978-1-4842-4507-1">Haskell Quick Syntax Reference</a> (校園網路下載電子書)</p>
-<br />Rust << <a href='Rust.html'>Previous</a> <a href='PowerShell.html'>Next</a> >> PowerShell</div>
+    <div id="tipue_search_content">run << <a href='run.html'>Previous</a> <br /><h1>run src</h1>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;h2&gt;run&lt;/h2&gt;
+&lt;!-- 導入 brython 程式庫 --&gt;
+&lt;script src="./../cmsimde/static/brython.js"&gt;&lt;/script&gt;
+&lt;script src="./../cmsimde/static/brython_stdlib.js"&gt;&lt;/script&gt;
+&lt;!-- 啟動 Brython --&gt;
+&lt;script&gt;// &lt;![CDATA[
+window.onload=function(){
+brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
+}
+// ]]&gt;&lt;/script&gt;
+&lt;p&gt;&lt;!-- 導入 FileSaver 與 filereader --&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;script type="text/javascript" src="./../cmsimde/static/ace/FileSaver.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cmsimde/static/ace/filereader.js"&gt;&lt;/script&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;!-- 導入 ace --&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;script type="text/javascript" src="./../cmsimde/static/ace/ace.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cmsimde/static/ace/ext-language_tools.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cmsimde/static/ace/mode-python3.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cmsimde/static/ace/snippets/python.js"&gt;&lt;/script&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;!-- 請注意, 這裡使用 Javascript 將 localStorage["py_src"] 中存在近端瀏覽器的程式碼, 由使用者決定存檔名稱--&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;script type="text/javascript"&gt;// &lt;![CDATA[
+function doSave(storage_id, filename){
+    var blob = new Blob([localStorage[storage_id]], {type: "text/plain;charset=utf-8"});
+    filename = document.getElementById(filename).value
+    saveAs(blob, filename+".py");
+}
+// ]]&gt;&lt;/script&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;!-- 印出版次與關鍵字程式 --&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;script type="text/python3"&gt;// &lt;![CDATA[
+from browser import document as doc
+import ace
+# 清除畫布
+def clear_bd(ev):
+    bd = doc["brython_div"]
+    bd.clear()
+# Brython 3.3.4 內建的 container 名稱為  'container' 且 turtle 輸出為 svg 必須使用 div 訂定 id
+Ace = ace.Editor(editor_id="kw_editor", console_id="kw_console", container_id="kw__container", storage_id="kw_py_src" )
+# 從 gist 取出程式碼後, 放入 editor 作為 default 程式
+
+def run():
+    # 利用 get 取下 src 變數值
+    try:
+        url = doc.query["src"]
+    except:
+        url = "https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/cango_gear1.py"
+    prog = open(url).read()
+
+    # 將程式載入編輯區
+    Ace.editor.setValue(prog)
+    Ace.editor.scrollToRow(0)
+    Ace.editor.gotoLine(0)
+    # 直接執行程式
+    #ns = {'__name__':'__main__'}
+    #exec(prog, ns)
+    # 按下 run 按鈕
+    Ace.run()
+
+# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
+doc['kw_run'].bind('click', Ace.run)
+doc['kw_show_console'].bind('click', Ace.show_console)
+doc['kw_clear_console'].bind('click', Ace.clear_console)
+doc['clear_bd'].bind('click', clear_bd)
+# 呼叫函式執行
+run()
+// ]]&gt;&lt;/script&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;!-- 用來顯示程式碼的 editor 區域 --&gt;&lt;/p&gt;
+&lt;div id="kw_editor" style="width: 600px; height: 300px;"&gt;&lt;/div&gt;
+&lt;p&gt;&lt;!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --&gt;&lt;/p&gt;
+&lt;!-- 存擋表單開始 --&gt;&lt;form&gt;&lt;label&gt;Filename: &lt;input id="kw_filename" placeholder="input file name" type="text"&gt;.py&lt;/label&gt; &lt;input onclick="doSave('kw_py_src', 'kw_filename');" type="submit" value="Save"&gt;&lt;/form&gt;&lt;!-- 存擋表單結束 --&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;!-- 執行與清除按鈕開始 --&gt;
+&lt;p&gt;&lt;button id="kw_run"&gt;Run&lt;/button&gt; &lt;button id="kw_show_console"&gt;Output&lt;/button&gt; &lt;button id="kw_clear_console"&gt;清除輸出區&lt;/button&gt;&lt;button id="clear_bd"&gt;清除繪圖區&lt;/button&gt;&lt;button onclick="window.location.reload()"&gt;Reload&lt;/button&gt;&lt;/p&gt;
+&lt;!-- 執行與清除按鈕結束 --&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;!-- 程式執行 ouput 區 --&gt;
+&lt;div style="width: 100%; height: 100%;"&gt;&lt;textarea autocomplete="off" id="kw_console"&gt;&lt;/textarea&gt;&lt;/div&gt;
+&lt;!-- Brython 程式執行的結果, 都以 brython_div 作為切入位置 --&gt;
+&lt;div id="brython_div"&gt;&lt;/div&gt;
+&lt;!-- 導入 gearUtils-0.9.js Cango 齒輪繪圖程式庫 --&gt;
+&lt;script src="https://mde.tw/cp2021/cmsimde/static/Cango-24v03-min.js"&gt;&lt;/script&gt;
+&lt;script src="https://mde.tw/cp2021/cmsimde/static/gearUtils-09.js"&gt;&lt;/script&gt;
+&lt;script src="https://mde.tw/cp2021/cmsimde/static/SVGpathUtils-6v03-min.js"&gt;&lt;/script&gt;</pre>
+<p></p><br />run << <a href='run.html'>Previous</a> </div>
         
     <!-- footer -->
       <div class="container">
