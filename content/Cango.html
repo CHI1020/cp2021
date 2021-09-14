@@ -222,7 +222,7 @@ doc['clear_bd'].bind('click', clear_bd)
 <div id="brython_div"></div>
 <div class="col-md-0" height="1" id="graphics-column" width="1"></div>
 <!-- 開始建立程式範例以及對應按鈕 -->
-<p><button id="snake">Snake</button><button id="clock">Clock</button><button id="two_link_ik">Two link IK</button><button id="bezier">Bezier</button><button id="spur_num">Spur</button><button id="cango_spur1">Cango Spur 1</button><button id="cango_three_spurs">Cango three gears</button></p>
+<p><button id="snake">Snake</button><button id="clock">Clock</button><button id="two_link_ik">Two link IK</button><button id="bezier">Bezier</button><button id="spur_num">Spur</button><button id="cango_spur1">Cango Spur 1</button><button id="spur_with_form">Spur with form</button><button id="four_bar">Fourbar</button><button id="cango_three_spurs">Cango three gears</button></p>
 <!-- clock 開始 -->
 <script type="text/python3">
 # 導入 document 與 beditor
@@ -298,6 +298,28 @@ document["cango_spur1"].bind("click", cango_spur1.prog)
 </script>
 <!-- cango spur gear 1 ends -->
 <p></p>
+<!-- spur with form starts -->
+<script type="text/python3">
+from browser import document
+import beditor
+url = "https://gist.githubusercontent.com/mdecourse/626206cf3b2a9a9a69f7ce4bb4a116f0/raw/970e2653a7207828b3814c2c867892903734522a/spur_set_num.py"
+src = open(url).read()
+spur_with_form = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+document["spur_with_form"].bind("click", spur_with_form.prog)
+</script>
+<!-- spur with form ends -->
+<p></p>
+<!-- four bar starts -->
+<script type="text/python3">
+from browser import document
+import beditor
+url = "https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/2454b2c11054b611ad315b648d792de385bb7174/prairiedraw_fourbar.py"
+src = open(url).read()
+four_bar = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+document["four_bar"].bind("click", four_bar.prog)
+</script>
+<!-- four bar ends -->
+<p></p>
 <!-- cango three spur gears starts -->
 <script type="text/python3">
 from browser import document
@@ -313,7 +335,8 @@ document["cango_three_spurs"].bind("click", cango_three_spurs.prog)
 <script src="https://mde.tw/cp2021/cmsimde/static/Cango-24v03-min.js"></script>
 <script src="https://mde.tw/cp2021/cmsimde/static/gearUtils-09.js"></script>
 <script src="https://mde.tw/cp2021/cmsimde/static/SVGpathUtils-6v03-min.js"></script>
-<br />Disqus << <a href='Disqus.html'>Previous</a> <a href='rungist.html'>Next</a> >> rungist</div>
+<script src="https://mde.tw/cp2021/cmsimde/static/sylvester.js"></script>
+<script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script><br />Disqus << <a href='Disqus.html'>Previous</a> <a href='rungist.html'>Next</a> >> rungist</div>
         
     <!-- footer -->
       <div class="container">
