@@ -3658,7 +3658,10 @@ set path_vscode=%Disk%:\vscode;</pre>
 <p style="padding-left: 30px;"><a href="http://mde.tw/cp2019/content/DartLang.html">http://mde.tw/cp2019/content/DartLang.html</a></p>
 </div>
 </div>
-<h3>Rust</h3>
+<h3>Red</h3>
+<p>見識過 <a href="http://www.rebol.com/">http://www.rebol.com/</a> 就會令人引頸期盼 Red Language, 非常奇特的程式語言.</p>
+<p><a href="https://github.com/red/red/wiki/Coming-to-Red-from-Python">https://github.com/red/red/wiki/Coming-to-Red-from-Python</a></p>
+<p><a href="https://github.com/red/red">https://github.com/red/red</a></p><h3>Rust</h3>
 <h4>Rust 中文入門:</h4>
 <p style="padding-left: 30px;"><a href="https://rust-lang.tw/book-tw/title-page.html">https://rust-lang.tw/book-tw/title-page.html</a> (<a href="https://github.com/rust-tw/book-tw">on Github</a>, 利用 <a href="https://github.com/rust-tw/book-tw/blob/zh_tw/.github/workflows/main.yml">Github Actions</a> (<a href="https://github.com/features/actions">何謂 Github Actions</a>?), 以 <a href="https://github.com/rust-lang/mdBook">mdbook</a> 轉為 html)</p>
 <p style="padding-left: 30px;">Rust 編譯系統也包含在 <a href="https://mde.tw">KMOLab</a> <a href="http://mde.tw/cmstemplate/content/%E5%8F%AF%E6%94%9C%E7%B3%BB%E7%B5%B1.html">可攜系統</a>中.</p>
@@ -9243,12 +9246,12 @@ browser.timer.set_interval(bunnyRotate, 30)
 <li>練習以 Brython 導入外部 <a href="https://brython.info/static_doc/en/javascript.html">Javasdript 程式庫</a></li>
 </ol>
 <h4>題目一:</h4>
-<p>請以 <a href="https://mde.tw/cp2021/content/Gist.html">https://mde.tw/cp2021/content/Gist.html</a> 中的 Spur 正齒輪輪廓繪圖為基礎, 將程式改為 Spur1 與 Spur2 等兩個按鈕:</p>
+<p>請以 <a href="https://mde.tw/cp2021/content/Gist.html">https://mde.tw/cp2021/content/Gist.html</a> (<a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/626206cf3b2a9a9a69f7ce4bb4a116f0/raw/970e2653a7207828b3814c2c867892903734522a/spur_set_num.py">範例</a>) 中的 Spur 正齒輪輪廓繪圖為基礎, 將程式改為 Spur1 與 Spur2 等兩個按鈕:</p>
 <ol>
 <li>Spur1 按鈕可帶出三個水平排列的齒輪組囓合輪廓繪圖, 並且可由使用者分別從表單輸入三個齒輪的齒數與共同壓力角.</li>
 <li>Spur2 按鈕則可帶出三個以 L 形排列的齒輪組囓合輪廓繪圖, 並且可由使用者分別從表單輸入三個齒輪的齒數與共同壓力角.</li>
-<li>請利用 <a href="https://www.arc.id.au/GearDrawing.html">https://www.arc.id.au/GearDrawing.html</a> 中的 gearUtils-09.js 執行上述兩個題目的正齒輪繪圖.</li>
-<li>請在上述四個題目中各加上一個 Animation 按鈕, 使用者按下後, 各齒輪可以依照 input 轉速模擬囓合傳動.</li>
+<li>請利用 <a href="https://www.arc.id.au/GearDrawing.html">https://www.arc.id.au/GearDrawing.html</a> 中的 gearUtils-09.js 執行上述兩個題目的正齒輪繪圖 (<a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/76c510c47d88c9c218130a4ebb2cadf59803a3c7/cango_gear1.py">範例</a>).</li>
+<li>請在上述四個題目中各加上一個 Animation 按鈕, 使用者按下後, 各齒輪可以依照 input 轉速模擬囓合傳動 (<a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/76c510c47d88c9c218130a4ebb2cadf59803a3c7/three_spur_rotating.py">範例</a>).</li>
 </ol>
 <hr/>
 <h4>題目二練習目的:</h4>
@@ -9269,7 +9272,14 @@ browser.timer.set_interval(bunnyRotate, 30)
 <p>至於挑戰二所列出, 有關機械設計工程師希望利用電腦解決的問題可能太過廣泛, 因為下列這段敘述:</p>
 <p>Computer programming is to learn how to formalize intuitions about process, how to do things, starting to develop a way to talk precisely about how-to knowledge.</p>
 <p>其中的關鍵字是正式, 直覺, 流程, 做事, 開發, 精確與如何解題所牽涉的知識. 重新組合一下就成為:</p>
-<p>將直覺做事的過程轉化為利用正式且精確的知識解決問題. 而計算機程式則是居中希望採用的工具與方法.</p>
+<p>將<span style="background-color: #ffff99;">直覺做事的過程</span>轉化為<span style="background-color: #ffff99;">利用正式且精確的知識解決問題</span>. 而計算機程式則是居中希望採用的工具與方法.</p>
+<p>以下為一般工程師面對問題的解決流程:</p>
+<ol>
+<li>(資料收集與文獻探討) - 工程師在解決問題的過程, 都必須花時間先搜尋相關資料, 仔細研究各種文獻中是否已經有最佳解題方案, 然後再思考這些方案是否適合用來解決此刻所面對的問題.</li>
+<li>(實作解題方案) - 一旦確定文獻中已經提供適合解題的方案, 就可以著手根據流程中的步驟, 逐一實作確定問題是否獲得解決.</li>
+<li>(討論解題方案) - 若其他人所使用的方法, 必須配合時空背景與環境現實進行修改, 也必須逐一進行測試確認.</li>
+<li>(發表解題歷程與結果) - 在上述解題過程中, 必須設法留下解題或思考的歷程資料, 並適時發布相關心得, 以便提供他人參考.</li>
+</ol>
 <p>一般來說採用計算機解決問題牽涉程式語言, 演算法與資料結構等三大類. 在這一門課程中:</p>
 <ol>
 <li>程式語言主要採用 Python, 但也會提到 Javascript 與其他相關程式語言.</li>
@@ -9532,9 +9542,9 @@ doc['clear_bd3'].bind('click', clear_bd3)
 <p style="padding-left: 30px;"><a href="https://mde.tw/cad2021/downloads/Version%20Control%20(%20git_github).pdf">https://mde.tw/cad2021/downloads/Version%20Control%20(%20git_github).pdf</a></p>
 <p style="padding-left: 30px;"><a href="https://www.nobledesktop.com/blog/what-is-git-and-why-should-you-use-it">https://www.nobledesktop.com/blog/what-is-git-and-why-should-you-use-it</a></p>
 <p style="padding-left: 30px;"><a href="https://www.git-tower.com/learn/git/ebook/en/command-line/appendix/why-git/">https://www.git-tower.com/learn/git/ebook/en/command-line/appendix/why-git/</a></p>
-<p style="padding-left: 30px;"><a href="https://www.freecodecamp.org/news/what-is-git-and-how-to-use-it-c341b049ae61/">https://www.freecodecamp.org/news/what-is-git-and-how-to-use-it-c341b049ae61/</a> </p>
+<p style="padding-left: 30px;"><a href="https://www.freecodecamp.org/news/what-is-git-and-how-to-use-it-c341b049ae61/">https://www.freecodecamp.org/news/what-is-git-and-how-to-use-it-c341b049ae61/</a></p>
 <p>請登入 @gm 帳號後, 下載 <a href="https://drive.google.com/file/d/1LW-UHAY9Hgvnfk14Cknt3PXFNr6huw9t/view?usp=sharing">cp2021_textbook.pdf</a> 課程教材.</p>
-<p>在 Task3 工作項目中, 希望能將 Task1 與 Task2 已經練習過的 Python 程式碼, 存入 Github 倉儲管理, 並逐步根據 <a href="https://drive.google.com/file/d/1LW-UHAY9Hgvnfk14Cknt3PXFNr6huw9t/view?usp=sharing">cp2021_textbook.pdf</a> 學習 Python 相關用法. 目的是有能力直接在 Brython 的環境中修改貪食蛇遊戲的程式碼.</p>
+<p>在 Task3 工作項目中, 希望能將 Task1 與 Task2 已經練習過的 Python 程式碼, 存入 Github 倉儲管理 (可以放入自己倉儲中的 downloads 目錄以及 <a href="https://docs.github.com/en/github/writing-on-github/editing-and-sharing-content-with-gists/creating-gists">Gist</a>), 並逐步根據 <a href="https://drive.google.com/file/d/1LW-UHAY9Hgvnfk14Cknt3PXFNr6huw9t/view?usp=sharing">cp2021_textbook.pdf</a> 學習 Python 相關用法. 目的是有能力直接在 Brython 的環境中修改貪食蛇遊戲的程式碼.</p>
 <p>以下為按下 Run 之後, 可以利用 i, j, l, m 等鍵盤上的 key 控制 snake 的移動方向:</p>
 <!-- 導入 brython -->
 <p>
@@ -10017,6 +10027,7 @@ doc['clear_bd2'].bind('click', clear_bd2)
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <h2>Cango</h2>
 <p>這裡所指的 Cango 為 <a href="https://www.arc.id.au/CanvasGraphics.html">https://www.arc.id.au/CanvasGraphics.html</a>, 也就是採用 Javascript 編寫的 Canvas 程式套件, 可以用來進行 2D 靜態與動態繪圖. 也有進階版的 3D 繪圖程式庫: <a href="https://www.arc.id.au/Canvas3DGraphics.html">https://www.arc.id.au/Canvas3DGraphics.html</a></p>
+<p>除了 Cango 相關程式庫外, 本課程中的 Brython 還會導入 <a href="https://github.com/mdecourse/sylvester">https://github.com/mdecourse/sylvester</a> 與 <a href="https://github.com/mdecourse/PrairieDraw.js">https://github.com/mdecourse/PrairieDraw.js</a>, 可以用來建構與機械設計流程相關的 2D 繪圖 (<a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/76c510c47d88c9c218130a4ebb2cadf59803a3c7/cango_gear1.py">正齒輪繪圖</a>) 與動畫模擬 (<a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/76c510c47d88c9c218130a4ebb2cadf59803a3c7/three_spur_rotating.py">正齒輪組囓合傳動</a>與<a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/76c510c47d88c9c218130a4ebb2cadf59803a3c7/prairiedraw_fourbar.py">平面四連桿運動模擬</a>).</p>
 <p>透過 Brython 中的 <a href="https://brython.info/static_doc/en/javascript.html">https://brython.info/static_doc/en/javascript.html</a>, 可以試著將 Cango 程式導入 CMSiMDE 頁面中, 學習目標是用來進行 2D/3D 機構模擬.</p>
 <p>首先要在此頁導入 Brython, 作法就是將 <a href="https://mde.tw/cp2021/content/Brythonsrc.html">Brythonsrc</a> 頁面的超文件碼放入本頁面.</p>
 <p>接著就必須要注意有關 CMSiMDE 程式庫的引用方式, 若採 submodule 方式引入 CMSiMDE, 使用者並沒有修改子模組版本內容的權限, 因此若要修改 CMSiMDE 程式庫的內容 (例如: 在此頁就是要更新 Cango 程式庫版本, 就必須進入 CMSiMDE 的 static 目錄改版), 就必須採用不以 submodule 的方式導入 CMSiMDE.</p>
@@ -10189,7 +10200,7 @@ document["spur_with_form"].bind("click", spur_with_form.prog)
 <script type="text/python3">
 from browser import document
 import beditor
-url = "https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/2454b2c11054b611ad315b648d792de385bb7174/prairiedraw_fourbar.py"
+url = "https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/76c510c47d88c9c218130a4ebb2cadf59803a3c7/prairiedraw_fourbar.py"
 src = open(url).read()
 four_bar = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
 document["four_bar"].bind("click", four_bar.prog)
@@ -10210,14 +10221,16 @@ document["cango_three_spurs"].bind("click", cango_three_spurs.prog)
 <!-- 導入 gearUtils-0.9.js Cango 齒輪繪圖程式庫 -->
 <script src="https://mde.tw/cp2021/cmsimde/static/Cango-24v03-min.js"></script>
 <script src="https://mde.tw/cp2021/cmsimde/static/gearUtils-09.js"></script>
-<script src="https://mde.tw/cp2021/cmsimde/static/SVGpathUtils-6v03-min.js"></script><h2>rungist</h2>
+<script src="https://mde.tw/cp2021/cmsimde/static/SVGpathUtils-6v03-min.js"></script>
+<script src="https://mde.tw/cp2021/cmsimde/static/sylvester.js"></script>
+<script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script><h2>rungist</h2>
 <p>rungist 在頁面中採 Javascript 呼叫 Brython 函式的方式, 讓使用者可以直接以 URL Get 執行 Gist 上的 Brython 程式. 建構的目的是讓學員可以利用 URL 繳交統一格式的 Brython 作業程式. 只要在 rungist 頁面加上 ?src=gist_url, 就可以將靜態繪圖或 animation 呈現在畫面中.</p>
 <p>以下連結左邊為 local 動態網頁編輯用, 而右邊的連結則為遠端 rungist 的 demo 範例.</p>
 <p><a href="/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/cango_gear1.py">Cango gear</a> (for local link only) (<a href="https://mde.tw/cp2021/content/rungist.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/cango_gear1.py">Cango gear</a>)</p>
 <p><a href="/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/626206cf3b2a9a9a69f7ce4bb4a116f0/raw/970e2653a7207828b3814c2c867892903734522a/spur_set_num.py">Spur with form input</a> (for local link only) (<a href="https://mde.tw/cp2021/content/rungist.html?src=https://gist.githubusercontent.com/mdecourse/626206cf3b2a9a9a69f7ce4bb4a116f0/raw/970e2653a7207828b3814c2c867892903734522a/spur_set_num.py">Spur with form input</a>)</p>
 <p><a href="/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/three_spur_rotating.py">local three gears</a> (<a href="https://mde.tw/cp2021/content/rungist.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/three_spur_rotating.py">remote three gears</a>)</p>
 <p><a href="/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/379f02862e9dfd95dbc5241d4faa2ad4/raw/e3dc77e68bbfb8f00eef2e78d3c8d2323b0f17da/clock.py">local clock</a> <a href="https://mde.tw/cp2021/content/rungist.html?src=https://gist.githubusercontent.com/mdecourse/379f02862e9dfd95dbc5241d4faa2ad4/raw/e3dc77e68bbfb8f00eef2e78d3c8d2323b0f17da/clock.py">remote clock</a></p>
-<p><a href="/get_page/run?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/2454b2c11054b611ad315b648d792de385bb7174/prairiedraw_fourbar.py">local fourbar</a> <a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/2454b2c11054b611ad315b648d792de385bb7174/prairiedraw_fourbar.py">remote fourbar</a> (準備納入: <a href="https://github.com/mdecourse/Wiper-Mechanism">https://github.com/mdecourse/Wiper-Mechanism</a>)</p>
+<p><a href="/get_page/run?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/76c510c47d88c9c218130a4ebb2cadf59803a3c7/prairiedraw_fourbar.py">local fourbar</a> <a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/76c510c47d88c9c218130a4ebb2cadf59803a3c7/prairiedraw_fourbar.py">remote fourbar</a> (準備納入: <a href="https://github.com/mdecourse/Wiper-Mechanism">https://github.com/mdecourse/Wiper-Mechanism</a>)</p>
 <p style="padding-left: 30px;"><a href="https://prairielearn.readthedocs.io/en/latest/PrairieDraw/">https://prairielearn.readthedocs.io/en/latest/PrairieDraw/</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecourse/PrairieDraw.js">https://github.com/mdecourse/PrairieDraw.js</a></p>
 <p><a href="/get_page/rungist/1">rungist</a> (for local edit)</p>
