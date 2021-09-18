@@ -139,52 +139,20 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">rungist << <a href='rungist.html'>Previous</a> <a href='run.html'>Next</a> >> run<br /><h1>rungist src</h1>
-<p>以下為上一頁 rungist 的原始碼:</p>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;h2&gt;rungist&lt;/h2&gt;
-&lt;p&gt;rungist 在頁面中採 Javascript 呼叫 Brython 函式的方式, 讓使用者可以直接以 URL Get 執行 Gist 上的 Brython 程式. 建構的目的是讓學員可以利用 URL 繳交統一格式的 Brython 作業程式. 只要在 rungist 頁面加上 ?src=gist_url, 就可以將靜態繪圖或 animation 呈現在畫面中.&lt;/p&gt;
-&lt;p&gt;以下連結左邊為 local 動態網頁編輯用, 而右邊的連結則為遠端 rungist 的 demo 範例.&lt;/p&gt;
-&lt;p&gt;&lt;a href="/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/cango_gear1.py"&gt;Cango gear&lt;/a&gt; (for local link only) (&lt;a href="https://mde.tw/cp2021/content/rungist.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/cango_gear1.py"&gt;Cango gear&lt;/a&gt;)&lt;/p&gt;
-&lt;p&gt;&lt;a href="/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/626206cf3b2a9a9a69f7ce4bb4a116f0/raw/970e2653a7207828b3814c2c867892903734522a/spur_set_num.py"&gt;Spur with form input&lt;/a&gt; (for local link only) (&lt;a href="https://mde.tw/cp2021/content/rungist.html?src=https://gist.githubusercontent.com/mdecourse/626206cf3b2a9a9a69f7ce4bb4a116f0/raw/970e2653a7207828b3814c2c867892903734522a/spur_set_num.py"&gt;Spur with form input&lt;/a&gt;)&lt;/p&gt;
-&lt;p&gt;&lt;a href="/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/three_spur_rotating.py"&gt;local three gears&lt;/a&gt; (&lt;a href="https://mde.tw/cp2021/content/rungist.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/three_spur_rotating.py"&gt;remote three gears&lt;/a&gt;)&lt;/p&gt;
-&lt;p&gt;&lt;a href="/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/379f02862e9dfd95dbc5241d4faa2ad4/raw/e3dc77e68bbfb8f00eef2e78d3c8d2323b0f17da/clock.py"&gt;local clock&lt;/a&gt; &lt;a href="https://mde.tw/cp2021/content/rungist.html?src=https://gist.githubusercontent.com/mdecourse/379f02862e9dfd95dbc5241d4faa2ad4/raw/e3dc77e68bbfb8f00eef2e78d3c8d2323b0f17da/clock.py"&gt;remote clock&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="/get_page/rungist/1"&gt;rungist&lt;/a&gt; (for local edit)&lt;/p&gt;
-&lt;!-- 導入 brython 程式庫 --&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;script src="./../cmsimde/static/brython.js"&gt;&lt;/script&gt;
-&lt;script src="./../cmsimde/static/brython_stdlib.js"&gt;&lt;/script&gt;
-&lt;!-- 啟動 Brython --&gt;
-&lt;script&gt;// &lt;![CDATA[
-window.onload=function(){
-    brython();
-}
-// ]]&gt;&lt;/script&gt;
-&lt;!-- 頁面載入後執行 brythonListener() --&gt;
-&lt;script&gt;// &lt;![CDATA[
-$(document).ready( function() {
-    brythonListener();
-});
-// ]]&gt;&lt;/script&gt;
-&lt;!-- 建立讓 Javascript 執行的 brython 程式 --&gt;
-&lt;script type="text/python"&gt;// &lt;![CDATA[
-from browser import document
-from browser import window
-
-def run():
-    prog = open(document.query["src"]).read()
-    ns = {'__name__':'__main__'}
-    exec(prog, ns)
-
-# 透過 window 將 Brython 的 run() 函式與 Javascript 的  brythonListner 函式對應
-window.brythonListener = run()
-// ]]&gt;&lt;/script&gt;
-&lt;!-- Brython 程式執行的結果, 都以 brython_div 作為切入位置 --&gt;
-&lt;div id="brython_div"&gt;&lt;/div&gt;
-&lt;!-- 導入 gearUtils-0.9.js Cango 齒輪繪圖程式庫 --&gt;
-&lt;script src="https://mde.tw/cp2021/cmsimde/static/Cango-24v03-min.js"&gt;&lt;/script&gt;
-&lt;script src="https://mde.tw/cp2021/cmsimde/static/gearUtils-09.js"&gt;&lt;/script&gt;
-&lt;script src="https://mde.tw/cp2021/cmsimde/static/SVGpathUtils-6v03-min.js"&gt;&lt;/script&gt;</pre>
-<br />rungist << <a href='rungist.html'>Previous</a> <a href='run.html'>Next</a> >> run</div>
+    <div id="tipue_search_content">機械設計知識 << <a href='機械設計知識.html'>Previous</a> <a href='Python.html'>Next</a> >> Python<br /><h1>RL</h1>
+<p>將 <a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/3db55f124185def5aac8e5d51579c484/raw/181374bcd9a1e74f0701635131e5cf0a52259af6/snake_slope.py">snake_slope.py</a> 與 s<a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/3db55f124185def5aac8e5d51579c484/raw/9f1df758ac7fe40d0c83f9a59d38c9f5d62cddda/snake_xy.py">nake_xy.py</a> 透過 Q-learning 演算法進行修改.</p>
+<p>From <a href="https://en.wikipedia.org/wiki/Model-free_(reinforcement_learning):">https://en.wikipedia.org/wiki/Model-free_(reinforcement_learning):</a></p>
+<p style="padding-left: 30px;">In reinforcement learning (RL), a <span style="background-color: #ffff99;">model-free algorithm</span> (as opposed to a model-based one) is an algorithm which does not use the <span style="background-color: #ffff99;">transition probability distribution</span> (and the reward function) associated with the <span style="background-color: #ffff99;">Markov decision process</span> (MDP), which, in RL, represents the problem to be solved.</p>
+<p style="padding-left: 30px;">The transition probability distribution (or transition model) and the reward function are often collectively called the "model" of the environment (or MDP), hence the name "model-free".</p>
+<p style="padding-left: 30px;">A model-free RL algorithm can be thought of as an "explicit" trial-and-error algorithm. An example of a model-free algorithm is Q-learning.</p>
+<p style="padding-left: 30px;">在強化學習領域, 所謂<span style="background-color: #ffff99;">無模型演算法</span> (相對於模型導向演算法), 特指不使用<span style="background-color: #ffff99;">馬可夫決策流程</span>中的<span style="background-color: #ffff99;">過渡隨機分佈</span> (及其獎勵函式) 進行學習解題的一種演算法.</p>
+<p style="padding-left: 30px;">由於過渡隨機分佈（或過渡模型）與獎勵函數統稱為受訓環境 (即馬可夫決策流程) 的模型, 因此不使用過渡隨機分佈的強化學習被稱為無模型演算法.</p>
+<p style="padding-left: 30px;">無模型強化學習演算法可視為外顯式試誤演算法,  Q-learning 即無模型強化學習演算法的一個範例.</p>
+<p><a href="https://en.wikipedia.org/wiki/Q-learning">https://en.wikipedia.org/wiki/Q-learning</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Bellman_equation">https://en.wikipedia.org/wiki/Bellman_equation</a> </p>
+<p><a href="https://sid-sr.github.io/Q-Snake/">https://sid-sr.github.io/Q-Snake/</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/sid-sr/Q-Snake">https://github.com/sid-sr/Q-Snake</a></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/8cdUree20j4" title="YouTube video player" width="560"></iframe></p><br />機械設計知識 << <a href='機械設計知識.html'>Previous</a> <a href='Python.html'>Next</a> >> Python</div>
         
     <!-- footer -->
       <div class="container">

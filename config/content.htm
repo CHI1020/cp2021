@@ -330,7 +330,20 @@ class Editor():
 <p><a href="https://link.springer.com/book/10.1007/978-3-662-05302-7">General Spatial Involute Gearing</a> (在校園網路下載電子書)</p>
 <p><a href="https://link.springer.com/book/10.1007/978-3-662-08013-9">Inventive Thinking through TRIZ</a> (在校園網路下載電子書)</p>
 <p><a href="https://link.springer.com/book/10.1007/978-1-4757-2872-9">A Mathematical Theory of Design</a> (在校園網路下載電子書)</p>
-<h2>Python</h2>
+<h3>RL</h3>
+<p>將 <a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/3db55f124185def5aac8e5d51579c484/raw/181374bcd9a1e74f0701635131e5cf0a52259af6/snake_slope.py">snake_slope.py</a> 與 s<a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/3db55f124185def5aac8e5d51579c484/raw/9f1df758ac7fe40d0c83f9a59d38c9f5d62cddda/snake_xy.py">nake_xy.py</a> 透過 Q-learning 演算法進行修改.</p>
+<p>From <a href="https://en.wikipedia.org/wiki/Model-free_(reinforcement_learning):">https://en.wikipedia.org/wiki/Model-free_(reinforcement_learning):</a></p>
+<p style="padding-left: 30px;">In reinforcement learning (RL), a <span style="background-color: #ffff99;">model-free algorithm</span> (as opposed to a model-based one) is an algorithm which does not use the <span style="background-color: #ffff99;">transition probability distribution</span> (and the reward function) associated with the <span style="background-color: #ffff99;">Markov decision process</span> (MDP), which, in RL, represents the problem to be solved.</p>
+<p style="padding-left: 30px;">The transition probability distribution (or transition model) and the reward function are often collectively called the "model" of the environment (or MDP), hence the name "model-free".</p>
+<p style="padding-left: 30px;">A model-free RL algorithm can be thought of as an "explicit" trial-and-error algorithm. An example of a model-free algorithm is Q-learning.</p>
+<p style="padding-left: 30px;">在強化學習領域, 所謂<span style="background-color: #ffff99;">無模型演算法</span> (相對於模型導向演算法), 特指不使用<span style="background-color: #ffff99;">馬可夫決策流程</span>中的<span style="background-color: #ffff99;">過渡隨機分佈</span> (及其獎勵函式) 進行學習解題的一種演算法.</p>
+<p style="padding-left: 30px;">由於過渡隨機分佈（或過渡模型）與獎勵函數統稱為受訓環境 (即馬可夫決策流程) 的模型, 因此不使用過渡隨機分佈的強化學習被稱為無模型演算法.</p>
+<p style="padding-left: 30px;">無模型強化學習演算法可視為外顯式試誤演算法,  Q-learning 即無模型強化學習演算法的一個範例.</p>
+<p><a href="https://en.wikipedia.org/wiki/Q-learning">https://en.wikipedia.org/wiki/Q-learning</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Bellman_equation">https://en.wikipedia.org/wiki/Bellman_equation</a> </p>
+<p><a href="https://sid-sr.github.io/Q-Snake/">https://sid-sr.github.io/Q-Snake/</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/sid-sr/Q-Snake">https://github.com/sid-sr/Q-Snake</a></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/8cdUree20j4" title="YouTube video player" width="560"></iframe></p><h2>Python</h2>
 <p>機械設計工程系的計算機程式將利用網際 Python 程式 (<a href="https://brython.info/">Brython</a>) 的應用作為開端, 讓使用者練習利用 Python 程式語言解決問題. 由於 <a href="https://brython.info/">Brython</a> 採直接在網頁中, 將 Python 程式碼轉換為 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript">Javascript</a> 後執行, 因此使用者在學習如何利用 <a href="https://brython.info/">Brython</a> 程式語言解決問題時, 必須對 <a href="https://developer.mozilla.org/zh-TW/docs/Glossary/HTML">HTML</a>, <a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/CSS_basics">CSS</a>, <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript">Javascript</a> 與 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/WebGL_API">WebGL</a> 有相當程度的認識.</p>
 <p>計算機程式預計學員能夠在網際 Python 的引導下, 逐步了解在面臨不同工程問題時, 能夠針對 Javascript, C/C++, <a href="https://www.lua.org/">Lua</a> 等常用電腦程式語言進行學習. 並且對近幾年發展出的 Dart, Typescript 與 Rust 保持高度興趣, 以便因應未來全網際整合的虛實產品開發環境.</p>
 <p>本系列課程除了計算機程式, 還包括網際內容管理, 電腦輔助設計實習與協同產品設計實習等三門課程. 課程的規劃是希望能夠透過 <a href="https://www.fossil-scm.org">Fossil SCM</a>, <a href="https://solvespace.com">Solvespace</a>, <a href="https://github.com/Range-Software/range3">Range3</a>, <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 與 <a href="https://cyberbotics.com/">Webots</a> 等開源軟體的探究, 讓技職體系機械設計工程專長學子, <span style="background-color: #ffff99;">了解如何運用電腦將做事的過程及直覺形式化, 並各自儘快找到值得投入的目標, 探索如何準確地讓參與協同人員討論並運用既有知識, 從解題過程中累積經驗, 以便衍生出更多能應付未來挑戰的實用知識</span>.</p>
@@ -10005,16 +10018,21 @@ doc['clear_bd2'].bind('click', clear_bd2)
 <p style="padding-left: 30px;"><a href="https://github.com/mdecourse/snake">https://github.com/mdecourse/snake</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecourse/snake-1">https://github.com/mdecourse/snake-1</a></p>
 <p style="padding-left: 30px;"><a href="/downloads/graph_search_algorithm.pdf">graph_search_algorithm.pdf</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/snake-Q-Learning">https://github.com/mdecourse/snake-Q-Learning</a> 中所使用的 Pygame 可以 <a href="https://github.com/yakkomajuri/brython-snake">brython-snake</a> 取代, numpy 可以採 <a href="https://github.com/nicolaspanel/numjs">https://github.com/nicolaspanel/numjs</a> 取代. </p>
-<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/Snake-Q-Learning-1">https://github.com/mdecourse/Snake-Q-Learning-1</a> </p>
-<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/simple-neural-network-js">https://github.com/mdecourse/simple-neural-network-js</a> </p>
-<p style="padding-left: 30px;"><a href="https://towardsdatascience.com/teaching-a-computer-how-to-play-snake-with-q-learning-93d0a316ddc0">https://towardsdatascience.com/teaching-a-computer-how-to-play-snake-with-q-learning-93d0a316ddc0</a> </p>
-<p style="padding-left: 60px;"><a href="https://en.wikipedia.org/wiki/Bellman_equation">https://en.wikipedia.org/wiki/Bellman_equation</a> </p>
-<p style="padding-left: 60px;"><a href="https://www.youtube.com/watch?v=14BfO5lMiuk">https://www.youtube.com/watch?v=14BfO5lMiuk</a>  </p>
-<p style="padding-left: 60px;"><a href="https://towardsdatascience.com/the-bellman-equation-59258a0d3fa7">https://towardsdatascience.com/the-bellman-equation-59258a0d3fa7</a> </p>
+<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/snake-Q-Learning">https://github.com/mdecourse/snake-Q-Learning</a> 中所使用的 Pygame 可以 <a href="https://github.com/yakkomajuri/brython-snake">brython-snake</a> 取代, numpy 可以採 <a href="https://github.com/nicolaspanel/numjs">https://github.com/nicolaspanel/numjs</a> 取代.</p>
+<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/Snake-Q-Learning-1">https://github.com/mdecourse/Snake-Q-Learning-1</a></p>
+<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/simple-neural-network-js">https://github.com/mdecourse/simple-neural-network-js</a></p>
+<p style="padding-left: 60px;"><a href="https://github.com/StratoDem/pandas-js">https://github.com/StratoDem/pandas-js</a></p>
+<p style="padding-left: 30px;"><a href="https://towardsdatascience.com/teaching-a-computer-how-to-play-snake-with-q-learning-93d0a316ddc0">https://towardsdatascience.com/teaching-a-computer-how-to-play-snake-with-q-learning-93d0a316ddc0</a></p>
+<p style="padding-left: 60px;"><a href="https://en.wikipedia.org/wiki/Bellman_equation">https://en.wikipedia.org/wiki/Bellman_equation</a></p>
+<p style="padding-left: 60px;"><a href="https://www.youtube.com/watch?v=14BfO5lMiuk">https://www.youtube.com/watch?v=14BfO5lMiuk</a> </p>
+<p style="padding-left: 60px;"><a href="https://towardsdatascience.com/the-bellman-equation-59258a0d3fa7">https://towardsdatascience.com/the-bellman-equation-59258a0d3fa7</a></p>
 <h4 style="padding-left: 30px;">Hard coded vs. Dynamic programming:</h4>
-<p style="padding-left: 30px;"><a href="https://davideliu.com/2020/01/24/teaching-ai-to-play-snake-with-reinforcement-learning/">https://davideliu.com/2020/01/24/teaching-ai-to-play-snake-with-reinforcement-learning/</a> </p>
-<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/Snake-Battle-Royale">https://github.com/mdecourse/Snake-Battle-Royale</a> (opencv) </p><h2>Stage2</h2>
+<p style="padding-left: 30px;"><a href="https://davideliu.com/2020/01/24/teaching-ai-to-play-snake-with-reinforcement-learning/">https://davideliu.com/2020/01/24/teaching-ai-to-play-snake-with-reinforcement-learning/</a></p>
+<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/Snake-Battle-Royale">https://github.com/mdecourse/Snake-Battle-Royale</a> (opencv)</p>
+<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/q-learning-snake">https://github.com/mdecourse/q-learning-snake</a> (Javascript)</p>
+<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/Q-Snake">https://github.com/mdecourse/Q-Snake</a> (Javascript)</p>
+<p style="padding-left: 60px;"><a href="https://sid-sr.github.io/Q-Snake/">https://sid-sr.github.io/Q-Snake/</a></p>
+<p style="padding-left: 60px;"><a href="https://en.wikipedia.org/wiki/Q-learning">https://en.wikipedia.org/wiki/Q-learning</a> </p><h2>Stage2</h2>
 <h4>期末專案:</h4>
 <p style="padding-left: 30px;">請各學員登入 github.com 後, 連結至 <a href="https://github.com/mdecourse/webgame">https://github.com/mdecourse/webgame</a> 選擇將 webgame 倉儲作為 template 後新增網際程式倉儲. 利用 Github Pages 建立一個線上遊戲.</p>
 <h4 style="padding-left: 30px;">範例:</h4>
