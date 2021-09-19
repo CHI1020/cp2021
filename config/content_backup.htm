@@ -306,6 +306,9 @@ class Editor():
 </pre>
 <p></p>
 <h3>Canvas</h3>
+<h4>參考資料:</h4>
+<p style="padding-left: 30px;"><a href="https://milneopentextbooks.org/the-missing-link-an-introduction-to-web-development-and-programming/">The Missing Link: An Introduction to Web Development and Programming</a> (從 page 60 開始 Section2 - Document Markup)</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4302-3292-6">Foundation HTML5 Canvas</a> (從校園網路中下載)</p>
 <p>Typical HTML5 page.</p>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;!doctype html&gt;
 &lt;html lang="en"&gt;
@@ -314,21 +317,45 @@ class Editor():
 &lt;title&gt;This is a basic html page&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;!-- 導入 brython 程式庫 --&gt;
+&lt;!-- 導入 brython Javascript 程式庫 --&gt;
 &lt;script src="/static/brython.js"&gt;&lt;/script&gt;
 &lt;script src="/static/brython_stdlib.js"&gt;&lt;/script&gt;
-&lt;!-- 啟動 Brython --&gt;
+&lt;!-- 啟動 Brython, debug 為 True, 模組可放入 /static/ 或 ./../downloads/py/ 目錄中 --&gt;
 &lt;script&gt;
 window.onload=function(){
 brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
 }
 &lt;/script&gt;
-Hello HTML5!
+&lt;p&gt;Hello HTML5!&lt;/p&gt;
+&lt;!-- 建立一個 id="brython_div" 的 div 元件 --&gt;
 &lt;div id="brython_div"&gt;&lt;/div&gt;
+&lt;!-- 編寫 Brython 程式 --&gt;
 &lt;script type="text/python"&gt;
+# 導入 browser 模組中的 html 物件
 from browser import html
+# 導入 browser 模組中的 document 物件
 from browser import document
-document["brython_div"] &lt;= html.BUTTON(id="my_button")
+
+# 建立輸入用的 DIV 元件
+output_div = html.DIV(id="output")
+# 將 DIV 元件插入 brython_div 位置
+document["brython_div"] &lt;= output_div
+
+# 定義一個 send_text() 函式, 因為是透過 bind 或 addEventListener 事件綁定, 要有輸入變數 ev
+count = 0
+def send_text(ev):
+    global count
+    # 因為 count 在外部宣告, 且在函式內更動對應, 因此要設為 global
+    count += 1
+    # 利用 document[]指定 id="output" 的元件, 令其 html 為 html.H1() 物件的 text 內容
+    document["output"].innerHTML = html.H1("my button clicked!" + " 按第 " + str(count) + " 次.").text
+
+# 建立一個標示 "my button" 且 id="my_button" 的 button 元件
+document["brython_div"] &lt;= html.BUTTON("my button", id="my_button")
+# 將 id="my_button" 的元件透過事件 listener 與 send_text 函式綁定
+# 可以使用 bind 或 addEventListener 等方法進行綁定
+document["my_button"].bind("click", send_text)
+#document["my_button"].addEventListener("click", send_text)
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</pre>
@@ -367,7 +394,7 @@ def send_text(ev):
     # 因為 count 在外部宣告, 且在函式內更動對應, 因此要設為 global
     count += 1
     # 利用 document[]指定 id="output" 的元件, 令其 html 為 html.H1() 物件的 text 內容
-    document["output"].innerHTML = html.H1("my button clicked!" + " 第 " + str(count) + " 次.").text
+    document["output"].innerHTML = html.H1("my button clicked!" + " 按第 " + str(count) + " 次.").text
 
 # 建立一個標示 "my button" 且 id="my_button" 的 button 元件
 document["brython_div"] <= html.BUTTON("my button", id="my_button")
@@ -3071,7 +3098,8 @@ var width = window.innerWidth;
 <p style="padding-left: 30px;">而 <a href="http://mde.tw/lab/downloads/lua/index.html?filename=guess2">http://mde.tw/lab/downloads/lua/index.html?filename=guess2</a> 則利用 URL <a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Methods">Request</a> 方法取 Get 變數值後, 再根據範例檔案名稱取出存於相對目錄的程式碼, 將內容放入 editor 區域中 (<span style="background-color: #ccffcc;">方式 4</span>).</p>
 <p style="padding-left: 30px;">請研究上述方式 1 的網際 Python 程式範例編輯與載入執行架構, 分別改為其他三種方式, 並討論其使用差異與優缺點.</p>
 <p style="padding-left: 30px;"><a href="http://doctorsrn.cn/2019/08/08/CodingInterviewChinese2/">Python 刷題練習</a></p>
-<h3>Brython</h3>
+<p style="padding-left: 30px;">科學界正利用 Python 解決的問題: <a href="https://deepmind.com/blog/article/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology">https://deepmind.com/blog/article/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology</a></p>
+<p style="padding-left: 60px;"><a href="https://github.com/deepmind/deepmind-research/tree/master/alphafold_casp13">https://github.com/deepmind/deepmind-research/tree/master/alphafold_casp13</a> </p><h3>Brython</h3>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/VJj-H4we71g" title="YouTube video player" width="560"></iframe></p>
 <p><a href="https://github.com/brython-dev/brython/wiki/How-Brython-works">https://github.com/brython-dev/brython/wiki/How-Brython-works</a></p>
 <p style="padding-left: 30px;">HTML 教程: <a href="https://wangdoc.com/html/">https://wangdoc.com/html/</a></p>
