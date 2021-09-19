@@ -305,7 +305,77 @@ class Editor():
 
 </pre>
 <p></p>
-<h2>機械設計知識</h2>
+<h3>Canvas</h3>
+<p>Typical HTML5 page.</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;title&gt;This is a basic html page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- 導入 brython 程式庫 --&gt;
+&lt;script src="/static/brython.js"&gt;&lt;/script&gt;
+&lt;script src="/static/brython_stdlib.js"&gt;&lt;/script&gt;
+&lt;!-- 啟動 Brython --&gt;
+&lt;script&gt;
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
+}
+&lt;/script&gt;
+Hello HTML5!
+&lt;div id="brython_div"&gt;&lt;/div&gt;
+&lt;script type="text/python"&gt;
+from browser import html
+from browser import document
+document["brython_div"] &lt;= html.BUTTON(id="my_button")
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial">https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial</a></p>
+<p style="padding-left: 30px;"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_usage">Basic Usage</a></p>
+<p style="padding-left: 30px;"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes">Drawing Shapes</a></p>
+<p><a href="https://www.w3schools.com/html/html5_canvas.asp">https://www.w3schools.com/html/html5_canvas.asp</a></p>
+<!-- 導入 brython Javascript 程式庫 -->
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+<!-- 啟動 Brython, debug 為 True, 模組可放入 /static/ 或 ./../downloads/py/ 目錄中 -->
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
+}
+</script>
+<p>Hello HTML5!</p>
+<!-- 建立一個 id="brython_div" 的 div 元件 -->
+<div id="brython_div"></div>
+<!-- 編寫 Brython 程式 -->
+<script type="text/python">
+# 導入 browser 模組中的 html 物件
+from browser import html
+# 導入 browser 模組中的 document 物件
+from browser import document
+
+# 建立輸入用的 DIV 元件
+output_div = html.DIV(id="output")
+# 將 DIV 元件插入 brython_div 位置
+document["brython_div"] <= output_div
+
+# 定義一個 send_text() 函式, 因為是透過 bind 或 addEventListener 事件綁定, 要有輸入變數 ev
+count = 0
+def send_text(ev):
+    global count
+    # 因為 count 在外部宣告, 且在函式內更動對應, 因此要設為 global
+    count += 1
+    # 利用 document[]指定 id="output" 的元件, 令其 html 為 html.H1() 物件的 text 內容
+    document["output"].innerHTML = html.H1("my button clicked!" + " 第 " + str(count) + " 次.").text
+
+# 建立一個標示 "my button" 且 id="my_button" 的 button 元件
+document["brython_div"] <= html.BUTTON("my button", id="my_button")
+# 將 id="my_button" 的元件透過事件 listener 與 send_text 函式綁定
+# 可以使用 bind 或 addEventListener 等方法進行綁定
+document["my_button"].bind("click", send_text)
+#document["my_button"].addEventListener("click", send_text)
+</script><h2>機械設計知識</h2>
 <p><a href="https://brython.info/">Brython</a> (Browser Python) 在網頁的執行速度並不很快, 因此比較適合初學者用來學習 Python 語法. 或者透過 WebGL 編寫架構較為簡單的機械設計模擬程式. 也可以與 Server 端的 Python + Flask 結合, 將功能較為完整的 Javascript 導入為程式庫.</p>
 <p>對於機械設計相關, 運算較複雜的流程, 可以採用 Python + <a href="https://cython.org/">Cython</a> 寫為動態連結程式庫. 或者利用 Rust 編寫可以讓 Python 呼叫的動態連結程式庫 (有人甚至認為: <a href="https://towardsdatascience.com/thought-you-loved-python-wait-until-you-meet-rust-64a06d976ce">以為喜歡 Python? 等遇見 Rust 之後再說</a> (<a href="https://github.com/KmolYuan?tab=repositories">呈堂見證</a>, 以 Rust 寫的 Python 解譯器: <a href="https://github.com/RustPython/RustPython">RustPython</a>). 有興趣請參閱, <a href="https://stackoverflow.blog/2020/01/20/what-is-rust-and-why-is-it-so-popular/">為何 Rust 如此受歡迎</a>?). 至於前端運算較複雜的程式, 則可以採用 <a href="https://www.typescriptlang.org/">Typescript</a> 或 <a href="https://www.rust-lang.org/">Rust</a> + <a href="https://webassembly.org/">Wasm</a> 的方式編寫.</p>
 <h4>以下是與機械設計有關的內容, 大部分電子書可以從校園網路中下載:</h4>
@@ -329,8 +399,7 @@ class Editor():
 <p><a href="https://link.springer.com/book/10.1007/978-0-85729-394-7">Managing Engineering Design</a> (在校園網路下載電子書)</p>
 <p><a href="https://link.springer.com/book/10.1007/978-3-662-05302-7">General Spatial Involute Gearing</a> (在校園網路下載電子書)</p>
 <p><a href="https://link.springer.com/book/10.1007/978-3-662-08013-9">Inventive Thinking through TRIZ</a> (在校園網路下載電子書)</p>
-<p><a href="https://link.springer.com/book/10.1007/978-1-4757-2872-9">A Mathematical Theory of Design</a> (在校園網路下載電子書)</p>
-<h3>RL</h3>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4757-2872-9">A Mathematical Theory of Design</a> (在校園網路下載電子書)</p><h3>RL</h3>
 <p>將 <a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/3db55f124185def5aac8e5d51579c484/raw/181374bcd9a1e74f0701635131e5cf0a52259af6/snake_slope.py">snake_slope.py</a> 與 <a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/3db55f124185def5aac8e5d51579c484/raw/9f1df758ac7fe40d0c83f9a59d38c9f5d62cddda/snake_xy.py">snake_xy.py</a> 透過 Q-learning 演算法進行修改.</p>
 <p>From <a href="https://en.wikipedia.org/wiki/Model-free_(reinforcement_learning):">https://en.wikipedia.org/wiki/Model-free_(reinforcement_learning):</a></p>
 <p style="padding-left: 30px;">In reinforcement learning (RL), a <span style="background-color: #ffff99;">model-free algorithm</span> (as opposed to a model-based one) is an algorithm which does not use the <span style="background-color: #ffff99;">transition probability distribution</span> (and the reward function) associated with the <span style="background-color: #ffff99;">Markov decision process</span> (MDP), which, in RL, represents the problem to be solved.</p>
@@ -344,6 +413,7 @@ class Editor():
 <p><a href="https://en.wikipedia.org/wiki/Bellman_equation">https://en.wikipedia.org/wiki/Bellman_equation</a> </p>
 <p><a href="https://sid-sr.github.io/Q-Snake/">https://sid-sr.github.io/Q-Snake/</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/sid-sr/Q-Snake">https://github.com/sid-sr/Q-Snake</a></p>
+<p>Deep learning in your browser:<a href="https://cs.stanford.edu/people/karpathy/convnetjs/">https://cs.stanford.edu/people/karpathy/convnetjs/</a></p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/8cdUree20j4" title="YouTube video player" width="560"></iframe></p><h2>Python</h2>
 <p>機械設計工程系的計算機程式將利用網際 Python 程式 (<a href="https://brython.info/">Brython</a>) 的應用作為開端, 讓使用者練習利用 Python 程式語言解決問題. 由於 <a href="https://brython.info/">Brython</a> 採直接在網頁中, 將 Python 程式碼轉換為 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript">Javascript</a> 後執行, 因此使用者在學習如何利用 <a href="https://brython.info/">Brython</a> 程式語言解決問題時, 必須對 <a href="https://developer.mozilla.org/zh-TW/docs/Glossary/HTML">HTML</a>, <a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/CSS_basics">CSS</a>, <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript">Javascript</a> 與 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/WebGL_API">WebGL</a> 有相當程度的認識.</p>
 <p>計算機程式預計學員能夠在網際 Python 的引導下, 逐步了解在面臨不同工程問題時, 能夠針對 Javascript, C/C++, <a href="https://www.lua.org/">Lua</a> 等常用電腦程式語言進行學習. 並且對近幾年發展出的 Dart, Typescript 與 Rust 保持高度興趣, 以便因應未來全網際整合的虛實產品開發環境.</p>
