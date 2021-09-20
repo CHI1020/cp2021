@@ -139,41 +139,32 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">開發範例 << <a href='開發範例.html'>Previous</a> <a href='RPA.html'>Next</a> >> RPA<br /><h1>網際程式</h1>
-<h4>An re-introduction to HTTP cookies:</h4>
-<p style="padding-left: 30px;"><a href="https://www.valentinog.com/blog/cookies/">https://www.valentinog.com/blog/cookies/</a></p>
-<p>以下程式主要在結合 Flask 與 Fossil SCM 的登入 cookie 設定, 兩台 server 必須屬於同一個 domain name.</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask
-from flask import make_response, request, redirect
-import requests
-# for app.secret_key
-import os
-
-app = Flask(__name__)
-# 使用 session 必須要設定 secret_key
-secret_key = os.urandom(24).hex()
-app.secret_key = secret_key
-
-@app.route('/')
-def hello_world():
-    with requests.Session() as s:
-        url = 'https://fossil.kmol.info/u/yen/login'
-        post_var = {'u': 'username', 'p': 'password'}
-        headers = {'X-Requested-With': 'XMLHttpRequest'}
-        result = s.post(url, data = post_var, headers = headers)
-        cookie = s.cookies.get_dict()
-        key = list(cookie.keys())[0]
-        value = cookie[key]
-        response = make_response(redirect(url))
-        response.set_cookie(key, value)
-        return response
-        
-if __name__ == '__main__':
-    app.run()</pre>
-<h4>Python and SQLite:</h4>
-<p style="padding-left: 30px;"><a href="https://github.com/thombashi/SimpleSQLite">https://github.com/thombashi/SimpleSQLite</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/codewithlennylen/Python-SQLite-Tutorials">https://github.com/codewithlennylen/Python-SQLite-Tutorials</a></p>
-<br />開發範例 << <a href='開發範例.html'>Previous</a> <a href='RPA.html'>Next</a> >> RPA</div>
+    <div id="tipue_search_content">Canvas << <a href='Canvas.html'>Previous</a> <a href='機械設計知識.html'>Next</a> >> 機械設計知識<br /><h1>Zulip</h1>
+<p><a href="https://mde.tw">KMOLab</a> 自 2021 Fall 起, 開始試用 Zulip.</p>
+<p>Zulip (<a href="https://zulip.com/history/">發展歷史</a>) 為一套以 Python 編寫, 用於 team chat 的開源套件:</p>
+<p style="padding-left: 30px;"><a href="https://en.wikipedia.org/wiki/Zulip">https://en.wikipedia.org/wiki/Zulip</a> </p>
+<p style="padding-left: 30px;"><a href="https://github.com/zulip/zulip">https://github.com/zulip/zulip</a></p>
+<p style="padding-left: 30px;"><a href="https://kmolab.zulipchat.com">https://kmolab.zulipchat.com</a></p>
+<p>使用官方免費 Zulip 限制 (<a href="https://zulip.com/plans/">來源</a>):</p>
+<ol>
+<li>10,000 messages of search history (只能搜尋<span style="background-color: #ffff99;">一萬筆</span>留言訊息)</li>
+<li>File storage up to 5 GB total (總檔案容量至多 <span style="background-color: #ffff99;">5GB</span>)</li>
+<li>Full-featured team chat service (全功能團隊對話服務)</li>
+<li>Hundreds of integrations (幾百種整合功能)</li>
+<li>Advanced roles and permissions (高階角色與權限許可)</li>
+<li>Guest accounts (支援訪客帳號)</li>
+</ol>
+<p>Zulip 以 Stream (對談串) 來命名聊天室, 而在每一個對談串可以建立對談主題 (Topics).</p>
+<p>例如:</p>
+<p style="padding-left: 30px;"><a href="https://kmolab.zulipchat.com/#narrow/stream/292134-2021-Fall">2021 Fall</a> 是一個由 <a href="https://mde.tw">KMOLab</a> 所建立的 Zulip 對談串, 其中包含兩個對談主題:</p>
+<p style="padding-left: 60px;"><a href="https://kmolab.zulipchat.com/#narrow/stream/292134-2021-Fall/topic/.E9.9B.BB.E8.85.A6.E8.BC.94.E5.8A.A9.E8.A8.AD.E8.A8.88.E5.AF.A6.E7.BF.92">電腦輔助設計實習主題</a>與<a href="https://kmolab.zulipchat.com/#narrow/stream/292134-2021-Fall/topic/.E8.A8.88.E7.AE.97.E6.A9.9F.E7.A8.8B.E5.BC.8F">計算機程式主題</a></p>
+<p>Zulip 與 Gitter 最大的差別:</p>
+<ol>
+<li><a href="https://github.com/zulip/zulip">Zulip server</a> 以 Python 編寫, <a href="https://gitlab.com/gitterHQ/webapp">Gitter server</a> 以 node.js 編寫.</li>
+<li>Zulip 支援較多的 <a href="https://zulip.com/help/format-your-message-using-markdown">Markdown</a> 語法功能.</li>
+<li>Zulip 可以在對談串間搬動討論主題內容.</li>
+<li>Zulip 支援以 Python 編寫的<a href="https://github.com/zulip/zulip-terminal">命令列介面</a>工具.</li>
+</ol><br />Canvas << <a href='Canvas.html'>Previous</a> <a href='機械設計知識.html'>Next</a> >> 機械設計知識</div>
         
     <!-- footer -->
       <div class="container">
