@@ -3128,7 +3128,7 @@ var width = window.innerWidth;
 <p style="padding-left: 30px;">而 <a href="http://mde.tw/lab/downloads/lua/index.html?filename=guess2">http://mde.tw/lab/downloads/lua/index.html?filename=guess2</a> 則利用 URL <a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Methods">Request</a> 方法取 Get 變數值後, 再根據範例檔案名稱取出存於相對目錄的程式碼, 將內容放入 editor 區域中 (<span style="background-color: #ccffcc;">方式 4</span>).</p>
 <p style="padding-left: 30px;">請研究上述方式 1 的網際 Python 程式範例編輯與載入執行架構, 分別改為其他三種方式, 並討論其使用差異與優缺點.</p>
 <p style="padding-left: 30px;"><a href="http://doctorsrn.cn/2019/08/08/CodingInterviewChinese2/">Python 刷題練習</a></p>
-<p style="padding-left: 30px;">自 Python 3.5 之後支援 static typing: <a href="https://docs.python.org/3/library/typing.html">https://docs.python.org/3/library/typing.html</a>, 也可以使用 <a href="https://mypy.readthedocs.io/en/stable/index.html">Mypy</a> 進行 static type check. Brython 3.9 也<a href="https://github.com/brython-dev/brython/blob/master/www/src/Lib/typing.py">支援 static typing</a>. <a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/c7d4da756f42ed82f472a4eb2ba904e2/raw/78dc95aecb82762e06a204f5094ed1d6b38111b6/static_typing_ex1.py">範例1</a>, <a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/c7d4da756f42ed82f472a4eb2ba904e2/raw/78dc95aecb82762e06a204f5094ed1d6b38111b6/static_typing_ex2.py">範例2</a>.</p>
+<p style="padding-left: 30px;">自 Python 3.5 之後支援 typing: <a href="https://docs.python.org/3/library/typing.html">https://docs.python.org/3/library/typing.html</a>, 也可以使用 <a href="https://mypy.readthedocs.io/en/stable/index.html">Mypy</a> 進行 static type check. Brython 3.9 也<a href="https://github.com/brython-dev/brython/blob/master/www/src/Lib/typing.py">支援 typing</a>. <a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/c7d4da756f42ed82f472a4eb2ba904e2/raw/78dc95aecb82762e06a204f5094ed1d6b38111b6/static_typing_ex1.py">範例1</a>, <a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/c7d4da756f42ed82f472a4eb2ba904e2/raw/78dc95aecb82762e06a204f5094ed1d6b38111b6/static_typing_ex2.py">範例2</a>.</p>
 <p style="padding-left: 60px;"><a href="https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html">https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html</a> </p>
 <p style="padding-left: 60px;"><a href="https://medium.com/@ageitgey/learn-how-to-use-static-type-checking-in-python-3-6-in-10-minutes-12c86d72677b">https://medium.com/@ageitgey/learn-how-to-use-static-type-checking-in-python-3-6-in-10-minutes-12c86d72677b</a> </p>
 <p style="padding-left: 30px;">科學界正利用 Python 解決的問題: <a href="https://deepmind.com/blog/article/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology">https://deepmind.com/blog/article/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology</a></p>
@@ -10166,7 +10166,8 @@ doc['clear_bd2'].bind('click', clear_bd2)
 <p style="padding-left: 30px;"><a href="https://github.com/mdecourse/q-learning-snake">https://github.com/mdecourse/q-learning-snake</a> (Javascript)</p>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecourse/Q-Snake">https://github.com/mdecourse/Q-Snake</a> (Javascript)</p>
 <p style="padding-left: 60px;"><a href="https://sid-sr.github.io/Q-Snake/">https://sid-sr.github.io/Q-Snake/</a></p>
-<p style="padding-left: 60px;"><a href="https://en.wikipedia.org/wiki/Q-learning">https://en.wikipedia.org/wiki/Q-learning</a> </p><h2>Stage2</h2>
+<p style="padding-left: 60px;"><a href="https://en.wikipedia.org/wiki/Q-learning">https://en.wikipedia.org/wiki/Q-learning</a> </p><h2>線上課程</h2>
+<p><a href="https://drive.google.com/file/d/1bXjhpwj75Gq_x4XSNAwWxZgdD6QvS-Dp/view?usp=sharing">1a w1_1 線上課程</a> (課程簡介) 請登入 @gm 帳號後觀看</p><h2>Stage2</h2>
 <h4>期末專案:</h4>
 <p style="padding-left: 30px;">請各學員登入 github.com 後, 連結至 <a href="https://github.com/mdecourse/webgame">https://github.com/mdecourse/webgame</a> 選擇將 webgame 倉儲作為 template 後新增網際程式倉儲. 利用 Github Pages 建立一個線上遊戲.</p>
 <h4 style="padding-left: 30px;">範例:</h4>
@@ -10191,8 +10192,7 @@ doc['clear_bd2'].bind('click', clear_bd2)
 <p>The stencil buffer is used to outline areas to render or not render. When an area of an image is marked off to not render, it is known as masking that area. The entire image, including the masked portions, is known as a stencil. <br/>The stencil buffer can also be used in combination with the depth buffer to optimize performance by not attempting to render portions of a scene that are determined to be not viewable. By default, the color buffer’s alpha channel is enabled and so is the depth buffer, but the stencil buffer is disabled. As previously mentioned, these can be modified by specifying the second optional parameter when obtaining the WebGL context</p>
 <h4>參考資料:</h4>
 <p style="padding-left: 30px;"><a href="https://pypi.org/project/brip/">https://pypi.org/project/brip/</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/rayluo/easter">https://github.com/rayluo/easter</a></p>
-<h2>Disqus</h2>
+<p style="padding-left: 30px;"><a href="https://github.com/rayluo/easter">https://github.com/rayluo/easter</a></p><h2>Disqus</h2>
 <p>試著將 <a href="https://mde.tw/eng/content/Disqus%20for%20fxxxtech.html">https://mde.tw/eng/content/Disqus%20for%20fxxxtech.html</a> 留言超文件加到這一頁.</p>
 <div id="disqus_thread"></div>
 <script>
