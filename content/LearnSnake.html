@@ -2,7 +2,7 @@
         <head>
         <title>CP2021</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -139,55 +139,16 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Cango << <a href='Cango.html'>Previous</a> <a href='rungist src.html'>Next</a> >> rungist src<br /><h1>rungist</h1>
-<p>rungist 在頁面中採 Javascript 呼叫 Brython 函式的方式, 讓使用者可以直接以 URL Get 執行 Gist 上的 Brython 程式. 建構的目的是讓學員可以利用 URL 繳交統一格式的 Brython 作業程式. 只要在 rungist 頁面加上 ?src=gist_url, 就可以將靜態繪圖或 animation 呈現在畫面中.</p>
-<p>以下連結左邊為 local 動態網頁編輯用, 而右邊的連結則為遠端 rungist 的 demo 範例.</p>
-<p><a href="/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/cango_gear1.py">Cango gear</a> (for local link only) (<a href="https://mde.tw/cp2021/content/rungist.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/cango_gear1.py">Cango gear</a>)</p>
-<p><a href="/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/626206cf3b2a9a9a69f7ce4bb4a116f0/raw/970e2653a7207828b3814c2c867892903734522a/spur_set_num.py">Spur with form input</a> (for local link only) (<a href="https://mde.tw/cp2021/content/rungist.html?src=https://gist.githubusercontent.com/mdecourse/626206cf3b2a9a9a69f7ce4bb4a116f0/raw/970e2653a7207828b3814c2c867892903734522a/spur_set_num.py">Spur with form input</a>)</p>
-<p><a href="/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/three_spur_rotating.py">local three gears</a> (<a href="https://mde.tw/cp2021/content/rungist.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/three_spur_rotating.py">remote three gears</a>)</p>
-<p><a href="/get_page/rungist?src=https://gist.githubusercontent.com/mdecourse/379f02862e9dfd95dbc5241d4faa2ad4/raw/e3dc77e68bbfb8f00eef2e78d3c8d2323b0f17da/clock.py">local clock</a> <a href="https://mde.tw/cp2021/content/rungist.html?src=https://gist.githubusercontent.com/mdecourse/379f02862e9dfd95dbc5241d4faa2ad4/raw/e3dc77e68bbfb8f00eef2e78d3c8d2323b0f17da/clock.py">remote clock</a></p>
-<p><a href="/get_page/run?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/76c510c47d88c9c218130a4ebb2cadf59803a3c7/prairiedraw_fourbar.py">local fourbar</a> <a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/76c510c47d88c9c218130a4ebb2cadf59803a3c7/prairiedraw_fourbar.py">remote fourbar</a> (準備納入: <a href="https://github.com/mdecourse/Wiper-Mechanism">https://github.com/mdecourse/Wiper-Mechanism</a>)</p>
-<p style="padding-left: 30px;"><a href="https://prairielearn.readthedocs.io/en/latest/PrairieDraw/">https://prairielearn.readthedocs.io/en/latest/PrairieDraw/</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/PrairieDraw.js">https://github.com/mdecourse/PrairieDraw.js</a></p>
-<p><a href="/get_page/rungist/1">rungist</a> (for local edit)</p>
-<!-- 導入 brython 程式庫 -->
-<p></p>
-<script src="./../cmsimde/static/brython.js"></script>
-<script src="./../cmsimde/static/brython_stdlib.js"></script>
-<!-- 啟動 Brython -->
-<script>
-window.onload=function(){
-    brython();
-}
-</script>
-<!-- 頁面載入後執行 brythonListener() -->
-<script>
-$(document).ready( function() {
-    brythonListener();
-});
-</script>
-<!-- 建立讓 Javascript 執行的 brython 程式 -->
-<script type="text/python">
-from browser import document
-from browser import window
-
-def run():
-    prog = open(document.query["src"]).read()
-    ns = {'__name__':'__main__'}
-    exec(prog, ns)
-
-# 透過 window 將 Brython 的 run() 函式與 Javascript 的  brythonListner 函式對應
-window.brythonListener = run()
-</script>
-<!-- Brython 程式執行的結果, 都以 brython_div 作為切入位置 -->
-<div id="brython_div"></div>
-<!-- 導入 gearUtils-0.9.js Cango 齒輪繪圖程式庫 -->
-<script src="https://mde.tw/cp2021/cmsimde/static/Cango-24v03-min.js"></script>
-<script src="https://mde.tw/cp2021/cmsimde/static/gearUtils-09.js"></script>
-<script src="https://mde.tw/cp2021/cmsimde/static/SVGpathUtils-6v03-min.js"></script>
-<script src="https://mde.tw/cp2021/cmsimde/static/sylvester.js"></script>
-<script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script>
-<br />Cango << <a href='Cango.html'>Previous</a> <a href='rungist src.html'>Next</a> >> rungist src</div>
+    <div id="tipue_search_content">RL << <a href='RL.html'>Previous</a> <a href='Python.html'>Next</a> >> Python<br /><h1>LearnSnake</h1>
+<p><a href="https://italolelis.com/snake">https://italolelis.com/snake</a> (LearnSnake: Teaching an AI to play Snake using Reinforcement Learning (Q-Learning))</p>
+<p>這篇文章說明如何利用 Javascript, 採用 Q-Learning 機器學習原理編寫 Snake 線上遊戲. 程式原始碼: <a href="https://github.com/mdecourse/LearnSnake">https://github.com/mdecourse/LearnSnake</a></p>
+<p>作者提到之所以採用 Javascript 而不使用在機器學習領域套件資源更豐富的 Python, 原因是希望在無需安裝任何套件的情況下執行.</p>
+<p>有關 Snake 遊戲的規則, 作者如此說明:</p>
+<p>Snake is a game in which a snake needs to explore an environment and catch the fruit without hitting any obstacle or itself. Every time the snake catches a fruit, its size increases.</p>
+<p>至於 Snake game in Javascript 則是參考下列資料從無到有自行開發:</p>
+<p style="padding-left: 30px;"><a href="https://www.youtube.com/watch?v=xGmXxpIj6vs">Coding "Snake" in 4 min 30 sec</a></p>
+<p style="padding-left: 30px;"><a href="https://www.youtube.com/watch?v=xGmXxpIj6vs">Mastering the Module Pattern</a> (not really about Snake itself, but a pattern I tried to follow on the project)<br/><br/>See <a href="https://github.com/mdecourse/LearnSnake/blob/master/game.js">game.js</a> for the source code.</p>
+<p><a href="https://github.com/mdecourse/q-learning-python-example">https://github.com/mdecourse/q-learning-python-example</a> </p><br />RL << <a href='RL.html'>Previous</a> <a href='Python.html'>Next</a> >> Python</div>
         
     <!-- footer -->
       <div class="container">
