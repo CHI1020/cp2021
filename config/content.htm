@@ -480,10 +480,30 @@ document["my_button"].bind("click", send_text)
 <p>作者提到之所以採用 Javascript 而不使用在機器學習領域套件資源更豐富的 Python, 原因是希望在無需安裝任何套件的情況下執行.</p>
 <p>有關 Snake 遊戲的規則, 作者如此說明:</p>
 <p>Snake is a game in which a snake needs to explore an environment and catch the fruit without hitting any obstacle or itself. Every time the snake catches a fruit, its size increases.</p>
+<h4>對於 Q-Learning 的解釋:</h4>
+<p>Q-Learning 是某一學習主體 (agent) 學習如何在受控 Markovian domains 中採取最佳行動的一種簡單方法.</p>
+<p>Q-Learning 使用 Markov Decision Process (馬爾可夫決策過程) 來控制和制定環境中的決策. </p>
+<p>agent: 某一特定學習主體, 例如: 在 Snake Game, agent 指的就是 Snake.</p>
+<p>environment: 與特定學習主題進行互動, 但並不受學習主體控制的周遭環境</p>
+<p>state: 特定學習主體的狀態</p>
+<p>action: 行動</p>
+<p>policy: 決策</p>
+<p>何謂 Markov Decision Process: <a href="https://towardsdatascience.com/understanding-the-markov-decision-process-mdp-8f838510f150">https://towardsdatascience.com/understanding-the-markov-decision-process-mdp-8f838510f150</a></p>
 <p>至於 Snake game in Javascript 則是參考下列資料從無到有自行開發:</p>
 <p style="padding-left: 30px;"><a href="https://www.youtube.com/watch?v=xGmXxpIj6vs">Coding "Snake" in 4 min 30 sec</a></p>
 <p style="padding-left: 30px;"><a href="https://www.youtube.com/watch?v=xGmXxpIj6vs">Mastering the Module Pattern</a> (not really about Snake itself, but a pattern I tried to follow on the project)<br/><br/>See <a href="https://github.com/mdecourse/LearnSnake/blob/master/game.js">game.js</a> for the source code.</p>
-<p><a href="https://github.com/mdecourse/q-learning-python-example">https://github.com/mdecourse/q-learning-python-example</a> </p><h2>Python</h2>
+<p><a href="https://github.com/mdecourse/q-learning-python-example">https://github.com/mdecourse/q-learning-python-example</a></p>
+<h4>參考資料:</h4>
+<p style="padding-left: 30px;"><a href="https://www.cs.rhul.ac.uk/~chrisw/new_thesis.pdf">1989 Learning from delayed rewards</a></p>
+<p style="padding-left: 30px;"><a href="http://incompleteideas.net/book/RLbook2018.pdf">Reinforcement Learning - an Introduction.pdf</a></p>
+<p style="padding-left: 30px;"><a href="https://www.davidsilver.uk/teaching/">UCL Course on Reinforcement Learning</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/karpathy/reinforcejs">https://github.com/karpathy/reinforcejs</a> </p>
+<p style="padding-left: 30px;">Reinforcement Learning in Javascript: <a href="https://github.com/lsunsi/markovjs">https://github.com/lsunsi/markovjs</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/janhuenermann/neurojs">https://github.com/janhuenermann/neurojs</a> (Deep learning and Reinforcement learning in Javascript)</p>
+<p style="padding-left: 30px;"><a href="https://github.com/dennybritz/reinforcement-learning">https://github.com/dennybritz/reinforcement-learning</a> </p>
+<p style="padding-left: 30px;">Machine Learning Games: <a href="https://github.com/TomaszRewak/ML-games">https://github.com/TomaszRewak/ML-games</a></p>
+<p style="padding-left: 30px;"><a href="https://www.alt17.com/en/how-to-train-a-machine-learning-model-in-python-and-save-it-for-later-use/">https://www.alt17.com/en/how-to-train-a-machine-learning-model-in-python-and-save-it-for-later-use/</a> </p>
+<p style="padding-left: 30px;"><a href="https://www.youtube.com/channel/UCK_eZkV9CYCxhdf9f0dEukA/videos">Python bytes podcast</a> </p><h2>Python</h2>
 <p>機械設計工程系的計算機程式將利用網際 Python 程式 (<a href="https://brython.info/">Brython</a>) 的應用作為開端, 讓使用者練習利用 Python 程式語言解決問題. 由於 <a href="https://brython.info/">Brython</a> 採直接在網頁中, 將 Python 程式碼轉換為 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript">Javascript</a> 後執行, 因此使用者在學習如何利用 <a href="https://brython.info/">Brython</a> 程式語言解決問題時, 必須對 <a href="https://developer.mozilla.org/zh-TW/docs/Glossary/HTML">HTML</a>, <a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/CSS_basics">CSS</a>, <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript">Javascript</a> 與 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/WebGL_API">WebGL</a> 有相當程度的認識.</p>
 <p>計算機程式預計學員能夠在網際 Python 的引導下, 逐步了解在面臨不同工程問題時, 能夠針對 Javascript, C/C++, <a href="https://www.lua.org/">Lua</a> 等常用電腦程式語言進行學習. 並且對近幾年發展出的 Dart, Typescript 與 Rust 保持高度興趣, 以便因應未來全網際整合的虛實產品開發環境.</p>
 <p>本系列課程除了計算機程式, 還包括網際內容管理, 電腦輔助設計實習與協同產品設計實習等三門課程. 課程的規劃是希望能夠透過 <a href="https://www.fossil-scm.org">Fossil SCM</a>, <a href="https://solvespace.com">Solvespace</a>, <a href="https://github.com/Range-Software/range3">Range3</a>, <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 與 <a href="https://cyberbotics.com/">Webots</a> 等開源軟體的探究, 讓技職體系機械設計工程專長學子, <span style="background-color: #ffff99;">了解如何運用電腦將做事的過程及直覺形式化, 並各自儘快找到值得投入的目標, 探索如何準確地讓參與協同人員討論並運用既有知識, 從解題過程中累積經驗, 以便衍生出更多能應付未來挑戰的實用知識</span>.</p>
