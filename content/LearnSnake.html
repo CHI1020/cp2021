@@ -140,6 +140,7 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">RL << <a href='RL.html'>Previous</a> <a href='Python.html'>Next</a> >> Python<br /><h1>LearnSnake</h1>
+<p><a href="https://en.wikipedia.org/wiki/Q-learning">Q-learning</a> is a model free <a href="https://en.wikipedia.org/wiki/Reinforcement_learning">reinforcement learning</a> algorithm.</p>
 <p><a href="https://italolelis.com/snake">https://italolelis.com/snake</a> (LearnSnake: Teaching an AI to play Snake using Reinforcement Learning (Q-Learning))</p>
 <p>這篇文章說明如何利用 Javascript, 採用 Q-Learning 機器學習原理編寫 Snake 線上遊戲. 程式原始碼: <a href="https://github.com/mdecourse/LearnSnake">https://github.com/mdecourse/LearnSnake</a></p>
 <p>作者提到之所以採用 Javascript 而不使用在機器學習領域套件資源更豐富的 Python, 原因是希望在無需安裝任何套件的情況下執行.</p>
@@ -147,28 +148,38 @@ img.add_border {
 <p>Snake is a game in which a snake needs to explore an environment and catch the fruit without hitting any obstacle or itself. Every time the snake catches a fruit, its size increases.</p>
 <h4>對於 Q-Learning 的解釋:</h4>
 <p>Q-Learning 是某一學習主體 (agent) 學習如何在受控 Markovian domains 中採取最佳行動的一種簡單方法.</p>
-<p>Q-Learning 使用 Markov Decision Process (馬爾可夫決策過程) 來控制和制定環境中的決策. </p>
+<p>Q-Learning 使用 Markov Decision Process (馬爾可夫決策過程) 來控制和制定環境中的決策.</p>
 <p>agent: 某一特定學習主體, 例如: 在 Snake Game, agent 指的就是 Snake.</p>
 <p>environment: 與特定學習主題進行互動, 但並不受學習主體控制的周遭環境</p>
 <p>state: 特定學習主體的狀態</p>
 <p>action: 行動</p>
 <p>policy: 決策</p>
+<p><a href="https://kychin.netlify.app/snake-blog/qlearning/">https://kychin.netlify.app/snake-blog/qlearning/</a> </p>
 <p>何謂 Markov Decision Process: <a href="https://towardsdatascience.com/understanding-the-markov-decision-process-mdp-8f838510f150">https://towardsdatascience.com/understanding-the-markov-decision-process-mdp-8f838510f150</a></p>
+<p>a Markov Decision Process (MDP) is a mathematical framework (數學框架) used for modeling decision-making problems where the outcomes (代理主體行動後所得到的結果稱為 outcome) are partly random and partly controllable.</p>
+<p>馬爾可夫決策過程 (MDP) 是一種<span style="background-color: #ffff99;">數學框架</span>, 用於對結果部分隨機且部分可控的決策問題<span style="background-color: #ffff99;">建立模型</span>.</p>
 <p>至於 Snake game in Javascript 則是參考下列資料從無到有自行開發:</p>
 <p style="padding-left: 30px;"><a href="https://www.youtube.com/watch?v=xGmXxpIj6vs">Coding "Snake" in 4 min 30 sec</a></p>
 <p style="padding-left: 30px;"><a href="https://www.youtube.com/watch?v=xGmXxpIj6vs">Mastering the Module Pattern</a> (not really about Snake itself, but a pattern I tried to follow on the project)<br/><br/>See <a href="https://github.com/mdecourse/LearnSnake/blob/master/game.js">game.js</a> for the source code.</p>
 <p><a href="https://github.com/mdecourse/q-learning-python-example">https://github.com/mdecourse/q-learning-python-example</a></p>
 <h4>參考資料:</h4>
+<p style="padding-left: 30px;">Sname in Javascript:<a href="https://github.com/mdecourse/snake-2">https://github.com/mdecourse/snake-2</a></p>
+<p style="padding-left: 60px;"><a href="https://mde.tw/snake-2/index.html">https://mde.tw/snake-2/index.html</a> </p>
 <p style="padding-left: 30px;"><a href="https://www.cs.rhul.ac.uk/~chrisw/new_thesis.pdf">1989 Learning from delayed rewards</a></p>
 <p style="padding-left: 30px;"><a href="http://incompleteideas.net/book/RLbook2018.pdf">Reinforcement Learning - an Introduction.pdf</a></p>
 <p style="padding-left: 30px;"><a href="https://www.davidsilver.uk/teaching/">UCL Course on Reinforcement Learning</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/karpathy/reinforcejs">https://github.com/karpathy/reinforcejs</a> </p>
+<p style="padding-left: 30px;"><a href="https://github.com/karpathy/reinforcejs">https://github.com/karpathy/reinforcejs</a></p>
 <p style="padding-left: 30px;">Reinforcement Learning in Javascript: <a href="https://github.com/lsunsi/markovjs">https://github.com/lsunsi/markovjs</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/janhuenermann/neurojs">https://github.com/janhuenermann/neurojs</a> (Deep learning and Reinforcement learning in Javascript)</p>
-<p style="padding-left: 30px;"><a href="https://github.com/dennybritz/reinforcement-learning">https://github.com/dennybritz/reinforcement-learning</a> </p>
+<p style="padding-left: 30px;"><a href="https://github.com/dennybritz/reinforcement-learning">https://github.com/dennybritz/reinforcement-learning</a></p>
 <p style="padding-left: 30px;">Machine Learning Games: <a href="https://github.com/TomaszRewak/ML-games">https://github.com/TomaszRewak/ML-games</a></p>
-<p style="padding-left: 30px;"><a href="https://www.alt17.com/en/how-to-train-a-machine-learning-model-in-python-and-save-it-for-later-use/">https://www.alt17.com/en/how-to-train-a-machine-learning-model-in-python-and-save-it-for-later-use/</a> </p>
-<p style="padding-left: 30px;"><a href="https://www.youtube.com/channel/UCK_eZkV9CYCxhdf9f0dEukA/videos">Python bytes podcast</a> </p><br />RL << <a href='RL.html'>Previous</a> <a href='Python.html'>Next</a> >> Python</div>
+<p style="padding-left: 30px;"><a href="https://www.alt17.com/en/how-to-train-a-machine-learning-model-in-python-and-save-it-for-later-use/">https://www.alt17.com/en/how-to-train-a-machine-learning-model-in-python-and-save-it-for-later-use/</a></p>
+<p style="padding-left: 30px;"><a href="https://www.youtube.com/channel/UCK_eZkV9CYCxhdf9f0dEukA/videos">Python bytes podcast</a> </p>
+<p style="padding-left: 30px;"><a href="https://www.coursera.org/lecture/ai2/5-1-basic-term-of-markov-decision-process-sequential-decisions-policy-utility-jQyAv">https://www.coursera.org/lecture/ai2/5-1-basic-term-of-markov-decision-process-sequential-decisions-policy-utility-jQyAv</a></p>
+<p style="padding-left: 30px;"><a href="https://www.coursera.org/lecture/ai2/5-4-q-learning-learning-policy-simple-glie-scheme-j3Zb8">https://www.coursera.org/lecture/ai2/5-4-q-learning-learning-policy-simple-glie-scheme-j3Zb8</a></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/RMTfNPKnxhk" title="YouTube video player" width="560"></iframe></p>
+<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/Snake-Reinforcement-Learning-1">https://github.com/mdecourse/Snake-Reinforcement-Learning-1</a></p>
+<p style="padding-left: 60px;">execute under Github Pages: <a href="https://mde.tw/Snake-Reinforcement-Learning-1/">https://mde.tw/Snake-Reinforcement-Learning-1/</a></p><br />RL << <a href='RL.html'>Previous</a> <a href='Python.html'>Next</a> >> Python</div>
         
     <!-- footer -->
       <div class="container">
