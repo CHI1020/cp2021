@@ -10754,7 +10754,7 @@ run()
 <p><a href="https://mde.tw/cp2021/downloads/online/cp2021_1b_seat.txt">1b 座位表</a> (<a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/a55dbe8816baee6981e9a4cf37cd667e/raw/240c807b0a446e47c0b978b8fb1af51a2fa7b170/cp1b_seat_list.py">程式</a>)</p>
 <h2>畫出座位表</h2>
 <p>從<a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/a55dbe8816baee6981e9a4cf37cd667e/raw/240c807b0a446e47c0b978b8fb1af51a2fa7b170/cp1a_seat_list.py">座位表程式</a>中得知, 可以利用位於 <a href="https://www.heroku.com/">Heroku</a> 網際伺服端上的 <a href="https://github.com/mdecourse/nfulist">nfulist</a> <a href="https://flask.palletsprojects.com/en/2.0.x/">Flask</a> 程式, 從校務伺服器中取出各課程的修課學員名單 (也可以取出任何可公開查詢的課務相關資料), 並根據電腦輔助設計室每一列有九台電腦的配置, 直接用程式分配各學員的上課座位表.</p>
-<p>由於 canvas 可以利用 lineTo() 畫出直線, 利用 <a href="https://www.w3schools.com/tags/canvas_rect.asp">rect()</a> 畫出長方格, 而 <a href="https://www.w3schools.com/tags/canvas_stroketext.asp">strokeText()</a> 則可以用來畫出字串.</p>
+<p>由於 canvas 可以利用 <a href="https://www.w3schools.com/tags/canvas_lineto.asp">lineTo()</a> 畫出直線, 利用 <a href="https://www.w3schools.com/tags/canvas_rect.asp">rect()</a> 畫出長方格, 而 <a href="https://www.w3schools.com/tags/canvas_stroketext.asp">strokeText()</a> 則可以用來畫出字串.</p>
 <p>請問能夠利用 Brython 在本頁面中延伸<a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/a55dbe8816baee6981e9a4cf37cd667e/raw/240c807b0a446e47c0b978b8fb1af51a2fa7b170/cp1a_seat_list.py">座位表程式</a>的功能, 直接在頁面中畫出各班在電腦輔助設計室中的座位表.</p>
 <p>以下參考用電子書都必須先登入 @gm 後再下載.</p>
 <p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-981-10-3277-6">Programming with Python</a> (2021 Fall cp2021 textbook)</p>
@@ -10849,12 +10849,12 @@ run()
 <!-- 執行與清除按鈕結束 -->
 <p></p>
 <!-- 程式執行 ouput 區 -->
-<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console"></textarea></div>
+<p><textarea autocomplete="off" id="kw_console"></textarea></p>
 <!-- Brython 程式執行的結果, 都以 brython_div 作為切入位置 -->
-<div id="brython_div"></div>
-<!-- 導入 gearUtils-0.9.js Cango 齒輪繪圖程式庫 -->
+<div id="brython_div"><!-- 導入 gearUtils-0.9.js Cango 齒輪繪圖程式庫 -->
 <script src="https://mde.tw/cp2021/cmsimde/static/Cango-24v03-min.js"></script>
 <script src="https://mde.tw/cp2021/cmsimde/static/gearUtils-09.js"></script>
 <script src="https://mde.tw/cp2021/cmsimde/static/SVGpathUtils-6v03-min.js"></script>
 <script src="https://mde.tw/cp2021/cmsimde/static/sylvester.js"></script>
 <script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script>
+</div>

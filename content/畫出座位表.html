@@ -199,7 +199,7 @@ def clear_bd(ev):
 Ace = ace.Editor(editor_id="kw_editor", console_id="kw_console", container_id="kw__container", storage_id="kw_py_src" )
 # 從 gist 取出程式碼後, 放入 editor 作為 default 程式
 def run():
-    # 利用 get 取下 src 變數值, 假如頁面並無 src 變數時, 則導入內定的程式執行
+    # 利用 get 取下 src 變數值
     try:
         url = doc.query["src"]
     except:
@@ -227,7 +227,6 @@ run()
 </p>
 <p><!-- 用來顯示程式碼的 editor 區域 --></p>
 <div id="kw_editor" style="width: 600px; height: 300px;"></div>
-<div style="width: 600px; height: 300px;"></div>
 <p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
 <!-- 存擋表單開始 --><form><label>Filename: <input id="kw_filename" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src', 'kw_filename');" type="submit" value="Save"/></form><!-- 存擋表單結束 -->
 <p></p>
