@@ -139,19 +139,13 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Cython << <a href='Cython.html'>Previous</a> <a href='課程主題.html'>Next</a> >> 課程主題<br /><h1>CPP</h1>
-<p><a href="/get_page/DSL/Guide to Scientific Computing in C++">Guide to Scientific Computing in C++</a> (校園網路中下載電子書)</p>
-<p><a href="https://drive.google.com/file/d/1m6cmWu9AZhkBj6wFn9IiJlShcpGbz05g/view?usp=sharing">msys64_20210419.7z</a> (下載 3.5GB, 解開壓縮後 12GB)</p>
-<p style="padding-left: 30px;">功能: <a href="https://www.msys2.org/">Msys2</a> 安裝</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">pacman -S mingw-w64-x86_64-toolchain
-pacman -Sy mingw-w64-x86_64-qt5
-pacman -Sy mingw-w64-x86_64-qt5-static
-pacman -Sy mingw-w64-x86_64-ffmpeg
-pacman -Sy mingw-w64-x86-64-cmake</pre>
-<p><a href="https://drive.google.com/file/d/17M7Ro9NO2mmycvwOuK-10yYgs2oxFwEB/view?usp=sharing">msys64_20210419_clean.7z</a> (下載 87MB , 解開壓縮後 374MB)</p>
-<p style="padding-left: 30px;">功能: 尚未安裝任何 Package 的 <a href="https://www.msys2.org/">Msys2</a> 系統.</p>
-<p></p>
-<br />Cython << <a href='Cython.html'>Previous</a> <a href='課程主題.html'>Next</a> >> 課程主題</div>
+    <div id="tipue_search_content">Wink << <a href='Wink.html'>Previous</a> <br /><h1>教科書導讀</h1>
+<p>計算機程式課程所採用的 textbook: <a href="https://link.springer.com/book/10.1007/978-981-10-3277-6">Programming with Python</a>, 2016 by T R Padmanabhan, 學員可以自行從校園網路中下載.</p>
+<p>針對機械設計工程相關的大學課程, 比較建議閱讀英文書, 而這一本 <a href="https://link.springer.com/book/10.1007/978-981-10-3277-6">Programming with Python</a> 中的英文單字並不會太多, 建議學員準備一本 B5 紙本筆記專門用來記錄原先不懂的單字, 經過 <a href="https://www.oxfordlearnersdictionaries.com/">https://www.oxfordlearnersdictionaries.com/</a> 或 <a href="https://www.merriam-webster.com/">https://www.merriam-webster.com/</a> 查詢後, 將英文說明謄寫到紙本筆記中, 隨時翻閱查核是否已經了解這些英文單字的涵意.</p>
+<p>當然, 假如您願意接受挑戰, 也可以試著了解一下 <a href="https://github.com/mdecourse/lookupdict">https://github.com/mdecourse/lookupdict</a> 這個網際程式 (利用 scrum1 部署在 <a href="https://lookupdict.herokuapp.com/">https://lookupdict.herokuapp.com/</a>, 可惜當時沒有寫成 GET, 否則就可以直接加上 ?word=caste 查前言中所謂的種姓), 其架構概念就如同商用的 <a href="https://languages.oup.com/oxford-learners-dictionaries-api/">https://languages.oup.com/oxford-learners-dictionaries-api/</a>, 可以透過程式對英文的字典進行延伸應用, 例如: 將整本原文書的所有單字取出, 然後利用程式方法進入<a href="https://github.com/mdecourse/lookupdict/blob/master/webster_vocabulary.sqlite">https://github.com/mdecourse/lookupdict/blob/master/webster_vocabulary.sqlite</a> 或 <a href="https://github.com/mdecourse/lookupdict/blob/master/wordnet30.db">https://github.com/mdecourse/lookupdict/blob/master/wordnet30.db</a> 資料庫查詢, 並且直接利用 Brython 當作前端, Flask 當作後端, 整理出原文書中所有英文單字的說明圖卡, 然後以每幾秒的緩衝時間, 隨機在網頁中現出特定單字, 讓使用者查核是否已經認得這些原文書中的英文單字意涵, 接著就可安排出現該英文單在在 Webster 英英字典與 Wordnet 中的完整說明, 來強化或印證使用者的記憶.</p>
+<p>其實上述說明的待建構網際程式就是與<a href="https://play.google.com/store/apps/details?id=com.ankiapp.client&amp;hl=zh_TW&amp;gl=US">暗記 App</a> 類似的 Flash card 英文學習方法. 有許多為了在短時間強記英文單字的 <a href="https://www.lttc.ntu.edu.tw/gre.htm">GRE</a> 或<a href="https://www.toeic.com.tw/">多益</a>應考者, 就是透過這種方法提升自己的英文字彙能力.</p>
+<p>至於暗記 (Anki) 最早只使用 Python 在單機上執行, 現在的 <a href="https://github.com/ankitects/anki,">https://github.com/ankitects/anki,</a> 已經納入 Rust 與 Typescript, 從這個過程也能發現程式語言的流行會隨著各種工具的出現而發生變化.</p>
+<p>總結一下上面這一小段的導讀說明, 就是鼓勵各位學員要多閱讀英文教材, 並且利用程式方法強化學習效果, 假如有衝勁, 可以試著將 <a href="https://lookupdict.herokuapp.com/wordnet">https://lookupdict.herokuapp.com/wordnet</a> 與 <a href="https://lookupdict.herokuapp.com/">https://lookupdict.herokuapp.com/</a> 從現有的<a href="https://github.com/mdecourse/lookupdict">原始碼</a>改寫為 GET 或其他延伸應用, 並且學會如何部署到免費的 <a href="https://www.heroku.com/">Heroku</a>.</p><br />Wink << <a href='Wink.html'>Previous</a> </div>
         
     <!-- footer -->
       <div class="container">
