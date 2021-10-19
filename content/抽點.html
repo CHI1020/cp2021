@@ -2,7 +2,7 @@
         <head>
         <title>CP2021</title>
         <meta charset="utf-8">
-<meta property="head" content="H3">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -139,24 +139,72 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">機械設計知識 << <a href='機械設計知識.html'>Previous</a> <a href='LearnSnake.html'>Next</a> >> LearnSnake<br /><h1>RL</h1>
-<p>將 <a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/3db55f124185def5aac8e5d51579c484/raw/181374bcd9a1e74f0701635131e5cf0a52259af6/snake_slope.py">snake_slope.py</a> 與 <a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/3db55f124185def5aac8e5d51579c484/raw/9f1df758ac7fe40d0c83f9a59d38c9f5d62cddda/snake_xy.py">snake_xy.py</a> 透過 Q-learning 演算法進行修改.</p>
-<p>From <a href="https://en.wikipedia.org/wiki/Model-free_(reinforcement_learning):">https://en.wikipedia.org/wiki/Model-free_(reinforcement_learning):</a></p>
-<p style="padding-left: 30px;">In reinforcement learning (RL), a <span style="background-color: #ffff99;">model-free algorithm</span> (as opposed to a model-based one) is an algorithm which does not use the <span style="background-color: #ffff99;">transition probability distribution</span> (and the reward function) associated with the <span style="background-color: #ffff99;">Markov decision process</span> (MDP), which, in RL, represents the problem to be solved.</p>
-<p style="padding-left: 30px;">The transition probability distribution (or transition model) and the reward function are often collectively called the "model" of the environment (or MDP), hence the name "model-free".</p>
-<p style="padding-left: 30px;">A model-free RL algorithm can be thought of as an "explicit" trial-and-error algorithm. An example of a model-free algorithm is Q-learning.</p>
-<p style="padding-left: 30px;">在強化學習領域, 所謂<span style="background-color: #ffff99;">無模型演算法</span> (相對於模型導向演算法), 特指不使用<span style="background-color: #ffff99;">馬可夫決策流程</span>中的<span style="background-color: #ffff99;">過渡隨機分佈</span> (及其獎勵函式) 進行學習解題的一種演算法.</p>
-<p style="padding-left: 30px;">由於過渡隨機分佈（或過渡模型）與獎勵函數統稱為受訓環境 (即馬可夫決策流程) 的模型, 因此不使用過渡隨機分佈的強化學習被稱為無模型演算法.</p>
-<p style="padding-left: 30px;">無模型強化學習演算法可視為外顯式試誤演算法,  Q-learning 即無模型強化學習演算法的一個範例.</p>
-<p><a href="https://en.wikipedia.org/wiki/Q-learning">https://en.wikipedia.org/wiki/Q-learning</a></p>
-<p><a href="./../downloads/Q-Learning.pdf">Q-Learning.pdf</a></p>
-<p><a href="https://italolelis.com/snake">https://italolelis.com/snake</a> (LearnSnake: Teaching an AI to play Snake using Reinforcement Learning (Q-Learning))</p>
-<p><a href="https://en.wikipedia.org/wiki/Bellman_equation">https://en.wikipedia.org/wiki/Bellman_equation</a> </p>
-<p><a href="https://sid-sr.github.io/Q-Snake/">https://sid-sr.github.io/Q-Snake/</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/sid-sr/Q-Snake">https://github.com/sid-sr/Q-Snake</a></p>
-<p>Deep learning in your browser:<a href="https://cs.stanford.edu/people/karpathy/convnetjs/">https://cs.stanford.edu/people/karpathy/convnetjs/</a></p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/8cdUree20j4" title="YouTube video player" width="560"></iframe></p>
-<br />機械設計知識 << <a href='機械設計知識.html'>Previous</a> <a href='LearnSnake.html'>Next</a> >> LearnSnake</div>
+    <div id="tipue_search_content">建立畫布 << <a href='建立畫布.html'>Previous</a> <a href='Wink.html'>Next</a> >> Wink<br /><h1>抽點</h1>
+<p>這裡要根據各班學員的學號與 Github 帳號資料, 建立類似 <a href="https://mde.tw/cad2021/content/w2task.html">https://mde.tw/cad2021/content/w2task.html</a> 頁面的中的上課學員抽點程式.</p>
+<p>假如是在單機上以 CPython 編寫此一抽點程式, 首先必須要先設法讀進學員的<a href="./../downloads/online/cp2021_1b_w1.txt">學號與 Github 帳號檔案</a>, 因為這個檔案是 1b 在第一週線上課程時所留, 至今可能已經有新的版本資料, 但目前這個程式是希望取出其中的第一行與第二行的資料, 在 1b w4 課堂中所寫的 CPython 程式如下:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">with open("cp2021_1b_w1.txt", "r", encoding="utf-8") as f:
+    data = f.readlines()
+
+stu = {}
+
+for i in data[1:]:
+    data = i.split("\t")
+    stu_num = data[0]
+    if data[1] == "":
+        stu_account = stu_num
+    else:
+        stu_account = data[1]
+        
+    stu[stu_num] = stu_account
+    #print(stu_num, stu_account)
+
+print(stu["41023237"])
+</pre>
+<p>其中包括:</p>
+<ol>
+<li>以 with open() as 讀取檔案內容, 但必須注意檔案內容的編碼, 目前大多使用 utf-8 編碼建立檔案</li>
+<li>以 readlines() 將資料檔案各行的內容存入 list</li>
+<li>以 for 迴圈將包括各種學員回應資料的數列一一取出</li>
+<li>利用數列索引範圍取值的方法, 去掉資料第一列的標題內容</li>
+<li>利用 split() 將採 \t Tab 區隔的資料切成局部數列</li>
+<li>利用局部數列中的索引, 取出索引 0 與索引 1 的學號與 Github 帳號資料</li>
+<li>因應部分學員並未填入 Github 帳號資料, 因此利用 if 判斷式以其學號當作 Github 帳號</li>
+<li>利用 dict 資料結構, 存入各學員的學號與 Github 帳號資料</li>
+<li>最後則利用某一特定學員的學號, 從 dict 取出其 Github 帳號, 進行比對是否正確取值</li>
+</ol>
+<p>接下來假如要利用 Brython 讀取已經放入 downloads/online 目錄中的 <a href="https://mde.tw/cp2021/downloads/online/cp2021_1b_w1.txt">https://mde.tw/cp2021/downloads/online/cp2021_1b_w1.txt</a> 則可以將上述 CPython 程式中的 with open() as 改為 Brython 的 open(), 隨後的程式碼應該可以重複使用.</p>
+<p>採用 Brython 直接在線上編寫的相同功能程式碼如下 (Gist: <a href="https://gist.githubusercontent.com/mdecourse/040036c57b1d81cc1c0608fe66316651/raw/0746ca727b2a18dd6bad33f728e14c6695f19dbc/read_1b_stud_list_into_dict.py">read_1b_stud_list_into_dict.py</a>):</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">url = "https://mde.tw/cp2021/downloads/online/cp2021_1b_w1.txt"
+
+data = open(url).readlines()
+ 
+stu = {}
+ 
+for i in data[1:]:
+    data = i.split("\t")
+    stu_num = data[0]
+    if data[1] == "":
+        stu_account = stu_num
+    else:
+        stu_account = data[1]
+         
+    stu[stu_num] = stu_account
+    #print(stu_num, stu_account)
+ 
+print(stu["41023237"])</pre>
+<p>與 CPython 程式的差異只在:</p>
+<p>CPython:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">with open("cp2021_1b_w1.txt", "r", encoding="utf-8") as f:
+    data = f.readlines()</pre>
+<p>Brython:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">url = "https://mde.tw/cp2021/downloads/online/cp2021_1b_w1.txt"
+
+data = open(url).readlines()</pre>
+<p>其餘程式碼則完全相同, 但 Brython 程式可以直接採<a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/040036c57b1d81cc1c0608fe66316651/raw/0746ca727b2a18dd6bad33f728e14c6695f19dbc/read_1b_stud_list_into_dict.py">網際方式執行</a>, 就目前此一應用而言較為簡單方便.</p>
+<p>根據上述程式, 再加上 random 模組的運用, 可以完成 cp2021 各班的隨機抽點程式如下:</p>
+<p><a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/040036c57b1d81cc1c0608fe66316651/raw/6c4d5ad73ce14bc1a55d1f7cc12d3cdd3fa30b62/cp2021_1a_random_select.py">1a 抽點 10 位學員</a>查驗其作業倉儲與網站.</p>
+<p><a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/040036c57b1d81cc1c0608fe66316651/raw/6c4d5ad73ce14bc1a55d1f7cc12d3cdd3fa30b62/cp2021_1b_random_select.py">1b 抽點 10 位學員</a>查驗其作業倉儲與網站.</p>
+<p></p><br />建立畫布 << <a href='建立畫布.html'>Previous</a> <a href='Wink.html'>Next</a> >> Wink</div>
         
     <!-- footer -->
       <div class="container">

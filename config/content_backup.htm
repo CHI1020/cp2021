@@ -10951,7 +10951,71 @@ run()
 <script src="https://mde.tw/cp2021/cmsimde/static/SVGpathUtils-6v03-min.js"></script>
 <script src="https://mde.tw/cp2021/cmsimde/static/sylvester.js"></script>
 <script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script>
-<h2>Wink</h2>
+<h2>抽點</h2>
+<p>這裡要根據各班學員的學號與 Github 帳號資料, 建立類似 <a href="https://mde.tw/cad2021/content/w2task.html">https://mde.tw/cad2021/content/w2task.html</a> 頁面的中的上課學員抽點程式.</p>
+<p>假如是在單機上以 CPython 編寫此一抽點程式, 首先必須要先設法讀進學員的<a href="/downloads/online/cp2021_1b_w1.txt">學號與 Github 帳號檔案</a>, 因為這個檔案是 1b 在第一週線上課程時所留, 至今可能已經有新的版本資料, 但目前這個程式是希望取出其中的第一行與第二行的資料, 在 1b w4 課堂中所寫的 CPython 程式如下:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">with open("cp2021_1b_w1.txt", "r", encoding="utf-8") as f:
+    data = f.readlines()
+
+stu = {}
+
+for i in data[1:]:
+    data = i.split("\t")
+    stu_num = data[0]
+    if data[1] == "":
+        stu_account = stu_num
+    else:
+        stu_account = data[1]
+        
+    stu[stu_num] = stu_account
+    #print(stu_num, stu_account)
+
+print(stu["41023237"])
+</pre>
+<p>其中包括:</p>
+<ol>
+<li>以 with open() as 讀取檔案內容, 但必須注意檔案內容的編碼, 目前大多使用 utf-8 編碼建立檔案</li>
+<li>以 readlines() 將資料檔案各行的內容存入 list</li>
+<li>以 for 迴圈將包括各種學員回應資料的數列一一取出</li>
+<li>利用數列索引範圍取值的方法, 去掉資料第一列的標題內容</li>
+<li>利用 split() 將採 \t Tab 區隔的資料切成局部數列</li>
+<li>利用局部數列中的索引, 取出索引 0 與索引 1 的學號與 Github 帳號資料</li>
+<li>因應部分學員並未填入 Github 帳號資料, 因此利用 if 判斷式以其學號當作 Github 帳號</li>
+<li>利用 dict 資料結構, 存入各學員的學號與 Github 帳號資料</li>
+<li>最後則利用某一特定學員的學號, 從 dict 取出其 Github 帳號, 進行比對是否正確取值</li>
+</ol>
+<p>接下來假如要利用 Brython 讀取已經放入 downloads/online 目錄中的 <a href="https://mde.tw/cp2021/downloads/online/cp2021_1b_w1.txt">https://mde.tw/cp2021/downloads/online/cp2021_1b_w1.txt</a> 則可以將上述 CPython 程式中的 with open() as 改為 Brython 的 open(), 隨後的程式碼應該可以重複使用.</p>
+<p>採用 Brython 直接在線上編寫的相同功能程式碼如下 (Gist: <a href="https://gist.githubusercontent.com/mdecourse/040036c57b1d81cc1c0608fe66316651/raw/0746ca727b2a18dd6bad33f728e14c6695f19dbc/read_1b_stud_list_into_dict.py">read_1b_stud_list_into_dict.py</a>):</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">url = "https://mde.tw/cp2021/downloads/online/cp2021_1b_w1.txt"
+
+data = open(url).readlines()
+ 
+stu = {}
+ 
+for i in data[1:]:
+    data = i.split("\t")
+    stu_num = data[0]
+    if data[1] == "":
+        stu_account = stu_num
+    else:
+        stu_account = data[1]
+         
+    stu[stu_num] = stu_account
+    #print(stu_num, stu_account)
+ 
+print(stu["41023237"])</pre>
+<p>與 CPython 程式的差異只在:</p>
+<p>CPython:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">with open("cp2021_1b_w1.txt", "r", encoding="utf-8") as f:
+    data = f.readlines()</pre>
+<p>Brython:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">url = "https://mde.tw/cp2021/downloads/online/cp2021_1b_w1.txt"
+
+data = open(url).readlines()</pre>
+<p>其餘程式碼則完全相同, 但 Brython 程式可以直接採<a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/040036c57b1d81cc1c0608fe66316651/raw/0746ca727b2a18dd6bad33f728e14c6695f19dbc/read_1b_stud_list_into_dict.py">網際方式執行</a>, 就目前此一應用而言較為簡單方便.</p>
+<p>根據上述程式, 再加上 random 模組的運用, 可以完成 cp2021 各班的隨機抽點程式如下:</p>
+<p><a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/040036c57b1d81cc1c0608fe66316651/raw/6c4d5ad73ce14bc1a55d1f7cc12d3cdd3fa30b62/cp2021_1a_random_select.py">1a 抽點 10 位學員</a>查驗其作業倉儲與網站.</p>
+<p></p><h2>Wink</h2>
 <p>從 Wink 套件 Project - Information 取得 Wink 影片所設定的 windth and height.</p>
 <script>
 var winkVideoData = {
@@ -10974,8 +11038,7 @@ var winkVideoData = {
 <div class="winkVideoControlBarProgressThumbClass"></div>
 </div>
 <div class="winkVideoPlayOverlayClass"></div>
-</div>
-<h2>教科書導讀</h2>
+</div><h2>教科書導讀</h2>
 <p>計算機程式課程所採用的 textbook: <a href="https://link.springer.com/book/10.1007/978-981-10-3277-6">Programming with Python</a>, 2016 by T R Padmanabhan, 學員可以自行從校園網路中下載.</p>
 <p>針對機械設計工程相關的大學課程, 比較建議閱讀英文書, 而這一本 <a href="https://link.springer.com/book/10.1007/978-981-10-3277-6">Programming with Python</a> 中的英文單字並不會太多, 建議學員準備一本 B5 紙本筆記專門用來記錄原先不懂的單字, 經過 <a href="https://www.oxfordlearnersdictionaries.com/">https://www.oxfordlearnersdictionaries.com/</a> 或 <a href="https://www.merriam-webster.com/">https://www.merriam-webster.com/</a> 查詢後, 將英文說明謄寫到紙本筆記中, 隨時翻閱查核是否已經了解這些英文單字的涵意.</p>
 <p>當然, 假如您願意接受挑戰, 也可以試著了解一下 <a href="https://github.com/mdecourse/lookupdict">https://github.com/mdecourse/lookupdict</a> 這個網際程式 (利用 scrum1 部署在 <a href="https://lookupdict.herokuapp.com/">https://lookupdict.herokuapp.com/</a>, 可惜當時沒有寫成 GET, 否則就可以直接加上 ?word=caste 查前言中所謂的種姓), 其架構概念就如同商用的 <a href="https://languages.oup.com/oxford-learners-dictionaries-api/">https://languages.oup.com/oxford-learners-dictionaries-api/</a>, 可以透過程式對英文的字典進行延伸應用, 例如: 將整本原文書的所有單字取出, 然後利用程式方法進入<a href="https://github.com/mdecourse/lookupdict/blob/master/webster_vocabulary.sqlite">https://github.com/mdecourse/lookupdict/blob/master/webster_vocabulary.sqlite</a> 或 <a href="https://github.com/mdecourse/lookupdict/blob/master/wordnet30.db">https://github.com/mdecourse/lookupdict/blob/master/wordnet30.db</a> 資料庫查詢, 並且直接利用 Brython 當作前端, Flask 當作後端, 整理出原文書中所有英文單字的說明圖卡, 然後以每幾秒的緩衝時間, 隨機在網頁中現出特定單字, 讓使用者查核是否已經認得這些原文書中的英文單字意涵, 接著就可安排出現該英文單在在 Webster 英英字典與 Wordnet 中的完整說明, 來強化或印證使用者的記憶.</p>
@@ -10983,8 +11046,61 @@ var winkVideoData = {
 <p>至於暗記 (Anki) 最早只使用 Python 在單機上執行, 現在的 <a href="https://github.com/ankitects/anki,">https://github.com/ankitects/anki,</a> 已經納入 Rust 與 Typescript, 從這個過程也能發現程式語言的流行會隨著各種工具的出現而發生變化.</p>
 <p>總結一下上面這一小段的導讀說明, 就是鼓勵各位學員要多閱讀英文教材, 並且利用程式方法強化學習效果, 假如有衝勁, 可以試著將 <a href="https://lookupdict.herokuapp.com/wordnet">https://lookupdict.herokuapp.com/wordnet</a> 與 <a href="https://lookupdict.herokuapp.com/">https://lookupdict.herokuapp.com/</a> 從現有的<a href="https://github.com/mdecourse/lookupdict">原始碼</a>改寫為 GET 或其他延伸應用, 並且學會如何部署到免費的 <a href="https://www.heroku.com/">Heroku</a>.</p>
 <h3>英文單字</h3>
-<p><a href="https://link.springer.com/book/10.1007/978-981-10-3277-6">Programming with Python</a> 教科書中收集 2246 個英文<a href="/downloads/textbook_vocabulary_frequency.txt">單字出現次數</a>, 以及各單字的<a href="/downloads/textbook_vocabulary.txt">中英文說明</a>.</p>
+<p><a href="https://link.springer.com/book/10.1007/978-981-10-3277-6">Programming with Python</a> 教科書中收集 2244 個英文<a href="/downloads/textbook_vocabulary_frequency.txt">單字出現次數</a>, 以及各單字的<a href="/downloads/textbook_vocabulary.txt">中英文說明</a>.</p>
 <p>從英文教科書中統計各單字出現字數的程式:</p>
 <p style="padding-left: 30px;">先利用 <a href="https://gist.githubusercontent.com/mdecourse/0abe3607fddc69b36be50db7c7962368/raw/0834a8535b605bcc5785363702bf45ee8ad02879/get_pdf_text.py">get_pdf_text.py</a> 將 pdf 檔案中的 text 取出.</p>
 <p style="padding-left: 30px;">然後再利用 <a href="https://gist.githubusercontent.com/mdecourse/0abe3607fddc69b36be50db7c7962368/raw/0834a8535b605bcc5785363702bf45ee8ad02879/vocabulary_check.py">vocabulary_check.py</a> 查詢各英文單字的中文與英文解釋.</p>
-<p style="padding-left: 30px;">假如導入 <a href="https://gist.githubusercontent.com/mdecourse/0abe3607fddc69b36be50db7c7962368/raw/6dc6696adf36eb0352fdadffae8680a764ec1ab6/pybean.py">pybean.py</a> 與 <a href="https://www.sqlite.org">SQLite</a> 資料庫, 則可以利用 <a href="https://gist.githubusercontent.com/mdecourse/0abe3607fddc69b36be50db7c7962368/raw/6dc6696adf36eb0352fdadffae8680a764ec1ab6/check_dictionary_save_into_sqlite.py">check_dictionary_save_into_sqlite.py</a> 將 10821 個常見的英文單字的中英文說明與例句存入資料庫.</p>
+<p style="padding-left: 30px;">假如導入 <a href="https://gist.githubusercontent.com/mdecourse/0abe3607fddc69b36be50db7c7962368/raw/6dc6696adf36eb0352fdadffae8680a764ec1ab6/pybean.py">pybean.py</a> 與 <a href="https://www.sqlite.org">SQLite</a> 資料庫, 則可以利用 <a href="https://gist.githubusercontent.com/mdecourse/0abe3607fddc69b36be50db7c7962368/raw/6dc6696adf36eb0352fdadffae8680a764ec1ab6/check_dictionary_save_into_sqlite.py">check_dictionary_save_into_sqlite.py</a> 將 10821 個常見的英文單字的中英文說明與例句存入資料庫 (<a href="/downloads/database/cp2021_textbook_vocabulary_10821.sqlite">cp2021_textbook_vocabulary_10821.sqlite</a>).</p>
+<p>從資料庫中查詢英文單字或列出相關資料:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 從 pybean.py 導入 Store 與 SQLiteWriter
+from pybean import Store, SQLiteWriter
+
+# 設定 library 與 SQLite 資料庫檔案對應
+# frozen 決定是否可以動態新增資料表 (table) 中的欄位 (field)
+library = Store(SQLiteWriter("cp2021_textbook_vocabulary_10821.sqlite", frozen=False))
+
+# 1 is for all
+# 計算資料庫中資料總筆數
+count = library.count("vocabulary", "1 order by word")
+print(count)
+
+count = 0
+# list only num row of data 
+# 只列出最前頭 100 筆資料, 英文單字越前面, 表示在 textbook 中出現的次數越多
+num =100
+# list all data in vocabulary table
+for i in library.find("vocabulary","1 limit " + str(num)):
+    count += 1
+    print (i.word)
+    # word 欄位為單字, ec 為英漢,  ee 為英英, es 為例句
+    #print (i.word, i.ec, i.ee, i.es)
+#print(count)
+
+'''
+count = 0
+# list vocabulary start with "a"
+# 列出 a 開頭的英文單字
+for i in library.find("vocabulary","word like ?",["a%"]):
+    count += 1
+    print (i.word)
+    # ec = english to chinese
+    # ee = english to english
+    # es = english sentence
+    #print (i.word, i.ec, i.ee, i.es)
+print(count)
+'''</pre>
+<p>另外一個例子:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from pybean import Store, SQLiteWriter
+
+    
+library = Store(SQLiteWriter("cp2021_textbook_vocabulary_10821.sqlite", frozen=False))
+
+# list only num row of data
+num = 10
+# list all data in vocabulary table
+for i in library.find("vocabulary","word like ? limit "+str(num),['a%']):
+# 1 is for all rows
+#for i in library.find("vocabulary","1"):
+    print(i.word, i.ec.replace("\n", ""))
+
+</pre>
