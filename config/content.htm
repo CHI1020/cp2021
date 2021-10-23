@@ -4613,8 +4613,54 @@ pacman -Sy mingw-w64-x86-64-cmake</pre>
 <p style="padding-left: 30px;">語法為 utl = <a href="mailto:git@&lt;putty_session&gt;:mdecourse/report.git">git@&lt;putty_session&gt;:mdecourse/report.git</a></p>
 <h3>Github</h3>
 <p>網際介面操作 - 可以從瀏覽器新建或上傳近端電腦檔案, 可在兩台異地電腦之間傳遞對應檔案, 一台以瀏覽器登入 Github 倉儲上傳檔案, 另外一台則在其近端倉儲工作目錄中以 git pull 取下所上傳的檔案.</p>
-<p></p>
-<h2>Gist</h2>
+<h3>GraphQL</h3>
+<h4>GraphQL 最新規格:</h4>
+<p style="padding-left: 30px;"><a href="https://spec.graphql.org/draft/">https://spec.graphql.org/draft/</a> </p>
+<h4>Github GraphQL API docs:</h4>
+<p style="padding-left: 30px;"><a href="https://docs.github.com/en/graphql">https://docs.github.com/en/graphql</a></p>
+<h4>Github GraphQL explorer:</h4>
+<p style="padding-left: 30px;"><a href="https://docs.github.com/en/graphql/overview/explorer">https://docs.github.com/en/graphql/overview/explorer</a> </p>
+<p><a href="https://graphql.org/">https://graphql.org/</a> 是一種 API 查詢語言. GraphQL 與 REST 比較: <a href="https://blog.api.rakuten.net/graphql-vs-rest/">https://blog.api.rakuten.net/graphql-vs-rest/</a></p>
+<h4>Javascript 程式庫:</h4>
+<p style="padding-left: 30px;"><a href="https://github.com/graphql/graphql-js">https://github.com/graphql/graphql-js</a></p>
+<p><a href="https://graphql.org/swapi-graphql/">https://graphql.org/swapi-graphql/</a> </p>
+<p>GraphQL 操作:</p>
+<p>qyery 代表資料讀取, 而所謂的 mutation 則表示寫入後讀取.</p>
+<p>subscription 則通常透過 WebSockets 達到連續讀取的目的.</p>
+<h4>Github 查詢限制:</h4>
+<p style="padding-left: 30px;">For API requests using Basic Authentication or OAuth, you can make up to 5,000 requests per hour. Authenticated requests are associated with the authenticated user, regardless of whether Basic Authentication or an OAuth token was used.</p>
+<p style="padding-left: 30px;">This means that all OAuth applications authorized by a user share the same quota of 5,000 requests per hour when they authenticate with different tokens owned by the same user.</p>
+<p>利用 GraphQL 查詢 Discussion 資料:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">query {
+  repository(owner: "mdecourse", name: "cp2021") {
+    discussions(first: 10) {
+      # type: DiscussionConnection
+      totalCount # Int!
+
+      edges {
+        # type: DiscussionEdge
+        cursor
+        node {
+          title
+          url
+          # 只取最前面 100 筆資料
+          comments (first: 100) {
+            edges {
+              node {
+                id
+                # 新增資料時間
+                publishedAt
+                # 列出作者登入帳號
+                author{login}
+              }
+            }
+          }
+        }
+      } # edges
+    } # discussions
+  } # repository
+} # query</pre>
+<p></p><h2>Gist</h2>
 <h4>以下讓使用者將 Python 範例程式 (<a href="https://brython.info/static_tutorial/en/index.html">Brython</a>) 存入 <a href="https://docs.github.com/en/github/writing-on-github/editing-and-sharing-content-with-gists/creating-gists">Github Gist</a> 後, 經由程式 pubic Gist URL 連結, 以按鈕放入編輯器中執行:</h4>
 <!-- 導入 brython 程式庫 -->
 <script src="/static/brython.js"></script>
