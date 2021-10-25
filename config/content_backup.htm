@@ -9820,6 +9820,7 @@ doc['clear_bd3'].bind('click', clear_bd3)
 <p><span style="background-color: #ffff99;"><a href="https://www.geeksforgeeks.org/ai-driven-snake-game-using-deep-q-learning/">https://www.geeksforgeeks.org/ai-driven-snake-game-using-deep-q-learning/</a> <br/></span></p>
 <p><span style="background-color: #ffff99;"><a href="https://craighaber.github.io/AI-for-Snake-Game/website_files/index.html">https://craighaber.github.io/AI-for-Snake-Game/website_files/index.html</a> <br/></span></p>
 <p><span style="background-color: #ffff99;"><a href="https://www.python-course.eu/snake_in_python.php">https://www.python-course.eu/snake_in_python.php</a> <br/></span></p>
+<p><span style="background-color: #ffff99;">https://techitsmart.ca/2020/05/18/teaching-ai-to-play-snake-using-python/</span></p>
 <p>以下為按下 Run 之後, 可以利用 i, j, l, m 等鍵盤上的 key 控制 snake 的移動方向:</p>
 <!-- 導入 brython -->
 <p>
@@ -11120,7 +11121,7 @@ var winkVideoData = {
 </div>
 <div class="winkVideoPlayOverlayClass"></div>
 </div><h2>作業</h2>
-<p><a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/0c1bd6c67c7da225cc802354919b6932/raw/6db0faed6293211f251ddcad3acc22e420fbae96/cp2021_hw1_stat.py">HW1 繳交統計</a><br/><br/>cp2021 共有  90 位學員<a href="https://github.com/mdecourse/cp2021/discussions/8">繳交 HW1</a><br/><br>1a 有 33 位同學未繳交, 也就是有  31 位繳交.<br/>1b 有 20 位同學未繳交, 也就是有  37 位繳交.<br/><br/>其中還有 22 個帳號尚未登記學號: ['04yxuan', '41023215', '41023242', 'CHIA-ROU', 'JIAN3-LIN', 'LIN-TING-YUN', 'Lujay030', 'Tzm0306', 'WANG-YI-TING', 'aa41023108', 'bingyangD', 'dan41023140', 'jamie920130', 'jason60714', 'jeff833', 'junpig10', 'kolas911205', 'lee-kai-shin', 'mikusoftware', 'shih1717', 'smart-777', 'zeromarurei']</br></p><h2>教科書導讀</h2>
+<p><a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/0c1bd6c67c7da225cc802354919b6932/raw/6db0faed6293211f251ddcad3acc22e420fbae96/cp2021_hw1_stat.py">HW1 繳交統計</a><br/><br/>cp2021 共有  90 位學員<a href="https://github.com/mdecourse/cp2021/discussions/8">繳交 HW1</a><br/><br/>1a 有 33 位同學未繳交, 也就是有  31 位繳交.<br/>1b 有 20 位同學未繳交, 也就是有  37 位繳交.<br/><br/>其中還有 22 個帳號尚未登記學號: ['04yxuan', '41023215', '41023242', 'CHIA-ROU', 'JIAN3-LIN', 'LIN-TING-YUN', 'Lujay030', 'Tzm0306', 'WANG-YI-TING', 'aa41023108', 'bingyangD', 'dan41023140', 'jamie920130', 'jason60714', 'jeff833', 'junpig10', 'kolas911205', 'lee-kai-shin', 'mikusoftware', 'shih1717', 'smart-777', 'zeromarurei']</p><h2>教科書導讀</h2>
 <p>計算機程式課程所採用的 textbook: <a href="https://link.springer.com/book/10.1007/978-981-10-3277-6">Programming with Python</a>, 2016 by T R Padmanabhan, 學員可以自行從校園網路中下載.</p>
 <p>針對機械設計工程相關的大學課程, 比較建議閱讀英文書, 而這一本 <a href="https://link.springer.com/book/10.1007/978-981-10-3277-6">Programming with Python</a> 中的英文單字並不會太多, 建議學員準備一本 B5 紙本筆記專門用來記錄原先不懂的單字, 經過 <a href="https://www.oxfordlearnersdictionaries.com/">https://www.oxfordlearnersdictionaries.com/</a> 或 <a href="https://www.merriam-webster.com/">https://www.merriam-webster.com/</a> 查詢後, 將英文說明謄寫到紙本筆記中, 隨時翻閱查核是否已經了解這些英文單字的涵意.</p>
 <p>當然, 假如您願意接受挑戰, 也可以試著了解一下 <a href="https://github.com/mdecourse/lookupdict">https://github.com/mdecourse/lookupdict</a> 這個網際程式 (利用 scrum1 部署在 <a href="https://lookupdict.herokuapp.com/">https://lookupdict.herokuapp.com/</a>, 可惜當時沒有寫成 GET, 否則就可以直接加上 ?word=caste 查前言中所謂的種姓), 其架構概念就如同商用的 <a href="https://languages.oup.com/oxford-learners-dictionaries-api/">https://languages.oup.com/oxford-learners-dictionaries-api/</a>, 可以透過程式對英文的字典進行延伸應用, 例如: 將整本原文書的所有單字取出, 然後利用程式方法進入<a href="https://github.com/mdecourse/lookupdict/blob/master/webster_vocabulary.sqlite">https://github.com/mdecourse/lookupdict/blob/master/webster_vocabulary.sqlite</a> 或 <a href="https://github.com/mdecourse/lookupdict/blob/master/wordnet30.db">https://github.com/mdecourse/lookupdict/blob/master/wordnet30.db</a> 資料庫查詢, 並且直接利用 Brython 當作前端, Flask 當作後端, 整理出原文書中所有英文單字的說明圖卡, 然後以每幾秒的緩衝時間, 隨機在網頁中現出特定單字, 讓使用者查核是否已經認得這些原文書中的英文單字意涵, 接著就可安排出現該英文單在在 Webster 英英字典與 Wordnet 中的完整說明, 來強化或印證使用者的記憶.</p>
@@ -11185,7 +11186,22 @@ for i in library.find("vocabulary","word like ? limit "+str(num),['a%']):
     print(i.word, i.ec.replace("\n", ""))
 
 </pre>
-<h1>系統開發</h1>
+<h3>Ch1</h3>
+<p>在 Windows 10 操作環境下, 使用者可以直接在操作系統安裝 Python 解譯器, 也可以使用可攜式 Python.</p>
+<h4>直接安裝 Python:</h4>
+<p style="padding-left: 30px;">從 <a href="https://www.python.org/downloads/windows/">https://www.python.org/downloads/windows/</a> 下載最新版本後進行安裝. 可以選擇安裝包括 Documentation, pip (Package installer for Python) 以及其他所有內容. 安裝結束後, 開啟系統命令列, 輸入 python 即可進入互動模式, 要離開互動模式, 利用鍵盤 Ctlr + z 後再按 Enter 就可離開互動模式.</p>
+<p style="padding-left: 30px;">假如使用 Windows 7 操作系統, 則只能安裝 Python 3.8 版之前的套件.</p>
+<h4>使用可攜式 Python:</h4>
+<p style="padding-left: 30px;">若使用 USB 3.1 以上的外接隨身碟, 則可以在將 Python 安裝至操作系統後, 直接複製到隨身碟中, 透過設定就可以隨身帶著 Python 解譯器. 只是 Python 的安裝流程會在 pip.exe 綁入操作系統 python.exe 的絕對執行路徑, 因此針對要複製到隨身碟, 以可攜式模式使用 Python 的操作系統安裝, 在系統安裝時不可以直接安裝 pip, 而必須在安裝其他模組後, 選擇以手動執行 python <a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;ved=2ahUKEwjKzJen3ObzAhXFdXAKHVneDHIQFnoECAUQAQ&amp;url=https%3A%2F%2Fbootstrap.pypa.io%2Fget-pip.py&amp;usg=AOvVaw0zKVO_zW0nkF7s0zdjWFNj">get-pip.py</a> 的方式安裝 pip.</p>
+<p style="padding-left: 30px;">至於有關可攜程式系統的製作, 通常以批次檔案設定, 採用 subst 指令, 將可攜系統的資料目錄與特定磁碟代號對應, 可以在隨身碟插入 USB 後以 start.bat 啟動隨身系統, 避開在不同 Windows 10 操作系統時可能給定隨身碟不同代號的設定問題.</p>
+<p>假如使用 Mac 或 Linux 操作系統時, 必須注意操作系統中已經同時安裝 Python 2.7 與 Python 3.8 等兩個版本的狀況, 執行 Python 3.8 時, 必須使用 python3, 而且安裝模組時, 必須使用 pip3 指令.</p>
+<p>當使用者可以在命令列中執行 python 或 python3 進入互動模式 (Interactive Mode) 後, 就可以配合教科書中的 Ch1, 逐一練習 Python 指令, 將 Python 互動模式當作計算機使用.</p>
+<h4>解譯器與編譯器</h4>
+<p style="padding-left: 30px;">解譯器: Interpreter - Python, Javascript</p>
+<p style="padding-left: 30px;">編譯器: Compiler - C/C++</p>
+<p></p>
+<p></p>
+<p></p><h1>系統開發</h1>
 <p>Python 有 <a href="https://github.com/lordmauve/pgzero">https://github.com/lordmauve/pgzero</a> (Pygame Zero)</p>
 <p style="padding-left: 30px;"><a href="https://pygame-zero.readthedocs.io/en/stable/">https://pygame-zero.readthedocs.io/en/stable/</a> </p>
 <p style="padding-left: 30px;"><a href="https://buildmedia.readthedocs.org/media/pdf/pygame-zero/latest/pygame-zero.pdf">https://buildmedia.readthedocs.org/media/pdf/pygame-zero/latest/pygame-zero.pdf</a> </p>
